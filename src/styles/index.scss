@@ -9,6 +9,15 @@
   src: local('Glacial Indifference'), url('../assets/GlacialIndifference-Regular.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Cheddar Gothic Sans';
+  src: local('Cheddar Gothic Sans'), url('../assets/CheddarGothic-Sans.otf') format('opentype');
+}
+
+$title-font: 'Cheddar Gothic Sans';
+$subtitle-font: 'Glacial Indifference';
+$paragraph-font: 'PT Sans';
+
 /*
 @font-face {
   font-family: 'Glacial Indifference Bold';
@@ -38,19 +47,13 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'PT Sans', sans-serif;
+  font-family: $paragraph-font, sans-serif;
   background-color: #95b7e5;
   overflow-x: hidden;
+  color: $text-color-dark;
 }
 
 button {
-  font-family: 'Glacial Indifference';
-  text-transform: uppercase;
-  color: $heading-color;
-  letter-spacing: 2px;
-  border-radius: 0;
-  background-color: #fff;
-  border: 1px solid $border-color;
 }
 
 img {
@@ -64,29 +67,54 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Glacial Indifference';
-  text-transform: uppercase;
-  color: $heading-color;
-  letter-spacing: 2px;
+  font-family: $title-font;
+  color: $text-color-dark;
   margin: $spacing-s 0;
+  font-weight: 400;
+  line-height: 1;
 
   span {
     display: block;
   }
+
+  &.subheading {
+    font-family: $subtitle-font;
+    color: $text-color-light;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+h2 {
+  letter-spacing: 0px;
+}
+
+.text-color-light {
+  color: $text-color-light;
+}
+
+.text-color-dark {
+  color: $text-color-dark;
 }
 
 /*
  * UI Element Styling
  */
 
-.drop-shadow {
-  filter: drop-shadow(3px 3px 3px $shadow-color);
-}
-
 .page {
   position: relative;
   height: calc(100vh - #{$top-nav-height});
   padding: $spacing-m;
+
+  .page-cta {
+    font-family: $title-font;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: $text-size-m;
+    text-decoration: none;
+    color: $text-color-dark;
+  }
 }
 
 .speech-bubble {
@@ -119,14 +147,104 @@ h6 {
 
 .stylized-button {
   display: inline-block;
-  font-family: 'Glacial Indifference';
+  font-family: $subtitle-font;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: bold;
-  color: $heading-color;
+  color: $text-color-dark;
   letter-spacing: 2px;
   border-radius: 0;
   background-color: #fff;
   border: 1px solid $border-color;
   padding: $spacing-m;
+  cursor: pointer;
+}
+
+.stylized-button-small {
+  padding: $spacing-s;
+}
+
+/*
+ * UI Element Style accents
+ */
+
+/* Bezel borders */
+
+.bezel-xs {
+  background-color: #fff;
+  border-top: $spacing-xxs solid #eee;
+  border-left: $spacing-xxs solid #eee;
+  border-bottom: $spacing-xxs solid #e0e0e0;
+  border-right: $spacing-xxs solid #e0e0e0;
+}
+
+.bezel-s {
+  background-color: #fff;
+  border-top: $spacing-xs solid #eee;
+  border-left: $spacing-xs solid #eee;
+  border-bottom: $spacing-xs solid #e0e0e0;
+  border-right: $spacing-xs solid #e0e0e0;
+}
+
+.bezel-m {
+  background-color: #fff;
+  border-top: $spacing-s solid #eee;
+  border-left: $spacing-s solid #eee;
+  border-bottom: $spacing-s solid #e0e0e0;
+  border-right: $spacing-s solid #e0e0e0;
+}
+
+.bezel-l {
+  background-color: #fff;
+  border-top: $spacing-m solid #eee;
+  border-left: $spacing-m solid #eee;
+  border-bottom: $spacing-m solid #e0e0e0;
+  border-right: $spacing-m solid #e0e0e0;
+}
+
+/* Circles */
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fff;
+  line-height: 1;
+  font-family: $title-font;
+  color: $text-color-light;
+
+  &:first-line {
+    color: $text-color-dark;
+  }
+
+  p:nth-of-type(2) {
+    margin-top: $spacing-s;
+    font-size: $text-size-s;
+  }
+}
+
+.circle-l {
+  width: 70vw;
+  height: 70vw;
+  padding: 10vw;
+  font-size: 40px;
+}
+
+.circle-m {
+  width: 30vw;
+  height: 30vw;
+  font-size: 40px;
+}
+
+.circle-s {
+  width: 15vw;
+  height: 15vw;
+  font-size: 30px;
+}
+
+/* drop-shadows */
+
+.drop-shadow {
+  filter: drop-shadow(3px 3px 3px $shadow-color);
 }

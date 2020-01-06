@@ -2,11 +2,21 @@
  * Shared Layout
  */
 
+$spacing-xxs: 2px;
 $spacing-xs: 4px;
 $spacing-s: 8px;
 $spacing-m: 16px;
 $spacing-l: 32px;
 $spacing-xl: 64px;
+
+/*
+ * Typography
+ */
+
+$text-size-s: 16px;
+$text-size-m: 32px;
+$text-size-l: 48px;
+$text-size-xl: 72px;
 
 /*
  * Particular Layouts
@@ -17,5 +27,6 @@ $top-nav-height: 64px;
  * Colors
  */
 $border-color: #d9d9d9;
-$heading-color: #1c4c6c;
+$text-color-light: #1c4c6c;
+$text-color-dark: #1c3749;
 $shadow-color: rgba(101, 124, 201, 1);

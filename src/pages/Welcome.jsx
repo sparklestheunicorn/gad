@@ -7,14 +7,17 @@ import gadTitle from '../assets/gad-title.png'
 export const Welcome = (props) => {
   return (
     <div className="page welcome">
-      <img className="title-image" src={gadTitle} />
-      <h3>
-        <span>america's arguments,</span> <span>all in one place</span>
-      </h3>
+      <div className="top-container">
+        <img className="title-image" src={gadTitle} />
+        <h3 className="subheading">
+          <span>america's arguments,</span> <span>all in one place</span>
+        </h3>
+      </div>
       <div className="bottom-container">
-        <Link to="/home" className="explore-button stylized-button">
+        <Link to="/" className="explore-button stylized-button">
           Explore
         </Link>
+
         <div className="welcome-animation">
           <div className="animation-container">
             <div className="speech-bubble decorative reversed"></div>

@@ -22,7 +22,7 @@ export const TopNav = (props) => {
         <Link to="/">
           <img src={logo} alt="The Great American Debate" />
         </Link>
-        <button className="menu-button" onClick={toggleMenu}>
+        <button className="menu-button stylized-button stylized-button-small" onClick={toggleMenu}>
           Menu
         </button>
       </nav>

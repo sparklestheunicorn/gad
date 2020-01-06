@@ -1,0 +1,52 @@
+@import './variables.scss';
+
+.topic-container {
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  h2:first-line {
+    color: $text-color-light;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.topic-title {
+  position: relative;
+  left: -1vw;
+}
+
+.topic-search {
+  position: absolute;
+  left: 0;
+  bottom: -3vw;
+}
+
+.topic-score {
+  position: absolute;
+  left: 55vw;
+  bottom: -5vw;
+}
+
+.topic-media {
+  position: absolute;
+  left: 65vw;
+  bottom: 18vw;
+}
+
+.topic-subdebates {
+  position: absolute;
+  left: 57vw;
+  top: -2vw;
+}
+
+.topic-help {
+  position: absolute;
+  top: -4vw;
+  left: 48vw;
+}

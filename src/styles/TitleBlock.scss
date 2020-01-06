@@ -1,0 +1,14 @@
+@import './variables.scss';
+.title-block {
+  margin-top: $spacing-l;
+  margin-bottom: $spacing-xl;
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: $text-size-xl;
+  }
+}
