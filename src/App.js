@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import { TopNav } from './components/TopNav'
 import { Welcome } from './pages/Welcome'
 import { Home } from './pages/Home'
 import { Questions } from './pages/Questions'
@@ -8,13 +10,14 @@ import { Reasons } from './pages/Reasons'
 import { Argument } from './pages/Argument'
 import { Claim } from './pages/Claim'
 
-import './App.css'
+import './styles/App.scss'
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="app">
+          <TopNav />
           <Switch>
             <Route path="/welcome">
               <Welcome />

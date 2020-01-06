@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+.top-nav {
+  height: $top-nav-height;
+  padding: $spacing-m $spacing-m;
+  background-color: #fff;
+  box-shadow: 0px 4px 5px 0px rgba(101, 124, 201, 1);
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    height: 40px;
+    width: auto;
+    vertical-align: bottom;
+  }
+
+  .menu-button {
+    height: 100%;
+  }
+}
+
+.main-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: left 0.3s ease;
+  background-color: #fff;
+
+  &.hidden {
+    left: 100%;
+  }
+
+  .main-menu-header {
+    height: 50px;
+    padding: $spacing-xs;
+
+    button {
+      height: 100%;
+      float: right;
+    }
+  }
+}
