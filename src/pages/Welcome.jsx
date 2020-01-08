@@ -6,7 +6,7 @@ import gadTitle from '../assets/gad-title.png'
 
 export const Welcome = (props) => {
   return (
-    <div className="page welcome">
+    <section className="page welcome">
       <div className="top-container">
         <img className="title-image" src={gadTitle} />
         <h3 className="subheading">
@@ -20,13 +20,27 @@ export const Welcome = (props) => {
 
         <div className="welcome-animation">
           <div className="animation-container">
-            <div className="speech-bubble decorative reversed"></div>
-            <div className="speech-bubble decorative"></div>
-            <div className="speech-bubble decorative reversed"></div>
-            <div className="speech-bubble decorative"></div>
-            <div className="speech-bubble decorative"></div>
-            <div className="speech-bubble decorative"></div>
-            <div className="speech-bubble decorative"></div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative reversed"></div>
+            </div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative"></div>
+            </div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative reversed"></div>
+            </div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative"></div>
+            </div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative"></div>
+            </div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative"></div>
+            </div>
+            <div className="speech-bubble-container">
+              <div className="speech-bubble decorative"></div>
+            </div>
           </div>
           <div className="animation-container">
             <div className="shadow"></div>
@@ -42,6 +56,6 @@ export const Welcome = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

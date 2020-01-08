@@ -7,10 +7,12 @@ import '../styles/Home.scss'
 
 export const Home = (props) => {
   return (
-    <div className="page home">
+    <section className="page home">
       <TitleBlock title="Welcome!" subtitle="please explore and search" />
       <Topic title="Climate Change" exploreScore={38} subdebates={170} />
-      <Link className="page-cta">Get into the debate ></Link>
-    </div>
+      <Link to="/questions" className="page-cta">
+        Get into the debate >
+      </Link>
+    </section>
   )
 }

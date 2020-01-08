@@ -25,11 +25,12 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  transition: left 0.3s ease;
+  z-index: 9999;
+  transition: transform 0.3s ease;
   background-color: #fff;
 
   &.hidden {
-    left: 100%;
+    transform: translateX(100vw);
   }
 
   .main-menu-header {

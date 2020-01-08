@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-$flyin-duration: 1s;
+$fly-in-duration: 1s;
 $fade-in-duration: 1s;
 
 .page.home {
@@ -8,45 +8,17 @@ $fade-in-duration: 1s;
 
   .topic-container {
     transform: translateX(100vw);
-    animation-name: flyin-right;
-    animation-duration: $flyin-duration;
+    animation-name: fly-in-right-with-shadow;
+    animation-duration: $fly-in-duration;
     animation-fill-mode: forwards;
   }
 
   .circle-m,
   .circle-s {
     opacity: 0;
-    animation-delay: $flyin-duration;
-    animation-name: fade-in;
+    animation-delay: $fly-in-duration;
+    animation-name: fade-in-and-grow;
     animation-duration: $fade-in-duration;
     animation-fill-mode: forwards;
-  }
-}
-
-@keyframes flyin-right {
-  0% {
-    transform: translateX(100vw);
-    filter: none;
-  }
-  60% {
-    transform: translateX(0);
-    filter: none;
-  }
-  80% {
-    transform: translateX(0);
-    filter: drop-shadow(3px 3px 3px $shadow-color);
-  }
-  100% {
-    transform: translateX(0);
-    filter: drop-shadow(3px 3px 3px $shadow-color);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

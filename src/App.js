@@ -22,9 +22,6 @@ class App extends Component {
             <Route path="/welcome">
               <Welcome />
             </Route>
-            <Route path="/">
-              <Home />
-            </Route>
             <Route path="/questions">
               <Questions />
             </Route>
@@ -39,6 +36,9 @@ class App extends Component {
             </Route>
             <Route path="/claim">
               <Claim />
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </div>
