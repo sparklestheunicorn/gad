@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { TopNav } from './components/TopNav'
 import { Welcome } from './pages/Welcome'
-import { Home } from './pages/Home'
+import { Debates } from './pages/Debates'
 import { Questions } from './pages/Questions'
 import { Positions } from './pages/Positions'
 import { Reasons } from './pages/Reasons'
@@ -19,9 +19,6 @@ class App extends Component {
         <div className="app">
           <TopNav />
           <Switch>
-            <Route path="/welcome">
-              <Welcome />
-            </Route>
             <Route path="/questions">
               <Questions />
             </Route>
@@ -37,8 +34,11 @@ class App extends Component {
             <Route path="/claim">
               <Claim />
             </Route>
+            <Route path="/debates">
+              <Debates />
+            </Route>
             <Route path="/">
-              <Home />
+              <Welcome />
             </Route>
           </Switch>
         </div>

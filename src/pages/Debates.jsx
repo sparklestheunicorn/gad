@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { TitleBlock } from '../components/TitleBlock'
 import { Topic } from '../components/Topic'
-import '../styles/Home.scss'
+import '../styles/Debates.scss'
 
-export const Home = (props) => {
+export const Debates = (props) => {
   return (
     <section className="page home">
       <TitleBlock title="Welcome!" subtitle="please explore and search" />

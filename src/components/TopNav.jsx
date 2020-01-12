@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
 import '../styles/TopNav.scss'
-import logo from '../assets/gad-logo-small-white.png'
+import logo from '../images/gad-logo-small-white.png'
 
 export const TopNav = (props) => {
   let [showMenu, setShowMenu] = React.useState(true)
@@ -17,7 +17,7 @@ export const TopNav = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <header>
       <nav className="top-nav">
         <Link to="/">
           <img src={logo} alt="The Great American Debate" />
@@ -33,6 +33,6 @@ export const TopNav = (props) => {
           </button>
         </div>
       </aside>
-    </React.Fragment>
+    </header>
   )
 }
