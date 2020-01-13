@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 
 import { TopNav } from './components/TopNav'
 import { Welcome } from './pages/Welcome'
@@ -15,34 +15,18 @@ import './styles/App.scss'
 class App extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter basename="/">
         <div className="app">
           <TopNav />
-          <Switch>
-            <Route path="/questions">
-              <Questions />
-            </Route>
-            <Route path="/positions">
-              <Positions />
-            </Route>
-            <Route path="/reasons">
-              <Reasons />
-            </Route>
-            <Route path="/argument">
-              <Argument />
-            </Route>
-            <Route path="/claim">
-              <Claim />
-            </Route>
-            <Route path="/debates">
-              <Debates />
-            </Route>
-            <Route path="/">
-              <Welcome />
-            </Route>
-          </Switch>
+          <Route path="/questions" component={Questions} />
+          <Route path="/positions" component={Positions} />
+          <Route path="/reasons" component={Reasons} />
+          <Route path="/argument" component={Argument} />
+          <Route path="/claim" component={Claim} />
+          <Route path="/debates" component={Debates} />
+          <Route exact path="/" component={Welcome} />
         </div>
-      </Router>
+      </HashRouter>
     )
   }
 }

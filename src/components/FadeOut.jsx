@@ -8,7 +8,6 @@ export const FadeOut = () => {
       for (let i = 0; i < links.length; i++) {
         links[i].addEventListener('click', (e) => {
           e.preventDefault()
-          console.log('LEAVING')
           document.getElementsByClassName('page')[0].animate(
             [
               // keyframes
@@ -23,7 +22,6 @@ export const FadeOut = () => {
             },
           )
           window.setTimeout(() => {
-            console.log(e)
             window.location = e.target.closest('a').href
           }, 200)
         })
