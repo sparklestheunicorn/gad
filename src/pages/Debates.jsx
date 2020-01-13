@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import { TitleBlock } from '../components/TitleBlock'
 import { Topic } from '../components/Topic'
 import '../styles/Debates.scss'
+import { FadeOut } from '../components/FadeOut'
 
 export const Debates = (props) => {
   return (
-    <section className="page home">
+    <section className="page debates">
+      <FadeOut />
       <TitleBlock title="Welcome!" subtitle="please explore and search" />
       <Topic title="Climate Change" exploreScore={38} subdebates={170} />
       <Link to="/questions" className="page-cta">

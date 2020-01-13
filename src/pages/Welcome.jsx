@@ -1,12 +1,15 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
+import { FadeOut } from '../components/FadeOut'
+
 import '../styles/Welcome.scss'
 import gadTitle from '../assets/gad-title.png'
 
 export const Welcome = (props) => {
   return (
     <section className="page welcome">
+      <FadeOut />
       <div className="top-container">
         <img className="title-image" src={gadTitle} />
         <h3 className="subheading">

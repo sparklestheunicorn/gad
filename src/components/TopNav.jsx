@@ -28,7 +28,7 @@ export const TopNav = (props) => {
       </nav>
       <aside className={classNames('main-menu', { hidden: showMenu })}>
         <div className="main-menu-header">
-          <button className="main-menu-close" onClick={toggleMenu}>
+          <button className="stylized-button main-menu-close" onClick={toggleMenu}>
             Close
           </button>
         </div>

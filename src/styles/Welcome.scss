@@ -4,14 +4,15 @@ $welcome-animation-duration: 1.5s;
 
 .page.welcome {
   overflow: hidden;
+
+  .top-container {
+    z-index: 10;
+    height: 30%;
+  }
 }
 
 .explore-button {
   margin-top: 35%;
-}
-.top-container {
-  z-index: 10;
-  height: 30%;
 }
 
 .title-image {

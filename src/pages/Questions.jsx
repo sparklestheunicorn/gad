@@ -1,5 +1,7 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
+import { FadeOut } from '../components/FadeOut'
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 
@@ -19,6 +21,7 @@ export const Questions = (props) => {
 
   return (
     <section className="page questions">
+      <FadeOut />
       <h1>
         <span>Select your</span>
         <span>debate question</span>
@@ -28,9 +31,11 @@ export const Questions = (props) => {
         <ul className="question-list ">
           {questions.map((item, index) => {
             return (
-              <li>
-                <span className="question-number">{index + 1}</span>
-                <span className="question">{item.title}</span>
+              <li key={index}>
+                <Link to="/positions">
+                  <span className="question-number">{index + 1}</span>
+                  <span className="question">{item.title}</span>
+                </Link>
                 <div className="circle circle-s bezel-xs drop-shadow">
                   <p>{item.positions}</p>
                   <p>positions</p>

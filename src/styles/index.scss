@@ -44,13 +44,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: $paragraph-font, sans-serif;
-  background-color: #95b7e5;
+  background-color: $background-blue;
   overflow-x: hidden;
   color: $text-color-dark;
 }
 
-button {
+a:visited {
+  color: #1c4c6c;
 }
+
+button {}
 
 img {
   max-width: 100%;
@@ -91,6 +94,33 @@ h2 {
 
 .text-color-dark {
   color: $text-color-dark;
+}
+
+/*
+ * Typography
+ */
+.text-size-xxs {
+  font-size: $text-size-xxs !important;
+}
+
+.text-size-xs {
+  font-size: $text-size-xs !important;
+}
+
+.text-size-s {
+  font-size: $text-size-s !important;
+}
+
+.text-size-m {
+  font-size: $text-size-m !important;
+}
+
+.text-size-l {
+  font-size: $text-size-l !important;
+}
+
+.text-size-xl {
+  font-size: $text-size-xl !important;
 }
 
 /*
@@ -226,21 +256,21 @@ h2 {
 }
 
 .circle-l {
-  width: 70vw;
-  height: 70vw;
+  width: $circle-l-diameter;
+  height: $circle-l-diameter;
   padding: 10vw;
   font-size: 40px;
 }
 
 .circle-m {
-  width: 30vw;
-  height: 30vw;
+  width: $circle-m-diameter;
+  height: $circle-m-diameter;
   font-size: 40px;
 }
 
 .circle-s {
-  width: 15vw;
-  height: 15vw;
+  width: $circle-s-diameter;
+  height: $circle-s-diameter;
   font-size: 30px;
 }
 
@@ -286,6 +316,7 @@ h2 {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -295,9 +326,11 @@ h2 {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -308,6 +341,7 @@ h2 {
     opacity: 0;
     transform: scale(0);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -320,11 +354,13 @@ h2 {
     filter: none;
     transform: rotate(-760deg);
   }
+
   50% {
     opacity: 1;
     filter: none;
     transform: rotate(0deg);
   }
+
   100% {
     opacity: 1;
     filter: none;
@@ -337,14 +373,17 @@ h2 {
     transform: translateX(100vw);
     filter: none;
   }
+
   60% {
     transform: translateX(0);
     filter: none;
   }
+
   80% {
     transform: translateX(0);
     filter: drop-shadow(3px 3px 3px $shadow-color);
   }
+
   100% {
     transform: translateX(0);
     filter: drop-shadow(3px 3px 3px $shadow-color);
@@ -355,9 +394,11 @@ h2 {
   0% {
     transform: translateY(100vh);
   }
+
   50% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -368,10 +409,12 @@ h2 {
     transform: translateY(100vh);
     filter: none;
   }
+
   50% {
     transform: translateY(0);
     filter: none;
   }
+
   100% {
     transform: translateY(0);
     filter: drop-shadow(3px 3px 3px $shadow-color);

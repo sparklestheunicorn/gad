@@ -28,14 +28,25 @@ $text-size-xl: 72px;
 /*
  * Particular Layouts
  */
+
 $top-nav-height: 64px;
 
 /*
  * Colors
  */
+
 $border-color: #d9d9d9;
 $text-color-light: #1c4c6c;
 $text-color-dark: #1c3749;
 $shadow-color: rgba(101, 124, 201, 1);
 $accent-color-light: #47ace3;
 $accent-color-dark: #317072;
+$background-blue: #95b7e5;
+
+/*
+ *  UI Element Styling
+ */
+
+$circle-s-diameter: 15vw;
+$circle-m-diameter: 30vw;
+$circle-l-diameter: 70vw;
