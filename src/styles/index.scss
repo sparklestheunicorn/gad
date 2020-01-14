@@ -49,11 +49,10 @@ body {
   color: $text-color-dark;
 }
 
-a:visited {
+a,
+a span {
   color: $text-color-dark;
 }
-
-button {}
 
 img {
   max-width: 100%;
