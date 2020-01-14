@@ -51,11 +51,21 @@ export const Welcome = (props) => {
             <div className="shadow"></div>
           </div>
           <div className="animation-container">
-            <div className="star"></div>
-            <div className="star"></div>
-            <div className="star"></div>
-            <div className="star"></div>
-            <div className="star"></div>
+            <div className="star-container">
+              <div className="star"></div>
+            </div>
+            <div className="star-container">
+              <div className="star"></div>
+            </div>
+            <div className="star-container">
+              <div className="star"></div>
+            </div>
+            <div className="star-container">
+              <div className="star"></div>
+            </div>
+            <div className="star-container">
+              <div className="star"></div>
+            </div>
           </div>
         </div>
       </div>
