@@ -8,13 +8,13 @@ import { FadeOut } from '../components/FadeOut'
 
 export const Debates = (props) => {
   return (
-    <section className="page debates">
+    <main className="page debates">
       <FadeOut />
       <TitleBlock title="Welcome!" subtitle="please explore and search" />
       <Topic title="Climate Change" exploreScore={38} subdebates={170} />
       <Link to="/questions" className="page-cta">
         Get into the debate >
       </Link>
-    </section>
+    </main>
   )
 }

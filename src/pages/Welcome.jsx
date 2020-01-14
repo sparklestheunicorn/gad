@@ -10,6 +10,9 @@ export const Welcome = (props) => {
   return (
     <section className="page welcome">
       <FadeOut />
+      <div className="font-preloader">
+        <span>Load</span> <span>the</span> <span>fonts</span>
+      </div>
       <div className="top-container">
         <img className="title-image" src={gadTitle} />
         <h3 className="subheading">

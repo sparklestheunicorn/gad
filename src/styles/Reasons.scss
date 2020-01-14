@@ -1,0 +1,18 @@
+@import '../styles/variables.scss';
+
+.page.reasons {
+  .top-container {
+    .position {
+      display: inline-block;
+      vertical-align: top;
+      width: 33%;
+      margin-right: 3%;
+    }
+
+    .title-block {
+      display: inline-block;
+      width: 63%;
+      vertical-align: top;
+    }
+  }
+}

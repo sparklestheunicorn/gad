@@ -21,6 +21,20 @@
 }
 */
 
+.font-preloader {
+  position: absolute;
+  transform: translate(300vw);
+
+  span {
+    font-family: 'Cheddar Gothic Sans';
+  }
+
+  span:nth-child(2) {
+    font-family: 'Glacial Indifference';
+
+  }
+}
+
 /***************************************
  *       Global GAD Styling
  ***************************************/
@@ -52,6 +66,7 @@ body {
 a,
 a span {
   color: $text-color-dark;
+  text-decoration: none;
 }
 
 img {

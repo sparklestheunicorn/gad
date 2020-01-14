@@ -9,9 +9,10 @@ $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
   position: relative;
 
   h1 {
+    max-width: 75%;
+    max-height: 25%;
     margin-top: $spacing-l;
     font-size: $text-size-l;
-    max-height: 25%;
 
     span:first-child {
       color: $text-color-light;

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { FadeOut } from '../components/FadeOut'
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
+import { TitleBlock } from '../components/TitleBlock'
 
 export const Questions = (props) => {
   const questions = [
@@ -20,14 +21,11 @@ export const Questions = (props) => {
   ]
 
   return (
-    <section className="page questions">
+    <main className="page questions">
       <FadeOut />
-      <h1>
-        <span>Select your</span>
-        <span>debate question</span>
-      </h1>
+      <TitleBlock title="Select your debate question" />
       <ExploreScore exploreScore={38} />
-      <div className="question-list-container paper-background">
+      <section className="question-list-container paper-background">
         <ul className="question-list ">
           {questions.map((item, index) => {
             return (
@@ -44,8 +42,8 @@ export const Questions = (props) => {
             )
           })}
         </ul>
-      </div>
+      </section>
       <p className="tip">Tip: Start with the first question and work your way through</p>
-    </section>
+    </main>
   )
 }
