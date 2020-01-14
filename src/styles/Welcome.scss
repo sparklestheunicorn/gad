@@ -55,6 +55,7 @@ $welcome-animation-duration: 1.5s;
         transform: scale(0.3);
       }
     }
+
     &:nth-child(2) {
       top: 5%;
       right: 30%;
@@ -64,6 +65,7 @@ $welcome-animation-duration: 1.5s;
         transform: scale(0.2);
       }
     }
+
     &:nth-child(3) {
       top: 20%;
       right: 40%;
@@ -73,14 +75,17 @@ $welcome-animation-duration: 1.5s;
         transform: scale(0.75);
       }
     }
+
     &:nth-child(4) {
       top: 20%;
       right: -15%;
       animation-delay: 0.3s;
+
       .speech-bubble {
         transform: scale(0.5);
       }
     }
+
     &:nth-child(5) {
       top: 50%;
       right: -16%;
@@ -90,6 +95,7 @@ $welcome-animation-duration: 1.5s;
         transform: scale(0.8);
       }
     }
+
     &:nth-child(6) {
       top: 35%;
       right: 10%;
@@ -99,15 +105,16 @@ $welcome-animation-duration: 1.5s;
         transform: scale(0.6);
       }
     }
+
     &:nth-child(7) {
       top: 65%;
       right: 40%;
       animation-delay: 0.6s;
 
-      .speech-bubble {
-      }
+      .speech-bubble {}
     }
   }
+
   .shadow {
     position: absolute;
     height: 0px;
@@ -125,17 +132,20 @@ $welcome-animation-duration: 1.5s;
       right: 50%;
       bottom: 0;
     }
+
     &:nth-child(2) {
       width: 30%;
       right: 5%;
       bottom: 4%;
     }
+
     &:nth-child(3) {
       width: 30%;
       right: 40%;
       bottom: 3%;
     }
   }
+
   .star {
     position: absolute;
     display: inline-block;
@@ -187,21 +197,25 @@ $welcome-animation-duration: 1.5s;
       right: 30%;
       animation-delay: calc(0.5s + #{$welcome-animation-duration});
     }
+
     &:nth-child(2) {
       top: -0%;
       right: 5%;
       animation-delay: calc(0.6s + #{$welcome-animation-duration});
     }
+
     &:nth-child(3) {
       top: 20%;
       right: 38%;
       animation-delay: calc(0.7s + #{$welcome-animation-duration});
     }
+
     &:nth-child(4) {
       top: 45%;
       right: 10%;
       animation-delay: calc(0.8s + #{$welcome-animation-duration});
     }
+
     &:nth-child(5) {
       top: 55%;
       right: 75%;

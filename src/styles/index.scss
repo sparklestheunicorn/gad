@@ -50,7 +50,7 @@ body {
 }
 
 a:visited {
-  color: #1c4c6c;
+  color: $text-color-dark;
 }
 
 button {}
@@ -234,6 +234,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   border-radius: 50%;
   background-color: #fff;
@@ -243,6 +244,7 @@ h2 {
 
   p {
     margin: 0;
+    align-self: center;
   }
 
   &:first-line {
