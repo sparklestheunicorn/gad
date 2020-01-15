@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { TitleBlock } from '../components/TitleBlock'
-import { FadeOut } from '../components/FadeOut'
+import { PageEffects } from '../components/PageEffects'
 import { Position } from '../components/Position'
 
 import '../styles/Positions.scss'
@@ -20,7 +20,7 @@ export const Positions = (props) => {
 
   return (
     <main className="page positions">
-      <FadeOut />
+      <PageEffects duration={200} animation="fadeOut" options="once" />
       <section className="top-container">
         <TitleBlock title="Is climate change happening?" titleSize="l" subtitle="Start exploring positions" />
       </section>

@@ -1,0 +1,11 @@
+@import '../styles/variables.scss';
+
+.reason {
+  &.rectangle {
+    padding: $spacing-l $spacing-s $spacing-s $spacing-s;
+
+    h3 {
+      margin: 0;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { FadeOut } from '../components/FadeOut'
+import { PageEffects } from '../components/PageEffects'
 
 import '../styles/Welcome.scss'
 import gadTitle from '../assets/gad-title.png'
@@ -9,7 +9,7 @@ import gadTitle from '../assets/gad-title.png'
 export const Welcome = (props) => {
   return (
     <section className="page welcome">
-      <FadeOut />
+      <PageEffects duration={200} animation="fadeOut" options="once" />
       <div className="font-preloader">
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>

@@ -7,7 +7,7 @@ export const Reason = (props) => {
   const { title, ctaUrl } = props
 
   return (
-    <div className="reason">
+    <div className="reason rectangle">
       {ctaUrl && <Link to={ctaUrl}>Explore now ></Link>}
       <h3>{title}</h3>
     </div>

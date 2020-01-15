@@ -13,6 +13,10 @@ export const Reasons = (props) => {
     { title: 'Evidenced by ocean acidification' },
     { title: 'Evidenced by increased natural disaster frequency' },
     { title: 'Evidenced by increased natural disaster intensity' },
+    { title: 'Evidenced by global temperature changes' },
+    { title: 'Evidenced by increased natural disaster frequency' },
+    { title: 'Evidenced by ocean acidification' },
+    { title: 'Evidenced by increased natural disaster intensity' },
   ]
 
   return (

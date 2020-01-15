@@ -9,7 +9,7 @@ export const Position = (props) => {
   const { title, positionCount, exploreScore, ctaUrl } = props
 
   return (
-    <div class="position">
+    <div className="position">
       {positionCount && positionCount > -1 && (
         <div className="position-count circle circle-s bezel-xs drop-shadow">
           <p>{positionCount}</p>

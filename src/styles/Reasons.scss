@@ -7,12 +7,35 @@
       vertical-align: top;
       width: 33%;
       margin-right: 3%;
+      margin-bottom: $spacing-l;
     }
 
     .title-block {
       display: inline-block;
       width: 63%;
       vertical-align: top;
+    }
+  }
+
+  .reasons-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      max-width: calc(50% - #{$spacing-m});
+      margin-right: $spacing-s;
+      margin-bottom: $spacing-s;
+
+      .rectangle {
+        height: 100%;
+      }
+
+      h3 {
+        vertical-align: bottom;
+      }
     }
   }
 }

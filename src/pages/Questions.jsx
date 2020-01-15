@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { FadeOut } from '../components/FadeOut'
+import { PageEffects } from '../components/PageEffects'
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
@@ -22,7 +22,7 @@ export const Questions = (props) => {
 
   return (
     <main className="page questions">
-      <FadeOut />
+      <PageEffects duration={200} animation="fadeOut" options="once" />
       <TitleBlock title="Select your debate question" />
       <ExploreScore exploreScore={38} />
       <section className="question-list-container paper-background">
