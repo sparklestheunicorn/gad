@@ -6,7 +6,7 @@ $shadow-fade-in-duration: 0.5s;
 $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
 
 .page.questions {
-  position: relative;
+
 
   h1 {
     max-width: 75%;
@@ -29,30 +29,37 @@ $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
 
   .question-list-container {
     position: relative;
-    margin-top: $spacing-m;
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    flex: 0 1 auto;
     opacity: 0;
     animation-name: fade-in;
     animation-duration: $questions-fade-in-duration;
     animation-fill-mode: forwards;
-    height: 65%;
   }
 
   .question-list {
     position: relative;
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
     z-index: 1;
-    height: 100%;
     list-style-type: none;
     margin: 0;
     padding: $spacing-m $spacing-m;
-    overflow-y: scroll;
+    overflow-y: auto;
+    flex: 0 1 auto;
 
     li {
       position: relative;
-      margin-bottom: $spacing-l;
+      padding: 0px 0px $spacing-m 0px;
+
       font-family: $title-font;
       font-size: $text-size-s;
       z-index: 1;
       line-height: 1;
+
       transform: translateY(100vh);
       animation-name: fly-in-bottom;
       animation-fill-mode: forwards;
@@ -139,9 +146,6 @@ $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
   }
 
   .tip {
-    position: absolute;
-    width: 100%;
-    left: 0;
     bottom: $spacing-m;
     margin-top: $spacing-l;
     padding: 2 * $spacing-m;

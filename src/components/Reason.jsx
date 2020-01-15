@@ -8,7 +8,7 @@ export const Reason = (props) => {
 
   return (
     <div className="reason rectangle">
-      {ctaUrl && <Link to={ctaUrl}>Explore now ></Link>}
+      {ctaUrl && <Link to={ctaUrl}>Explore ></Link>}
       <h3>{title}</h3>
     </div>
   )

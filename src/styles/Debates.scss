@@ -6,6 +6,11 @@ $fade-in-duration: 1s;
 .page.debates {
   text-align: center;
 
+  .bottom-container {
+    justify-content: space-around;
+    align-items: stretch;
+  }
+
   .topic-container {
     transform: translateX(100vw);
     animation-name: fly-in-right-with-shadow;

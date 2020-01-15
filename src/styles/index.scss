@@ -145,12 +145,24 @@ h2 {
   position: relative;
   height: calc(100vh - #{$top-nav-height});
   padding: $spacing-m;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+
+  .top-container {
+    flex: 0 0 auto;
+  }
+
+  .bottom-container {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    min-height: 0;
+  }
 
   .page-cta {
     font-family: $title-font;
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
     font-size: $text-size-m;
     text-decoration: none;
     color: $text-color-dark;

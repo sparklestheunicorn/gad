@@ -11,10 +11,12 @@ export const Debates = (props) => {
     <main className="page debates">
       <PageEffects duration={200} animation="fadeOut" options="once" />
       <TitleBlock title="Welcome!" subtitle="please explore and search" />
-      <Topic title="Climate Change" exploreScore={38} subdebates={170} />
-      <Link to="/questions" className="page-cta">
-        Get into the debate >
-      </Link>
+      <div className="bottom-container">
+        <Topic title="Climate Change" exploreScore={38} subdebates={170} />
+        <Link to="/questions" className="page-cta">
+          Get into the debate >
+        </Link>
+      </div>
     </main>
   )
 }

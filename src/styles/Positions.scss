@@ -9,7 +9,6 @@
 
   .bottom-container {
     position: relative;
-    height: 75%;
 
     &:before {
       content: '';
@@ -55,7 +54,7 @@
   .positions-container {
     position: relative;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 0 15px;
     margin: 0 -15px;
   }

@@ -21,7 +21,7 @@ export const Position = (props) => {
         <h3 className="position-title text-size-m">{ctaUrl ? <Link to={ctaUrl}>{title}</Link> : title}</h3>
         {ctaUrl && (
           <p>
-            <Link to={ctaUrl}>Explore now ></Link>
+            <Link to={ctaUrl}>Explore ></Link>
           </p>
         )}
       </div>

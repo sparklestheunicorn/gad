@@ -9,14 +9,14 @@ import '../styles/Reasons.scss'
 export const Reasons = (props) => {
   let position = { title: 'Yes', positionCount: 14, exploreScore: 100 }
   let reasons = [
-    { title: 'Evidenced by global temperature changes' },
-    { title: 'Evidenced by ocean acidification' },
-    { title: 'Evidenced by increased natural disaster frequency' },
-    { title: 'Evidenced by increased natural disaster intensity' },
-    { title: 'Evidenced by global temperature changes' },
-    { title: 'Evidenced by increased natural disaster frequency' },
-    { title: 'Evidenced by ocean acidification' },
-    { title: 'Evidenced by increased natural disaster intensity' },
+    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
+    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
+    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
+    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
   ]
 
   return (

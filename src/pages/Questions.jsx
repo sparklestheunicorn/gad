@@ -23,27 +23,31 @@ export const Questions = (props) => {
   return (
     <main className="page questions">
       <PageEffects duration={200} animation="fadeOut" options="once" />
-      <TitleBlock title="Select your debate question" />
-      <ExploreScore exploreScore={38} />
-      <section className="question-list-container paper-background">
-        <ul className="question-list ">
-          {questions.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link to="/positions">
-                  <span className="question-number">{index + 1}</span>
-                  <span className="question">{item.title}</span>
-                </Link>
-                <div className="circle circle-s bezel-xs drop-shadow">
-                  <p>{item.positions}</p>
-                  <p>positions</p>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
+      <section className="top-container">
+        <TitleBlock title="Select your debate question" />
+        <ExploreScore exploreScore={38} />
       </section>
-      <p className="tip">Tip: Start with the first question and work your way through</p>
+      <section className="bottom-container">
+        <div className="question-list-container paper-background">
+          <ul className="question-list ">
+            {questions.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link to="/positions">
+                    <span className="question-number">{index + 1}</span>
+                    <span className="question">{item.title}</span>
+                  </Link>
+                  <div className="circle circle-s bezel-xs drop-shadow">
+                    <p>{item.positions}</p>
+                    <p>positions</p>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        <p className="tip">Tip: Start with the first question and work your way through</p>
+      </section>
     </main>
   )
 }
