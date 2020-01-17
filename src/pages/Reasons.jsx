@@ -17,6 +17,14 @@ export const Reasons = (props) => {
     { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
     { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
     { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
+    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
+    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
+    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
+    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
+    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
   ]
 
   return (
@@ -30,8 +38,8 @@ export const Reasons = (props) => {
           subtitleSize="xs"
         />
       </section>
-      <section className="bottom-container">
-        <ul className="reasons-list">
+      <section className="scroll-gradient-top scroll-gradient-bottom bottom-container">
+        <ul className="reasons-list scroll-list">
           {reasons.map((item, index) => {
             return (
               <li key="index">

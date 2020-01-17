@@ -148,6 +148,7 @@ h2 {
   display: flex;
   min-height: 0;
   flex-direction: column;
+  overflow: hidden;
 
   .top-container {
     flex: 0 0 auto;
@@ -166,6 +167,72 @@ h2 {
     font-size: $text-size-m;
     text-decoration: none;
     color: $text-color-dark;
+  }
+}
+
+.scroll-list {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  z-index: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 16px 16px;
+  overflow-y: auto;
+  flex: 0 1 auto;
+}
+
+.scroll-gradient-bottom .scroll-list {
+  li:last-child::after {
+    content: '';
+    height: 20px;
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+.scroll-gradient-top {
+  &:before {
+    content: '';
+    width: 100%;
+    height: $spacing-m;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,95b7e5+99 */
+    background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(149, 183, 229, 1) 99%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(149, 183, 229, 1) 75%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to top,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(149, 183, 229, 1) 75%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+}
+
+.scroll-gradient-bottom {
+  &:after {
+    content: '';
+    width: 100%;
+    height: $spacing-l;
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,95b7e5+99 */
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(149, 183, 229, 1) 99%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(149, 183, 229, 1) 75%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(149, 183, 229, 1) 75%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   }
 }
 
@@ -445,6 +512,17 @@ h2 {
     filter: none;
     filter: drop-shadow(0px 0px 3px $shadow-color);
   }
+}
+
+@keyframes fly-in-right {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
 }
 
 @keyframes fly-in-right-with-shadow {

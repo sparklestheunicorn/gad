@@ -40,16 +40,6 @@ $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
   }
 
   .question-list {
-    position: relative;
-    display: flex;
-    min-height: 0;
-    flex-direction: column;
-    z-index: 1;
-    list-style-type: none;
-    margin: 0;
-    padding: $spacing-m $spacing-m;
-    overflow-y: auto;
-    flex: 0 1 auto;
 
     li {
       position: relative;

@@ -29,7 +29,7 @@ export const Questions = (props) => {
       </section>
       <section className="bottom-container">
         <div className="question-list-container paper-background">
-          <ul className="question-list ">
+          <ul className="question-list scroll-list">
             {questions.map((item, index) => {
               return (
                 <li key={index}>

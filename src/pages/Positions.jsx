@@ -24,7 +24,7 @@ export const Positions = (props) => {
       <section className="top-container">
         <TitleBlock title="Is climate change happening?" titleSize="l" subtitle="Start exploring positions" />
       </section>
-      <section className="bottom-container">
+      <section className="bottom-container scroll-gradient-top scroll-gradient-bottom ">
         <div className="positions-container">
           {positions.map((item, index) => {
             return (

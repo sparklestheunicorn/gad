@@ -8,27 +8,37 @@
       width: 33%;
       margin-right: 3%;
       margin-bottom: $spacing-l;
+
+      animation-name: fade-in;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
     }
 
     .title-block {
       display: inline-block;
       width: 63%;
       vertical-align: bottom;
+
+      transform: translateX(100vw);
+      animation-name: fly-in-right;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
     }
   }
 
   .reasons-list {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+
+    padding-bottom: $spacing-l;
 
     li {
       position: relative;
-      max-width: calc(50% - #{$spacing-m});
-      margin-right: $spacing-s;
-      margin-bottom: $spacing-s;
+      margin-bottom: $spacing-m;
+
+      transform: translateY(100vh);
+      animation-name: fly-in-bottom;
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+      animation-delay: 1s;
 
       .rectangle {
         height: 100%;
@@ -36,8 +46,10 @@
 
       a {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 3px;
+        right: 3px;
+        font-family: $title-font;
+        font-size: $text-size-xxs;
       }
 
       h3 {
