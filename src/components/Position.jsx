@@ -17,7 +17,7 @@ export const Position = (props) => {
         </div>
       )}
       {exploreScore !== undefined && exploreScore > -1 && <ExploreScore exploreScore={exploreScore} size="s" />}
-      <div className="speech-bubble">
+      <div className="speech-bubble drop-shadow">
         <h3 className="position-title text-size-m">{ctaUrl ? <Link to={ctaUrl}>{title}</Link> : title}</h3>
         {ctaUrl && (
           <p>

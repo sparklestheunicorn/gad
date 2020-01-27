@@ -7,7 +7,7 @@
       vertical-align: bottom;
       width: 33%;
       margin-right: 3%;
-      margin-bottom: $spacing-l;
+      margin-bottom: calc(#{$spacing-l} + #{$spacing-s});
 
       animation-name: fade-in;
       animation-duration: 1s;

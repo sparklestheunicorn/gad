@@ -38,10 +38,17 @@ $top-nav-height: 64px;
 $border-color: #d9d9d9;
 $text-color-light: #1c4c6c;
 $text-color-dark: #1c3749;
-$shadow-color: rgba(101, 124, 201, 1);
+$shadow-color: rgba(104, 166, 214, 1);
 $accent-color-light: #47ace3;
 $accent-color-dark: #317072;
-$background-blue: #95b7e5;
+
+$background-dark-blue: rgba(104, 166, 214, 1);
+$background-light-blue: rgba(188, 217, 240, 1);
+
+$bezel-top:#eee;
+$bezel-right:#ddd;
+$bezel-bottom:#ccc;
+$bezel-left:#e5e5e5;
 
 /*
  *  UI Element Styling

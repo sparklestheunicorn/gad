@@ -20,7 +20,7 @@ export const Welcome = (props) => {
         </h3>
       </div>
       <div className="bottom-container">
-        <Link to="/debates" className="explore-button stylized-button">
+        <Link to="/debates" className="explore-button stylized-button drop-shadow">
           Explore
         </Link>
 

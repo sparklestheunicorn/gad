@@ -6,20 +6,19 @@ $star-fade-in-duration: 6s;
 $twinkle-animation-duration: 2.0s;
 
 .page.welcome {
-  overflow: hidden;
-
   .top-container {
     z-index: 10;
-    height: 30%;
   }
 }
 
 .explore-button {
-  margin-top: 35%;
+  margin-top: 30vh;
 }
 
 .title-image {
   margin-top: $spacing-l;
+  max-width: 500px;
+  width: 100%;
 }
 
 .bottom-container {
@@ -169,7 +168,7 @@ $twinkle-animation-duration: 2.0s;
 
     &:nth-child(2) {
       top: -0%;
-      right: 5%;
+      right: 15%;
 
       .star {
         animation-delay: 1s;

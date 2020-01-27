@@ -29,7 +29,7 @@ export const Reasons = (props) => {
 
   return (
     <main className="page reasons">
-      <section className="top-container">
+      <section className="top-container bezel-l">
         <Position title={position.title} positionCount={position.positionCount} exploreScore={position.exploreScore} />
         <TitleBlock
           title="Climate change is happening"

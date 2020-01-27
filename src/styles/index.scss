@@ -58,9 +58,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: $paragraph-font, sans-serif;
-  background-color: $background-blue;
   overflow-x: hidden;
   color: $text-color-dark;
+  background: rgb(188, 217, 240);
+  background: radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%);
 }
 
 a,
@@ -144,14 +145,17 @@ h2 {
 .page {
   position: relative;
   height: calc(100vh - #{$top-nav-height});
-  padding: $spacing-m;
+  padding: 0;
   display: flex;
   min-height: 0;
   flex-direction: column;
+  padding-bottom: $spacing-m;
   overflow: hidden;
 
   .top-container {
     flex: 0 0 auto;
+    padding: 0 $spacing-m;
+
   }
 
   .bottom-container {
@@ -160,6 +164,7 @@ h2 {
     flex-direction: column;
     align-items: baseline;
     min-height: 0;
+    padding: 0 $spacing-m;
   }
 
   .page-cta {
@@ -195,21 +200,26 @@ h2 {
 .scroll-gradient-top {
   &:before {
     content: '';
-    width: 100%;
-    height: $spacing-m;
+    width: 102%;
+    left: -1%;
+    height: $spacing-l;
     position: absolute;
     z-index: 100;
     top: 0;
+
+    -webkit-box-shadow: inset 0px 10px 5px 0px rgba(149, 182, 229, 1);
+    -moz-box-shadow: inset 0px 10px 5px 0px rgba(149, 182, 229, 1);
+    box-shadow: inset 0px 10px 5px 0px rgba(104, 166, 214, 1);
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,95b7e5+99 */
-    background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(149, 183, 229, 1) 99%);
+    /*background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(104, 166, 214, 1) 99%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(bottom,
+    /*background: -webkit-linear-gradient(bottom,
         rgba(255, 255, 255, 0) 0%,
-        rgba(149, 183, 229, 1) 75%);
+        rgba(104, 166, 214, 1) 75%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to top,
+    /*background: linear-gradient(to top,
         rgba(255, 255, 255, 0) 0%,
-        rgba(149, 183, 229, 1) 75%);
+        rgba(104, 166, 214, 1) 75%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   }
 }
@@ -217,21 +227,22 @@ h2 {
 .scroll-gradient-bottom {
   &:after {
     content: '';
-    width: 100%;
-    height: $spacing-l;
+    width: 102%;
+    left: -1%;
+    height: $spacing-xl;
     position: absolute;
     z-index: 100;
-    bottom: 0;
+    bottom: -$spacing-m;
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,95b7e5+99 */
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(149, 183, 229, 1) 99%);
     /* FF3.6-15 */
     background: -webkit-linear-gradient(top,
         rgba(255, 255, 255, 0) 0%,
-        rgba(149, 183, 229, 1) 75%);
+        rgba(104, 166, 214, 1) 75%);
     /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,
         rgba(255, 255, 255, 0) 0%,
-        rgba(149, 183, 229, 1) 75%);
+        rgba(104, 166, 214, 1) 75%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   }
 }
@@ -335,34 +346,34 @@ h2 {
 
 .bezel-xs {
   background-color: #fff;
-  border-top: $spacing-xxs solid #eee;
-  border-left: $spacing-xxs solid #eee;
-  border-bottom: $spacing-xxs solid #e0e0e0;
-  border-right: $spacing-xxs solid #e0e0e0;
+  border-top: $spacing-xxs solid $bezel-top;
+  border-left: $spacing-xxs solid $bezel-left;
+  border-bottom: $spacing-xxs solid $bezel-bottom;
+  border-right: $spacing-xxs solid $bezel-right;
 }
 
 .bezel-s {
   background-color: #fff;
-  border-top: $spacing-xs solid #eee;
-  border-left: $spacing-xs solid #eee;
-  border-bottom: $spacing-xs solid #e0e0e0;
-  border-right: $spacing-xs solid #e0e0e0;
+  border-top: $spacing-xs solid $bezel-top;
+  border-left: $spacing-xs solid $bezel-left;
+  border-bottom: $spacing-xs solid $bezel-bottom;
+  border-right: $spacing-xs solid $bezel-right;
 }
 
 .bezel-m {
   background-color: #fff;
-  border-top: $spacing-s solid #eee;
-  border-left: $spacing-s solid #eee;
-  border-bottom: $spacing-s solid #e0e0e0;
-  border-right: $spacing-s solid #e0e0e0;
+  border-top: $spacing-s solid $bezel-top;
+  border-left: $spacing-s solid $bezel-left;
+  border-bottom: $spacing-s solid $bezel-bottom;
+  border-right: $spacing-s solid $bezel-right;
 }
 
 .bezel-l {
   background-color: #fff;
-  border-top: $spacing-m solid #eee;
-  border-left: $spacing-m solid #eee;
-  border-bottom: $spacing-m solid #e0e0e0;
-  border-right: $spacing-m solid #e0e0e0;
+  border-top: $spacing-m solid $bezel-top;
+  border-left: $spacing-m solid $bezel-left;
+  border-bottom: $spacing-m solid $bezel-bottom;
+  border-right: $spacing-m solid $bezel-right;
 }
 
 /* Circles */
