@@ -483,6 +483,13 @@ h2 {
   }
 }
 
+@media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
+  .paper-background:before {
+    right: 10%;
+    top: calc(100% + 42px);
+  }
+}
+
 /*
  * Animations
  */

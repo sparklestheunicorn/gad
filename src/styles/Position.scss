@@ -17,14 +17,14 @@
     position: absolute;
     z-index: 10;
     top: 0px;
-    right: calc(#{$circle-s-diameter} - 2vw);
+    right: 48px;
   }
 
   .position-count {
     position: absolute;
     z-index: 20;
     top: 0px;
-    right: 0;
+    right: 0px;
   }
 
   .position-count.circle-s.circle {
@@ -39,5 +39,12 @@
         font-size: $text-size-xxs;
       }
     }
+  }
+}
+
+@media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
+  .position .speech-bubble {
+    width: 90%;
+    margin-left: 5%;
   }
 }

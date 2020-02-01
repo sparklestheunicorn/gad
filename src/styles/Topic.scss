@@ -13,36 +13,36 @@
 
   .topic-title {
     position: relative;
-    left: -1vw;
+    left: 1%;
   }
 
   .topic-search {
     position: absolute;
     left: 0;
-    bottom: -3vw;
+    bottom: 0;
   }
 
   .explore-score {
     position: absolute;
-    left: 55vw;
-    bottom: -5vw;
+    left: 200px;
+    bottom: -30px;
   }
 
   .topic-media {
     position: absolute;
-    left: 65vw;
-    bottom: 18vw;
+    left: 240px;
+    bottom: 60px;
   }
 
   .topic-subdebates {
     position: absolute;
-    left: 57vw;
-    top: -2vw;
+    left: 220px;
+    top: 0;
   }
 
   .topic-help {
     position: absolute;
-    top: -4vw;
-    left: 48vw;
+    top: -20px;
+    left: 190px;
   }
 }
