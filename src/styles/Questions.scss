@@ -44,6 +44,7 @@ $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
     li {
       position: relative;
       padding: 0px 0px $spacing-m 0px;
+      min-height: 72px;
 
       font-family: $title-font;
       font-size: $text-size-s;

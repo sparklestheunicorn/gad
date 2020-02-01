@@ -139,7 +139,7 @@ h2 {
 }
 
 /*
- * UI Element Styling
+ * Global Layout
  */
 
 .page {
@@ -165,6 +165,7 @@ h2 {
     align-items: baseline;
     min-height: 0;
     padding: 0 $spacing-m;
+    align-items: center;
   }
 
   .page-cta {
@@ -174,6 +175,23 @@ h2 {
     color: $text-color-dark;
   }
 }
+
+@media only screen and (min-width: 480px) {
+  .page {
+    .top-container {
+
+      h1,
+      h2 {
+        max-width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+/*
+ * UI Element Styling
+ */
 
 .scroll-list {
   position: relative;
