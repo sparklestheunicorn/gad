@@ -9,6 +9,10 @@ $fade-in-duration: 1s;
   .bottom-container {
     justify-content: space-around;
     align-items: stretch;
+
+    .topic-container {
+      align-self: center;
+    }
   }
 
   .topic-container {

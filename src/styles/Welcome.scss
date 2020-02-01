@@ -214,3 +214,15 @@ $twinkle-animation-duration: 2.0s;
     animation-timing-function: ease;
   }
 }
+
+@media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
+  .welcome-animation {
+    right: 15%;
+  }
+
+  .welcome-animation .shadow:nth-child(1) {
+    width: 30%;
+    right: 11%;
+    bottom: 0;
+  }
+}

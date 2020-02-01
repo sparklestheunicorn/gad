@@ -68,3 +68,9 @@
     }
   }
 }
+
+@media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
+  .page.reasons .top-container {
+    padding: 0 125px;
+  }
+}
