@@ -145,6 +145,8 @@ h2 {
 .page {
   position: relative;
   height: calc(100vh - #{$top-nav-height});
+  max-width: $max-page-width;
+  margin: 0 auto;
   padding: 0;
   display: flex;
   min-height: 0;
@@ -262,6 +264,14 @@ h2 {
         rgba(255, 255, 255, 0) 0%,
         rgba(104, 166, 214, 1) 75%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+}
+
+@media only screen and (min-width: $desktop-width) {
+
+  .scroll-gradient-top:before,
+  .scroll-gradient-bottom:after {
+    display: none;
   }
 }
 

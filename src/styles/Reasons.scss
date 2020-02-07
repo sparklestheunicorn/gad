@@ -74,3 +74,11 @@
     padding: 0 125px;
   }
 }
+
+@media only screen and (min-width: $desktop-width) {
+  .page.reasons .top-container {
+    .position {
+      max-width: 280px;
+    }
+  }
+}

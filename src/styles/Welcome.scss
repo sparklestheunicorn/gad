@@ -168,6 +168,10 @@ $twinkle-animation-duration: 2.0s;
     }
 
     &:nth-child(2) {
+      .welcome-animation {
+        right: 15%;
+      }
+
       top: -0%;
       right: 15%;
 
@@ -224,5 +228,32 @@ $twinkle-animation-duration: 2.0s;
     width: 30%;
     right: 11%;
     bottom: 0;
+  }
+}
+
+@media only screen and (min-width: $desktop-width) {
+  .welcome-animation {
+    right: 15%;
+
+    .star-container {
+      &:nth-child(2) {
+        right: 60%;
+      }
+    }
+
+    .shadow:nth-child(3) {
+      width: 30%;
+      right: 10%;
+      bottom: 3%;
+    }
+
+    .shadow:first-child {
+      width: 30%;
+      right: 29%;
+    }
+  }
+
+  .explore-button {
+    left: 30%;
   }
 }
