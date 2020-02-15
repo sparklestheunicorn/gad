@@ -8,7 +8,7 @@ import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
 import { GetNodeChildren, GetNode, GetNodeChildrenL2 } from "../subrepos/dm-server/Source/@Shared/Store/firebase/nodes";
 
-// uuid of the root Climate Change debate map
+// uuid of the root Climate Change debate map, and its root node
 export const mainMapID = "RfTurKY-Tk-sxKX24T6KAw";
 export const mainMap_rootNodeID = "qFVvF2FMQVW94RoU741AzA";
 
@@ -27,6 +27,7 @@ export const Questions = observer((props) => {
   ]*/
 
   const questions = GetNodeChildrenL2(mainMap_rootNodeID).filter(a=>a != null); // filter out still-loading questions
+  questions.sort((a, b)=>a.current.createdAt - b.current.createdAt); // until we have a way to manually specify the order, use last-edit-time
   const questionPositions = questions.map(question=>GetNodeChildren(question._key));
 
   return (
