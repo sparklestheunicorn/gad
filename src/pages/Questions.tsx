@@ -26,7 +26,7 @@ export const Questions = observer((props) => {
     { title: 'What could or should be done?', positions: 9 },
   ]*/
 
-  const questions = GetNodeChildrenL2(mainMap_rootNodeID);
+  const questions = GetNodeChildrenL2(mainMap_rootNodeID).filter(a=>a != null); // filter out still-loading questions
   const questionPositions = questions.map(question=>GetNodeChildren(question._key));
 
   return (

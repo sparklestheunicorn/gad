@@ -11,6 +11,9 @@ import { Argument } from './pages/Argument'
 import { Claim } from './pages/Claim'
 
 import './styles/App.scss'
+import {initDebateMapServerLink} from './subrepos/init-dm-server'
+
+initDebateMapServerLink();
 
 class App extends Component {
   render() {
