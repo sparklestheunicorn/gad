@@ -35,7 +35,9 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "pull-subs": "git subrepo pull src/subrepos/dm-server",
+    "push-subs": "git subrepo push src/subrepos/dm-server"
   },
   "browserslist": [
     ">0.2%",
