@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import { ExploreScore } from '../components/ExploreScore'
+import { ExploreScore } from './ExploreScore'
 import '../styles/Topic.scss'
 
 export const Topic = (props) => {

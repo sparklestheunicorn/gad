@@ -6,7 +6,7 @@ import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
 
-export const Questions = (props) => {
+export const Questions = () => {
   const questions = [
     { title: 'What is climate change?', positions: 6 },
     { title: 'What causes it?', positions: 6 },
@@ -50,4 +50,4 @@ export const Questions = (props) => {
       </section>
     </main>
   )
-}
+};
