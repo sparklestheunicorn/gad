@@ -27,7 +27,7 @@ export const Questions = observer((props) => {
   ]*/
 
   const questions = GetNodeChildrenL2(mainMap_rootNodeID).filter(a=>a != null); // filter out still-loading questions
-  questions.sort((a, b)=>a.current.createdAt - b.current.createdAt); // until we have a way to manually specify the order, use last-edit-time
+  questions.sort((a, b)=>a.createdAt - b.createdAt); // until we have a way to manually specify the order, use node creation-time
   const questionPositions = questions.map(question=>GetNodeChildren(question._key));
 
   return (
