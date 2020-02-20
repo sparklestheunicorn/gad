@@ -22,8 +22,8 @@ class App extends Component {
         <div className="app">
           <TopNav />
           <Route path="/questions" component={Questions} />
-          <Route path="/positions" component={Positions} />
-          <Route path="/reasons" component={Reasons} />
+          <Route path="/positions/:id" component={Positions} />
+          <Route path="/reasons/:id" component={Reasons} />
           <Route path="/argument" component={Argument} />
           <Route path="/claim" component={Claim} />
           <Route path="/debates" component={Debates} />

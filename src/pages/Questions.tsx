@@ -7,10 +7,11 @@ import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
 import { GetNodeChildren, GetNode, GetNodeChildrenL2 } from "../subrepos/dm-server/Source/@Shared/Store/firebase/nodes";
+import {GetQuestions, GetQuestionPositions, GetFinalNodeTitle} from '../firestore/firestore';
 
 // uuid of the root Climate Change debate map, and its root node
-export const mainMapID = "RfTurKY-Tk-sxKX24T6KAw";
-export const mainMap_rootNodeID = "qFVvF2FMQVW94RoU741AzA";
+export const mainMapID = "DjedFbxfS2-ImEsHDiZNiA";
+export const mainMap_rootNodeID = "v3RJAZH0Tr-nUjjvKd_39g";
 
 export const Questions = observer((props) => {
   /*const questions = [
@@ -26,9 +27,8 @@ export const Questions = observer((props) => {
     { title: 'What could or should be done?', positions: 9 },
   ]*/
 
-  const questions = GetNodeChildrenL2(mainMap_rootNodeID).filter(a=>a != null); // filter out still-loading questions
-  questions.sort((a, b)=>a.createdAt - b.createdAt); // until we have a way to manually specify the order, use node creation-time
-  const questionPositions = questions.map(question=>GetNodeChildren(question._key));
+  const questions = GetQuestions();
+  const questionPositions = questions.map(question=>GetQuestionPositions(question._key));
 
   return (
     <main className="page questions">
@@ -43,9 +43,9 @@ export const Questions = observer((props) => {
             {questions.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link to="/positions">
+                  <Link to={`/positions/${item._key}`}>
                     <span className="question-number">{index + 1}</span>
-                    <span className="question">{item.current.titles.base}</span>
+                    <span className="question">{GetFinalNodeTitle(item)}</span>
                   </Link>
                   <div className="circle circle-s bezel-xs drop-shadow">
                     <p>{questionPositions[index].length}</p>
