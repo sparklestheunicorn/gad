@@ -21,7 +21,7 @@ export const Positions = (props) => {
   return (
     <main className="page positions">
       <PageEffects duration={200} animation="fadeOut" options="once" />
-      <section className="top-container bezel-l">
+      <section className="top-container bezel-l drop-shadow">
         <TitleBlock title="Is climate change happening?" titleSize="l" subtitle="Start exploring positions" />
       </section>
       <section className="bottom-container scroll-gradient-top scroll-gradient-bottom ">

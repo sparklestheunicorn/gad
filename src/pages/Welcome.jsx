@@ -14,7 +14,7 @@ export const Welcome = (props) => {
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
       <div className="top-container">
-        <img className="title-image" src={gadTitle} />
+        <img className="title-image" src={gadTitle} alt="The Great American Debate" />
         <h3 className="subheading">
           <span>america's arguments,</span> <span>all in one place</span>
         </h3>

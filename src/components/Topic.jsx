@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Topic.scss'
 
 export const Topic = (props) => {
-  const { title, subdebates, exploreScore } = props
+  const { title, subdebates, exploreScore = 38 } = props
 
   return (
     <div className="topic-container">
@@ -16,7 +15,7 @@ export const Topic = (props) => {
       <button className="topic-media circle circle-m bezel-xs drop-shadow">
         <p>media</p>
       </button>
-      <ExploreScore exploreScore={38} />
+      <ExploreScore exploreScore={exploreScore} />
       <button className="topic-subdebates circle circle-m bezel-xs drop-shadow">
         <p>{subdebates}</p>
         <p>sub-debates</p>

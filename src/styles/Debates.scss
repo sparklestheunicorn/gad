@@ -12,6 +12,7 @@ $fade-in-duration: 1s;
 
     .topic-container {
       align-self: center;
+      margin-right: auto;
     }
   }
 
@@ -29,5 +30,13 @@ $fade-in-duration: 1s;
     animation-name: fade-in-and-grow;
     animation-duration: $fade-in-duration;
     animation-fill-mode: forwards;
+  }
+}
+
+@media only screen and (min-width: $tablet-width) {
+  .page.debates {
+    .topic-container.topic-container {
+      margin-right: 0;
+    }
   }
 }

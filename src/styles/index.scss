@@ -1,8 +1,22 @@
 @import './variables.scss';
 
-/*
- * Font Declarations
+
+/**
+ * Table of Contents
+ * 
+ * 1. Font Declarations
+ * 2. Element Overrides for Browser Defaults
+ * 3. Typography
+   4. Global Layouts
+   5. UI Component Styles
+ * 6. UI Component Accents
+ * 7. Animations
  */
+
+
+/********************************
+ * 1. Font Declarations
+ *********************************/
 
 @font-face {
   font-family: 'Glacial Indifference';
@@ -36,12 +50,8 @@
 }
 
 /***************************************
- *       Global GAD Styling
+ * 2. Element Overrides for Browser Defaults
  ***************************************/
-
-/*
- * Element Overrides
- */
 
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
@@ -103,17 +113,9 @@ h2 {
   letter-spacing: 0px;
 }
 
-.text-color-light {
-  color: $text-color-light;
-}
-
-.text-color-dark {
-  color: $text-color-dark;
-}
-
-/*
- * Typography
- */
+/************************
+ * 3. Typography
+ ************************/
 .text-size-xxs {
   font-size: $text-size-xxs !important;
 }
@@ -138,9 +140,17 @@ h2 {
   font-size: $text-size-xl !important;
 }
 
-/*
- * Global Layout
- */
+.text-color-light {
+  color: $text-color-light;
+}
+
+.text-color-dark {
+  color: $text-color-dark;
+}
+
+/************************
+ * 4. Global Layout
+ **************************/
 
 .page {
   position: relative;
@@ -191,9 +201,20 @@ h2 {
   }
 }
 
-/*
- * UI Element Styling
- */
+@media only screen and (min-width: $desktop-width) {
+  .page {
+
+    .top-container {
+      &.bezel-l {
+        margin-top: $spacing-m;
+      }
+    }
+  }
+}
+
+/*****************************************
+ * 5. UI Component Styling
+ ****************************************/
 
 .scroll-list {
   position: relative;
@@ -323,7 +344,7 @@ h2 {
 }
 
 /*
- * UI Element Style accents
+ * 6. UI Component Style accents
  */
 
 /* Stars */
@@ -462,6 +483,7 @@ h2 {
 /* drop-shadows */
 
 .drop-shadow {
+  z-index: 10;
   filter: drop-shadow(3px 3px 3px $shadow-color);
 }
 
@@ -500,9 +522,9 @@ h2 {
   }
 }
 
-/*
- * Animations
- */
+/***************************
+ * 7. Animations
+ ***************************/
 
 @keyframes fade-in {
   from {
