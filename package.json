@@ -36,6 +36,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "clean-subs": "git subrepo clean src/subrepos/dm-server",
     "pull-subs": "git subrepo pull src/subrepos/dm-server",
     "push-subs": "git subrepo push src/subrepos/dm-server"
   },
