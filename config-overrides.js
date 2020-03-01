@@ -1,10 +1,14 @@
-const {override, addBabelPlugin} = require("customize-cra");
+const {override, addWebpackAlias} = require("customize-cra");
 const path = require("path");
 
 module.exports = override(
-  // add an alias for "firebase", "mobx", etc., so that we always import from the root node_modules (for when using npm link) 
-  /*addWebpackAlias({
+  // alias some packages, so always imported from root node_modules (prevents >1 versions being imported, when using npm link) 
+  addWebpackAlias({
+    // reason: dependencies of this repo, and dev-dependencies of @debate-map/server-link, causing dupe with npm link
     firebase: path.resolve(__dirname, "node_modules/firebase"),
     mobx: path.resolve(__dirname, "node_modules/mobx"),
-  }),*/
+    // reason: dependencies of @debate-map/server-link, causing dupe with npm link
+    "js-vextensions": path.resolve(__dirname, "node_modules/js-vextensions"),
+    "mobx-firelink": path.resolve(__dirname, "node_modules/mobx-firelink"),
+  }),
 );
