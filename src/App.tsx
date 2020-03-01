@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { HashRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 
 import { TopNav } from './components/TopNav'
 import { Welcome } from './pages/Welcome'

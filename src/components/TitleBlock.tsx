@@ -10,12 +10,12 @@ export const TitleBlock = (props) => {
     <div className="title-block">
       <h1
         className={classNames(
-          { 'text-size-xxs': titleSize == 'xxs' },
-          { 'text-size-xs': titleSize == 'xs' },
-          { 'text-size-s': titleSize == 's' },
-          { 'text-size-m': titleSize == 'm' },
-          { 'text-size-l': titleSize == 'l' },
-          { 'text-size-xl': titleSize == 'xl' },
+          { 'text-size-xxs': titleSize === 'xxs' },
+          { 'text-size-xs': titleSize === 'xs' },
+          { 'text-size-s': titleSize === 's' },
+          { 'text-size-m': titleSize === 'm' },
+          { 'text-size-l': titleSize === 'l' },
+          { 'text-size-xl': titleSize === 'xl' },
         )}
       >
         {title}
@@ -23,12 +23,12 @@ export const TitleBlock = (props) => {
       <h2
         className={classNames(
           'text-color-light',
-          { 'text-size-xxs': subtitleSize == 'xxs' },
-          { 'text-size-xs': subtitleSize == 'xs' },
-          { 'text-size-s': subtitleSize == 's' },
-          { 'text-size-m': subtitleSize == 'm' },
-          { 'text-size-l': subtitleSize == 'l' },
-          { 'text-size-xl': subtitleSize == 'xl' },
+          { 'text-size-xxs': subtitleSize === 'xxs' },
+          { 'text-size-xs': subtitleSize === 'xs' },
+          { 'text-size-s': subtitleSize === 's' },
+          { 'text-size-m': subtitleSize === 'm' },
+          { 'text-size-l': subtitleSize === 'l' },
+          { 'text-size-xl': subtitleSize === 'xl' },
         )}
       >
         {subtitle}

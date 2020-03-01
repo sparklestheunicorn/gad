@@ -30,7 +30,7 @@ export const Positions = observer((props) => {
   return (
     <main className="page positions">
       <PageEffects duration={200} animation="fadeOut" options="once" />
-      <section className="top-container bezel-l">
+      <section className="top-container bezel-l drop-shadow">
         <TitleBlock title={GetFinalNodeTitle(question)} titleSize="l" subtitle="Start exploring positions" />
       </section>
       <section className="bottom-container scroll-gradient-top scroll-gradient-bottom ">
