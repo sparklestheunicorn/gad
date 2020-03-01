@@ -1,7 +1,7 @@
 import {StoreAccessor} from "mobx-firelink";
-import {GetNodeChildrenL2, GetNodeChildren} from "../subrepos/dm-server/Source/@Shared/Store/firebase/nodes";
+import {GetNodeChildrenL2, GetNodeChildren} from "@debate-map/server-link";
 import {mainMap_rootNodeID} from "../pages/Questions";
-import {MapNodeL2} from "../subrepos/dm-server/Source/@Shared/Store/firebase/nodes/@MapNode";
+import {MapNodeL2} from "@debate-map/server-link";
 
 export function GetFinalNodeTitle(node: MapNodeL2) {
 	//if (node == null) return "";

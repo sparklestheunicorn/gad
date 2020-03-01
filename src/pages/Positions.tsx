@@ -8,7 +8,7 @@ import '../styles/Positions.scss'
 import {useParams} from 'react-router-dom'
 import {GetQuestionPositions, GetFinalNodeTitle} from '../firestore/firestore'
 import {observer} from 'mobx-react'
-import {GetNodeL2} from '../subrepos/dm-server/Source/@Shared/Store/firebase/nodes/$node'
+import {GetNodeL2} from '@debate-map/server-link'
 
 export const Positions = observer((props) => {
   /*const positions = [

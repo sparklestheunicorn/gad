@@ -11,7 +11,7 @@ import { Argument } from './pages/Argument'
 import { Claim } from './pages/Claim'
 
 import './styles/App.scss'
-import {initDebateMapServerLink} from './subrepos/init-dm-server'
+import {initDebateMapServerLink} from './firestore/init-dm-link'
 
 initDebateMapServerLink();
 

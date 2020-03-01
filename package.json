@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@debate-map/server-link": "^1.0.1",
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.4",
     "@types/react": "^16.9.17",
@@ -13,7 +14,7 @@
     "firebase": "^7.8.2",
     "js-vextensions": "^1.0.29",
     "mobx": "^5.15.4",
-    "mobx-firelink": "^1.0.44",
+    "mobx-firelink": "^1.0.48",
     "mobx-react": "^6.1.8",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
@@ -23,8 +24,6 @@
     "typescript": "^3.7.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "customize-cra": "^0.9.1",
     "gh-pages": "^2.2.0",
     "react-app-rewired": "^2.1.5"
@@ -35,10 +34,7 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "clean-subs": "git subrepo clean src/subrepos/dm-server",
-    "pull-subs": "git subrepo pull src/subrepos/dm-server",
-    "push-subs": "git subrepo push src/subrepos/dm-server"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",

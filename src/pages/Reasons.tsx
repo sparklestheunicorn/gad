@@ -6,7 +6,7 @@ import { TitleBlock } from '../components/TitleBlock'
 
 import '../styles/Reasons.scss'
 import {useParams} from 'react-router-dom'
-import {GetNodeL2} from '../subrepos/dm-server/Source/@Shared/Store/firebase/nodes/$node'
+import {GetNodeL2} from '@debate-map/server-link'
 import {GetPositionReasons, GetFinalNodeTitle} from '../firestore/firestore'
 import {observer} from 'mobx-react'
 
@@ -51,7 +51,7 @@ export const Reasons = observer((props) => {
         <ul className="reasons-list scroll-list">
           {reasons.map((item, index) => {
             return (
-              <li key="index">
+              <li key={index}>
                 <Reason title={GetFinalNodeTitle(item)} ctaUrl={"reasons"} />
               </li>
             )

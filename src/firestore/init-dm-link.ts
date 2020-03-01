@@ -1,6 +1,6 @@
 import "mobx"; // import mobx before we declare the module below, otherwise vscode auto-importer gets confused at path to mobx
-import {InitFirelink} from "./dm-server/Source/@Shared/MobXFirelink";
 import firebase from "firebase";
+import {InitFirelink} from "@debate-map/server-link";
 
 const firebaseConfig = {
 	"apiKey":"AIzaSyCnvv_m-L08i4b5NmxGF5doSwQ2uJZ8i-0",
