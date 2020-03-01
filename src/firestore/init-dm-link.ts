@@ -3,11 +3,11 @@ import firebase from "firebase";
 import {InitFirelink} from "@debate-map/server-link";
 
 const firebaseConfig = {
-	"apiKey":"AIzaSyCnvv_m-L08i4b5NmxGF5doSwQ2uJZ8i-0",
-	"authDomain":"debate-map-prod.firebaseapp.com",
-	"databaseURL":"https://debate-map-prod.firebaseio.com",
-	"projectId":"debate-map-prod",
-	"storageBucket":"debate-map-prod.appspot.com",
+  "apiKey":"AIzaSyCnvv_m-L08i4b5NmxGF5doSwQ2uJZ8i-0",
+  "authDomain":"debate-map-prod.firebaseapp.com",
+  "databaseURL":"https://debate-map-prod.firebaseio.com",
+  "projectId":"debate-map-prod",
+  "storageBucket":"debate-map-prod.appspot.com",
 };
 
 const dbVersion = 12;
@@ -18,6 +18,6 @@ const linkRootPath = `versions/v${dbVersion}-${DB_SHORT}`;
 const store = {};
 
 export function initDebateMapServerLink() {
-	firebase.initializeApp(firebaseConfig);
-	InitFirelink(linkRootPath, store);
+  firebase.initializeApp(firebaseConfig);
+  InitFirelink(linkRootPath, store);
 }
