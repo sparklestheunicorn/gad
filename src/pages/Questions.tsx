@@ -6,7 +6,7 @@ import { PageEffects } from '../components/PageEffects'
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
-import {GetQuestions, GetQuestionPositions, GetFinalNodeTitle} from '../firestore/firestore';
+import {getQuestions, getQuestionPositions, getFinalNodeTitle} from '../firestore/firestore';
 
 // uuid of the root Climate Change debate map, and its root node
 export const mainMapID = "DjedFbxfS2-ImEsHDiZNiA";
@@ -26,8 +26,8 @@ export const Questions = observer((props) => {
     { title: 'What could or should be done?', positions: 9 },
   ]*/
 
-  const questions = GetQuestions();
-  const questionPositions = questions.map(question=>GetQuestionPositions(question._key));
+  const questions = getQuestions();
+  const questionPositions = questions.map(question=>getQuestionPositions(question._key));
 
   return (
     <main className="page questions">
@@ -44,7 +44,7 @@ export const Questions = observer((props) => {
                 <li key={index}>
                   <Link to={`/positions/${item._key}`}>
                     <span className="question-number">{index + 1}</span>
-                    <span className="question">{GetFinalNodeTitle(item)}</span>
+                    <span className="question">{getFinalNodeTitle(item)}</span>
                   </Link>
                   <div className="circle circle-s bezel-xs drop-shadow">
                     <p>{questionPositions[index].length}</p>

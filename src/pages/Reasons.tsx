@@ -7,7 +7,7 @@ import { TitleBlock } from '../components/TitleBlock'
 import '../styles/Reasons.scss'
 import {useParams} from 'react-router-dom'
 import {GetNodeL2} from '@debate-map/server-link'
-import {GetPositionReasons, GetFinalNodeTitle} from '../firestore/firestore'
+import {getPositionReasons, getFinalNodeTitle} from '../firestore/firestore'
 import {observer} from 'mobx-react'
 
 export const Reasons = observer((props) => {
@@ -33,15 +33,15 @@ export const Reasons = observer((props) => {
   const { id } = useParams();
   let position = GetNodeL2(id);
   if (position == null) return null; // still loading
-  let reasons = GetPositionReasons(id);
+  let reasons = getPositionReasons(id);
   let exploreScore = 0;
 
   return (
     <main className="page reasons">
       <section className="top-container bezel-l">
-        <Position title={GetFinalNodeTitle(position)} positionCount={reasons.length} exploreScore={exploreScore} />
+        <Position title={getFinalNodeTitle(position)} positionCount={reasons.length} exploreScore={exploreScore} />
         <TitleBlock
-          title={GetFinalNodeTitle(position)}
+          title={getFinalNodeTitle(position)}
           titleSize="m"
           subtitle="Explore the reasons that support this position"
           subtitleSize="xs"
@@ -52,7 +52,7 @@ export const Reasons = observer((props) => {
           {reasons.map((item, index) => {
             return (
               <li key={index}>
-                <Reason title={GetFinalNodeTitle(item)} ctaUrl={"reasons"} />
+                <Reason title={getFinalNodeTitle(item)} ctaUrl={"reasons"} />
               </li>
             )
           })}
