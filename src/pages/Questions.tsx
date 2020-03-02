@@ -1,13 +1,19 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { observer } from "mobx-react";
 
 import { PageEffects } from '../components/PageEffects'
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
+import {getQuestions, getQuestionPositions, getFinalNodeTitle} from '../firestore/firestore';
 
-export const Questions = (props) => {
-  const questions = [
+// uuid of the root Climate Change debate map, and its root node
+export const mainMapID = "DjedFbxfS2-ImEsHDiZNiA";
+export const mainMap_rootNodeID = "v3RJAZH0Tr-nUjjvKd_39g";
+
+export const Questions = observer((props) => {
+  /*const questions = [
     { title: 'What is climate change?', positions: 6 },
     { title: 'What causes it?', positions: 6 },
     { title: 'Is it happening?', positions: 14 },
@@ -18,7 +24,10 @@ export const Questions = (props) => {
     { title: 'Is it happening?', positions: 14 },
     { title: 'Is it a threat?', positions: 22 },
     { title: 'What could or should be done?', positions: 9 },
-  ]
+  ]*/
+
+  const questions = getQuestions();
+  const questionPositions = questions.map(question=>getQuestionPositions(question._key));
 
   return (
     <main className="page questions">
@@ -33,12 +42,12 @@ export const Questions = (props) => {
             {questions.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link to="/positions">
+                  <Link to={`/positions/${item._key}`}>
                     <span className="question-number">{index + 1}</span>
-                    <span className="question">{item.title}</span>
+                    <span className="question">{getFinalNodeTitle(item)}</span>
                   </Link>
                   <div className="circle circle-s bezel-xs drop-shadow">
-                    <p>{item.positions}</p>
+                    <p>{questionPositions[index].length}</p>
                     <p>positions</p>
                   </div>
                 </li>
@@ -50,4 +59,4 @@ export const Questions = (props) => {
       </section>
     </main>
   )
-}
+});

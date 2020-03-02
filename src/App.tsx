@@ -11,6 +11,9 @@ import { Argument } from './pages/Argument'
 import { Claim } from './pages/Claim'
 
 import './styles/App.scss'
+import {initDebateMapServerLink} from './firestore/init-dm-link'
+
+initDebateMapServerLink();
 
 class App extends Component {
   render() {
@@ -19,8 +22,8 @@ class App extends Component {
         <div className="app">
           <TopNav />
           <Route path="/questions" component={Questions} />
-          <Route path="/positions" component={Positions} />
-          <Route path="/reasons" component={Reasons} />
+          <Route path="/positions/:id" component={Positions} />
+          <Route path="/reasons/:id" component={Reasons} />
           <Route path="/argument" component={Argument} />
           <Route path="/claim" component={Claim} />
           <Route path="/debates" component={Debates} />
