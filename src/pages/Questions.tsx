@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { observer } from "mobx-react";
+import { observer } from 'mobx-react'
 
 import { PageEffects } from '../components/PageEffects'
 import { ExploreScore } from '../components/ExploreScore'
 import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
-import {getQuestions, getQuestionPositions, getFinalNodeTitle} from '../firestore/firestore';
+import { getQuestions, getQuestionPositions, getFinalNodeTitle } from '../firestore/firestore'
 
 // uuid of the root Climate Change debate map, and its root node
-export const mainMapID = "DjedFbxfS2-ImEsHDiZNiA";
-export const mainMap_rootNodeID = "v3RJAZH0Tr-nUjjvKd_39g";
+export const mainMapID = 'DjedFbxfS2-ImEsHDiZNiA'
+export const mainMap_rootNodeID = 'v3RJAZH0Tr-nUjjvKd_39g'
 
 export const Questions = observer((props) => {
   /*const questions = [
@@ -26,8 +26,8 @@ export const Questions = observer((props) => {
     { title: 'What could or should be done?', positions: 9 },
   ]*/
 
-  const questions = getQuestions();
-  const questionPositions = questions.map(question=>getQuestionPositions(question._key));
+  const questions = getQuestions()
+  const questionPositions = questions.map((question) => getQuestionPositions(question._key))
 
   return (
     <main className="page questions">
@@ -59,4 +59,4 @@ export const Questions = observer((props) => {
       </section>
     </main>
   )
-});
+})
