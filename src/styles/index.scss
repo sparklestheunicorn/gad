@@ -457,7 +457,6 @@ h2 {
 .circle-l {
   width: $circle-l-diameter;
   height: $circle-l-diameter;
-  padding: 10vw;
   font-size: 40px;
 }
 
@@ -522,9 +521,9 @@ h2 {
   }
 }
 
-/***************************
- * 7. Animations
- ***************************/
+/*********************************
+ * 7. Animations and Transitions
+ *********************************/
 
 @keyframes fade-in {
   from {
