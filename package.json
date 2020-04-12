@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "customize-cra": "^0.9.1",
+    "dotenv": "^8.2.0",
     "gh-pages": "^2.2.0",
     "react-app-rewired": "^2.1.5"
   },

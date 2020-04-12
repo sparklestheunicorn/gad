@@ -20,7 +20,7 @@ export const TopNav = (props) => {
     <header>
       <nav className="top-nav">
         <Link to="/">
-          <img src={logo} alt="The Great American Debate" />
+          <img className="top-nav-logo" src={logo} alt="PROJECT TITLE" />
         </Link>
         <button className="menu-button stylized-button stylized-button-small" onClick={toggleMenu}>
           Menu
