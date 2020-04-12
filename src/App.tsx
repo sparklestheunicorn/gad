@@ -11,9 +11,9 @@ import { Argument } from './pages/Argument'
 import { Claim } from './pages/Claim'
 
 import './styles/App.scss'
-import {initDebateMapServerLink} from './firestore/init-dm-link'
+import { initDebateMapServerLink } from './firestore/init-dm-link'
 
-initDebateMapServerLink();
+initDebateMapServerLink()
 
 class App extends Component {
   render() {

@@ -5,27 +5,17 @@ import { PageEffects } from '../components/PageEffects'
 import { Position } from '../components/Position'
 
 import '../styles/Positions.scss'
-import {useParams} from 'react-router-dom'
-import {getQuestionPositions, getFinalNodeTitle} from '../firestore/firestore'
-import {observer} from 'mobx-react'
-import {GetNodeL2} from '@debate-map/server-link'
+import { useParams } from 'react-router-dom'
+import { getQuestionPositions, getFinalNodeTitle } from '../firestore/firestore'
+import { observer } from 'mobx-react'
+import { GetNodeL2 } from '@debate-map/server-link'
 
 export const Positions = observer((props) => {
-  /*const positions = [
-    { title: "It's uncertain", positionCount: 6, exploreScore: 1 },
-    { title: 'Impossible to know', positionCount: 6, exploreScore: 33 },
-    { title: 'Yes', positionCount: 14, exploreScore: 100 },
-    { title: 'No', positionCount: 22 },
-    { title: "It's uncertain", positionCount: 6, exploreScore: 0 },
-    { title: 'Impossible to know', positionCount: 6, exploreScore: 0 },
-    { title: 'Yes', positionCount: 14 },
-    { title: 'No', positionCount: 22, exploreScore: 0 },
-  ]*/
-  const { id } = useParams();
-  const question = GetNodeL2(id);
-  if (question == null) return null; // still loading
-  const positions = getQuestionPositions(id);
-  const exploreScore = 0;
+  const { id } = useParams()
+  const question = GetNodeL2(id)
+  if (question == null) return null // still loading
+  const positions = getQuestionPositions(id)
+  const exploreScore = 0
 
   return (
     <main className="page positions">
@@ -50,4 +40,4 @@ export const Positions = observer((props) => {
       </section>
     </main>
   )
-});
+})

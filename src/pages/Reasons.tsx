@@ -5,36 +5,17 @@ import { Reason } from '../components/Reason'
 import { TitleBlock } from '../components/TitleBlock'
 
 import '../styles/Reasons.scss'
-import {useParams} from 'react-router-dom'
-import {GetNodeL2} from '@debate-map/server-link'
-import {getPositionReasons, getFinalNodeTitle} from '../firestore/firestore'
-import {observer} from 'mobx-react'
+import { useParams } from 'react-router-dom'
+import { GetNodeL2 } from '@debate-map/server-link'
+import { getPositionReasons, getReasonEvidence, getFinalNodeTitle } from '../firestore/firestore'
+import { observer } from 'mobx-react'
 
 export const Reasons = observer((props) => {
-  /*let position = { title: 'Yes', positionCount: 14, exploreScore: 100 }
-  let reasons = [
-    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
-    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
-    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
-    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
-    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
-    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
-    { title: 'Evidenced by global temperature changes', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster frequency', ctaUrl: 'reasons' },
-    { title: 'Evidenced by ocean acidification', ctaUrl: 'reasons' },
-    { title: 'Evidenced by increased natural disaster intensity', ctaUrl: 'reasons' },
-  ]*/
-  const { id } = useParams();
-  let position = GetNodeL2(id);
-  if (position == null) return null; // still loading
-  let reasons = getPositionReasons(id);
-  let exploreScore = 0;
+  const { id } = useParams()
+  let position = GetNodeL2(id)
+  if (position == null) return null // still loading
+  let reasons = getPositionReasons(id)
+  let exploreScore = 0
 
   return (
     <main className="page reasons">
@@ -50,9 +31,14 @@ export const Reasons = observer((props) => {
       <section className="scroll-gradient-top scroll-gradient-bottom bottom-container">
         <ul className="reasons-list scroll-list">
           {reasons.map((item, index) => {
+            console.log(item)
+            let evidence = getReasonEvidence(item._key)
+            console.log(evidence)
             return (
               <li key={index}>
-                <Reason title={getFinalNodeTitle(item)} ctaUrl={"reasons"} />
+                <Reason title={getFinalNodeTitle(item)} ctaUrl={'reasons'} />
+
+                {/*<Evidence reasonId={item.} /> */}
               </li>
             )
           })}
@@ -60,4 +46,4 @@ export const Reasons = observer((props) => {
       </section>
     </main>
   )
-});
+})
