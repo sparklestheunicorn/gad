@@ -13,22 +13,6 @@ export const mainMapID = 'DjedFbxfS2-ImEsHDiZNiA'
 export const mainMap_rootNodeID = 'v3RJAZH0Tr-nUjjvKd_39g'
 
 export const Questions = observer((props) => {
-<<<<<<< HEAD
-=======
-  /*const questions = [
-    { title: 'What is climate change?', positions: 6 },
-    { title: 'What causes it?', positions: 6 },
-    { title: 'Is it happening?', positions: 14 },
-    { title: 'Is it a threat?', positions: 22 },
-    { title: 'What could or should be done?', positions: 9 },
-    { title: 'What is climate change?', positions: 6 },
-    { title: 'What causes it?', positions: 6 },
-    { title: 'Is it happening?', positions: 14 },
-    { title: 'Is it a threat?', positions: 22 },
-    { title: 'What could or should be done?', positions: 9 },
-  ]*/
-
->>>>>>> 6eb7bf3887d3dd731b19efc1753bf03a3600140b
   const questions = getQuestions()
   const questionPositions = questions.map((question) => getQuestionPositions(question._key))
 

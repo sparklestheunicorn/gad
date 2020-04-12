@@ -9,7 +9,7 @@
     }
 
     .position {
-      display: inline-block;
+      display: none;
       vertical-align: bottom;
       width: 33%;
       margin-right: 3%;
@@ -34,9 +34,10 @@
 
   .reasons-list {
 
+    width: 100%;
     padding-bottom: $spacing-l;
 
-    li {
+    &>li {
       position: relative;
       margin-bottom: $spacing-m;
 
@@ -71,14 +72,27 @@
 
 @media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
   .page.reasons .top-container {
-    padding: 0 125px;
+    padding: 0 $spacing-xs;
+
+    .position {
+      display: inline-block;
+    }
+
+    h1 {
+      display: none;
+    }
   }
 }
 
 @media only screen and (min-width: $desktop-width) {
   .page.reasons .top-container {
     .position {
+      display: inline-block;
       max-width: 280px;
+    }
+
+    h1 {
+      display: none;
     }
   }
 }

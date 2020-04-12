@@ -36,9 +36,7 @@ export const Reasons = observer((props) => {
             console.log(evidence)
             return (
               <li key={index}>
-                <Reason title={getFinalNodeTitle(item)} ctaUrl={'reasons'} />
-
-                {/*<Evidence reasonId={item.} /> */}
+                <Reason title={getFinalNodeTitle(item)} evidence={evidence} />
               </li>
             )
           })}
