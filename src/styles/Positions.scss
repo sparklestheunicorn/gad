@@ -56,12 +56,20 @@
 
 @media only screen and (min-width: $desktop-width) {
   .page.positions {
+
+    .positions-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding-top: $spacing-m;
+    }
+
     .position {
-      width: 33%;
+      display: flex;
+      width: 100%;
 
       &:first-child,
       &:nth-child(2) {
-        margin-top: $spacing-m;
+        margin-top: 0;
       }
 
       &:nth-child(1),
@@ -92,6 +100,13 @@
       &:nth-child(14),
       &:nth-child(15) {
         animation-delay: 2s;
+      }
+
+      .speech-bubble {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
       }
     }
   }

@@ -37,6 +37,7 @@ $shadow-fade-in-delay: $questions-fade-in-duration+$questions-fly-in-duration;
     animation-name: fade-in;
     animation-duration: $questions-fade-in-duration;
     animation-fill-mode: forwards;
+    transition: height 0.3s ease-in-out;
   }
 
   .question-list {

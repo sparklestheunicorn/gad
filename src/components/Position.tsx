@@ -10,7 +10,7 @@ export const Position = (props) => {
 
   return (
     <div className="position">
-      {positionCount && positionCount > -1 && (
+      {positionCount !== undefined && positionCount > 0 && (
         <div className="position-count circle circle-s bezel-xs drop-shadow">
           <p>{positionCount}</p>
           <p>positions</p>
