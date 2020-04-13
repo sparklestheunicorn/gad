@@ -1,0 +1,36 @@
+body.covid-conversation {
+  background-image: url('../../assets/images/covid-conversation-background.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  .top-container {
+    background: #fff;
+  }
+
+  .bottom-container {
+    background-color: none;
+  }
+
+  /**
+    * Page specific styling
+  */
+
+  .page.welcome {
+
+    .top-container {
+      padding-top: 200px;
+      background: none;
+
+      .title-image {
+        width: 600px;
+        max-width: 100%;
+      }
+    }
+
+    .bottom-container {
+      background: none;
+      padding-top: 100px;
+    }
+
+  }
+}

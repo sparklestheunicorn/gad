@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { PageEffects } from '../../components/PageEffects'
 
-import '../../styles/Welcome.scss'
-import gadTitle from '../../assets/gad-title.png'
-
 export const GreatAmericanDebateWelcome = (props) => {
+  const { themeId } = props
+
   return (
     <section className="page welcome">
       <PageEffects duration={200} animation="fadeOut" options="once" />
@@ -14,7 +13,11 @@ export const GreatAmericanDebateWelcome = (props) => {
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
       <div className="top-container">
-        <img className="title-image" src={gadTitle} alt="The Great American Debate" />
+        <img
+          className="title-image"
+          src={require(`../../assets/images/${themeId}-title.png`)}
+          alt="The Great American Debate"
+        />
         <h3 className="subheading">
           <span>america's arguments,</span> <span>all in one place</span>
         </h3>

@@ -20,11 +20,12 @@ class App extends Component {
   themeId = process.env.REACT_APP_PROJECT_ID
 
   render() {
+    console.log(process.env)
+
     return (
       <HashRouter basename="/">
-        <ThemeSelector themeId={this.themeId} />
         <div className="app">
-          <TopNav />
+          <TopNav themeId={this.themeId} />
           <Route path="/questions" component={Questions} />
           <Route path="/positions/:id" component={Positions} />
           <Route path="/reasons/:id" component={Reasons} />

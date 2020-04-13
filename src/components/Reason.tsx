@@ -24,7 +24,11 @@ export const Reason = (props) => {
           {evidenceExpanded && (
             <ul className="reason-evidence-list">
               {evidence.map((item) => {
-                return <li>{item}</li>
+                {
+                  console.log(item.current.titles.yesNoQuestion)
+                }
+
+                return <li>{item.current.titles.yesNoQuestion}</li>
               })}
             </ul>
           )}

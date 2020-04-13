@@ -1,6 +1,5 @@
 import { StoreAccessor } from 'mobx-firelink'
 import { GetNodeChildrenL2, GetNodeChildren } from '@debate-map/server-link'
-import { mainMap_rootNodeID } from '../pages/Questions'
 import { MapNodeL2 } from '@debate-map/server-link'
 
 export function getFinalNodeTitle(node: MapNodeL2) {
@@ -12,6 +11,23 @@ export function getFinalNodeTitle(node: MapNodeL2) {
 }
 
 export const getQuestions = StoreAccessor((s) => () => {
+  let mainMap_rootNodeID
+  let mainMapID
+
+  switch (process.env.REACT_APP_PROJECT_ID) {
+    case 'great-american-debate': {
+      // uuid of the root Climate Change debate map, and its root node
+      mainMapID = 'DjedFbxfS2-ImEsHDiZNiA'
+      mainMap_rootNodeID = 'v3RJAZH0Tr-nUjjvKd_39g'
+      break
+    }
+    case 'covid-conversation': {
+      mainMapID = 'ccrlooCVR2Cu8AMpsrDIlw'
+      mainMap_rootNodeID = '3Ip9uqwURvOFO0DkMKGO4w'
+      break
+    }
+  }
+
   const questions = GetNodeChildrenL2(mainMap_rootNodeID)
   questions.sort((a, b) => a.createdAt - b.createdAt) // until we have a way to manually specify the order, use node creation-time
   return questions

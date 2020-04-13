@@ -1,31 +1,12 @@
 import * as React from 'react'
 
-//Theme components
-import { GreatAmericanDebate } from './GreatAmericanDebate'
-import { CovidConversation } from './CovidConversation'
-
 //Welcome page components
 import { GreatAmericanDebateWelcome } from '../../pages/themes/GreatAmericanDebateWelcome'
 import { CovidConversationWelcome } from '../../pages/themes/CovidConversationWelcome'
 
-export const ThemeSelector = (props) => {
-  const { themeId } = props
-
-  const selectTheme = () => {
-    switch (themeId) {
-      case 'great-american-debate': {
-        return <GreatAmericanDebate />
-      }
-      case 'covid-conversation': {
-        return <CovidConversation />
-      }
-    }
-  }
-
-  const theme = selectTheme()
-
-  return theme
-}
+//Theme-specific files
+import '../../styles/themes/GreatAmericanDebate.scss'
+import '../../styles/themes/CovidConversation.scss'
 
 export const WelcomePage = (props) => {
   const { themeId } = props
@@ -33,10 +14,10 @@ export const WelcomePage = (props) => {
   const selectWelcome = () => {
     switch (themeId) {
       case 'great-american-debate': {
-        return <GreatAmericanDebateWelcome />
+        return <GreatAmericanDebateWelcome themeId={themeId} />
       }
       case 'covid-conversation': {
-        return <CovidConversationWelcome />
+        return <CovidConversationWelcome themeId={themeId} />
       }
     }
   }

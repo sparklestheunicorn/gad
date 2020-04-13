@@ -1,274 +1,329 @@
 @import '../variables.scss';
 
-/**
+
+/* Mixins */
+@mixin paper-background {
+  position: relative;
+  background: #fff;
+  border-radius: 0 $rounded-corner-1 0 $rounded-corner-1;
+  padding: $spacing-m $spacing-s;
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 100%;
+    border-top: 16px solid #dedfe0;
+    border-left: 20px solid #dedfe0;
+    border-right: 20px solid transparent;
+    border-bottom: 16px solid transparent;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: 5%;
+    top: calc(100% + 33px);
+    width: 80%;
+    box-shadow: 0px 2px 10px 5px $shadow-color;
+  }
+
+  @media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
+    &:before {
+      right: 10%;
+      top: calc(100% + 42px);
+    }
+  }
+}
+
+body.great-american-debate {
+
+  /**
  * General site styles
  */
 
-/**
+  background: rgb(188, 217, 240);
+  background: radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%);
+
+
+  header {
+    background-color: #fff;
+    box-shadow: 0px 4px 5px 0px $background-dark-blue;
+  }
+
+
+  /**
  * Welcome page
  */
 
-$welcome-animation-duration: 1.5s;
-$star-fade-in-delay: 2.5s;
-$star-fade-in-duration: 6s;
-$twinkle-animation-duration: 2s;
+  $welcome-animation-duration: 1.5s;
+  $star-fade-in-delay: 2.5s;
+  $star-fade-in-duration: 6s;
+  $twinkle-animation-duration: 2s;
 
-.page.welcome {
-  .top-container {
-    z-index: 10;
-  }
-}
-
-.explore-button {
-  margin-top: 30vh;
-  align-self: start;
-}
-
-.title-image {
-  margin-top: $spacing-l;
-  max-width: 500px;
-  width: 100%;
-}
-
-.bottom-container {
-  position: relative;
-  z-index: 1;
-}
-
-.welcome-animation {
-  position: absolute;
-  width: 60%;
-  height: 100%;
-  right: 0;
-  bottom: 0;
-
-  .animation-container {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-
-  .speech-bubble-container {
-    position: absolute;
-    animation-name: fly-in-bottom-with-shadow;
-    animation-duration: $welcome-animation-duration;
-    animation-fill-mode: forwards;
-    will-change: transform;
-    transform: translateY(100vh);
-
-    &:nth-child(1) {
-      top: -5%;
-      right: 5%;
-      animation-delay: 0s;
-
-      .speech-bubble {
-        transform: scale(0.3);
-      }
-    }
-
-    &:nth-child(2) {
-      top: 5%;
-      right: 30%;
-      animation-delay: 0.1s;
-
-      .speech-bubble {
-        transform: scale(0.2);
-      }
-    }
-
-    &:nth-child(3) {
-      top: 20%;
-      right: 40%;
-      animation-delay: 0.2s;
-
-      .speech-bubble {
-        transform: scale(0.75);
-      }
-    }
-
-    &:nth-child(4) {
-      top: 20%;
-      right: -15%;
-      animation-delay: 0.3s;
-
-      .speech-bubble {
-        transform: scale(0.5);
-      }
-    }
-
-    &:nth-child(5) {
-      top: 50%;
-      right: -16%;
-      animation-delay: 0.4s;
-
-      .speech-bubble {
-        transform: scale(0.8);
-      }
-    }
-
-    &:nth-child(6) {
-      top: 35%;
-      right: 10%;
-      animation-delay: 0.5s;
-
-      .speech-bubble {
-        transform: scale(0.6);
-      }
-    }
-
-    &:nth-child(7) {
-      top: 65%;
-      right: 40%;
-      animation-delay: 0.6s;
-
-      .speech-bubble {
-      }
-    }
-  }
-
-  .shadow {
-    position: absolute;
-    height: 0px;
-    z-index: -100;
-    opacity: 0;
-    box-shadow: 0px 0px 10px 3px $shadow-color;
-    animation-name: fade-in-delayed;
-    animation-duration: $welcome-animation-duration;
-    animation-fill-mode: forwards;
-    animation-delay: 0.5s;
-    will-change: transform;
-
-    &:nth-child(1) {
-      width: 50%;
-      right: 50%;
-      bottom: 0;
-    }
-
-    &:nth-child(2) {
-      width: 30%;
-      right: 5%;
-      bottom: 4%;
-    }
-
-    &:nth-child(3) {
-      width: 30%;
-      right: 40%;
-      bottom: 3%;
-    }
-  }
-
-  .star-container {
-    position: absolute;
-    display: inline-block;
-
-    opacity: 0;
-    animation-name: fade-in;
-    animation-fill-mode: forwards;
-    animation-duration: $star-fade-in-duration;
-    animation-delay: $star-fade-in-delay;
-
-    &:nth-child(1) {
-      top: -10%;
-      right: 30%;
-
-      .star {
-        animation-delay: 0;
-      }
-    }
-
-    &:nth-child(2) {
-      .welcome-animation {
-        right: 15%;
-      }
-
-      top: -0%;
-      right: 15%;
-
-      .star {
-        animation-delay: 1s;
-        animation-duration: 1.5s;
-      }
-    }
-
-    &:nth-child(3) {
-      top: 20%;
-      right: 38%;
-
-      .star {
-        animation-delay: 0.2s;
-      }
-    }
-
-    &:nth-child(4) {
-      top: 45%;
-      right: 10%;
-
-      .star {
-        animation-delay: 0.7s;
-        animation-duration: 1.5s;
-      }
-    }
-
-    &:nth-child(5) {
-      top: 55%;
-      right: 75%;
-
-      .star {
-        animation-delay: 0.5s;
-      }
-    }
-  }
-
-  .star {
-    animation-name: twinkle;
-    animation-fill-mode: forwards;
-    animation-duration: $twinkle-animation-duration;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-  }
-}
-
-@media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
-  .welcome-animation {
-    right: 15%;
-  }
-
-  .welcome-animation .shadow:nth-child(1) {
-    width: 30%;
-    right: 11%;
-    bottom: 0;
-  }
-}
-
-@media only screen and (min-width: $desktop-width) {
-  .welcome-animation {
-    right: 15%;
-
-    .star-container {
-      &:nth-child(2) {
-        right: 60%;
-      }
-    }
-
-    .shadow:first-child {
-      width: 30%;
-      right: 29%;
-    }
-
-    .shadow:nth-child(2) {
-      width: 26%;
-      right: -16%;
-      bottom: 1%;
-    }
-
-    .shadow:nth-child(3) {
-      width: 30%;
-      right: 10%;
-      bottom: 3%;
+  .page.welcome {
+    .top-container {
+      z-index: 10;
     }
   }
 
   .explore-button {
-    left: 30%;
+    margin-top: 30vh;
+    align-self: start;
+  }
+
+  .title-image {
+    margin-top: $spacing-l;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .bottom-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .welcome-animation {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+
+    .animation-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    .speech-bubble-container {
+      position: absolute;
+      animation-name: fly-in-bottom-with-shadow;
+      animation-duration: $welcome-animation-duration;
+      animation-fill-mode: forwards;
+      will-change: transform;
+      transform: translateY(100vh);
+
+      &:nth-child(1) {
+        top: -5%;
+        right: 5%;
+        animation-delay: 0s;
+
+        .speech-bubble {
+          transform: scale(0.3);
+        }
+      }
+
+      &:nth-child(2) {
+        top: 5%;
+        right: 30%;
+        animation-delay: 0.1s;
+
+        .speech-bubble {
+          transform: scale(0.2);
+        }
+      }
+
+      &:nth-child(3) {
+        top: 20%;
+        right: 40%;
+        animation-delay: 0.2s;
+
+        .speech-bubble {
+          transform: scale(0.75);
+        }
+      }
+
+      &:nth-child(4) {
+        top: 20%;
+        right: -15%;
+        animation-delay: 0.3s;
+
+        .speech-bubble {
+          transform: scale(0.5);
+        }
+      }
+
+      &:nth-child(5) {
+        top: 50%;
+        right: -16%;
+        animation-delay: 0.4s;
+
+        .speech-bubble {
+          transform: scale(0.8);
+        }
+      }
+
+      &:nth-child(6) {
+        top: 35%;
+        right: 10%;
+        animation-delay: 0.5s;
+
+        .speech-bubble {
+          transform: scale(0.6);
+        }
+      }
+
+      &:nth-child(7) {
+        top: 65%;
+        right: 40%;
+        animation-delay: 0.6s;
+
+        .speech-bubble {}
+      }
+    }
+
+    .shadow {
+      position: absolute;
+      height: 0px;
+      z-index: -100;
+      opacity: 0;
+      box-shadow: 0px 0px 10px 3px $shadow-color;
+      animation-name: fade-in-delayed;
+      animation-duration: $welcome-animation-duration;
+      animation-fill-mode: forwards;
+      animation-delay: 0.5s;
+      will-change: transform;
+
+      &:nth-child(1) {
+        width: 50%;
+        right: 50%;
+        bottom: 0;
+      }
+
+      &:nth-child(2) {
+        width: 30%;
+        right: 5%;
+        bottom: 4%;
+      }
+
+      &:nth-child(3) {
+        width: 30%;
+        right: 40%;
+        bottom: 3%;
+      }
+    }
+
+    .star-container {
+      position: absolute;
+      display: inline-block;
+
+      opacity: 0;
+      animation-name: fade-in;
+      animation-fill-mode: forwards;
+      animation-duration: $star-fade-in-duration;
+      animation-delay: $star-fade-in-delay;
+
+      &:nth-child(1) {
+        top: -10%;
+        right: 30%;
+
+        .star {
+          animation-delay: 0;
+        }
+      }
+
+      &:nth-child(2) {
+        .welcome-animation {
+          right: 15%;
+        }
+
+        top: -0%;
+        right: 15%;
+
+        .star {
+          animation-delay: 1s;
+          animation-duration: 1.5s;
+        }
+      }
+
+      &:nth-child(3) {
+        top: 20%;
+        right: 38%;
+
+        .star {
+          animation-delay: 0.2s;
+        }
+      }
+
+      &:nth-child(4) {
+        top: 45%;
+        right: 10%;
+
+        .star {
+          animation-delay: 0.7s;
+          animation-duration: 1.5s;
+        }
+      }
+
+      &:nth-child(5) {
+        top: 55%;
+        right: 75%;
+
+        .star {
+          animation-delay: 0.5s;
+        }
+      }
+    }
+
+    .star {
+      animation-name: twinkle;
+      animation-fill-mode: forwards;
+      animation-duration: $twinkle-animation-duration;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+    }
+
+  }
+
+  @media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
+    .welcome-animation {
+      right: 15%;
+    }
+
+    .welcome-animation .shadow:nth-child(1) {
+      width: 30%;
+      right: 11%;
+      bottom: 0;
+    }
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    .welcome-animation {
+      right: 15%;
+
+      .star-container {
+        &:nth-child(2) {
+          right: 60%;
+        }
+      }
+
+      .shadow:first-child {
+        width: 30%;
+        right: 29%;
+      }
+
+      .shadow:nth-child(2) {
+        width: 26%;
+        right: -16%;
+        bottom: 1%;
+      }
+
+      .shadow:nth-child(3) {
+        width: 30%;
+        right: 10%;
+        bottom: 3%;
+      }
+    }
+
+    .explore-button {
+      left: 30%;
+    }
+  }
+
+  .page.questions {
+    .question-list-container {
+      @include paper-background();
+    }
   }
 }
