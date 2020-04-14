@@ -31,9 +31,7 @@ export const Reasons = observer((props) => {
       <section className="scroll-gradient-top scroll-gradient-bottom bottom-container">
         <ul className="reasons-list scroll-list">
           {reasons.map((item, index) => {
-            console.log(item)
             let evidence = getReasonEvidence(item._key)
-            console.log(evidence)
             return (
               <li key={index}>
                 <Reason title={getFinalNodeTitle(item)} evidence={evidence} />

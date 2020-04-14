@@ -8,10 +8,6 @@ import '../styles/Questions.scss'
 import { TitleBlock } from '../components/TitleBlock'
 import { getQuestions, getQuestionPositions, getFinalNodeTitle } from '../firestore/firestore'
 
-// uuid of the root Climate Change debate map, and its root node
-export const mainMapID = 'DjedFbxfS2-ImEsHDiZNiA'
-export const mainMap_rootNodeID = 'v3RJAZH0Tr-nUjjvKd_39g'
-
 export const Questions = observer((props) => {
   const questions = getQuestions()
   const questionPositions = questions.map((question) => getQuestionPositions(question._key))
@@ -24,7 +20,7 @@ export const Questions = observer((props) => {
         <ExploreScore exploreScore={38} />
       </section>
       <section className="bottom-container">
-        <div className="question-list-container paper-background">
+        <div className="question-list-container">
           <ul className="question-list scroll-list">
             {questions.map((item, index) => {
               return (

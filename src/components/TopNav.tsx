@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
 import '../styles/TopNav.scss'
-import logo from '../images/gad-logo-small-white.png'
 
 export const TopNav = (props) => {
+  const { themeId } = props
+
   let [showMenu, setShowMenu] = React.useState(true)
 
   const toggleMenu = (e) => {
@@ -20,7 +21,7 @@ export const TopNav = (props) => {
     <header>
       <nav className="top-nav">
         <Link to="/">
-          <img src={logo} alt="The Great American Debate" />
+          <img className="top-nav-logo" src={require(`../assets/images/${themeId}-logo.png`)} alt="PROJECT TITLE" />
         </Link>
         <button className="menu-button stylized-button stylized-button-small" onClick={toggleMenu}>
           Menu

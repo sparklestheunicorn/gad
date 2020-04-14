@@ -56,6 +56,7 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -65,13 +66,12 @@ html {
 }
 
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: $paragraph-font, sans-serif;
   overflow-x: hidden;
   color: $text-color-dark;
-  background: rgb(188, 217, 240);
-  background: radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%);
 }
 
 a,
@@ -484,41 +484,6 @@ h2 {
 .drop-shadow {
   z-index: 10;
   filter: drop-shadow(3px 3px 3px $shadow-color);
-}
-
-/* Backgrounds */
-.paper-background {
-  position: relative;
-  background: #fff;
-  border-radius: 0 $rounded-corner-1 0 $rounded-corner-1;
-  padding: $spacing-m $spacing-s;
-
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 100%;
-    border-top: 16px solid #dedfe0;
-    border-left: 20px solid #dedfe0;
-    border-right: 20px solid transparent;
-    border-bottom: 16px solid transparent;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    right: 5%;
-    top: calc(100% + 33px);
-    width: 80%;
-    box-shadow: 0px 2px 10px 5px $shadow-color;
-  }
-}
-
-@media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {
-  .paper-background:before {
-    right: 10%;
-    top: calc(100% + 42px);
-  }
 }
 
 /*********************************

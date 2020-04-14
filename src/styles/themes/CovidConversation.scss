@@ -1,0 +1,76 @@
+/* Page styles */
+
+$knockout-background-color: #1c4c6c;
+$covid-shadow-color: #d4d5d6;
+$covid-border-color: #d4d5d6;
+
+
+body.covid-conversation {
+  background-image: url('../../assets/images/covid-conversation-background.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+
+  .top-container {
+    background: #fff;
+  }
+
+  .bottom-container {
+    background-color: none;
+  }
+
+  .drop-shadow {
+    z-index: 10;
+    filter: drop-shadow(3px 3px 3px $covid-shadow-color);
+  }
+
+  /**
+    * Page specific styling
+  */
+
+  .page.welcome {
+
+    .top-container {
+      padding-top: 200px;
+      background: none;
+
+      .title-image {
+        width: 600px;
+        max-width: 100%;
+      }
+    }
+
+    .bottom-container {
+      background: none;
+      padding-top: 100px;
+    }
+  }
+
+  .page.questions {
+    .bottom-container {
+      background-color: #fff;
+    }
+  }
+}
+
+/* Map Styles */
+
+body.covid-conversation {
+  .map {
+    .knockout {
+      background-color: $knockout-background-color;
+      color: #fff;
+    }
+
+    .map-question {
+      border: 1px solid $covid-border-color;
+      z-index: 10;
+      filter: drop-shadow(3px 3px 3px $covid-shadow-color);
+    }
+
+    .map-node {
+      border: 1px solid $covid-border-color;
+      z-index: 10;
+      filter: drop-shadow(3px 3px 3px $covid-shadow-color);
+    }
+  }
+}
