@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { getFinalNodeTitle } from '../firestore/firestore'
+import classNames from 'classnames'
 
 export const MapQuestion = (props) => {
   const {
@@ -15,10 +16,12 @@ export const MapQuestion = (props) => {
 
   const [expandedChild, setExpandedChild] = React.useState(null)
 
+  const expanded = question.current._key == currentQuestion
+
   return (
     <>
       <li
-        className="map-question"
+        className={classNames('map-question', { expanded: expanded })}
         key={questionIndex}
         onClick={() => {
           setMapDepth(0)
@@ -31,7 +34,7 @@ export const MapQuestion = (props) => {
         </div>
         <div className="map-question-title">{getFinalNodeTitle(question)}</div>
       </li>
-      {question.current._key == currentQuestion && (
+      {expanded && (
         <ul className="question-children fade-in" key={`${questionIndex}-children`}>
           {Object.keys(questionChildren).map((childNodeKey) => {
             const childNode = questionChildren[childNodeKey]

@@ -1,7 +1,6 @@
 @import './variables.scss';
 
 .map {
-
   .bottom-container {
     transition: transform 0.4s;
   }
@@ -21,6 +20,17 @@
     border-radius: 0 $spacing-xs $spacing-xs 0;
     cursor: pointer;
 
+    &.expanded:before {
+      content: '▻';
+      position: absolute;
+      right: 0;
+      font-weight: bold;
+      font-size: $text-size-l;
+      line-height: calc(#{$text-size-l});
+
+      transform: scaleX(0.5);
+    }
+
     div {
       display: inline-block;
       vertical-align: bottom;
@@ -31,6 +41,7 @@
       flex-direction: column;
       justify-content: center;
       padding: $spacing-xs;
+      margin: -1px 0 -1px -1px;
 
       p:first-child {
         font-size: $text-size-m;
@@ -76,8 +87,12 @@
     margin-bottom: $spacing-m;
     cursor: pointer;
 
+    &.expanded {
+      font-weight: bold;
+    }
+
     &.can-expand:before {
-      content: "+";
+      content: '+';
       position: absolute;
       top: $spacing-s;
       right: $spacing-s;
@@ -86,7 +101,7 @@
     }
 
     &.can-expand.expanded:before {
-      content: "▻";
+      content: '▻';
       position: absolute;
       right: 0;
       font-weight: bold;
@@ -94,6 +109,13 @@
       line-height: calc(#{$text-size-m} - 3px);
 
       transform: scaleX(0.5);
+    }
+  }
+  .map-footer {
+  }
+  .map-depth-selector {
+    button {
+      width: 25%;
     }
   }
 }

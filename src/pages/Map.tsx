@@ -34,7 +34,7 @@ export const Map = observer((props) => {
           />
         </div>
       </section>
-      <section>
+      <section className="map-footer">
         <MapDepthSelector
           zeroMapDepth={() => setMapDepth(0)}
           decreaseMapDepth={() => {

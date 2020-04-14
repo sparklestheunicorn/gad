@@ -1,9 +1,9 @@
 /* Page styles */
 
 $knockout-background-color: #1c4c6c;
-$covid-shadow-color: #d4d5d6;
-$covid-border-color: #d4d5d6;
 
+$shadow-color: #d4d5d6;
+$border-color: #d4d5d6;
 
 body.covid-conversation {
   background-image: url('../../assets/images/covid-conversation-background.png');
@@ -20,7 +20,7 @@ body.covid-conversation {
 
   .drop-shadow {
     z-index: 10;
-    filter: drop-shadow(3px 3px 3px $covid-shadow-color);
+    filter: drop-shadow(3px 3px 3px $shadow-color);
   }
 
   /**
@@ -28,7 +28,6 @@ body.covid-conversation {
   */
 
   .page.welcome {
-
     .top-container {
       padding-top: 200px;
       background: none;
@@ -62,15 +61,30 @@ body.covid-conversation {
     }
 
     .map-question {
-      border: 1px solid $covid-border-color;
+      border: 1px solid $border-color;
       z-index: 10;
-      filter: drop-shadow(3px 3px 3px $covid-shadow-color);
+      filter: drop-shadow(3px 3px 3px $shadow-color);
+      &.expanded {
+        border: 1px solid $knockout-background-color;
+      }
     }
 
     .map-node {
-      border: 1px solid $covid-border-color;
+      border: 1px solid $border-color;
       z-index: 10;
-      filter: drop-shadow(3px 3px 3px $covid-shadow-color);
+      filter: drop-shadow(3px 3px 3px $shadow-color);
+      &.expanded {
+        border: 1px solid $knockout-background-color;
+      }
+    }
+  }
+
+  .map-footer {
+  }
+  .map-depth-selector {
+    button {
+      width: 25%;
+      background-color: $knockout-background-color;
     }
   }
 }
