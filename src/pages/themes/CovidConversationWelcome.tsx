@@ -20,7 +20,7 @@ export const CovidConversationWelcome = (props) => {
         />
       </div>
       <div className="bottom-container">
-        <Link to="/questions" className="explore-button stylized-button drop-shadow">
+        <Link to="/map" className="explore-button stylized-button drop-shadow">
           Learn More
         </Link>
       </div>

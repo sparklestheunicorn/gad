@@ -33,6 +33,9 @@ export const getQuestions = StoreAccessor((s) => () => {
   return questions
 })
 
+/**
+ * Page-level queries
+ */
 export const getQuestionPositions = StoreAccessor((s) => (questionID: string) => {
   return GetNodeChildrenL2(questionID)
 })
@@ -43,4 +46,26 @@ export const getPositionReasons = StoreAccessor((s) => (positionID: string) => {
 
 export const getReasonEvidence = StoreAccessor((s) => (reasonID: string) => {
   return GetNodeChildrenL2(reasonID)
+})
+
+/**
+ * Map queries
+ */
+
+export const getMapNodeChildren = StoreAccessor((s) => (nodeId: string) => {
+  return GetNodeChildrenL2(nodeId)
+})
+
+export const getMapNodeSubtree = StoreAccessor((s) => (nodeId: string) => {
+  let subtree = {}
+  let children = getMapNodeChildren(nodeId)
+
+  children.forEach((child) => {
+    subtree[child._key] = {
+      title: child.current.titles.base,
+      childNodes: getMapNodeSubtree(child._key),
+    }
+  })
+
+  return subtree
 })

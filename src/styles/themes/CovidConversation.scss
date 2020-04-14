@@ -1,3 +1,10 @@
+/* Page styles */
+
+$knockout-background-color: #1c4c6c;
+$covid-shadow-color: #d4d5d6;
+$covid-border-color: #d4d5d6;
+
+
 body.covid-conversation {
   background-image: url('../../assets/images/covid-conversation-background.png');
   background-repeat: no-repeat;
@@ -9,6 +16,11 @@ body.covid-conversation {
 
   .bottom-container {
     background-color: none;
+  }
+
+  .drop-shadow {
+    z-index: 10;
+    filter: drop-shadow(3px 3px 3px $covid-shadow-color);
   }
 
   /**
@@ -31,12 +43,30 @@ body.covid-conversation {
       background: none;
       padding-top: 100px;
     }
-
   }
 
   .page.questions {
     .bottom-container {
       background-color: #fff;
+    }
+  }
+}
+
+/* Map Styles */
+
+body.covid-conversation {
+  .map {
+    .knockout {
+      background-color: $knockout-background-color;
+      color: #fff;
+    }
+
+    .map-question {
+      border: 1px solid $covid-border-color;
+    }
+
+    .map-node {
+      border: 1px solid $covid-border-color;
     }
   }
 }
