@@ -1,42 +1,58 @@
 import React from 'react'
-import { getMapNodeChildren, getFinalNodeTitle } from '../firestore/firestore'
-import { reaction } from 'mobx'
+import classNames from 'classnames'
 
 export const MapNode = (props) => {
-  const { title, nodeId, nodeChildren, depth, setMapDepth } = props
+  const { title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
 
-  const [isExpanded, setIsExpanded] = React.useState(false)
+  const hasChildren = Object.keys(nodeChildren).length > 0
 
-  console.log('MAP NODE', props)
+  const [expandedChild, setExpandedChild] = React.useState(null)
 
+  console.log(props)
   return (
     <>
       <li
-        className="map-node rectangle"
+        key={nodeId}
+        className={classNames('map-node', 'rectangle', { expanded: isExpanded }, { 'can-expand': hasChildren })}
         onClick={(e) => {
           e.stopPropagation()
-          setMapDepth(depth)
-          setIsExpanded(!isExpanded)
+          if (hasChildren) {
+            setMapDepth(depth)
+          } else {
+            setMaxMapDepth(depth - 1)
+            setMapDepth(depth - 1)
+          }
+
+          if (!isExpanded) {
+            setIsExpanded()
+            setMaxMapDepth(depth)
+          }
         }}
       >
         <h3>{title}</h3>
       </li>
-      <ul className="map-node-children">
-        {isExpanded &&
-          nodeChildren &&
-          Object.keys(nodeChildren).map((childNodeKey) => {
+      {isExpanded && hasChildren && (
+        <ul className="map-node-children" key={`${nodeId}-children`}>
+          {Object.keys(nodeChildren).map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
             return (
               <MapNode
                 nodeId={childNodeKey}
                 title={childNode.title}
                 nodeChildren={childNode.childNodes}
-                depth={1}
+                setMapDepth={setMapDepth}
+                setMaxMapDepth={setMaxMapDepth}
+                depth={depth + 1}
+                isExpanded={childNodeKey == expandedChild}
+                setIsExpanded={() => {
+                  setExpandedChild(childNodeKey)
+                }}
                 key={childNodeKey}
               />
             )
           })}
-      </ul>
+        </ul>
+      )}
     </>
   )
 }

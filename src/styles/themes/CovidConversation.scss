@@ -63,10 +63,14 @@ body.covid-conversation {
 
     .map-question {
       border: 1px solid $covid-border-color;
+      z-index: 10;
+      filter: drop-shadow(3px 3px 3px $covid-shadow-color);
     }
 
     .map-node {
       border: 1px solid $covid-border-color;
+      z-index: 10;
+      filter: drop-shadow(3px 3px 3px $covid-shadow-color);
     }
   }
 }
