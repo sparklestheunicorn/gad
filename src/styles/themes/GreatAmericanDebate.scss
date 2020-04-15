@@ -92,6 +92,7 @@ body.great-american-debate {
   }
 
   .page {
+    height: calc(100vh - #{$top-nav-height});
     padding-bottom: $spacing-m;
 
     .top-container {

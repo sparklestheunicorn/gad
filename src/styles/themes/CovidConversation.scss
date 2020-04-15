@@ -133,6 +133,7 @@ body.covid-conversation {
       }
       span {
         height: auto;
+        font-size: $text-size-xs;
       }
     }
     @media only screen and (max-width: $tablet-width) {
@@ -148,6 +149,15 @@ body.covid-conversation {
         h2 {
           font-size: 48px;
           line-height: 50px;
+        }
+      }
+      .bottom-container {
+        padding: 20px;
+        div {
+          min-width: 50px;
+        }
+        img {
+          width: 50px;
         }
       }
     }

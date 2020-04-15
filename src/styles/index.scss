@@ -123,7 +123,6 @@ h2 {
 
 .page {
   position: relative;
-  height: calc(100vh - #{$top-nav-height});
   max-width: $max-page-width;
   margin: 0 auto;
   padding: 0;
