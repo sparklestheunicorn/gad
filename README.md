@@ -5,7 +5,8 @@ It was bootstrapped with [Create React App](https://github.com/facebookincubator
 # Design and workflow principles:
 
 - Mobile first
-- Github workflow (create feature/cool-new-branch-name, push, review, merge)
+- Github workflow (create feature/cool-new-branch-name, push, review, squash, merge)
+- Semantic HTML and accessibility is expected
 
 # Recommended plugins and environment settings:
 

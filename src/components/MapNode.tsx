@@ -19,6 +19,7 @@ export const MapNode = (props) => {
           if (hasChildren) {
             setMapDepth(depth)
           } else {
+            // I am a leaf node, leave the map depth at my parent
             setMaxMapDepth(depth - 1)
             setMapDepth(depth - 1)
           }

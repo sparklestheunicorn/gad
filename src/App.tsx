@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <HashRouter basename="/">
         <div className="app">
-          <TopNav themeId={this.themeId} />
+          {/*<TopNav themeId={this.themeId} /> */}
           <Route path="/map" component={Map} />
           {/* The old app. We will allow people to switch back to this view at some point
           <Route path="/questions" component={Questions} />

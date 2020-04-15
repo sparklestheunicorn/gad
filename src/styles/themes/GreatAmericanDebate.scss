@@ -1,5 +1,20 @@
 @import '../variables.scss';
 
+@font-face {
+  font-family: 'Cheddar Gothic Sans';
+  src: local('Cheddar Gothic Sans'), url('../../assets/fonts/CheddarGothic-Sans.otf') format('opentype');
+}
+
+/*
+@font-face {
+  font-family: 'Glacial Indifference Bold';
+  src: local('Glacial Indifference Bold'), url('../assets/GlacialIndifference-Bold.otf') format('opentype');
+}
+*/
+
+$title-font: 'Cheddar Gothic Sans';
+$subtitle-font: 'Glacial Indifference';
+$paragraph-font: 'PT Sans';
 
 /* Mixins */
 @mixin paper-background {
@@ -37,21 +52,80 @@
 }
 
 body.great-american-debate {
-
   /**
  * General site styles
  */
 
+  font-family: $paragraph-font, sans-serif;
+
   background: rgb(188, 217, 240);
   background: radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%);
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $title-font;
+
+    &.subheading {
+      font-family: $subtitle-font;
+    }
+  }
+
+  h2 {
+    font-family: $subtitle-font;
+  }
+
+  .font-preloader {
+    position: absolute;
+    transform: translate(300vw);
+
+    span {
+      font-family: $title-font;
+    }
+
+    span:nth-child(2) {
+      font-family: $subtitle-font;
+    }
+  }
+
+  .page {
+    padding-bottom: $spacing-m;
+
+    .top-container {
+      flex: 0 0 auto;
+      padding: 0 $spacing-m;
+    }
+
+    .bottom-container {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      min-height: 0;
+      align-items: center;
+      padding: 0 $spacing-m;
+    }
+  }
 
   header {
     background-color: #fff;
     box-shadow: 0px 4px 5px 0px $background-dark-blue;
   }
 
+  .stylized-button {
+    font-family: $subtitle-font;
+  }
 
+  .page-cta {
+    font-family: $title-font;
+  }
+
+  .circle {
+    font-family: $title-font;
+  }
   /**
  * Welcome page
  */
@@ -169,7 +243,8 @@ body.great-american-debate {
         right: 40%;
         animation-delay: 0.6s;
 
-        .speech-bubble {}
+        .speech-bubble {
+        }
       }
     }
 
@@ -273,7 +348,6 @@ body.great-american-debate {
       animation-iteration-count: infinite;
       animation-timing-function: ease;
     }
-
   }
 
   @media only screen and (min-width: $tablet-width) and (max-width: $desktop-width) {

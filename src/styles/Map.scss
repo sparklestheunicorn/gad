@@ -1,8 +1,11 @@
 @import './variables.scss';
 
+$map-footer-height: 32px;
+
 .map {
-  .bottom-container {
+  .map-container {
     transition: transform 0.4s;
+    padding-bottom: $map-footer-height;
   }
 
   .question-list {
@@ -111,11 +114,17 @@
       transform: scaleX(0.5);
     }
   }
+
   .map-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: $map-footer-height;
   }
   .map-depth-selector {
     button {
       width: 25%;
+      border: 1px solid $border-color;
     }
   }
 }

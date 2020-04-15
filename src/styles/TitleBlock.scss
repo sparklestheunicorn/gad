@@ -1,4 +1,5 @@
 @import './variables.scss';
+
 .title-block {
   margin-top: $spacing-l;
   margin-bottom: $spacing-l;
@@ -16,7 +17,6 @@
   }
 
   h2 {
-    font-family: $subtitle-font;
     text-transform: uppercase;
     font-weight: bold;
   }

@@ -1,14 +1,59 @@
+@import '../variables.scss';
+
+@font-face {
+  font-family: 'League Spartan';
+  src: local('League Spartan'), url('../../assets/fonts/LeagueSpartan-Bold.otf') format('opentype');
+}
+
+/*
+@font-face {
+  font-family: 'Glacial Indifference Bold';
+  src: local('Glacial Indifference Bold'), url('../assets/GlacialIndifference-Bold.otf') format('opentype');
+}
+*/
+
+$title-font: 'League Spartan';
+$subtitle-font: 'Glacial Indifference';
+$paragraph-font: 'PT Sans';
+
 /* Page styles */
 
-$knockout-background-color: #1c4c6c;
-
+$knockout-background-color: #136494;
 $shadow-color: #d4d5d6;
 $border-color: #d4d5d6;
 
 body.covid-conversation {
   background-image: url('../../assets/images/covid-conversation-background.png');
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-position-x: 100%;
+  background-position-y: 100px;
+  background-size: 500px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $title-font;
+
+    &.subheading {
+      font-family: $subtitle-font;
+    }
+  }
+
+  .font-preloader {
+    position: absolute;
+    transform: translate(300vw);
+
+    span {
+      font-family: $title-font;
+    }
+
+    span:nth-child(2) {
+      font-family: $subtitle-font;
+    }
+  }
 
   .top-container {
     background: #fff;
@@ -22,6 +67,16 @@ body.covid-conversation {
     z-index: 10;
     filter: drop-shadow(3px 3px 3px $shadow-color);
   }
+  .circle {
+    font-family: $title-font;
+  }
+  .stylized-button {
+    font-family: $subtitle-font;
+  }
+
+  .page-cta {
+    font-family: $title-font;
+  }
 
   /**
     * Page specific styling
@@ -29,18 +84,76 @@ body.covid-conversation {
 
   .page.welcome {
     .top-container {
-      padding-top: 200px;
-      background: none;
+      width: 50%;
+      min-width: 550px;
+      padding-top: 100px;
+      background-color: rgba(255, 255, 255, 0.8);
 
       .title-image {
-        width: 600px;
         max-width: 100%;
       }
     }
 
+    .welcome-quote {
+      padding-top: 20px;
+      width: 50%;
+      min-width: 550px;
+      padding-left: 40px;
+      background-color: rgba(255, 255, 255, 0.8);
+
+      h2 {
+        font-size: 64px;
+        line-height: 76px;
+      }
+    }
+
     .bottom-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       background: none;
-      padding-top: 100px;
+      padding-top: 50px;
+      background-color: rgba(255, 255, 255, 0.8);
+      a,
+      div {
+        min-width: 100px;
+      }
+      a.donate-cta-link {
+        min-width: 250px;
+      }
+      img {
+        width: 100px;
+      }
+    }
+
+    .donate-cta-link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: $text-size-s;
+
+      img {
+        vertical-align: bottom;
+      }
+      span {
+        height: auto;
+      }
+    }
+    @media only screen and (max-width: $tablet-width) {
+      .top-container {
+        width: 100%;
+        min-width: 100%;
+        padding: 20px;
+      }
+      .welcome-quote {
+        width: 100%;
+        min-width: 100%;
+        padding-right: 40px;
+        h2 {
+          font-size: 48px;
+          line-height: 50px;
+        }
+      }
     }
   }
 
@@ -83,8 +196,14 @@ body.covid-conversation {
   }
   .map-depth-selector {
     button {
+      font-size: $text-size-s;
       width: 25%;
-      background-color: $knockout-background-color;
+      color: $knockout-background-color;
+      background-color: #fff;
+
+      &.disabled {
+        color: $shadow-color;
+      }
     }
   }
 }

@@ -1,20 +1,30 @@
 import * as React from 'react'
+import classNames from 'classnames'
 
 export const MapDepthSelector = (props) => {
-  const { zeroMapDepth, decreaseMapDepth, increaseMapDepth, maximizeMapDepth } = props
+  const { currentDepth, maxDepth, zeroMapDepth, decreaseMapDepth, increaseMapDepth, maximizeMapDepth } = props
 
   return (
     <div className="map-depth-selector">
-      <button onClick={zeroMapDepth} className="reset-map-depth-button">
+      <button onClick={zeroMapDepth} className={classNames('reset-map-depth-button', { disabled: currentDepth <= 0 })}>
         ◄◄
       </button>
-      <button onClick={decreaseMapDepth} className="decrease-map-depth-button">
+      <button
+        onClick={decreaseMapDepth}
+        className={classNames('decrease-map-depth-button', { disabled: currentDepth <= 0 })}
+      >
         ◄
       </button>
-      <button onClick={increaseMapDepth} className="increase-map-depth-button">
+      <button
+        onClick={increaseMapDepth}
+        className={classNames('increase-map-depth-button', { disabled: currentDepth == maxDepth })}
+      >
         ►
       </button>
-      <button onClick={maximizeMapDepth} className="max-map-depth-button">
+      <button
+        onClick={maximizeMapDepth}
+        className={classNames('max-map-depth-button', { disabled: currentDepth == maxDepth })}
+      >
         ►►
       </button>
     </div>
