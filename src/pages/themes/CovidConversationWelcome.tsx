@@ -16,7 +16,7 @@ export const CovidConversationWelcome = (props) => {
         <img
           className="title-image"
           src={require(`../../assets/images/${themeId}-title-transparent.png`)}
-          alt="The Covid Conversation"
+          alt="The Covid Conversation Map"
         />
       </div>
       <div class="welcome-quote">

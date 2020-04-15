@@ -30,7 +30,7 @@ export const MapNode = (props) => {
           }
         }}
       >
-        <h3>{title}</h3>
+        <h4>{title}</h4>
       </li>
       {isExpanded && hasChildren && (
         <ul className="map-node-children" key={`${nodeId}-children`}>

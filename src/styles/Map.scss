@@ -3,8 +3,12 @@
 $map-footer-height: 32px;
 
 .map {
+  opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
   .map-container {
-    transition: transform 0.4s;
+    transition: transform $map-movement-transtion-speed;
     padding-bottom: $map-footer-height;
   }
 

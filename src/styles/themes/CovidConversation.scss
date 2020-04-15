@@ -55,10 +55,6 @@ body.covid-conversation {
     }
   }
 
-  .top-container {
-    background: #fff;
-  }
-
   .bottom-container {
     background-color: none;
   }
@@ -168,6 +164,29 @@ body.covid-conversation {
 
 body.covid-conversation {
   .map {
+    background-color: #fff;
+    background-image: url('../../assets/images/covid-conversation-background.png');
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 100px;
+    background-size: 500px;
+    transition: background-position-x $map-movement-transtion-speed;
+
+    h3 {
+      font-size: 24px;
+      padding: $spacing-s;
+    }
+
+    .title-block {
+      background: transparent;
+    }
+
+    .top-container {
+      padding: 20px;
+      height: auto;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
     .knockout {
       background-color: $knockout-background-color;
       color: #fff;
@@ -203,6 +222,25 @@ body.covid-conversation {
 
       &.disabled {
         color: $shadow-color;
+      }
+    }
+  }
+  @media only screen and (max-width: $tablet-width) {
+    #root,
+    .app,
+    .map {
+      height: 100%;
+    }
+    .map {
+      height: 100%;
+      .question-list {
+        width: 80%;
+      }
+      .map-question {
+        h3.map-question-title {
+          font-size: 14px;
+          margin-left: $spacing-s;
+        }
       }
     }
   }

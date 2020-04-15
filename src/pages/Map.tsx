@@ -8,6 +8,7 @@ import { MapDepthSelector } from '../components/MapDepthSelector'
 import '../styles/Map.scss'
 
 export const Map = observer((props) => {
+  const { themeId } = props
   const questions = getQuestions()
   const questionChildren = questions.map((question) => ({
     questionId: question._key,
@@ -18,10 +19,14 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main className="map">
-      <section className="top-container">
-        <TitleBlock title="COVID CONVO" subtitle="Combining your conversations about Covid-19" />
-      </section>
+    <main className="map fade-in" style={{ backgroundPositionX: `calc(100% - ${mapDepth * 30}px)` }}>
+      <div className="top-container">
+        <img
+          className="title-image"
+          src={require(`../assets/images/${themeId}-title-transparent.png`)}
+          alt="The Covid Conversation"
+        />
+      </div>
       <section className="map-container" style={{ transform: `translateX(${-40 * mapDepth + 4}%)` }}>
         <div className="question-list-container">
           <MapQuestions

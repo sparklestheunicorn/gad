@@ -32,7 +32,7 @@ export const MapQuestion = (props) => {
           <p>{Object.keys(questionChildren).length}</p>
           <p>Convos</p>
         </div>
-        <div className="map-question-title">{getFinalNodeTitle(question)}</div>
+        <h3 className="map-question-title">{getFinalNodeTitle(question)}</h3>
       </li>
       {expanded && (
         <ul className="question-children fade-in" key={`${questionIndex}-children`}>
