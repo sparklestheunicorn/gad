@@ -30,7 +30,7 @@ export const PageEffects = (props) => {
 
   let applyHandlerToLinks = () => {
     window.requestAnimationFrame(() => {
-      let links = document.getElementsByTagName('a')
+      let links = document.querySelectorAll('a:not(.external)')
 
       for (let i = 0; i < links.length; i++) {
         links[i].addEventListener('click', linkClickHandler)

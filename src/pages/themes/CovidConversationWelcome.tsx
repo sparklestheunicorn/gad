@@ -28,9 +28,11 @@ export const CovidConversationWelcome = (props) => {
       </div>
       <div className="bottom-container">
         <div>
-          <Link
-            className="donate-cta-link"
-            to="https://secure.squarespace.com/checkout/donate?donatePageId=5bf21df970a6ad8a5c8e4e9b&ss_cid=fd000cc9-da16-4d66-b1cd-25fa2c35ed8b&ss_cvisit=1586916546423&ss_cvr=6efafd68-89e9-4cbf-ac68-8568f6a9822a%7C1583383895461%7C1585513997862%7C1586916546360%7C12"
+          <a
+            className="donate-cta-link external"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://secure.squarespace.com/checkout/donate?donatePageId=5bf21df970a6ad8a5c8e4e9b&ss_cid=fd000cc9-da16-4d66-b1cd-25fa2c35ed8b&ss_cvisit=1586916546423&ss_cvr=6efafd68-89e9-4cbf-ac68-8568f6a9822a%7C1583383895461%7C1585513997862%7C1586916546360%7C12"
           >
             <img
               className="welcome-cta"
@@ -38,7 +40,7 @@ export const CovidConversationWelcome = (props) => {
               alt="Conversations"
             />
             <span>We're an educational non-profit, please donate!</span>
-          </Link>
+          </a>
         </div>
         <div>
           <Link to="/map">
