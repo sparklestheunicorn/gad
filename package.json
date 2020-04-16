@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@debate-map/server-link": "^1.0.2",
+    "@emotion/core": "^10.0.28",
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.4",
     "@types/react": "^16.9.17",

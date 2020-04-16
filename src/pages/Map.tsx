@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { observer } from 'mobx-react'
 import { getQuestions, getMapNodeSubtree, getFinalNodeTitle } from '../firestore/firestore'
@@ -6,6 +8,14 @@ import { TitleBlock } from '../components/TitleBlock'
 import { MapDepthSelector } from '../components/MapDepthSelector'
 
 import '../styles/Map.scss'
+
+const bgPosition = depth => ({
+  backgroundPositionX: `calc(100% - ${depth *30}px)`
+})
+
+const transform = depth => ({
+  transform: `translateX(${-40 * depth + 4}%)`
+})
 
 export const Map = observer((props) => {
   const { themeId } = props
@@ -19,7 +29,7 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main className="map fade-in" style={{ backgroundPositionX: `calc(100% - ${mapDepth * 30}px)` }}>
+    <main className="map fade-in" css={bgPosition(mapDepth)}>
       <div className="top-container">
         <img
           className="title-image"
@@ -27,7 +37,7 @@ export const Map = observer((props) => {
           alt="The Covid Conversation"
         />
       </div>
-      <section className="map-container" style={{ transform: `translateX(${-40 * mapDepth + 4}%)` }}>
+      <section className="map-container" css={transform(mapDepth)}>
         <div className="question-list-container">
           <MapQuestions
             questions={questions}
