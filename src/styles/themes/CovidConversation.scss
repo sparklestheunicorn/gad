@@ -63,9 +63,11 @@ body.covid-conversation {
     z-index: 10;
     filter: drop-shadow(3px 3px 3px $shadow-color);
   }
+
   .circle {
     font-family: $title-font;
   }
+
   .stylized-button {
     font-family: $subtitle-font;
   }
@@ -110,13 +112,16 @@ body.covid-conversation {
       background: none;
       padding-top: 50px;
       background-color: rgba(255, 255, 255, 0.8);
+
       a,
       div {
         min-width: 100px;
       }
+
       a.donate-cta-link {
         min-width: 250px;
       }
+
       img {
         width: 100px;
       }
@@ -131,31 +136,45 @@ body.covid-conversation {
       img {
         vertical-align: bottom;
       }
+
       span {
         height: auto;
         font-size: $text-size-xs;
       }
     }
+
+    .map-cta {
+      margin-right: 10px;
+      animation-name: pulsate;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+
     @media only screen and (max-width: $tablet-width) {
       .top-container {
         width: 100%;
         min-width: 100%;
         padding: 20px;
       }
+
       .welcome-quote {
         width: 100%;
         min-width: 100%;
         padding-right: 40px;
+
         h2 {
           font-size: 48px;
           line-height: 50px;
         }
       }
+
       .bottom-container {
         padding: 20px;
+
         div {
           min-width: 50px;
         }
+
         img {
           width: 50px;
         }
@@ -206,6 +225,7 @@ body.covid-conversation {
       border: 1px solid $border-color;
       z-index: 10;
       filter: drop-shadow(3px 3px 3px $shadow-color);
+
       &.expanded {
         border: 1px solid $knockout-background-color;
       }
@@ -215,14 +235,15 @@ body.covid-conversation {
       border: 1px solid $border-color;
       z-index: 10;
       filter: drop-shadow(3px 3px 3px $shadow-color);
+
       &.expanded {
         border: 1px solid $knockout-background-color;
       }
     }
   }
 
-  .map-footer {
-  }
+  .map-footer {}
+
   .map-depth-selector {
     button {
       font-size: $text-size-s;
@@ -235,17 +256,22 @@ body.covid-conversation {
       }
     }
   }
+
   @media only screen and (max-width: $tablet-width) {
+
     #root,
     .app,
     .map {
       height: 100%;
     }
+
     .map {
       height: 100%;
+
       .question-list {
         width: 80%;
       }
+
       .map-question {
         h3.map-question-title {
           font-size: 14px;

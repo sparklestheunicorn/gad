@@ -45,7 +45,7 @@ export const CovidConversationWelcome = (props) => {
         <div>
           <Link to="/map">
             <img
-              className="welcome-cta"
+              className="welcome-cta map-cta"
               src={require(`../../assets/images/${themeId}-welcome-cta.png`)}
               alt="Conversations"
             />
