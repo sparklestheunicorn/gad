@@ -1,3 +1,4 @@
+import { css } from '@emotion/core'
 import { mq, mapMovementTransitionSpeed } from './variables'
 
 export const mapFooterHeight = '32px'
@@ -25,10 +26,27 @@ export const mapContainer = {
   paddingBottom: mapFooterHeight
 }
 
-export const mapFooter = {
+export const mapFooter = css({
   label: 'mapFooter',
   position: 'fixed',
   bottom: 0,
   width: '100%',
   height: mapFooterHeight
+})
+
+// shared 
+
+export const mapNodeChildren = {
+  label: 'nodeChildren',
+  position: 'absolute',
+  left: '100%',
+  top: 0,
+  listStyleType: 'none',
+  width: '100%',
+  height: '100%',
+  opacity: 0,
+  animationName: 'fade-in',
+  animationDelay: '0.4s',
+  animationDuration: '1s',
+  animationFillMode: 'forwards'
 }

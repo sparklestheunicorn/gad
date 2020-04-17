@@ -1,30 +1,32 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
 import * as React from 'react'
-import classNames from 'classnames'
-import { mapDepthSelector } from '../styles/MapDepthSelector.style'
+import { mapDepthSelector, disabled } from '../styles/MapDepthSelector.style'
+import { covidConversation as cc } from '../styles/CovidConversation'
 
 export const MapDepthSelector = (props) => {
   const { currentDepth, maxDepth, zeroMapDepth, decreaseMapDepth, increaseMapDepth, maximizeMapDepth } = props
 
   return (
-    <div css={mapDepthSelector}>
-      <button onClick={zeroMapDepth} className={classNames('reset-map-depth-button', { disabled: currentDepth <= 0 })}>
+    <div css={css([cc.mapDepthSelector, mapDepthSelector])}>
+      <button onClick={zeroMapDepth} css={disabled('down', currentDepth, maxDepth)}>
         ◄◄
       </button>
       <button
         onClick={decreaseMapDepth}
-        className={classNames('decrease-map-depth-button', { disabled: currentDepth <= 0 })}
+        css={disabled('down', currentDepth, maxDepth)}
       >
         ◄
       </button>
       <button
         onClick={increaseMapDepth}
-        className={classNames('increase-map-depth-button', { disabled: currentDepth == maxDepth })}
+        css={disabled('up', currentDepth, maxDepth)}
       >
         ►
       </button>
       <button
         onClick={maximizeMapDepth}
-        className={classNames('max-map-depth-button', { disabled: currentDepth == maxDepth })}
+        css={disabled('up', currentDepth, maxDepth)}
       >
         ►►
       </button>

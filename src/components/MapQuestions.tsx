@@ -4,6 +4,7 @@ import * as React from 'react'
 import { MapQuestion } from '../components/MapQuestion'
 import { MapIntro } from '../components/MapIntro'
 import { mapIntroContainer, questionList } from '../styles/MapQuestions.style'
+import { covidConversation as cc } from '../styles/CovidConversation'
 
 export const MapQuestions = (props) => {
   const { questions, questionChildren, setMapDepth, setMaxMapDepth } = props
@@ -12,7 +13,7 @@ export const MapQuestions = (props) => {
 
   return (
     <>
-      <ul css={questionList}>
+      <ul css={[cc.questionList, questionList]}>
         {questions.map((question, questionIndex) => (
           <MapQuestion
             question={question}

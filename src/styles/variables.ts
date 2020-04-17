@@ -22,6 +22,7 @@ export const spacing = {
 }
 
 export const roundedCorner1 = '12px'
+
 /*
  * Typography
  */
@@ -57,7 +58,8 @@ export const color = {
   bezelTop: '#eee',
   bezelRight: '#ddd',
   bezelBottom: '#ccc',
-  bezelLeft: '#e5e5e5'
+  bezelLeft: '#e5e5e5',
+  knockoutBackground: '#136494'
 }
 
 /*

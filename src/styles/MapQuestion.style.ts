@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { textSize, spacing } from "./variables";
+import { textSize, spacing, color } from "./variables";
 
 export const mapQuestion = css({
   label: 'mapQuestion',
@@ -50,7 +50,7 @@ export const convoCount = css({
   }
 })
 
-export const title = {
+export const title = css({
   label: 'mapQuestionTitle',
   display: 'flex',
   flexDirection: 'row',
@@ -58,4 +58,9 @@ export const title = {
   fontSize: textSize.M,
   margin: `0 0 0 ${spacing.M}`,
   paddingRight: spacing.M
+})
+
+export const knockout = {
+  backgroundColor: color.knockoutBackground,
+  color: '#fff'
 }

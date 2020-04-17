@@ -1,7 +1,11 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { getFinalNodeTitle } from '../firestore/firestore'
 import * as styles from '../styles/MapQuestion.style'
+import { mapNodeChildren } from '../styles/Map.style'
+import { covidConversation as cc } from '../styles/CovidConversation'
 
 export const MapQuestion = (props) => {
   const {
@@ -21,7 +25,7 @@ export const MapQuestion = (props) => {
   return (
     <>
       <li
-        css={styles.mapQuestion}
+        css={[styles.mapQuestion, cc.mapNode]}
         key={questionIndex}
         onClick={() => {
           setMapDepth(0)
@@ -32,10 +36,10 @@ export const MapQuestion = (props) => {
           <p>{Object.keys(questionChildren).length}</p>
           <p>Convos</p>
         </div>
-        <h3 css={styles.title}>{getFinalNodeTitle(question)}</h3>
+        <h3 css={[styles.title, cc.question.title]}>{getFinalNodeTitle(question)}</h3>
       </li>
       {expanded && (
-        <ul className="question-children fade-in" key={`${questionIndex}-children`}>
+        <ul css={mapNodeChildren} key={`${questionIndex}-children`}>
           {Object.keys(questionChildren).map((childNodeKey) => {
             const childNode = questionChildren[childNodeKey]
             return (
