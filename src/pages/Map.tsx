@@ -8,14 +8,7 @@ import { TitleBlock } from '../components/TitleBlock'
 import { MapDepthSelector } from '../components/MapDepthSelector'
 
 import '../styles/Map.scss'
-
-const bgPosition = depth => ({
-  backgroundPositionX: `calc(100% - ${depth *30}px)`
-})
-
-const transform = depth => ({
-  transform: `translateX(${-40 * depth + 4}%)`
-})
+import * as styles from '../styles/Map.style'
 
 export const Map = observer((props) => {
   const { themeId } = props
@@ -29,7 +22,7 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main className="map fade-in" css={bgPosition(mapDepth)}>
+    <main className="map fade-in" css={styles.bgPosition(mapDepth)}>
       <div className="top-container">
         <img
           className="title-image"
@@ -37,7 +30,7 @@ export const Map = observer((props) => {
           alt="The Covid Conversation"
         />
       </div>
-      <section className="map-container" css={transform(mapDepth)}>
+      <section className="map-container" css={styles.transform(mapDepth)}>
         <div className="question-list-container">
           <MapQuestions
             questions={questions}
