@@ -9,7 +9,7 @@ $map-footer-height: 32px;
   animation-fill-mode: forwards;
 
   .map-container {
-    transition: transform $map-movement-transtion-speed;
+    transition: transform $map-movement-transition-speed;
     padding-bottom: $map-footer-height;
   }
 
