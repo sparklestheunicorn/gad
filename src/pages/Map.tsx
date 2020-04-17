@@ -2,7 +2,6 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { getQuestions, getMapNodeSubtree, getFinalNodeTitle } from '../firestore/firestore'
 import { MapQuestions } from '../components/MapQuestions'
-import { TitleBlock } from '../components/TitleBlock'
 import { MapDepthSelector } from '../components/MapDepthSelector'
 
 import '../styles/Map.scss'

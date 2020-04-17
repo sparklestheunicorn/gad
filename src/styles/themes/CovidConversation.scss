@@ -23,11 +23,6 @@ $shadow-color: #d4d5d6;
 $border-color: #d4d5d6;
 
 body.covid-conversation {
-  background-image: url('../../assets/images/covid-conversation-background.png');
-  background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 100px;
-  background-size: 500px;
 
   h1,
   h2,
@@ -81,6 +76,12 @@ body.covid-conversation {
   */
 
   .page.welcome {
+    background-image: url('../../assets/images/covid-conversation-background.png');
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 100px;
+    background-size: 500px;
+
     .top-container {
       width: 50%;
       min-width: 550px;
@@ -194,12 +195,12 @@ body.covid-conversation {
 body.covid-conversation {
   .map {
     background-color: #fff;
-    background-image: url('../../assets/images/covid-conversation-background.png');
+    /*    background-image: url('../../assets/images/covid-conversation-background.png');
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-position-y: 100px;
     background-size: 500px;
-    transition: background-position-x $map-movement-transtion-speed;
+    transition: background-position-x $map-movement-transtion-speed; */
 
     h3 {
       font-size: 24px;
