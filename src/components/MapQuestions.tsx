@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { MapQuestion } from '../components/MapQuestion'
+import { MapIntro } from '../components/MapIntro'
 
 export const MapQuestions = (props) => {
   const { questions, questionChildren, setMapDepth, setMaxMapDepth } = props
@@ -7,18 +8,25 @@ export const MapQuestions = (props) => {
   const [currentQuestion, setCurrentQuestion] = React.useState(null)
 
   return (
-    <ul className="question-list">
-      {questions.map((question, questionIndex) => (
-        <MapQuestion
-          question={question}
-          questionIndex={questionIndex}
-          currentQuestion={currentQuestion}
-          setCurrentQuestion={setCurrentQuestion}
-          setMapDepth={setMapDepth}
-          setMaxMapDepth={setMaxMapDepth}
-          questionChildren={questionChildren[questionIndex].childNodes}
-        />
-      ))}
-    </ul>
+    <>
+      <ul className="question-list">
+        {questions.map((question, questionIndex) => (
+          <MapQuestion
+            question={question}
+            questionIndex={questionIndex}
+            currentQuestion={currentQuestion}
+            setCurrentQuestion={setCurrentQuestion}
+            setMapDepth={setMapDepth}
+            setMaxMapDepth={setMaxMapDepth}
+            questionChildren={questionChildren[questionIndex].childNodes}
+          />
+        ))}
+      </ul>
+      {currentQuestion === null && (
+        <div className="map-intro-container fade-in">
+          <MapIntro />
+        </div>
+      )}
+    </>
   )
 }
