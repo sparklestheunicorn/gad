@@ -7,6 +7,7 @@ $map-footer-height: 32px;
   animation-name: fade-in;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+
   .map-container {
     transition: transform $map-movement-transtion-speed;
     padding-bottom: $map-footer-height;
@@ -15,6 +16,21 @@ $map-footer-height: 32px;
   .question-list {
     position: relative;
     width: 40%;
+  }
+
+  .map-intro-container.map-intro-container {
+    position: absolute;
+    top: 0;
+    right: 10%;
+    width: 40%;
+
+    h2 {
+      font-size: $text-size-l;
+    }
+
+    h3 {
+      padding: 0;
+    }
   }
 
   .map-question {
@@ -125,6 +141,7 @@ $map-footer-height: 32px;
     width: 100%;
     height: $map-footer-height;
   }
+
   .map-depth-selector {
     button {
       width: 25%;
