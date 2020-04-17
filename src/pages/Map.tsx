@@ -21,7 +21,7 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main className="map fade-in" css={styles.bgPosition(mapDepth)}>
+    <main className="map fade-in">
       <div className="top-container">
         <img
           className="title-image"
