@@ -36,7 +36,7 @@ export const mapFooter = css({
 
 // shared 
 
-export const mapNodeChildren = {
+export const mapNodeChildren = css({
   label: 'nodeChildren',
   position: 'absolute',
   left: '100%',
@@ -49,4 +49,4 @@ export const mapNodeChildren = {
   animationDelay: '0.4s',
   animationDuration: '1s',
   animationFillMode: 'forwards'
-}
+})
