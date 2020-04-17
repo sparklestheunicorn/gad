@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { getFinalNodeTitle } from '../firestore/firestore'
-import classNames from 'classnames'
+import * as styles from '../styles/MapQuestion.style'
 
 export const MapQuestion = (props) => {
   const {
@@ -21,18 +21,18 @@ export const MapQuestion = (props) => {
   return (
     <>
       <li
-        className={classNames('map-question', { expanded: expanded })}
+        css={styles.mapQuestion}
         key={questionIndex}
         onClick={() => {
           setMapDepth(0)
           setCurrentQuestion(question.current._key)
         }}
       >
-        <div className="knockout convo-count">
+        <div css={[styles.knockout, styles.convoCount]}>
           <p>{Object.keys(questionChildren).length}</p>
           <p>Convos</p>
         </div>
-        <h3 className="map-question-title">{getFinalNodeTitle(question)}</h3>
+        <h3 css={styles.title}>{getFinalNodeTitle(question)}</h3>
       </li>
       {expanded && (
         <ul className="question-children fade-in" key={`${questionIndex}-children`}>

@@ -1,11 +1,12 @@
 import * as React from 'react'
 import classNames from 'classnames'
+import { mapDepthSelector } from '../styles/MapDepthSelector.style'
 
 export const MapDepthSelector = (props) => {
   const { currentDepth, maxDepth, zeroMapDepth, decreaseMapDepth, increaseMapDepth, maximizeMapDepth } = props
 
   return (
-    <div className="map-depth-selector">
+    <div css={mapDepthSelector}>
       <button onClick={zeroMapDepth} className={classNames('reset-map-depth-button', { disabled: currentDepth <= 0 })}>
         ◄◄
       </button>

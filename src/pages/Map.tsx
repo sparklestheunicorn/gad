@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { observer } from 'mobx-react'
-import { getQuestions, getMapNodeSubtree, getFinalNodeTitle } from '../firestore/firestore'
+import { getQuestions, getMapNodeSubtree } from '../firestore/firestore'
 import { MapQuestions } from '../components/MapQuestions'
 import { MapDepthSelector } from '../components/MapDepthSelector'
 
@@ -21,7 +21,7 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main className="map fade-in">
+    <main className="map">
       <div className="top-container">
         <img
           className="title-image"
@@ -29,7 +29,7 @@ export const Map = observer((props) => {
           alt="The Covid Conversation"
         />
       </div>
-      <section className="map-container" css={styles.transform(mapDepth)}>
+      <section className="map-container" css={styles.slideToDepth(mapDepth)}>
         <div className="question-list-container">
           <MapQuestions
             questions={questions}
