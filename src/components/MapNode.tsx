@@ -3,7 +3,9 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import * as styles from '../styles/MapNode.style'
 import { mapNodeChildren } from '../styles/Map.style'
-import { covidConversation as cc } from '../styles/CovidConversation'
+import { dropShadow, selected } from '../styles/shared.style'
+import { useTheme } from 'emotion-theming'
+import { Theme } from '@emotion/types'
 
 export const MapNode = (props) => {
   const { title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
@@ -12,18 +14,20 @@ export const MapNode = (props) => {
 
   const [expandedChild, setExpandedChild] = React.useState(null)
 
-  console.log(props)
+  const theme: Theme = useTheme()
+
   return (
     <>
       <li
         key={nodeId}
         css={[
           styles.rectangle,
-          styles.mapNode,
+          styles.mapNode(theme),
           styles.expanded(isExpanded),
-          styles.canExpand(hasChildren),
-          styles.selectedAndCanExpand(isExpanded, hasChildren),
-          cc.mapNode
+          styles.canExpand(hasChildren, theme),
+          styles.selectedAndCanExpand(isExpanded, hasChildren, theme),
+          dropShadow(theme),
+          isExpanded ? selected(theme) : {},
         ]}
         onClick={(e) => {
           e.stopPropagation()

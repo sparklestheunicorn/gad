@@ -8,8 +8,7 @@ import { MapDepthSelector } from '../components/MapDepthSelector'
 
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../styles/themes/Theme.type'
-import { map, slideToDepth, mapFooter } from '../styles/Map.style'
-import { covidConversation as cc } from '../styles/CovidConversation'
+import { map, topContainer, slideToDepth, mapFooter } from '../styles/Map.style'
 
 export const Map = observer((props) => {
   const theme: Theme = useTheme()
@@ -24,10 +23,10 @@ export const Map = observer((props) => {
 
   return (
     <>
-      <header css={cc.map.topContainer}>
+      <header css={topContainer}>
         <img src={require(`../assets/images/${theme.image.titleTransparent}`)} alt="The Covid Conversation" />
       </header>
-      <main css={css([map(theme), cc.map.responsiveHeight, cc.map.backgroundColor])}>
+      <main css={css([map(theme)])}>
         <section css={slideToDepth(mapDepth)}>
           <div>
             <MapQuestions

@@ -1,42 +1,42 @@
 export type Theme = {
-  mq: Function,
+  mq: Function
   image: {
-    logo: string,
-    title: string,
-    titleTransparent: string,
-    donateCTA: string,
+    logo: string
+    title: string
+    titleTransparent: string
+    donateCTA: string
     welcomeCTA: string
   }
   color: {
-    background: string,
-  },
+    background: string
+  }
   textSize: {
-    XXS: string,
-    XS: string,
-    S: string,
-    M: string,
-    L: string,
-    XL: string,
-  },
+    XXS: string
+    XS: string
+    S: string
+    M: string
+    L: string
+    XL: string
+  }
   spacing: {
-    XXS: string,
-    XS: string,
-    S: string,
-    M: string,
-    L: string,
-    XL: string,
+    XXS: string
+    XS: string
+    S: string
+    M: string
+    L: string
+    XL: string
     XXL: string
-  },
-  fontFace: {},
+  }
+  font: {}
   layout: {
-    maxPageWidth: string,
+    maxPageWidth: string
     topNavHeight: string
-  },
+  }
   shape: {
-    roundedCorner: string,
+    roundedCorner: string
     circleDiameter: {
-      S: string, 
-      M: string,
+      S: string
+      M: string
       L: string
     }
   }

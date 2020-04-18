@@ -130,18 +130,11 @@ h2 {
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
-
-  .page-cta {
-    font-size: $text-size-m;
-    text-decoration: none;
-    color: $text-color-dark;
-  }
 }
 
 @media only screen and (min-width: 480px) {
   .page {
     .top-container {
-
       h1,
       h2 {
         max-width: 100%;
@@ -234,7 +227,6 @@ h2 {
 }
 
 @media only screen and (min-width: $desktop-width) {
-
   .scroll-gradient-top:before,
   .scroll-gradient-bottom:after {
     display: none;
@@ -267,24 +259,6 @@ h2 {
     height: 120px;
     width: 140px;
   }
-}
-
-.stylized-button {
-  display: inline-block;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: bold;
-  color: $text-color-dark;
-  letter-spacing: 2px;
-  border-radius: 0;
-  background-color: #fff;
-  border: 1px solid $border-color;
-  padding: $spacing-m;
-  cursor: pointer;
-}
-
-.stylized-button-small {
-  padding: $spacing-s;
 }
 
 /*

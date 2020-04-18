@@ -4,8 +4,10 @@ import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { getFinalNodeTitle } from '../firestore/firestore'
 import * as styles from '../styles/MapQuestion.style'
+import { knockout, selected, dropShadow } from '../styles/shared.style'
 import { mapNodeChildren } from '../styles/Map.style'
-import { covidConversation as cc } from '../styles/CovidConversation'
+import { useTheme } from 'emotion-theming'
+import { Theme } from '@emotion/types'
 
 export const MapQuestion = (props) => {
   const {
@@ -18,27 +20,29 @@ export const MapQuestion = (props) => {
     questionIndex,
   } = props
 
+  const theme: Theme = useTheme()
+
   const [expandedChild, setExpandedChild] = React.useState(null)
 
-  const expanded = question.current._key == currentQuestion
+  const isSelected = question.current._key == currentQuestion
 
   return (
     <>
       <li
-        css={[styles.mapQuestion, cc.mapNode]}
+        css={[styles.mapQuestion(theme), isSelected ? selected(theme) : {}, dropShadow(theme)]}
         key={questionIndex}
         onClick={() => {
           setMapDepth(1)
           setCurrentQuestion(question.current._key)
         }}
       >
-        <div css={[styles.knockout, styles.convoCount]}>
+        <div css={[knockout(theme), styles.convoCount(theme)]}>
           <p>{Object.keys(questionChildren).length}</p>
           <p>Convos</p>
         </div>
-        <h3 css={[styles.title, cc.question.title]}>{getFinalNodeTitle(question)}</h3>
+        <h3 css={[styles.title(theme)]}>{getFinalNodeTitle(question)}</h3>
       </li>
-      {expanded && (
+      {isSelected && (
         <ul css={mapNodeChildren} key={`${questionIndex}-children`}>
           {Object.keys(questionChildren).map((childNodeKey) => {
             const childNode = questionChildren[childNodeKey]

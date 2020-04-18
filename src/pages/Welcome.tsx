@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 
 import { WelcomePage } from '../components/themes/ThemeSelector'
 
-import '../styles/Welcome.scss'
-
 export const Welcome = (props) => {
   const themeId = process.env.REACT_APP_PROJECT_ID
 
