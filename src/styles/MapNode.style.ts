@@ -21,7 +21,7 @@ export const canExpand = hasChildren => (
   hasChildren ? css({
     label: 'canExpand',
     '&:before': {
-      content: '+',
+      content: '"+"',
       position: 'absolute',
       top: spacing.S,
       right: spacing.S,
@@ -34,7 +34,7 @@ export const canExpand = hasChildren => (
 export const selectedAndCanExpand = (isExpanded, hasChildren) => (
   isExpanded && hasChildren ? css({
     '&:before': {
-      content: '▻',
+      content: '"▻"',
       position: 'absolute',
       right: 0,
       fontWweight: 'bold',

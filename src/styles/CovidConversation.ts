@@ -13,7 +13,7 @@ export const covidConversation = {
     topContainer: {
       padding: '20px',
       height: 'auto',
-      backgroundColor: 'rgba(255, 255, 255, 0.8'
+      backgroundColor: 'rgba(255, 255, 255, 0.8)'
     },
     responsiveHeight: mq({
       height: ['100%'] // what for larger?
