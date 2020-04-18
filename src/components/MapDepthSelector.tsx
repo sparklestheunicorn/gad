@@ -10,25 +10,16 @@ export const MapDepthSelector = (props) => {
   return (
     <div css={css([cc.mapDepthSelector, mapDepthSelector])}>
       <button onClick={zeroMapDepth} css={disabled('down', currentDepth, maxDepth)}>
-        ◄◄
+        ◀◀
       </button>
-      <button
-        onClick={decreaseMapDepth}
-        css={disabled('down', currentDepth, maxDepth)}
-      >
-        ◄
+      <button onClick={decreaseMapDepth} css={disabled('down', currentDepth, maxDepth)}>
+        ◀
       </button>
-      <button
-        onClick={increaseMapDepth}
-        css={disabled('up', currentDepth, maxDepth)}
-      >
-        ►
+      <button onClick={increaseMapDepth} css={disabled('up', currentDepth, maxDepth)}>
+        ▶
       </button>
-      <button
-        onClick={maximizeMapDepth}
-        css={disabled('up', currentDepth, maxDepth)}
-      >
-        ►►
+      <button onClick={maximizeMapDepth} css={disabled('up', currentDepth, maxDepth)}>
+        ▶▶
       </button>
     </div>
   )
