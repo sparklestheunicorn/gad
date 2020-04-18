@@ -12,13 +12,13 @@ export const slideToDepth = depth => (mq({
   ]
 }))
 
-export const map = {
+export const map = theme => ({
   label: 'map',
-  opacity: 0,
+  opacity: 0, // something could use theme here
   animationName: 'fade-in',
   animationDuration: '1s',
   animationFillMode: 'forwards',
-}
+})
 
 export const mapContainer = {
   label: 'mapContainer',

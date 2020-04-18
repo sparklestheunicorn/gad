@@ -1,11 +1,12 @@
 import * as React from 'react'
-
+import { useTheme } from 'emotion-theming'
 import { Link } from 'react-router-dom'
+import { Theme } from '../../styles/themes/Theme.type'
 
 import { PageEffects } from '../../components/PageEffects'
 
 export const CovidConversationWelcome = (props) => {
-  const { themeId } = props
+  const theme: Theme = useTheme()
   return (
     <section className="page welcome">
       <PageEffects duration={200} animation="fadeOut" options="once" />
@@ -15,7 +16,7 @@ export const CovidConversationWelcome = (props) => {
       <div className="top-container">
         <img
           className="title-image"
-          src={require(`../../assets/images/${themeId}-title-transparent.png`)}
+          src={require(`../../assets/images/${theme.image.titleTransparent}`)}
           alt="The Covid Conversation Map"
         />
       </div>
@@ -36,7 +37,7 @@ export const CovidConversationWelcome = (props) => {
           >
             <img
               className="welcome-cta"
-              src={require(`../../assets/images/${themeId}-donate-cta.png`)}
+              src={require(`../../assets/images/${theme.image.donateCTA}`)}
               alt="Conversations"
             />
             <span>We're an educational non-profit, please donate!</span>
@@ -46,7 +47,7 @@ export const CovidConversationWelcome = (props) => {
           <Link to="/map">
             <img
               className="welcome-cta map-cta"
-              src={require(`../../assets/images/${themeId}-welcome-cta.png`)}
+              src={require(`../../assets/images/${theme.image.welcomeCTA}`)}
               alt="Conversations"
             />
           </Link>

@@ -1,11 +1,13 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
+import { useTheme } from 'emotion-theming'
+import { Theme } from '../styles/themes/Theme.type'
 
 import '../styles/TopNav.scss'
 
 export const TopNav = (props) => {
-  const { themeId } = props
+  const theme: Theme = useTheme()
 
   let [showMenu, setShowMenu] = React.useState(true)
 
@@ -21,7 +23,7 @@ export const TopNav = (props) => {
     <header>
       <nav className="top-nav">
         <Link to="/">
-          <img className="top-nav-logo" src={require(`../assets/images/${themeId}-logo.png`)} alt="PROJECT TITLE" />
+          <img className="top-nav-logo" src={require(`../assets/images/${theme.image.logo}`)} alt="PROJECT TITLE" />
         </Link>
         <button className="menu-button stylized-button stylized-button-small" onClick={toggleMenu}>
           Menu
