@@ -1,27 +1,33 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React, { Component } from 'react'
 import { HashRouter, Route } from 'react-router-dom'
+import { ThemeProvider } from 'emotion-theming'
 
-import { TopNav } from './components/TopNav'
 import { Welcome } from './pages/Welcome'
 import { Map } from './pages/Map'
 
-import './styles/App.scss'
+import { generateTheme } from './styles/themes/themeGenerator'
 import { initDebateMapServerLink } from './firestore/init-dm-link'
+
+import { styles } from './styles/App.styles'
 
 initDebateMapServerLink()
 
 class App extends Component {
-  themeId = process.env.REACT_APP_PROJECT_ID
-
   render() {
+    const themeId = process.env.REACT_APP_PROJECT_ID
+    const theme = generateTheme(themeId)
+
     return (
-      <HashRouter basename="/">
-        <div className="app">
-          {/*<TopNav themeId={this.themeId} /> */}
-          <Route path="/map" component={() => <Map themeId={this.themeId} />} />
-          <Route exact path="/" component={Welcome} />
-        </div>
-      </HashRouter>
+      <ThemeProvider theme={theme}>
+        <HashRouter basename="/">
+          <div css={[styles(theme)]}>
+            <Route path="/map" component={Map} />
+            <Route exact path="/" component={Welcome} />
+          </div>
+        </HashRouter>
+      </ThemeProvider>
     )
   }
 }

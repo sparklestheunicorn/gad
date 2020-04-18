@@ -6,12 +6,14 @@
   "dependencies": {
     "@debate-map/server-link": "^1.0.2",
     "@emotion/core": "^10.0.28",
+    "@emotion/types": "^0.7.0",
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.4",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.3",
     "classnames": "^2.2.6",
+    "emotion-theming": "^10.0.27",
     "facepaint": "^1.2.1",
     "firebase": "^7.14.1",
     "mobx": "^5.15.4",
@@ -24,6 +26,7 @@
     "typescript": "^3.7.4"
   },
   "devDependencies": {
+    "@types/facepaint": "^1.2.1",
     "customize-cra": "^0.9.1",
     "dotenv": "^8.2.0",
     "gh-pages": "^2.2.0",

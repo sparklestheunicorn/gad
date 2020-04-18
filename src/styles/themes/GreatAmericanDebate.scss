@@ -11,7 +11,6 @@
   src: local('Glacial Indifference Bold'), url('../assets/GlacialIndifference-Bold.otf') format('opentype');
 }
 */
-
 $title-font: 'Cheddar Gothic Sans';
 $subtitle-font: 'Glacial Indifference';
 $paragraph-font: 'PT Sans';
@@ -61,23 +60,6 @@ body.great-american-debate {
   background: rgb(188, 217, 240);
   background: radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%);
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: $title-font;
-
-    &.subheading {
-      font-family: $subtitle-font;
-    }
-  }
-
-  h2 {
-    font-family: $subtitle-font;
-  }
-
   .font-preloader {
     position: absolute;
     transform: translate(300vw);
@@ -114,14 +96,6 @@ body.great-american-debate {
   header {
     background-color: #fff;
     box-shadow: 0px 4px 5px 0px $background-dark-blue;
-  }
-
-  .stylized-button {
-    font-family: $subtitle-font;
-  }
-
-  .page-cta {
-    font-family: $title-font;
   }
 
   .circle {

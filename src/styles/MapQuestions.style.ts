@@ -1,5 +1,4 @@
-import { css } from '@emotion/core'
-import { mq, textSize } from '../styles/variables'
+import { mq } from '../styles/App.styles'
 
 export const responsiveFlex = mq({
   label: 'responsiveFlex',
@@ -13,16 +12,3 @@ export const questionList = mq({
   position: 'relative',
   width: ['80%', '40%', '40%'],
 })
-
-export const mapIntroContainer = css(
-  mq({
-    label: 'mapIntroContainer',
-    width: ['80%', '40%', '40%'],
-    h2: {
-      fontSize: textSize.L,
-    },
-    h3: {
-      padding: 0,
-    },
-  }),
-)

@@ -1,10 +1,12 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from 'emotion-theming'
+import { Theme } from '../../styles/themes/Theme.type'
 
 import { PageEffects } from '../../components/PageEffects'
 
 export const GreatAmericanDebateWelcome = (props) => {
-  const { themeId } = props
+  const theme: Theme = useTheme()
 
   return (
     <section className="page welcome">
@@ -15,7 +17,7 @@ export const GreatAmericanDebateWelcome = (props) => {
       <div className="top-container">
         <img
           className="title-image"
-          src={require(`../../assets/images/${themeId}-title.png`)}
+          src={require(`../../assets/images/${theme.image.title}`)}
           alt="The Great American Debate"
         />
         <h3 className="subheading">

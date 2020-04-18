@@ -1,16 +1,10 @@
-import { textSize } from '../styles/variables'
-
-// was doubled
-export const mapIntroContainer = {
+export const mapIntroContainer = (theme) => ({
   label: 'mapIntroContainer',
-  position: 'absolute',
-  top: 0,
-  right: '10%',
   width: '40%',
-  'h2': {
-    fontSize: textSize.L
+  h2: {
+    fontSize: theme.textSize.L,
   },
-  'h3': {
-    padding: 0
-  }
-}
+  h3: {
+    padding: 0,
+  },
+})

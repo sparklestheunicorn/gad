@@ -1,29 +1,36 @@
 import { css } from '@emotion/core'
-import { mq, mapMovementTransitionSpeed } from './variables'
+import { mq } from './App.styles'
 
+export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
 
-export const slideToDepth = depth => (mq({
-  label: 'moveToLevel',
-  transform: [
-    `translateX(${-80 * depth + 4}%)`,
-    `translateX(${-40 * depth + 4}%)`,
-    `translateX(${-40 * depth + 4}%)`,
-  ]
-}))
+export const slideToDepth = (depth) =>
+  mq({
+    label: 'moveToLevel',
+    transform: [`translateX(${-80 * depth + 4}%)`, `translateX(${-40 * depth + 4}%)`, `translateX(${-40 * depth + 4}%)`],
+  })
 
-export const map = {
+export const map = (theme) => ({
   label: 'map',
-  opacity: 0,
+  opacity: 0, // something could use theme here
   animationName: 'fade-in',
   animationDuration: '1s',
   animationFillMode: 'forwards',
+  titleBlock: {
+    background: 'transparent',
+  },
+})
+
+export const topContainer = {
+  padding: '20px',
+  height: 'auto',
+  backgroundColor: 'rgba(255, 255, 255, 0.8)',
 }
 
 export const mapContainer = {
   label: 'mapContainer',
   transition: `transform ${mapMovementTransitionSpeed}`,
-  paddingBottom: mapFooterHeight
+  paddingBottom: mapFooterHeight,
 }
 
 export const mapFooter = css({
@@ -31,10 +38,10 @@ export const mapFooter = css({
   position: 'fixed',
   bottom: 0,
   width: '100%',
-  height: mapFooterHeight
+  height: mapFooterHeight,
 })
 
-// shared 
+// shared
 
 export const mapNodeChildren = css({
   label: 'nodeChildren',
@@ -48,5 +55,5 @@ export const mapNodeChildren = css({
   animationName: 'fade-in',
   animationDelay: '0.4s',
   animationDuration: '1s',
-  animationFillMode: 'forwards'
+  animationFillMode: 'forwards',
 })

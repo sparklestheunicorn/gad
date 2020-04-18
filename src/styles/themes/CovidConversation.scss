@@ -12,69 +12,10 @@
 }
 */
 
-$title-font: 'League Spartan';
-$subtitle-font: 'Glacial Indifference';
-$paragraph-font: 'PT Sans';
-
-/* Page styles */
-
-$knockout-background-color: #136494;
-$shadow-color: #d4d5d6;
-$border-color: #d4d5d6;
-
 body.covid-conversation {
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: $title-font;
-
-    &.subheading {
-      font-family: $subtitle-font;
-    }
-  }
-
-  .font-preloader {
-    position: absolute;
-    transform: translate(300vw);
-
-    span {
-      font-family: $title-font;
-    }
-
-    span:nth-child(2) {
-      font-family: $subtitle-font;
-    }
-  }
-
-  .bottom-container {
-    background-color: none;
-  }
-
-  .drop-shadow {
-    z-index: 10;
-    filter: drop-shadow(3px 3px 3px $shadow-color);
-  }
-
-  .circle {
-    font-family: $title-font;
-  }
-
-  .stylized-button {
-    font-family: $subtitle-font;
-  }
-
-  .page-cta {
-    font-family: $title-font;
-  }
-
   /**
     * Page specific styling
   */
-
   .page.welcome {
     background-image: url('../../assets/images/covid-conversation-background.png');
     background-repeat: no-repeat;
@@ -178,105 +119,6 @@ body.covid-conversation {
 
         img {
           width: 50px;
-        }
-      }
-    }
-  }
-
-  .page.questions {
-    .bottom-container {
-      background-color: #fff;
-    }
-  }
-}
-
-/* Map Styles */
-
-body.covid-conversation {
-  .map {
-    background-color: #fff;
-    /*    background-image: url('../../assets/images/covid-conversation-background.png');
-    background-repeat: no-repeat;
-    background-position-x: 100%;
-    background-position-y: 100px;
-    background-size: 500px;
-    transition: background-position-x $map-movement-transition-speed; */
-
-    h3 {
-      font-size: 24px;
-      padding: $spacing-s;
-    }
-
-    .title-block {
-      background: transparent;
-    }
-
-    .top-container {
-      padding: 20px;
-      height: auto;
-      background-color: rgba(255, 255, 255, 0.8);
-    }
-
-    .knockout {
-      background-color: $knockout-background-color;
-      color: #fff;
-    }
-
-    .map-question {
-      border: 1px solid $border-color;
-      z-index: 10;
-      filter: drop-shadow(3px 3px 3px $shadow-color);
-
-      &.expanded {
-        border: 1px solid $knockout-background-color;
-      }
-    }
-
-    .map-node {
-      border: 1px solid $border-color;
-      z-index: 10;
-      filter: drop-shadow(3px 3px 3px $shadow-color);
-
-      &.expanded {
-        border: 1px solid $knockout-background-color;
-      }
-    }
-  }
-
-  .map-footer {}
-
-  .map-depth-selector {
-    button {
-      font-size: $text-size-s;
-      width: 25%;
-      color: $knockout-background-color;
-      background-color: #fff;
-
-      &.disabled {
-        color: $shadow-color;
-      }
-    }
-  }
-
-  @media only screen and (max-width: $tablet-width) {
-
-    #root,
-    .app,
-    .map {
-      height: 100%;
-    }
-
-    .map {
-      height: 100%;
-
-      .question-list {
-        width: 80%;
-      }
-
-      .map-question {
-        h3.map-question-title {
-          font-size: 14px;
-          margin-left: $spacing-s;
         }
       }
     }
