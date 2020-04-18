@@ -1,5 +1,9 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
-import classNames from 'classnames'
+import * as styles from '../styles/MapNode.style'
+import { mapNodeChildren } from '../styles/Map.style'
+import { covidConversation as cc } from '../styles/CovidConversation'
 
 export const MapNode = (props) => {
   const { title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
@@ -13,7 +17,14 @@ export const MapNode = (props) => {
     <>
       <li
         key={nodeId}
-        className={classNames('map-node', 'rectangle', { expanded: isExpanded }, { 'can-expand': hasChildren })}
+        css={[
+          styles.rectangle,
+          styles.mapNode,
+          styles.expanded(isExpanded),
+          styles.canExpand(hasChildren),
+          styles.selectedAndCanExpand(isExpanded, hasChildren),
+          cc.mapNode
+        ]}
         onClick={(e) => {
           e.stopPropagation()
           if (hasChildren) {
@@ -33,7 +44,7 @@ export const MapNode = (props) => {
         <h4>{title}</h4>
       </li>
       {isExpanded && hasChildren && (
-        <ul className="map-node-children" key={`${nodeId}-children`}>
+        <ul css={mapNodeChildren} key={`${nodeId}-children`}>
           {Object.keys(nodeChildren).map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
             return (

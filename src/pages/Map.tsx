@@ -1,13 +1,13 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, css } from '@emotion/core'
 import * as React from 'react'
 import { observer } from 'mobx-react'
-import { getQuestions, getMapNodeSubtree, getFinalNodeTitle } from '../firestore/firestore'
+import { getQuestions, getMapNodeSubtree } from '../firestore/firestore'
 import { MapQuestions } from '../components/MapQuestions'
 import { MapDepthSelector } from '../components/MapDepthSelector'
 
-import '../styles/Map.scss'
-import * as styles from '../styles/Map.style'
+import { map, slideToDepth, mapFooter } from '../styles/Map.style'
+import { covidConversation as cc } from '../styles/CovidConversation'
 
 export const Map = observer((props) => {
   const { themeId } = props
@@ -21,16 +21,15 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main className="map fade-in" css={styles.bgPosition(mapDepth)}>
-      <div className="top-container">
+    <main css={css([map, cc.map.responsiveHeight, cc.map.backgroundColor])}>
+      <div css={cc.map.topContainer}>
         <img
-          className="title-image"
           src={require(`../assets/images/${themeId}-title-transparent.png`)}
           alt="The Covid Conversation"
         />
       </div>
-      <section className="map-container" css={styles.transform(mapDepth)}>
-        <div className="question-list-container">
+      <section css={slideToDepth(mapDepth)}>
+        <div>
           <MapQuestions
             questions={questions}
             questionChildren={questionChildren}
@@ -39,7 +38,7 @@ export const Map = observer((props) => {
           />
         </div>
       </section>
-      <section className="map-footer">
+      <section css={mapFooter}>
         <MapDepthSelector
           currentDepth={mapDepth}
           maxDepth={maxMapDepth}

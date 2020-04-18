@@ -19,7 +19,7 @@ export const CovidConversationWelcome = (props) => {
           alt="The Covid Conversation Map"
         />
       </div>
-      <div class="welcome-quote">
+      <div className="welcome-quote">
         <h2>“A healthy society cannot have just one voice.”</h2>
         <p>
           Attributed to Dr. Li Wenliang (李文亮), he is reported to have died of the Corona virus disease he warned China
