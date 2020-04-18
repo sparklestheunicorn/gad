@@ -28,7 +28,7 @@ export const MapQuestion = (props) => {
         css={[styles.mapQuestion, cc.mapNode]}
         key={questionIndex}
         onClick={() => {
-          setMapDepth(0)
+          setMapDepth(1)
           setCurrentQuestion(question.current._key)
         }}
       >
@@ -47,7 +47,7 @@ export const MapQuestion = (props) => {
                 nodeId={childNodeKey}
                 title={childNode.title}
                 nodeChildren={childNode.childNodes}
-                depth={1}
+                depth={2}
                 setMapDepth={setMapDepth}
                 setMaxMapDepth={setMaxMapDepth}
                 isExpanded={childNodeKey === expandedChild}
