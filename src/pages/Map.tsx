@@ -21,24 +21,23 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <main css={css([map, cc.map.responsiveHeight, cc.map.backgroundColor])}>
-      <div css={cc.map.topContainer}>
-        <img
-          src={require(`../assets/images/${themeId}-title-transparent.png`)}
-          alt="The Covid Conversation"
-        />
-      </div>
-      <section css={slideToDepth(mapDepth)}>
-        <div>
-          <MapQuestions
-            questions={questions}
-            questionChildren={questionChildren}
-            setMapDepth={setMapDepth}
-            setMaxMapDepth={setMaxMapDepth}
-          />
-        </div>
-      </section>
-      <section css={mapFooter}>
+    <>
+      <header css={cc.map.topContainer}>
+        <img src={require(`../assets/images/${themeId}-title-transparent.png`)} alt="The Covid Conversation" />
+      </header>
+      <main css={css([map, cc.map.responsiveHeight, cc.map.backgroundColor])}>
+        <section css={slideToDepth(mapDepth)}>
+          <div>
+            <MapQuestions
+              questions={questions}
+              questionChildren={questionChildren}
+              setMapDepth={setMapDepth}
+              setMaxMapDepth={setMaxMapDepth}
+            />
+          </div>
+        </section>
+      </main>
+      <footer css={mapFooter}>
         <MapDepthSelector
           currentDepth={mapDepth}
           maxDepth={maxMapDepth}
@@ -55,7 +54,7 @@ export const Map = observer((props) => {
           }}
           maximizeMapDepth={() => setMapDepth(maxMapDepth)}
         />
-      </section>
-    </main>
+      </footer>
+    </>
   )
 })

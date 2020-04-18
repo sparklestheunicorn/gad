@@ -1,11 +1,10 @@
-import { color } from "./variables";
+import { color } from './variables'
 
 export const mapDepthSelector = {
   label: 'mapDepthSelector',
-  'button': {
-    width: '25%',
-    border: `1px solid ${color.border}`
-  }
+  button: {
+    border: `1px solid ${color.border}`,
+  },
 }
 
 export const disabled = (change, currentDepth, maxDepth) => {
