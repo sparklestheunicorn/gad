@@ -32,7 +32,11 @@ export const MapNode = (props) => {
         onClick={(e) => {
           e.stopPropagation()
           if (hasChildren) {
-            setMapDepth(depth)
+            if (isExpanded) {
+              setMapDepth(depth - 1)
+            } else {
+              setMapDepth(depth)
+            }
           } else {
             // I am a leaf node, leave the map depth at my parent
             setMaxMapDepth(depth - 1)

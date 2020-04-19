@@ -32,8 +32,17 @@ export const MapQuestion = (props) => {
         css={[styles.mapQuestion(theme), isSelected ? selected(theme) : {}, dropShadow(theme)]}
         key={questionIndex}
         onClick={() => {
-          setMapDepth(1)
-          setCurrentQuestion(question.current._key)
+          if (Object.keys(questionChildren).length) {
+            if (isSelected) {
+              setMapDepth(0)
+            } else {
+              setMapDepth(1)
+            }
+            setCurrentQuestion(question.current._key)
+          } else {
+            setMapDepth(0)
+            setMaxMapDepth(0)
+          }
         }}
       >
         <div css={[knockout(theme), styles.convoCount(theme)]}>
