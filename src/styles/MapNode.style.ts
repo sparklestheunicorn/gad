@@ -1,5 +1,22 @@
 import { css } from '@emotion/core'
 
+export const mapQuestion = (theme) =>
+  css({
+    label: 'mapQuestion',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'end',
+    marginBottom: theme.spacing.M,
+    backgroundColor: '#fff',
+    borderRadius: `${theme.spacing.XS}`,
+    cursor: 'pointer',
+    div: {
+      display: 'inline-block',
+      verticalAlign: 'bottom',
+    },
+  })
+
 export const mapNode = (theme) => ({
   label: 'mapNode',
   position: 'unset',
@@ -13,6 +30,21 @@ export const mapNode = (theme) => ({
   h4: {
     fontFamily: theme.font.paragraph,
   },
+})
+
+export const mapNodeChildren = css({
+  label: 'nodeChildren',
+  position: 'absolute',
+  left: '100%',
+  top: 0,
+  listStyleType: 'none',
+  width: '100%',
+  height: '100%',
+  opacity: 0,
+  animationName: 'fade-in',
+  animationDelay: '0.4s',
+  animationDuration: '1s',
+  animationFillMode: 'forwards',
 })
 
 export const expanded = (isExpanded) =>
@@ -57,3 +89,16 @@ export const rectangle = {
   backgroundColor: '#fff',
   borderRadius: '8px',
 }
+
+export const title = (theme) =>
+  css({
+    label: 'mapQuestionTitle',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    fontSize: theme.textSize.S,
+    fontFamily: theme.font.paragraph,
+    margin: `0 0 0 ${theme.spacing.M}`,
+    paddingRight: theme.spacing.M,
+  })

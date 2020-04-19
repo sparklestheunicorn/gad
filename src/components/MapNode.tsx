@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import * as styles from '../styles/MapNode.style'
-import { mapNodeChildren } from '../styles/Map.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
@@ -16,11 +15,10 @@ export const MapNode = (props) => {
 
   const hasChildren = Object.keys(nodeChildren).length > 0
 
-  return (
-    <>
-      <li
-        key={nodeId}
-        css={[
+  const liStyles =
+    depth === 1
+      ? [styles.mapQuestion(theme), isExpanded ? selected(theme) : {}, dropShadow(theme)]
+      : [
           styles.rectangle,
           styles.mapNode(theme),
           styles.expanded(isExpanded),
@@ -28,7 +26,12 @@ export const MapNode = (props) => {
           styles.selectedAndCanExpand(isExpanded, hasChildren, theme),
           dropShadow(theme),
           isExpanded ? selected(theme) : {},
-        ]}
+        ]
+  return (
+    <>
+      <li
+        key={nodeId}
+        css={liStyles}
         onClick={(e) => {
           e.stopPropagation()
           if (hasChildren) {
@@ -49,10 +52,10 @@ export const MapNode = (props) => {
           }
         }}
       >
-        <h4>{title}</h4>
+        {depth === 1 ? <h3 css={[styles.title(theme)]}>{title}</h3> : <h4>{title}</h4>}
       </li>
       {isExpanded && hasChildren && (
-        <ul css={mapNodeChildren} key={`${nodeId}-children`}>
+        <ul css={styles.mapNodeChildren} key={`${nodeId}-children`}>
           {Object.keys(nodeChildren).map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
             return (

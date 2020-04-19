@@ -50,20 +50,3 @@ export const mapFooter = css({
   width: '100%',
   height: mapFooterHeight,
 })
-
-// shared
-
-export const mapNodeChildren = css({
-  label: 'nodeChildren',
-  position: 'absolute',
-  left: '100%',
-  top: 0,
-  listStyleType: 'none',
-  width: '100%',
-  height: '100%',
-  opacity: 0,
-  animationName: 'fade-in',
-  animationDelay: '0.4s',
-  animationDuration: '1s',
-  animationFillMode: 'forwards',
-})
