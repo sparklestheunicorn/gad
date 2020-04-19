@@ -14,5 +14,5 @@ export const isDisabled = (change, currentDepth, maxDepth, theme) => {
     up: (depth, maxDepth) => depth == maxDepth,
   }
   const disabled = disabledMap[change](currentDepth, maxDepth)
-  return disabled ? { color: '#ccc' } : { color: theme.color.textColor }
+  return disabled ? { color: '#ccc' } : { color: theme.color.text }
 }

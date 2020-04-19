@@ -7,9 +7,10 @@ export const ccStyles = {
     welcomeCTA: 'covid-conversation-welcome-cta.png',
   },
   color: {
-    textColor: '#136494',
+    text: '#064b6e',
+    textLight: '#006297',
     knockoutBackground: '#136494',
-    shadow: '#d4d5d6',
+    shadow: '#b4b5b6',
     border: '#d4d5d6',
     borderDark: '#136494',
   },
@@ -17,5 +18,9 @@ export const ccStyles = {
     heading: 'League Spartan',
     subheading: 'Sanchez',
     paragraph: 'Glacial Indifference',
+  },
+  strings: {
+    title: 'Covid Connection',
+    tagline: 'Combinind your conversations about COVID-19',
   },
 }

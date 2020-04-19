@@ -43,4 +43,8 @@ export type Theme = {
   animation: {
     mapMovementTransitionSpeed: string
   }
+  strings: {
+    title: string
+    tagline: string
+  }
 }
