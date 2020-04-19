@@ -23,8 +23,8 @@ export const Map = observer((props) => {
 
   return (
     <>
-      <header css={topContainer}>
-        <img src={require(`../assets/images/${theme.image.titleTransparent}`)} alt="The Covid Conversation" />
+      <header css={topContainer(theme)}>
+        <img src={require(`../assets/images/${theme.image.title}`)} alt={theme.strings.title} />
       </header>
       <main css={css([map(theme)])}>
         <section css={slideToDepth(mapDepth)}>

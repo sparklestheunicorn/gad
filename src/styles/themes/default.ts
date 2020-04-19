@@ -7,7 +7,8 @@ export const defaultStyles = {
   mq,
   color: {
     background: '#fff',
-    textColor: '#ccc',
+    text: '#333',
+    textLight: '#006297',
     knockoutBackground: '#999',
     shadow: '#d4d5d6',
     border: '#d4d5d6',
@@ -48,5 +49,9 @@ export const defaultStyles = {
   },
   animation: {
     mapMovementTransitionSpeed: '0.8s',
+  },
+  strings: {
+    title: 'The Society Library',
+    tagLine: "The Library of society's ideas, ideologies, and worldviews",
   },
 }

@@ -1,14 +1,21 @@
 import * as React from 'react'
+window.React = React // This is an ugly workaround for https://github.com/emotion-js/emotion/issues/1303
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
+import { useTheme } from 'emotion-theming'
+import { Theme } from '../styles/themes/Theme.type'
+import { heading } from '../styles/shared.style'
 
 export const MapIntro = () => {
+  const theme: Theme = useTheme()
   return (
     <>
-      <h2>Before You Begin</h2>
+      <h2 css={heading(theme)}>Before You Begin</h2>
       <p>
         This is a library project supported by an international group of volunteers, however it is a U.S. based non-profit
         library, therefore
       </p>
-      <h3>we are anti-censorship</h3>
+      <h3 css={heading(theme)}>we are anti-censorship</h3>
       <p>
         in accordance with the Library Bill of Rights, established by the Office of Intellectual Freedom of the American
         Library Association.

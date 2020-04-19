@@ -47,9 +47,9 @@ export const MapQuestion = (props) => {
           }
         }}
       >
-        <div css={[knockout(theme), styles.convoCount(theme)]}>
+        <div css={styles.convoCount(theme)}>
           <p>{Object.keys(questionChildren).length}</p>
-          <p>Convos</p>
+          <p>convos</p>
         </div>
         <h3 css={[styles.title(theme)]}>{getFinalNodeTitle(question)}</h3>
       </li>

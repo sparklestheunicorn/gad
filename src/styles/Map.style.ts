@@ -7,7 +7,13 @@ export const mapFooterHeight = '32px'
 export const slideToDepth = (depth) =>
   mq({
     label: 'moveToLevel',
-    transform: [`translateX(${-80 * depth + 4}%)`, `translateX(${-40 * depth + 4}%)`, `translateX(${-40 * depth + 4}%)`],
+    transform: [
+      `translate3d(${-80 * depth + 4}%, 0, 0)`,
+      `translate3d(${-40 * depth + 4}%, 0, 0)`,
+      `translate3d(${-40 * depth + 4}%, 0, 0)`,
+    ],
+    transition: 'transform 1s ease',
+    WebkitFontSmoothing: 'antialiased',
   })
 
 export const map = (theme) => ({
@@ -21,15 +27,19 @@ export const map = (theme) => ({
   },
 })
 
-export const topContainer = {
-  padding: '20px',
+export const topContainer = (theme) => ({
+  margin: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.L} ${theme.spacing.M}`,
   height: 'auto',
   backgroundColor: 'rgba(255, 255, 255, 0.8)',
-}
+  img: {
+    maxWidth: '350px',
+  },
+})
 
 export const mapContainer = {
   label: 'mapContainer',
   transition: `transform ${mapMovementTransitionSpeed}`,
+  WebkitFontSmoothing: 'antialiased',
   paddingBottom: mapFooterHeight,
 }
 

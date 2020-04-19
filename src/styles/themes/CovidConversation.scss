@@ -13,6 +13,7 @@
 */
 
 body.covid-conversation {
+
   /**
     * Page specific styling
   */
@@ -20,13 +21,13 @@ body.covid-conversation {
     background-image: url('../../assets/images/covid-conversation-background.png');
     background-repeat: no-repeat;
     background-position-x: 100%;
-    background-position-y: 100px;
-    background-size: 500px;
+    background-position-y: 50%;
+    background-size: 600px;
 
     .top-container {
       width: 50%;
       min-width: 550px;
-      padding-top: 100px;
+      padding-top: 48px;
       background-color: rgba(255, 255, 255, 0.8);
 
       .title-image {
@@ -35,15 +36,21 @@ body.covid-conversation {
     }
 
     .welcome-quote {
-      padding-top: 20px;
       width: 50%;
       min-width: 550px;
-      padding-left: 40px;
+      padding: 20px 20px 20px 100px;
       background-color: rgba(255, 255, 255, 0.8);
 
       h2 {
-        font-size: 64px;
-        line-height: 76px;
+        font-size: 48px;
+        line-height: 64px;
+        color: #000;
+        letter-spacing: -1px;
+
+        span {
+          display: inline;
+          color: #064b6e;
+        }
       }
     }
 
@@ -53,7 +60,7 @@ body.covid-conversation {
       justify-content: space-between;
       background: none;
       padding-top: 50px;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: transparent; // rgba(255, 255, 255, 0.8);
 
       a,
       div {

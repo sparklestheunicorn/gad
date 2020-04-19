@@ -28,13 +28,13 @@ export const TopNav = (props) => {
         <Link to="/">
           <img className="top-nav-logo" src={require(`../assets/images/${theme.image.logo}`)} alt="PROJECT TITLE" />
         </Link>
-        <button css={[stylizedButton(theme)]} onClick={toggleMenu}>
+        <button css={stylizedButton(theme)} onClick={toggleMenu}>
           Menu
         </button>
       </nav>
       <aside className={classNames('main-menu', { hidden: showMenu })}>
         <div className="main-menu-header">
-          <button css={[stylizedButton(theme)]} onClick={toggleMenu}>
+          <button css={stylizedButton(theme)} onClick={toggleMenu}>
             Close
           </button>
           ]
