@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { getFinalNodeTitle } from '../firestore/firestore'
-import * as styles from '../styles/MapQuestion.style'
+import * as styles from './MapQuestion.style'
 import { knockout, selected, dropShadow } from '../styles/shared.style'
-import { mapNodeChildren } from '../styles/Map.style'
+import { mapNodeChildren } from './MapNode.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 
@@ -26,14 +26,25 @@ export const MapQuestion = (props) => {
 
   const isSelected = question.current._key == currentQuestion
 
+  const hasChildren = Object.keys(questionChildren).length > 0
+
   return (
     <>
       <li
         css={[styles.mapQuestion(theme), isSelected ? selected(theme) : {}, dropShadow(theme)]}
         key={questionIndex}
         onClick={() => {
-          setMapDepth(1)
-          setCurrentQuestion(question.current._key)
+          if (hasChildren) {
+            if (isSelected) {
+              setMapDepth(0)
+            } else {
+              setMapDepth(1)
+            }
+            setCurrentQuestion(question.current._key)
+          } else {
+            setMapDepth(0)
+            setMaxMapDepth(0)
+          }
         }}
       >
         <div css={styles.convoCount(theme)}>
@@ -58,7 +69,6 @@ export const MapQuestion = (props) => {
                 setIsExpanded={() => {
                   setExpandedChild(childNodeKey)
                 }}
-                key={childNodeKey}
               />
             )
           })}

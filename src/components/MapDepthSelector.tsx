@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import * as React from 'react'
-import { mapDepthSelector, isDisabled } from '../styles/MapDepthSelector.style'
+import { mapDepthSelector, isDisabled } from './MapDepthSelector.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 
