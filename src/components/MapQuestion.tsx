@@ -26,13 +26,15 @@ export const MapQuestion = (props) => {
 
   const isSelected = question.current._key == currentQuestion
 
+  const hasChildren = Object.keys(questionChildren).length > 0
+
   return (
     <>
       <li
         css={[styles.mapQuestion(theme), isSelected ? selected(theme) : {}, dropShadow(theme)]}
         key={questionIndex}
         onClick={() => {
-          if (Object.keys(questionChildren).length) {
+          if (hasChildren) {
             if (isSelected) {
               setMapDepth(0)
             } else {
@@ -67,7 +69,6 @@ export const MapQuestion = (props) => {
                 setIsExpanded={() => {
                   setExpandedChild(childNodeKey)
                 }}
-                key={childNodeKey}
               />
             )
           })}

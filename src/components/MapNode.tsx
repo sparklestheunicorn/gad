@@ -10,11 +10,11 @@ import { Theme } from '@emotion/types'
 export const MapNode = (props) => {
   const { title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
 
-  const hasChildren = Object.keys(nodeChildren).length > 0
+  const theme: Theme = useTheme()
 
   const [expandedChild, setExpandedChild] = React.useState(null)
 
-  const theme: Theme = useTheme()
+  const hasChildren = Object.keys(nodeChildren).length > 0
 
   return (
     <>
@@ -67,7 +67,6 @@ export const MapNode = (props) => {
                 setIsExpanded={() => {
                   setExpandedChild(childNodeKey)
                 }}
-                key={childNodeKey}
               />
             )
           })}
