@@ -23,21 +23,20 @@ export const MapQuestions = (props) => {
       </div>
       <ul css={questionList}>
         {questions.map((question, questionIndex) => (
-          <>
-            <MapNode
-              nodeId={question._key}
-              topLevel={true}
-              title={getFinalNodeTitle(question)}
-              nodeChildren={questionChildren[questionIndex].childNodes}
-              depth={1}
-              setMapDepth={setMapDepth}
-              setMaxMapDepth={setMaxMapDepth}
-              isExpanded={question._key === expandedChild}
-              setIsExpanded={() => {
-                setExpandedChild(question._key)
-              }}
-            />
-          </>
+          <MapNode
+            key={question._key}
+            nodeId={question._key}
+            topLevel={true}
+            title={getFinalNodeTitle(question)}
+            nodeChildren={questionChildren[questionIndex].childNodes}
+            depth={1}
+            setMapDepth={setMapDepth}
+            setMaxMapDepth={setMaxMapDepth}
+            isExpanded={question._key === expandedChild}
+            setIsExpanded={() => {
+              setExpandedChild(question._key)
+            }}
+          />
         ))}
       </ul>
     </div>

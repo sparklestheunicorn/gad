@@ -61,6 +61,7 @@ export const MapNode = (props) => {
             const childNode = nodeChildren[childNodeKey]
             return (
               <MapNode
+                key={childNodeKey}
                 nodeId={childNodeKey}
                 topLevel={false}
                 title={childNode.title}
