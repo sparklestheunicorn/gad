@@ -5,9 +5,10 @@ import * as styles from '../styles/MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
+import { ConvoCount } from './ConvoCount'
 
 export const MapNode = (props) => {
-  const { title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
+  const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
 
   const theme: Theme = useTheme()
 
@@ -15,18 +16,17 @@ export const MapNode = (props) => {
 
   const hasChildren = Object.keys(nodeChildren).length > 0
 
-  const liStyles =
-    depth === 1
-      ? [styles.mapQuestion(theme), isExpanded ? selected(theme) : {}, dropShadow(theme)]
-      : [
-          styles.rectangle,
-          styles.mapNode(theme),
-          styles.expanded(isExpanded),
-          styles.canExpand(hasChildren, theme),
-          styles.selectedAndCanExpand(isExpanded, hasChildren, theme),
-          dropShadow(theme),
-          isExpanded ? selected(theme) : {},
-        ]
+  const liStyles = topLevel
+    ? [styles.mapQuestion(theme), isExpanded ? selected(theme) : {}, dropShadow(theme)]
+    : [
+        styles.rectangle,
+        styles.mapNode(theme),
+        styles.expanded(isExpanded),
+        styles.canExpand(hasChildren, theme),
+        styles.selectedAndCanExpand(isExpanded, hasChildren, theme),
+        dropShadow(theme),
+        isExpanded ? selected(theme) : {},
+      ]
   return (
     <>
       <li
@@ -52,7 +52,8 @@ export const MapNode = (props) => {
           }
         }}
       >
-        {depth === 1 ? <h3 css={[styles.title(theme)]}>{title}</h3> : <h4>{title}</h4>}
+        {topLevel && <ConvoCount numberConvos={Object.keys(nodeChildren).length} />}
+        {topLevel ? <h3 css={[styles.title(theme)]}>{title}</h3> : <h4>{title}</h4>}
       </li>
       {isExpanded && hasChildren && (
         <ul css={styles.mapNodeChildren} key={`${nodeId}-children`}>
@@ -61,6 +62,7 @@ export const MapNode = (props) => {
             return (
               <MapNode
                 nodeId={childNodeKey}
+                topLevel={false}
                 title={childNode.title}
                 nodeChildren={childNode.childNodes}
                 setMapDepth={setMapDepth}
