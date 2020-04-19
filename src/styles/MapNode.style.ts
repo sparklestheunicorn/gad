@@ -9,6 +9,7 @@ export const mapNode = (theme) => ({
   marginBottom: theme.spacing.M,
   cursor: 'pointer',
   //border: `1px solid ${theme.color.border}`,
+  WebkitFontSmoothing: 'antialiased',
   h4: {
     fontFamily: theme.font.paragraph,
   },

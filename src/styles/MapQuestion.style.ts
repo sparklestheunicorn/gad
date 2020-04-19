@@ -51,7 +51,7 @@ export const title = (theme) =>
     alignItems: 'center',
     alignSelf: 'center',
     fontSize: theme.textSize.S,
-    fontFamily: theme.font.paragraph + ' !important',
+    fontFamily: theme.font.paragraph,
     margin: `0 0 0 ${theme.spacing.M}`,
     paddingRight: theme.spacing.M,
   })

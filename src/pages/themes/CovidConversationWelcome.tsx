@@ -1,7 +1,10 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core'
 import * as React from 'react'
-import { useTheme } from 'emotion-theming'
 import { Link } from 'react-router-dom'
+import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
+import { heading } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
@@ -21,7 +24,7 @@ export const CovidConversationWelcome = (props) => {
         />
       </div>
       <div className="welcome-quote">
-        <h2>
+        <h2 css={heading(theme)}>
           <span>“</span>A Healthy Society Cannot Have Just One Voice.<span>”</span>
         </h2>
         <p>
