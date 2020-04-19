@@ -8,7 +8,7 @@ export const selected = (theme) => ({
 })
 
 export const dropShadow = (theme) => ({
-  filter: `drop-shadow(3px 3px 3px ${theme.color.shadow})`,
+  filter: `drop-shadow(1px 1px 2px ${theme.color.shadow})`,
 })
 
 export const stylizedButton = (theme) => ({
@@ -16,7 +16,7 @@ export const stylizedButton = (theme) => ({
   textTransform: 'uppercase',
   textDecoration: 'none',
   fontWeight: 'bold',
-  color: theme.color.textColor,
+  color: theme.color.text,
   letterSpacing: '2px',
   backgroundColor: theme.color.background,
   border: `1px solid ${theme.color.borderDark}`,

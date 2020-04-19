@@ -8,7 +8,10 @@ export const mapNode = (theme) => ({
   padding: `${theme.spacing.S} ${theme.spacing.L} ${theme.spacing.S} ${theme.spacing.S}`,
   marginBottom: theme.spacing.M,
   cursor: 'pointer',
-  border: `1px solid ${theme.color.border}`,
+  //border: `1px solid ${theme.color.border}`,
+  h4: {
+    fontFamily: theme.font.paragraph,
+  },
 })
 
 export const expanded = (isExpanded) =>

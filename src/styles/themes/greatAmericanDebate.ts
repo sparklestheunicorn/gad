@@ -11,4 +11,7 @@ export const gadStyles = {
     subtitle: 'Glacial Indifference',
     paragraph: 'PT Sans, sans-serif',
   },
+  strings: {
+    title: 'Great American Debate',
+  },
 }

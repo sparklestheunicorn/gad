@@ -6,11 +6,10 @@ export const mapQuestion = (theme) =>
     position: 'relative',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'end',
     marginBottom: theme.spacing.M,
     backgroundColor: '#fff',
-    border: `1px solid ${theme.color.border}`,
-    borderRadius: `0 ${theme.spacing.XS} ${theme.spacing.XS} 0`,
+    borderRadius: `${theme.spacing.XS}`,
     cursor: 'pointer',
     div: {
       display: 'inline-block',
@@ -26,6 +25,10 @@ export const convoCount = (theme) =>
     justifyContent: 'center',
     padding: theme.spacing.XS,
     margin: '-1px 0 -1px -1px',
+    fontFamily: theme.font.paragraph,
+    color: theme.color.textLight,
+    border: `2px solid ${theme.color.border}`,
+    borderRadius: '8px',
 
     'p:first-child': {
       fontSize: theme.textSize.M,
@@ -35,7 +38,8 @@ export const convoCount = (theme) =>
     },
 
     'p:nth-child(2)': {
-      margin: 0,
+      margin: `-${theme.spacing.S} 0 ${theme.spacing.XS} 0`,
+      fontWeight: 'bold',
     },
   })
 
@@ -45,7 +49,9 @@ export const title = (theme) =>
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    fontSize: theme.textSize.M,
+    alignSelf: 'center',
+    fontSize: theme.textSize.S,
+    fontFamily: theme.font.paragraph + ' !important',
     margin: `0 0 0 ${theme.spacing.M}`,
     paddingRight: theme.spacing.M,
   })
