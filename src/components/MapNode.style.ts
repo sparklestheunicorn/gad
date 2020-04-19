@@ -13,7 +13,6 @@ export const mapQuestion = (theme) => [
     position: 'relative',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'end',
     marginBottom: theme.spacing.M,
     cursor: 'pointer',
   }),
