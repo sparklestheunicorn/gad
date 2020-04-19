@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { mq } from './App.styles'
+import { mq } from '../styles/App.styles'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'

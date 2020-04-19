@@ -8,7 +8,7 @@ import { MapDepthSelector } from '../components/MapDepthSelector'
 
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../styles/themes/Theme.type'
-import { map, topContainer, slideToDepth, mapFooter } from '../styles/Map.style'
+import { map, topContainer, slideToDepth, mapFooter } from './Map.style'
 
 export const Map = observer((props) => {
   const theme: Theme = useTheme()
