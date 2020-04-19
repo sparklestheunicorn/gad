@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
-import * as styles from '../styles/MapNode.style'
+import * as styles from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
@@ -17,21 +17,18 @@ export const MapNode = (props) => {
   const hasChildren = Object.keys(nodeChildren).length > 0
 
   const liStyles = topLevel
-    ? [styles.mapQuestion(theme), isExpanded ? selected(theme) : {}, dropShadow(theme)]
+    ? [styles.mapQuestion(theme)]
     : [
-        styles.rectangle,
         styles.mapNode(theme),
         styles.expanded(isExpanded),
         styles.canExpand(hasChildren, theme),
         styles.selectedAndCanExpand(isExpanded, hasChildren, theme),
-        dropShadow(theme),
-        isExpanded ? selected(theme) : {},
       ]
   return (
     <>
       <li
         key={nodeId}
-        css={liStyles}
+        css={[isExpanded ? selected(theme) : {}, dropShadow(theme), liStyles]}
         onClick={(e) => {
           e.stopPropagation()
           if (hasChildren) {
@@ -53,7 +50,7 @@ export const MapNode = (props) => {
         }}
       >
         {topLevel && <ConvoCount numberConvos={Object.keys(nodeChildren).length} />}
-        {topLevel ? <h3 css={[styles.title(theme)]}>{title}</h3> : <h4>{title}</h4>}
+        {topLevel ? <h3 css={styles.questionTitle(theme)}>{title}</h3> : <h4 css={styles.nodeTitle(theme)}>{title}</h4>}
       </li>
       {isExpanded && hasChildren && (
         <ul css={styles.mapNodeChildren} key={`${nodeId}-children`}>

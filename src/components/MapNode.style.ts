@@ -1,6 +1,13 @@
 import { css } from '@emotion/core'
 
-export const mapQuestion = (theme) =>
+const rectangle = (theme) =>
+  css({
+    backgroundColor: '#fff',
+    borderRadius: `${theme.spacing.XS}`,
+  })
+
+export const mapQuestion = (theme) => [
+  rectangle(theme),
   css({
     label: 'mapQuestion',
     position: 'relative',
@@ -8,29 +15,23 @@ export const mapQuestion = (theme) =>
     flexDirection: 'row',
     alignItems: 'end',
     marginBottom: theme.spacing.M,
-    backgroundColor: '#fff',
-    borderRadius: `${theme.spacing.XS}`,
     cursor: 'pointer',
-    div: {
-      display: 'inline-block',
-      verticalAlign: 'bottom',
-    },
-  })
+  }),
+]
 
-export const mapNode = (theme) => ({
-  label: 'mapNode',
-  position: 'unset',
-  width: '100%',
-  zIndex: '10',
-  padding: `${theme.spacing.S} ${theme.spacing.L} ${theme.spacing.S} ${theme.spacing.S}`,
-  marginBottom: theme.spacing.M,
-  cursor: 'pointer',
-  //border: `1px solid ${theme.color.border}`,
-  WebkitFontSmoothing: 'antialiased',
-  h4: {
-    fontFamily: theme.font.paragraph,
+export const mapNode = (theme) => [
+  rectangle(theme),
+  {
+    label: 'mapNode',
+    position: 'unset',
+    width: '100%',
+    zIndex: '10',
+    padding: `${theme.spacing.S} ${theme.spacing.L} ${theme.spacing.S} ${theme.spacing.S}`,
+    marginBottom: theme.spacing.M,
+    cursor: 'pointer',
+    WebkitFontSmoothing: 'antialiased',
   },
-})
+]
 
 export const mapNodeChildren = css({
   label: 'nodeChildren',
@@ -85,12 +86,7 @@ export const selectedAndCanExpand = (isExpanded, hasChildren, theme) =>
       })
     : {}
 
-export const rectangle = {
-  backgroundColor: '#fff',
-  borderRadius: '8px',
-}
-
-export const title = (theme) =>
+export const questionTitle = (theme) =>
   css({
     label: 'mapQuestionTitle',
     display: 'flex',
@@ -102,3 +98,7 @@ export const title = (theme) =>
     margin: `0 0 0 ${theme.spacing.M}`,
     paddingRight: theme.spacing.M,
   })
+
+export const nodeTitle = (theme) => ({
+  fontFamily: theme.font.paragraph,
+})
