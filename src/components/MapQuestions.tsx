@@ -4,7 +4,6 @@ import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { MapIntro } from '../components/MapIntro'
 import { questionList, responsiveFlex } from './MapQuestions.style'
-import { mapIntroContainer } from './MapIntro.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { getFinalNodeTitle } from '../firestore/firestore'
@@ -18,9 +17,7 @@ export const MapQuestions = (props) => {
 
   return (
     <div css={responsiveFlex}>
-      <div css={mapIntroContainer(theme)}>
-        <MapIntro />
-      </div>
+      <MapIntro />
       <ul css={questionList}>
         {questions.map((question, questionIndex) => (
           <MapNode

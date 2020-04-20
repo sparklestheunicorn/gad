@@ -28,14 +28,12 @@ export const Map = observer((props) => {
       </header>
       <main css={css([map(theme)])}>
         <section css={slideToDepth(mapDepth)}>
-          <div>
-            <MapQuestions
-              questions={questions}
-              questionChildren={questionChildren}
-              setMapDepth={setMapDepth}
-              setMaxMapDepth={setMaxMapDepth}
-            />
-          </div>
+          <MapQuestions
+            questions={questions}
+            questionChildren={questionChildren}
+            setMapDepth={setMapDepth}
+            setMaxMapDepth={setMaxMapDepth}
+          />
         </section>
       </main>
       <footer css={mapFooter}>

@@ -5,6 +5,9 @@ const breakpoints = [768, 1024]
 export const mq = facepaint(breakpoints.map((bp) => `@media (min-width: ${bp}px)`))
 
 export const styles = (theme) => ({
+  label: 'app',
+  position: 'relative',
+  height: '100%',
   '.font-preloader': {
     position: 'absolute',
     transform: 'translate(300vw)',

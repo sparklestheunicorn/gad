@@ -45,6 +45,10 @@ body {
   color: $text-color-dark;
 }
 
+#root {
+  height: 100%;
+}
+
 a,
 a span {
   color: $text-color-dark;
@@ -135,6 +139,7 @@ h2 {
 @media only screen and (min-width: 480px) {
   .page {
     .top-container {
+
       h1,
       h2 {
         max-width: 100%;
@@ -227,6 +232,7 @@ h2 {
 }
 
 @media only screen and (min-width: $desktop-width) {
+
   .scroll-gradient-top:before,
   .scroll-gradient-bottom:after {
     display: none;
