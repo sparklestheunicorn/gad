@@ -63,8 +63,8 @@ export const styles = (theme) => ({
       marginTop: '-5px',
     },
   ]),
-  showingChildren: css(icon(theme), {
-    label: 'showingChildren',
+  expanded: css(icon(theme), {
+    label: 'expanded',
     fontSize: theme.textSize.XS,
   }),
   questionTitle: css({
