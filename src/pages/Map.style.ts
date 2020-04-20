@@ -1,12 +1,11 @@
 import { css } from '@emotion/core'
-import { mq } from '../styles/App.styles'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
 export const mapHeaderHeight = '120px'
 
-export const slideToDepth = (depth) =>
-  mq({
+export const slideToDepth = (theme, depth) =>
+  theme.mq({
     label: 'slideToDepth',
     transform: [
       `translate3d(${-80 * depth}%, 0, 0)`,

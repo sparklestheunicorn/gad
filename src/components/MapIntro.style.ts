@@ -1,7 +1,5 @@
-import { mq } from '../styles/App.styles'
-
 export const mapIntroContainer = (theme) =>
-  mq({
+  theme.mq({
     label: 'mapIntroContainer',
     height: '100%',
     width: ['100%', '40%', '40%'],
