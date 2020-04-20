@@ -9,6 +9,7 @@ export type Theme = {
   }
   color: {
     background: string
+    selectedBackground: string
   }
   textSize: {
     XXS: string

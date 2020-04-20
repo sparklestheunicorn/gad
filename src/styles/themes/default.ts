@@ -13,6 +13,7 @@ export const defaultStyles = {
     shadow: '#d4d5d6',
     border: '#d4d5d6',
     borderDark: '#000',
+    selectedBackground: '#fff',
   },
   textSize: {
     XXS: '12px',
@@ -36,6 +37,7 @@ export const defaultStyles = {
   },
   shape: {
     roundedCorner: '12px',
+    borderRadius: '8px',
     circleDiameter: {
       S: '55px',
       M: '112px',

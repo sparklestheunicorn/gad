@@ -6,6 +6,7 @@ import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
+import { isDisabled } from './MapDepthSelector.style'
 
 export const MapNode = (props) => {
   const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
@@ -17,14 +18,12 @@ export const MapNode = (props) => {
 
   const hasChildren = Object.keys(nodeChildren).length > 0
 
-  const liStyles = topLevel
-    ? [s.mapQuestion]
-    : [s.mapNode, s.expanded(isExpanded), s.canExpand(hasChildren), s.selectedAndCanExpand(isExpanded, hasChildren)]
+  const liStyle = topLevel ? s.mapQuestion : s.mapNode
   return (
     <>
       <li
         key={nodeId}
-        css={[isExpanded ? selected(theme) : {}, dropShadow(theme), liStyles]}
+        css={[liStyle, isExpanded ? selected(theme) : {}, dropShadow(theme)]}
         onClick={(e) => {
           e.stopPropagation()
           if (hasChildren) {
@@ -44,6 +43,7 @@ export const MapNode = (props) => {
       >
         {topLevel && <ConvoCount numberConvos={Object.keys(nodeChildren).length} />}
         {topLevel ? <h3 css={s.questionTitle}>{title}</h3> : <h4 css={s.nodeTitle}>{title}</h4>}
+        {hasChildren && (isExpanded ? <span css={s.showingChildren}>►</span> : <span css={s.canExpand}>+</span>)}
       </li>
       {isExpanded && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>

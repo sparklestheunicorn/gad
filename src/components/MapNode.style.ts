@@ -3,33 +3,43 @@ import { css } from '@emotion/core'
 const rectangle = (theme) =>
   css({
     backgroundColor: '#fff',
-    borderRadius: `${theme.spacing.XS}`,
+    borderRadius: theme.shape.borderRadius,
   })
+
+const liBase = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  cursor: 'pointer',
+}
+
+const icon = (theme) => ({
+  color: theme.color.textLight,
+})
 
 export const styles = (theme) => ({
   mapQuestion: [
+    liBase,
     rectangle(theme),
     css({
       label: 'mapQuestion',
       position: 'relative',
-      display: 'flex',
-      flexDirection: 'row',
       marginBottom: theme.spacing.M,
-      cursor: 'pointer',
+      paddingRight: theme.spacing.S,
     }),
   ],
   mapNode: [
+    liBase,
     rectangle(theme),
-    {
+    css({
       label: 'mapNode',
       position: 'unset',
       width: '100%',
-      zIndex: '10',
-      padding: `${theme.spacing.S} ${theme.spacing.L} ${theme.spacing.S} ${theme.spacing.S}`,
+      zIndex: 10,
+      padding: theme.spacing.S,
       marginBottom: theme.spacing.M,
-      cursor: 'pointer',
       WebkitFontSmoothing: 'antialiased',
-    },
+    }),
   ],
   mapNodeChildren: css({
     label: 'nodeChildren',
@@ -45,53 +55,33 @@ export const styles = (theme) => ({
     animationDuration: '1s',
     animationFillMode: 'forwards',
   }),
-  expanded: (isExpanded) =>
-    isExpanded
-      ? css({
-          label: 'expanded',
-          fontWeight: 'bold',
-        })
-      : {},
-  canExpand: (hasChildren) =>
-    hasChildren
-      ? css({
-          label: 'canExpand',
-          '&:before': {
-            content: '"+"',
-            position: 'absolute',
-            top: theme.spacing.S,
-            right: theme.spacing.S,
-            fontSize: theme.textSize.M,
-            lineHeight: theme.textSize.M,
-          },
-        })
-      : {},
-  selectedAndCanExpand: (isExpanded, hasChildren) =>
-    isExpanded && hasChildren
-      ? css({
-          '&:before': {
-            content: '"▻"',
-            position: 'absolute',
-            right: 0,
-            fontWweight: 'bold',
-            fontSize: theme.textSize.M,
-            lineHeight: `calc(${theme.textSize.M} - 3px)`,
-            transform: 'scalex(0.5)',
-          },
-        })
-      : {},
+  canExpand: css([
+    icon(theme),
+    {
+      label: 'canExpand',
+      fontSize: theme.textSize.M,
+      marginTop: '-5px',
+    },
+  ]),
+  showingChildren: css(icon(theme), {
+    label: 'showingChildren',
+    fontSize: theme.textSize.XS,
+  }),
   questionTitle: css({
     label: 'mapQuestionTitle',
     display: 'flex',
-    flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'center',
     fontSize: theme.textSize.S,
     fontFamily: theme.font.paragraph,
     margin: `0 0 0 ${theme.spacing.M}`,
     paddingRight: theme.spacing.M,
+    paddingTop: theme.spacing.S,
+    paddingBottom: theme.spacing.S,
+    flexGrow: 2,
   }),
   nodeTitle: {
     fontFamily: theme.font.paragraph,
+    marginRight: theme.spacing.S,
+    flexGrow: 2,
   },
 })
