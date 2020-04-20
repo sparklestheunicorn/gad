@@ -5,6 +5,7 @@ export const styles = (theme) => ({
     label: 'convoCount',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: theme.spacing.XS,
     margin: '-1px 0 -1px -1px',
@@ -13,6 +14,7 @@ export const styles = (theme) => ({
     border: `2px solid ${theme.color.border}`,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: '#fff',
+    alignSelf: 'stretch',
   }),
   number: css({
     fontSize: theme.textSize.M,
