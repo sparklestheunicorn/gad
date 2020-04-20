@@ -9,7 +9,7 @@ export const mapIntroContainer = (theme) =>
     paddingLeft: [`${theme.spacing.M}`, '0px', '0px'],
     paddingRight: [theme.spacing.L, theme.spacing.M, theme.spacing.M],
     position: [`absolute`, 'relative', 'relative'],
-    zIndex: ['100'],
+    zIndex: 100,
     backgroundColor: theme.color.background,
     h2: {
       fontSize: theme.textSize.L,

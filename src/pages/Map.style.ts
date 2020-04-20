@@ -21,7 +21,7 @@ export const map = (theme) => ({
   label: 'map',
   height: `calc(100% - ${mapHeaderHeight} - ${mapFooterHeight})`,
   paddingBottom: `${mapFooterHeight}`,
-  opacity: 0, // something could use theme here
+  opacity: 0,
   animationName: 'fade-in',
   animationDuration: '1s',
   animationFillMode: 'forwards',
