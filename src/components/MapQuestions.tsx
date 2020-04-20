@@ -16,9 +16,9 @@ export const MapQuestions = (props) => {
   const theme: Theme = useTheme()
 
   return (
-    <div css={responsiveFlex}>
+    <div css={responsiveFlex(theme)}>
       <MapIntro />
-      <ul css={questionList}>
+      <ul css={questionList(theme)}>
         {questions.map((question, questionIndex) => (
           <MapNode
             key={question._key}

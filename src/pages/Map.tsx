@@ -27,7 +27,7 @@ export const Map = observer((props) => {
         <img src={require(`../assets/images/${theme.image.title}`)} alt={theme.strings.title} />
       </header>
       <main css={css([map(theme)])}>
-        <section css={slideToDepth(mapDepth)}>
+        <section css={slideToDepth(theme, mapDepth)}>
           <MapQuestions
             questions={questions}
             questionChildren={questionChildren}
