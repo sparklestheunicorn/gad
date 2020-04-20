@@ -1,15 +1,14 @@
-export const responsiveFlex = (theme) =>
-  theme.mq({
+export const styles = (theme) => ({
+  responsiveFlex: theme.mq({
     label: 'responsiveFlex',
     display: 'flex',
     flexDirection: ['column', 'row', 'row'],
     alignItems: ['center', null, null],
-  })
-
-export const questionList = (theme) =>
-  theme.mq({
+  }),
+  questionList: theme.mq({
     label: 'questionList',
     position: 'relative',
     padding: '0px',
     width: ['80%', '40%', '40%'],
-  })
+  }),
+})

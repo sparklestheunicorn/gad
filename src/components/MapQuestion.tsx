@@ -3,9 +3,9 @@ import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { getFinalNodeTitle } from '../firestore/firestore'
-import * as styles from './MapQuestion.style'
-import { knockout, selected, dropShadow } from '../styles/shared.style'
-import { mapNodeChildren } from './MapNode.style'
+import { styles } from './MapQuestion.style'
+import { selected, dropShadow } from '../styles/shared.style'
+import { styles as mapNodeStyles } from './MapNode.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 
@@ -21,6 +21,8 @@ export const MapQuestion = (props) => {
   } = props
 
   const theme: Theme = useTheme()
+  const s = styles(theme)
+  const mapNodeS = mapNodeStyles(theme)
 
   const [expandedChild, setExpandedChild] = React.useState(null)
 
@@ -31,7 +33,7 @@ export const MapQuestion = (props) => {
   return (
     <>
       <li
-        css={[styles.mapQuestion(theme), isSelected ? selected(theme) : {}, dropShadow(theme)]}
+        css={[s.mapQuestion, isSelected ? selected(theme) : {}, dropShadow(theme)]}
         key={questionIndex}
         onClick={() => {
           if (hasChildren) {
@@ -47,14 +49,14 @@ export const MapQuestion = (props) => {
           }
         }}
       >
-        <div css={styles.convoCount(theme)}>
+        <div css={s.convoCount}>
           <p>{Object.keys(questionChildren).length}</p>
           <p>convos</p>
         </div>
-        <h3 css={[styles.title(theme)]}>{getFinalNodeTitle(question)}</h3>
+        <h3 css={[s.title]}>{getFinalNodeTitle(question)}</h3>
       </li>
       {isSelected && (
-        <ul css={mapNodeChildren} key={`${questionIndex}-children`}>
+        <ul css={mapNodeS.mapNodeChildren} key={`${questionIndex}-children`}>
           {Object.keys(questionChildren).map((childNodeKey) => {
             const childNode = questionChildren[childNodeKey]
             return (

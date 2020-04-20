@@ -4,9 +4,8 @@ window.React = React // This is an ugly workaround for https://github.com/emotio
 import { jsx, css } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../styles/themes/Theme.type'
-import { heading } from '../styles/shared.style'
-import { mapIntroContainer } from './MapIntro.style'
-import { stylizedButton } from '../styles/shared.style'
+import { styles } from './MapIntro.style'
+import { heading, stylizedButton } from '../styles/shared.style'
 
 export const MapIntro = () => {
   const theme: Theme = useTheme()
@@ -15,8 +14,10 @@ export const MapIntro = () => {
 
   if (dismissed) return null
 
+  const s = styles(theme)
+
   return (
-    <div css={mapIntroContainer(theme)}>
+    <div css={s.mapIntroContainer}>
       <h2 css={heading(theme)}>Before You Begin</h2>
       <p>
         This is a library project supported by an international group of volunteers, however it is a U.S. based non-profit

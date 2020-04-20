@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 
-export const mapQuestion = (theme) =>
-  css({
+export const styles = (theme) => ({
+  mapQuestion: css({
     label: 'mapQuestion',
     position: 'relative',
     display: 'flex',
@@ -15,10 +15,8 @@ export const mapQuestion = (theme) =>
       display: 'inline-block',
       verticalAlign: 'bottom',
     },
-  })
-
-export const convoCount = (theme) =>
-  css({
+  }),
+  convoCount: css({
     label: 'convoCount',
     display: 'flex',
     flexDirection: 'column',
@@ -41,10 +39,8 @@ export const convoCount = (theme) =>
       margin: `-${theme.spacing.S} 0 ${theme.spacing.XS} 0`,
       fontWeight: 'bold',
     },
-  })
-
-export const title = (theme) =>
-  css({
+  }),
+  title: css({
     label: 'mapQuestionTitle',
     display: 'flex',
     flexDirection: 'row',
@@ -54,4 +50,5 @@ export const title = (theme) =>
     fontFamily: theme.font.paragraph,
     margin: `0 0 0 ${theme.spacing.M}`,
     paddingRight: theme.spacing.M,
-  })
+  }),
+})

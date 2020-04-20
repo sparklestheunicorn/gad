@@ -6,7 +6,6 @@ import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
-import { isDisabled } from './MapDepthSelector.style'
 
 export const MapNode = (props) => {
   const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isSelected, setIsSelected } = props
