@@ -10,7 +10,7 @@ export const knockout = (theme) => ({
 })
 
 export const selected = (theme) => ({
-  borderColor: theme.color.borderDark,
+  backgroundColor: theme.color.selectedBackground,
 })
 
 export const dropShadow = (theme) => ({

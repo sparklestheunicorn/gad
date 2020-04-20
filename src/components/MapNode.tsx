@@ -1,56 +1,63 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
-import * as styles from './MapNode.style'
+import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
+import { isDisabled } from './MapDepthSelector.style'
 
 export const MapNode = (props) => {
-  const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isExpanded, setIsExpanded } = props
+  const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isSelected, setIsSelected } = props
 
   const theme: Theme = useTheme()
+  const s = styles(theme)
 
-  const [expandedChild, setExpandedChild] = React.useState(null)
+  const [selectedChild, setSelectedChild] = React.useState(null)
 
   const hasChildren = Object.keys(nodeChildren).length > 0
 
-  const liStyles = topLevel
-    ? [styles.mapQuestion(theme)]
-    : [
-        styles.mapNode(theme),
-        styles.expanded(isExpanded),
-        styles.canExpand(hasChildren, theme),
-        styles.selectedAndCanExpand(isExpanded, hasChildren, theme),
-      ]
+  const focusOnExpanded = () => {
+    setMapDepth(depth - 1)
+  }
+
+  const expand = () => {
+    setIsSelected()
+    setMapDepth(depth)
+    setMaxMapDepth(depth)
+  }
+
+  const selectLeaf = () => {
+    setIsSelected()
+    setMaxMapDepth(depth - 1)
+    setMapDepth(depth - 1)
+  }
+
   return (
     <>
       <li
         key={nodeId}
-        css={[isExpanded ? selected(theme) : {}, dropShadow(theme), liStyles]}
+        css={[topLevel ? s.mapQuestion : s.mapNode, isSelected ? selected(theme) : {}, dropShadow(theme)]}
         onClick={(e) => {
           e.stopPropagation()
           if (hasChildren) {
-            if (isExpanded) {
-              setMapDepth(depth - 1)
+            if (isSelected) {
+              focusOnExpanded()
             } else {
-              setIsExpanded()
-              setMapDepth(depth)
-              setMaxMapDepth(depth)
+              expand()
             }
           } else {
-            // I am a leaf node, leave the map depth at my parent
-            setMaxMapDepth(depth - 1)
-            setMapDepth(depth - 1)
+            selectLeaf()
           }
         }}
       >
         {topLevel && <ConvoCount numberConvos={Object.keys(nodeChildren).length} />}
-        {topLevel ? <h3 css={styles.questionTitle(theme)}>{title}</h3> : <h4 css={styles.nodeTitle(theme)}>{title}</h4>}
+        {topLevel ? <h3 css={s.questionTitle}>{title}</h3> : <h4 css={s.nodeTitle}>{title}</h4>}
+        {hasChildren && (isSelected ? <span css={s.expanded}>►</span> : <span css={s.canExpand}>+</span>)}
       </li>
-      {isExpanded && hasChildren && (
-        <ul css={styles.mapNodeChildren} key={`${nodeId}-children`}>
+      {isSelected && hasChildren && (
+        <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
           {Object.keys(nodeChildren).map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
             return (
@@ -63,9 +70,9 @@ export const MapNode = (props) => {
                 setMapDepth={setMapDepth}
                 setMaxMapDepth={setMaxMapDepth}
                 depth={depth + 1}
-                isExpanded={childNodeKey == expandedChild}
-                setIsExpanded={() => {
-                  setExpandedChild(childNodeKey)
+                isSelected={childNodeKey == selectedChild}
+                setIsSelected={() => {
+                  setSelectedChild(childNodeKey)
                 }}
               />
             )

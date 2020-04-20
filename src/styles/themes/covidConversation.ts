@@ -13,6 +13,7 @@ export const ccStyles = {
     shadow: '#b4b5b6',
     border: '#d4d5d6',
     borderDark: '#136494',
+    selectedBackground: '#d1ecfa',
   },
   font: {
     heading: 'League Spartan',

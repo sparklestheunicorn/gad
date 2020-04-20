@@ -12,7 +12,7 @@ import { getFinalNodeTitle } from '../firestore/firestore'
 export const MapQuestions = (props) => {
   const { questions, questionChildren, setMapDepth, setMaxMapDepth } = props
 
-  const [expandedChild, setExpandedChild] = React.useState(null)
+  const [selectedChild, setSelectedChild] = React.useState(null)
 
   const theme: Theme = useTheme()
 
@@ -32,9 +32,9 @@ export const MapQuestions = (props) => {
             depth={1}
             setMapDepth={setMapDepth}
             setMaxMapDepth={setMaxMapDepth}
-            isExpanded={question._key === expandedChild}
-            setIsExpanded={() => {
-              setExpandedChild(question._key)
+            isSelected={question._key === selectedChild}
+            setIsSelected={() => {
+              setSelectedChild(question._key)
             }}
           />
         ))}
