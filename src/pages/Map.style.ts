@@ -3,12 +3,13 @@ import { mq } from '../styles/App.styles'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
+export const mapHeaderHeight = '120px'
 
 export const slideToDepth = (depth) =>
   mq({
-    label: 'moveToLevel',
+    label: 'slideToDepth',
     transform: [
-      `translate3d(${-80 * depth + 4}%, 0, 0)`,
+      `translate3d(${-80 * depth}%, 0, 0)`,
       `translate3d(${-40 * depth + 4}%, 0, 0)`,
       `translate3d(${-40 * depth + 4}%, 0, 0)`,
     ],
@@ -18,19 +19,23 @@ export const slideToDepth = (depth) =>
 
 export const map = (theme) => ({
   label: 'map',
-  opacity: 0, // something could use theme here
+  height: `calc(100% - ${mapHeaderHeight} - ${mapFooterHeight})`,
+  paddingBottom: `${mapFooterHeight}`,
+  opacity: 0,
   animationName: 'fade-in',
   animationDuration: '1s',
   animationFillMode: 'forwards',
+  overflowX: 'hidden',
   titleBlock: {
     background: 'transparent',
   },
 })
 
 export const topContainer = (theme) => ({
-  margin: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.L} ${theme.spacing.M}`,
-  height: 'auto',
+  label: 'top-container',
+  padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.L} ${theme.spacing.M}`,
   backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  height: mapHeaderHeight,
   img: {
     maxWidth: '350px',
   },

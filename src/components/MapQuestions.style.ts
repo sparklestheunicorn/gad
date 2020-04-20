@@ -10,5 +10,6 @@ export const responsiveFlex = mq({
 export const questionList = mq({
   label: 'questionList',
   position: 'relative',
+  padding: '0px',
   width: ['80%', '40%', '40%'],
 })

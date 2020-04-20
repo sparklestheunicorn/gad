@@ -5,11 +5,18 @@ import { jsx, css } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../styles/themes/Theme.type'
 import { heading } from '../styles/shared.style'
+import { mapIntroContainer } from './MapIntro.style'
+import { stylizedButton } from '../styles/shared.style'
 
 export const MapIntro = () => {
   const theme: Theme = useTheme()
+
+  const [dismissed, setDismissed] = React.useState(false)
+
+  if (dismissed) return null
+
   return (
-    <>
+    <div css={mapIntroContainer(theme)}>
       <h2 css={heading(theme)}>Before You Begin</h2>
       <p>
         This is a library project supported by an international group of volunteers, however it is a U.S. based non-profit
@@ -30,6 +37,9 @@ export const MapIntro = () => {
         encourage you to explore their arguments and evidence (and add your own), so we may all be on the same page.
       </p>
       <p>Thank you for your open-mindedness.</p>
-    </>
+      <button css={stylizedButton(theme)} onClick={() => setDismissed(true)}>
+        Got it!
+      </button>
+    </div>
   )
 }
