@@ -7,12 +7,12 @@ export const ccStyles = {
     welcomeCTA: 'covid-conversation-welcome-cta.png',
   },
   color: {
-    text: '#064b6e',
-    textLight: '#006297',
-    knockoutBackground: '#136494',
+    text: '#1c4c6c',
+    textLight: '#1c4c6c',
+    knockoutBackground: '#1c4c6c',
     shadow: '#b4b5b6',
     border: '#d4d5d6',
-    borderDark: '#136494',
+    borderDark: '#1c4c6c',
     selectedBackground: '#d1ecfa',
   },
   font: {
@@ -22,6 +22,6 @@ export const ccStyles = {
   },
   strings: {
     title: 'Covid Connection',
-    tagline: 'Combinind your conversations about COVID-19',
+    tagline: 'Combining your conversations about COVID-19',
   },
 }
