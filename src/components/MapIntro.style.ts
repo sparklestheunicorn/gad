@@ -1,5 +1,5 @@
-export const mapIntroContainer = (theme) =>
-  theme.mq({
+export const styles = (theme) => ({
+  mapIntroContainer: theme.mq({
     label: 'mapIntroContainer',
     height: '100%',
     width: ['100%', '40%', '40%'],
@@ -18,4 +18,5 @@ export const mapIntroContainer = (theme) =>
     button: {
       display: ['inline-block', 'none', 'none'],
     },
-  })
+  }),
+})

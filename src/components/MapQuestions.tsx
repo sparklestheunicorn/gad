@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { MapNode } from '../components/MapNode'
 import { MapIntro } from '../components/MapIntro'
-import { questionList, responsiveFlex } from './MapQuestions.style'
+import { styles } from './MapQuestions.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { getFinalNodeTitle } from '../firestore/firestore'
@@ -14,11 +14,12 @@ export const MapQuestions = (props) => {
   const [selectedChild, setSelectedChild] = React.useState(null)
 
   const theme: Theme = useTheme()
+  const s = styles(theme)
 
   return (
-    <div css={responsiveFlex(theme)}>
+    <div css={s.responsiveFlex}>
       <MapIntro />
-      <ul css={questionList(theme)}>
+      <ul css={s.questionList}>
         {questions.map((question, questionIndex) => (
           <MapNode
             key={question._key}

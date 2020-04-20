@@ -8,10 +8,11 @@ import { MapDepthSelector } from '../components/MapDepthSelector'
 
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../styles/themes/Theme.type'
-import { map, topContainer, slideToDepth, mapFooter } from './Map.style'
+import { styles } from './Map.style'
 
 export const Map = observer((props) => {
   const theme: Theme = useTheme()
+  const s = styles(theme)
   const questions = getQuestions()
   const questionChildren = questions.map((question) => ({
     questionId: question._key,
@@ -23,14 +24,14 @@ export const Map = observer((props) => {
 
   return (
     <>
-      <header css={topContainer(theme)}>
+      <header css={s.topContainer}>
         <img
           src={require(`../assets/images/${theme.image.title}`)}
           alt={`${theme.strings.title} - ${theme.strings.tagline}`}
         />
       </header>
-      <main css={css([map(theme)])}>
-        <section css={slideToDepth(theme, mapDepth)}>
+      <main css={css(s.mapContainer)}>
+        <section css={s.slideToDepth(mapDepth)}>
           <MapQuestions
             questions={questions}
             questionChildren={questionChildren}
@@ -39,7 +40,7 @@ export const Map = observer((props) => {
           />
         </section>
       </main>
-      <footer css={mapFooter}>
+      <footer css={s.mapFooter}>
         <MapDepthSelector
           currentDepth={mapDepth}
           maxDepth={maxMapDepth}
