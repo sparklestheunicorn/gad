@@ -30,6 +30,7 @@ export const getQuestions = StoreAccessor((s) => () => {
 
   const questions = GetNodeChildrenL2(mainMap_rootNodeID)
   questions.sort((a, b) => a.createdAt - b.createdAt) // until we have a way to manually specify the order, use node creation-time
+  console.log(questions)
   return questions
 })
 

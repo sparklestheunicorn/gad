@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
-import { getQuestions, getMapNodeSubtree } from '../firestore/firestore'
 import { MapQuestions } from '../components/MapQuestions'
 import { MapDepthSelector } from '../components/MapDepthSelector'
 
@@ -11,13 +11,10 @@ import { Theme } from '../styles/themes/Theme.type'
 import { styles } from './Map.style'
 
 export const Map = observer((props) => {
+  const { questions, questionChildren } = props
+
   const theme: Theme = useTheme()
   const s = styles(theme)
-  const questions = getQuestions()
-  const questionChildren = questions.map((question) => ({
-    questionId: question._key,
-    childNodes: getMapNodeSubtree(question._key),
-  }))
 
   const [mapDepth, setMapDepth] = React.useState(0)
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
@@ -25,10 +22,12 @@ export const Map = observer((props) => {
   return (
     <>
       <header css={s.topContainer}>
-        <img
-          src={require(`../assets/images/${theme.image.title}`)}
-          alt={`${theme.strings.title} - ${theme.strings.tagline}`}
-        />
+        <Link to="/">
+          <img
+            src={require(`../assets/images/${theme.image.title}`)}
+            alt={`${theme.strings.title} - ${theme.strings.tagline}`}
+          />
+        </Link>
       </header>
       <main css={css(s.mapContainer)}>
         <section css={s.slideToDepth(mapDepth)}>
