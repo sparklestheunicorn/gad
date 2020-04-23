@@ -1,20 +1,23 @@
-export const styles = (theme) => ({
-  label: 'app',
-  position: 'relative',
-  height: '100%',
-  '.font-preloader': {
-    position: 'absolute',
-    transform: 'translate(300vw)',
+import { css } from '@emotion/core'
 
-    span: {
-      fontFamily: theme.font.heading,
-    },
+export const styles = (theme) =>
+  css({
+    label: 'app',
+    position: 'relative',
+    height: '100%',
+    '.font-preloader': {
+      position: 'absolute',
+      transform: 'translate(300vw)',
 
-    'span:nth-of-type(2)': {
-      fontFamily: theme.font.subheading,
+      span: {
+        fontFamily: theme.font.heading,
+      },
+
+      'span:nth-of-type(2)': {
+        fontFamily: theme.font.subheading,
+      },
+      'span:nth-of-type(3)': {
+        fontFamily: theme.font.paragraph,
+      },
     },
-    'span:nth-of-type(3)': {
-      fontFamily: theme.font.paragraph,
-    },
-  },
-})
+  })
