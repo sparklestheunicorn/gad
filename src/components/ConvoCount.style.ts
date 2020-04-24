@@ -12,9 +12,8 @@ export const styles = (theme) => ({
     fontFamily: theme.font.paragraph,
     color: theme.color.textLight,
     border: `2px solid ${theme.color.border}`,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: `0 ${theme.shape.borderRadius} 0 0 `,
     backgroundColor: '#fff',
-    alignSelf: 'stretch',
   }),
   number: css({
     fontSize: theme.textSize.M,

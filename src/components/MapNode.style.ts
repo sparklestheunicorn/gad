@@ -6,12 +6,13 @@ const rectangle = (theme) =>
     borderRadius: theme.shape.borderRadius,
   })
 
-const liBase = {
+const liBase = css({
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'space-between',
   alignItems: 'center',
   cursor: 'pointer',
-}
+})
 
 const icon = (theme) => ({
   color: theme.color.textLight,
@@ -25,7 +26,6 @@ export const styles = (theme) => ({
       label: 'mapQuestion',
       position: 'relative',
       marginBottom: theme.spacing.M,
-      paddingRight: theme.spacing.S,
     }),
   ],
   mapNode: [
@@ -36,7 +36,6 @@ export const styles = (theme) => ({
       position: 'unset',
       width: '100%',
       zIndex: 10,
-      padding: theme.spacing.S,
       marginBottom: theme.spacing.M,
       WebkitFontSmoothing: 'antialiased',
     }),
@@ -70,18 +69,39 @@ export const styles = (theme) => ({
   questionTitle: css({
     label: 'mapQuestionTitle',
     display: 'flex',
-    alignItems: 'center',
     fontSize: theme.textSize.S,
     fontFamily: theme.font.paragraph,
-    margin: `0 0 0 ${theme.spacing.M}`,
-    paddingRight: theme.spacing.M,
-    paddingTop: theme.spacing.S,
-    paddingBottom: theme.spacing.S,
+    padding: `${theme.spacing.S} ${theme.spacing.M}`,
+    margin: 0,
     flexGrow: 2,
+    borderBottom: `2px solid ${theme.color.border}`,
   }),
   nodeTitle: {
     fontFamily: theme.font.paragraph,
-    marginRight: theme.spacing.S,
     flexGrow: 2,
+    padding: theme.spacing.S,
   },
+  detailViewOpen: {
+    height: '75vh',
+  },
+  detailToggle: css([
+    icon(theme),
+    {
+      label: 'detailToggle',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      fontSize: theme.textSize.S,
+      borderTop: `2px solid ${theme.color.border}`,
+      borderRadius: `0 0 ${theme.shape.borderRadius} ${theme.shape.borderRadius}`,
+    },
+  ]),
+  mainLiSection: css({
+    label: 'mainLiSection',
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+  }),
 })
