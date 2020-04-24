@@ -45,31 +45,29 @@ export const MapNode = (props) => {
           dropShadow(theme),
         ]}
       >
-        <div css={s.mainLiSection}>
+        <div
+          css={s.mainLiSection}
+          onClick={() => {
+            !hasChildren && selectLeaf()
+          }}
+        >
           {topLevel ? <h3 css={s.questionTitle}>{title}</h3> : <h4 css={s.nodeTitle}>{title}</h4>}
           {detailViewOpen && <div></div>}
-          {hasChildren &&
-            (topLevel ? (
-              <ConvoCount
-                numberConvos={Object.keys(nodeChildren).length}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  if (hasChildren) {
-                    if (isSelected) {
-                      focusOnSelected()
-                    } else {
-                      showChildren()
-                    }
-                  } else {
-                    selectLeaf()
-                  }
-                }}
-              />
-            ) : isSelected ? (
-              <span css={s.expanded}>►</span>
-            ) : (
-              <span css={s.canExpand}>+</span>
-            ))}
+          {hasChildren && (
+            <ConvoCount
+              showNumber={topLevel}
+              isSelected={isSelected}
+              numberConvos={Object.keys(nodeChildren).length}
+              onClick={(e) => {
+                e.stopPropagation()
+                if (isSelected) {
+                  focusOnSelected()
+                } else {
+                  showChildren()
+                }
+              }}
+            />
+          )}
         </div>
         <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
           {detailViewOpen ? '⌃' : '⌄'}

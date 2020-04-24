@@ -14,10 +14,6 @@ const liBase = css({
   cursor: 'pointer',
 })
 
-const icon = (theme) => ({
-  color: theme.color.textLight,
-})
-
 export const styles = (theme) => ({
   mapQuestion: [
     liBase,
@@ -54,18 +50,6 @@ export const styles = (theme) => ({
     animationDuration: '1s',
     animationFillMode: 'forwards',
   }),
-  canExpand: css([
-    icon(theme),
-    {
-      label: 'canExpand',
-      fontSize: theme.textSize.M,
-      marginTop: '-5px',
-    },
-  ]),
-  expanded: css(icon(theme), {
-    label: 'expanded',
-    fontSize: theme.textSize.XS,
-  }),
   questionTitle: css({
     label: 'mapQuestionTitle',
     display: 'flex',
@@ -84,18 +68,16 @@ export const styles = (theme) => ({
   detailViewOpen: {
     height: '75vh',
   },
-  detailToggle: css([
-    icon(theme),
-    {
-      label: 'detailToggle',
-      display: 'flex',
-      justifyContent: 'center',
-      width: '100%',
-      fontSize: theme.textSize.S,
-      borderTop: `2px solid ${theme.color.border}`,
-      borderRadius: `0 0 ${theme.shape.borderRadius} ${theme.shape.borderRadius}`,
-    },
-  ]),
+  detailToggle: css({
+    label: 'detailToggle',
+    color: theme.color.textLight,
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    fontSize: theme.textSize.S,
+    borderTop: `2px solid ${theme.color.border}`,
+    borderRadius: `0 0 ${theme.shape.borderRadius} ${theme.shape.borderRadius}`,
+  }),
   mainLiSection: css({
     label: 'mainLiSection',
     display: 'flex',
