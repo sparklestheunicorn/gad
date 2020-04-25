@@ -8,13 +8,11 @@ export const styles = (theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     padding: theme.spacing.XS,
-    margin: '-1px 0 -1px -1px',
     fontFamily: theme.font.paragraph,
     color: theme.color.textLight,
-    border: `2px solid ${theme.color.border}`,
-    borderRadius: theme.shape.borderRadius,
+    border: `2px solid ${theme.color.textLight}`,
+    borderRadius: `0 ${theme.shape.borderRadius} 0 0 `,
     backgroundColor: '#fff',
-    alignSelf: 'stretch',
   }),
   number: css({
     fontSize: theme.textSize.M,
@@ -22,7 +20,25 @@ export const styles = (theme) => ({
     margin: 0,
   }),
   convos: css({
+    label: 'convos',
     margin: `-${theme.spacing.S} 0 ${theme.spacing.XS} 0`,
     fontWeight: 'bold',
   }),
+  canExpand: css({
+    label: 'canExpand',
+    color: theme.color.textLight,
+    backgroundColor: '#fff',
+  }),
+  plus: {
+    fontSize: theme.textSize.M,
+    marginTop: '-5px',
+  },
+  expanded: css({
+    label: 'expanded',
+    color: '#fff',
+    backgroundColor: theme.color.textLight,
+  }),
+  arrow: {
+    fontSize: theme.textSize.XS,
+  },
 })

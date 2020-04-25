@@ -14,14 +14,15 @@ export const MapNode = (props) => {
   const s = styles(theme)
 
   const [selectedChild, setSelectedChild] = React.useState(null)
+  const [detailViewOpen, setDetailViewOpen] = React.useState(false)
 
   const hasChildren = Object.keys(nodeChildren).length > 0
 
-  const focusOnExpanded = () => {
+  const focusOnSelected = () => {
     setMapDepth(depth - 1)
   }
 
-  const expand = () => {
+  const showChildren = () => {
     setIsSelected()
     setMapDepth(depth)
     setMaxMapDepth(depth)
@@ -35,25 +36,38 @@ export const MapNode = (props) => {
 
   return (
     <>
-      <li
-        key={nodeId}
-        css={[topLevel ? s.mapQuestion : s.mapNode, isSelected ? selected(theme) : {}, dropShadow(theme)]}
-        onClick={(e) => {
-          e.stopPropagation()
-          if (hasChildren) {
-            if (isSelected) {
-              focusOnExpanded()
-            } else {
-              expand()
-            }
-          } else {
-            selectLeaf()
-          }
-        }}
-      >
-        {topLevel && <ConvoCount numberConvos={Object.keys(nodeChildren).length} />}
-        {topLevel ? <h3 css={s.questionTitle}>{title}</h3> : <h4 css={s.nodeTitle}>{title}</h4>}
-        {hasChildren && (isSelected ? <span css={s.expanded}>►</span> : <span css={s.canExpand}>+</span>)}
+      <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, isSelected ? selected(theme) : {}, dropShadow(theme)]}>
+        <div
+          css={s.mainLiSection}
+          onClick={() => {
+            !hasChildren && selectLeaf()
+          }}
+        >
+          {topLevel ? (
+            <h3 css={s.questionTitle(detailViewOpen)}>{title}</h3>
+          ) : (
+            <h4 css={s.nodeTitle(detailViewOpen)}>{title}</h4>
+          )}
+          {hasChildren && (
+            <ConvoCount
+              showNumber={topLevel}
+              isSelected={isSelected}
+              numberConvos={Object.keys(nodeChildren).length}
+              onClick={(e) => {
+                e.stopPropagation()
+                if (isSelected) {
+                  focusOnSelected()
+                } else {
+                  showChildren()
+                }
+              }}
+            />
+          )}
+          <div css={s.detailView(detailViewOpen)}></div>
+        </div>
+        <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
+          {detailViewOpen ? '⌃' : '⌄'}
+        </button>
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
