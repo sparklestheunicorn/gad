@@ -36,23 +36,18 @@ export const MapNode = (props) => {
 
   return (
     <>
-      <li
-        key={nodeId}
-        css={[
-          topLevel ? s.mapQuestion : s.mapNode,
-          isSelected ? selected(theme) : {},
-          detailViewOpen ? s.detailViewOpen : {},
-          dropShadow(theme),
-        ]}
-      >
+      <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, isSelected ? selected(theme) : {}, dropShadow(theme)]}>
         <div
           css={s.mainLiSection}
           onClick={() => {
             !hasChildren && selectLeaf()
           }}
         >
-          {topLevel ? <h3 css={s.questionTitle}>{title}</h3> : <h4 css={s.nodeTitle}>{title}</h4>}
-          {detailViewOpen && <div></div>}
+          {topLevel ? (
+            <h3 css={s.questionTitle(detailViewOpen)}>{title}</h3>
+          ) : (
+            <h4 css={s.nodeTitle(detailViewOpen)}>{title}</h4>
+          )}
           {hasChildren && (
             <ConvoCount
               showNumber={topLevel}
@@ -68,6 +63,7 @@ export const MapNode = (props) => {
               }}
             />
           )}
+          <div css={s.detailView(detailViewOpen)}></div>
         </div>
         <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
           {detailViewOpen ? '⌃' : '⌄'}

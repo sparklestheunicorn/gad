@@ -50,24 +50,23 @@ export const styles = (theme) => ({
     animationDuration: '1s',
     animationFillMode: 'forwards',
   }),
-  questionTitle: css({
-    label: 'mapQuestionTitle',
-    display: 'flex',
-    fontSize: theme.textSize.S,
-    fontFamily: theme.font.paragraph,
-    padding: `${theme.spacing.S} ${theme.spacing.M}`,
-    margin: 0,
-    flexGrow: 2,
-    borderBottom: `2px solid ${theme.color.border}`,
-  }),
-  nodeTitle: {
+  questionTitle: (detailViewOpen) =>
+    css({
+      label: 'mapQuestionTitle',
+      display: 'flex',
+      fontSize: theme.textSize.S,
+      fontFamily: theme.font.paragraph,
+      padding: `${theme.spacing.S} ${theme.spacing.M}`,
+      margin: 0,
+      flexGrow: 2,
+      borderBottom: detailViewOpen ? `2px solid ${theme.color.border}` : 'none',
+    }),
+  nodeTitle: (detailViewOpen) => ({
     fontFamily: theme.font.paragraph,
     flexGrow: 2,
     padding: theme.spacing.S,
-  },
-  detailViewOpen: {
-    height: '75vh',
-  },
+    borderBottom: detailViewOpen ? `2px solid ${theme.color.border}` : 'none',
+  }),
   detailToggle: css({
     label: 'detailToggle',
     color: theme.color.textLight,
@@ -85,5 +84,10 @@ export const styles = (theme) => ({
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'stretch',
+  }),
+  detailView: (detailViewOpen) => ({
+    label: 'detailView',
+    height: detailViewOpen ? '70vh' : '0',
+    transition: 'height 1s',
   }),
 })
