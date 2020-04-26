@@ -1,12 +1,19 @@
-import { ThemeContext } from '@emotion/core'
+import { css } from '@emotion/core'
 
 export const styles = (theme) => ({
   rephraseContainer: {
     label: 'rephraseContainer',
     display: 'flex',
     alignItems: 'center',
-    margin: `5px 0`,
+    margin: `${theme.spacing.M} 0`,
   },
+  terms: {
+    label: 'terms',
+    borderTop: `1px solid ${theme.color.border}`,
+  },
+  termName: css({
+    fontWeight: 'bold',
+  }),
   carouselArrow: {
     label: 'carouselArrow',
     color: theme.color.textLight,
