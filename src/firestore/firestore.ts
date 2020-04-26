@@ -57,7 +57,7 @@ export const getMapNodeSubtree = StoreAccessor((s) => (nodeId: string) => {
 })
 
 export const getMapNodeTerms = StoreAccessor((s) => (revisionId: string) => {
-  let terms = GetTermsAttached(revisionId)
+  const terms = GetTermsAttached(revisionId)
 
   console.log('Firestore Terms:', terms)
 
