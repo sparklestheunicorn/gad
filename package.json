@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@debate-map/server-link": "^1.0.2",
+    "@debate-map/server-link": "^1.0.11",
     "@emotion/core": "^10.0.28",
     "@emotion/types": "^0.7.0",
     "@types/jest": "^24.0.25",

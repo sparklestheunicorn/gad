@@ -92,7 +92,11 @@ export const styles = (theme) => ({
   detailView: (detailViewOpen) => ({
     label: 'detailView',
     maxHeight: detailViewOpen ? '50vh' : '0',
-    transition: 'max-height 1s',
+    padding: detailViewOpen ? theme.spacing.M : 0,
+    overflowY: detailViewOpen ? 'hidden' : 'auto',
+    transition: 'max-height 1s ease',
     display: 'flex',
+    flexDirection: 'column',
+    fontFamily: theme.font.paragraph,
   }),
 })

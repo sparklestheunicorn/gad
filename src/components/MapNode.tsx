@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
+import { getMapNodeTerms } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
@@ -11,7 +12,18 @@ import { GetNodePhrasings } from '@debate-map/server-link'
 import { NodeDetail } from './NodeDetail'
 
 export const MapNode = observer((props) => {
-  const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isSelected, setIsSelected } = props
+  const {
+    topLevel,
+    title,
+    nodeId,
+    currentRevision,
+    nodeChildren,
+    depth,
+    setMapDepth,
+    setMaxMapDepth,
+    isSelected,
+    setIsSelected,
+  } = props
 
   const theme: Theme = useTheme()
   const s = styles(theme)
@@ -53,6 +65,16 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
+  const hardcodedTerms = [
+    {
+      term: 'Novel Coronavirus',
+      definition:
+        'Novel coronavirus is a temporary name given to coronaviruses of medical significance before a permanent name is decided upon.',
+    },
+  ]
+
+  const terms = nodeId === 'wlTKYdgGTi-L43GWvEX31Q' ? hardcodedTerms : getMapNodeTerms(currentRevision)
+
   return (
     <>
       <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
@@ -87,7 +109,7 @@ export const MapNode = observer((props) => {
         {hasDetails && (
           <>
             <div css={s.detailView(detailViewOpen)}>
-              {detailViewOpen && <NodeDetail nodeId={nodeId} nextPhrasing={nextPhrasing} />}
+              {detailViewOpen && <NodeDetail nodeId={nodeId} nextPhrasing={nextPhrasing} terms={terms} />}
             </div>
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? '⌃' : '⌄'}
@@ -99,10 +121,12 @@ export const MapNode = observer((props) => {
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
           {Object.keys(nodeChildren).map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
+
             return (
               <MapNode
                 key={childNodeKey}
                 nodeId={childNodeKey}
+                currentRevision={childNode.currentRevision}
                 topLevel={false}
                 title={childNode.title}
                 nodeChildren={childNode.childNodes}
