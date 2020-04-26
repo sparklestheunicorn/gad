@@ -60,6 +60,9 @@ export const styles = (theme) => ({
       margin: 0,
       flexGrow: 2,
       borderBottom: detailViewOpen ? `2px solid ${theme.color.border}` : 'none',
+      animationName: 'fade-in',
+      animationDelay: '0.4s',
+      animationDuration: '1s',
     }),
   nodeTitle: (detailViewOpen) => ({
     fontFamily: theme.font.paragraph,
@@ -67,6 +70,9 @@ export const styles = (theme) => ({
     padding: theme.spacing.S,
     margin: 0,
     borderBottom: detailViewOpen ? `2px solid ${theme.color.border}` : 'none',
+    animationName: 'fade-in',
+    animationDelay: '0.4s',
+    animationDuration: '1s',
   }),
   detailToggle: (hasDetails) =>
     css({

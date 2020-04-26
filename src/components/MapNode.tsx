@@ -87,7 +87,14 @@ export const MapNode = observer((props) => {
         {hasDetails && (
           <>
             <div css={s.detailView(detailViewOpen)}>
-              {detailViewOpen && <NodeDetail nodeId={nodeId} nextPhrasing={nextPhrasing} />}
+              {detailViewOpen && (
+                <NodeDetail
+                  nodeId={nodeId}
+                  currentPhrasingIndex={currentPhrasingIndex}
+                  setCurrentPhrasingIndex={setCurrentPhrasingIndex}
+                  numPhrasings={phrasings.length}
+                />
+              )}
             </div>
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? '⌃' : '⌄'}
