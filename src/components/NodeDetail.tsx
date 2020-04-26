@@ -6,14 +6,28 @@ import { Theme } from '@emotion/types'
 import { styles } from './NodeDetail.style'
 import { stylizedButton } from '../styles/shared.style'
 
-export const NodeDetail = ({ nodeId, nextPhrasing }) => {
+export const NodeDetail = ({ nodeId, nextPhrasing, terms }) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
 
   if (nodeId !== 'wlTKYdgGTi-L43GWvEX31Q') return null
   return (
-    <button css={css([stylizedButton(theme), s.rephrase])} onClick={nextPhrasing}>
-      Rephrase
-    </button>
+    <>
+      <div css={s.rephrase}>
+        <button css={css([stylizedButton(theme)])} onClick={nextPhrasing}>
+          Rephrase
+        </button>
+      </div>
+      {terms && (
+        <div css={s.terms}>
+          {terms.map((term) => (
+            <p key={term.term}>
+              <span css={css(s.termName)}>{term.term}: </span>
+              <span>{term.definition}</span>
+            </p>
+          ))}
+        </div>
+      )}
+    </>
   )
 }
