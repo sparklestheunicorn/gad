@@ -1,6 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import * as React from 'react'
+import sortBy from 'lodash/sortBy'
+import get from 'lodash/get'
+import map from 'lodash/map'
 import { MapNode } from '../components/MapNode'
 import { MapIntro } from '../components/MapIntro'
 import { styles } from './MapQuestions.style'
@@ -16,6 +19,15 @@ export const MapQuestions = (props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
 
+  const getQuestionChildren = (question, questionChildren) => {
+    if (question.childrenOrder) {
+      const childrenWithOrder = map(questionChildren, (_, key, child) => ({
+        index: get(question.childrenOrder, key),
+      }))
+      return sortBy(childrenWithOrder, 'index')
+    } else return questionChildren
+  }
+
   return (
     <div css={s.responsiveFlex}>
       <MapIntro />
@@ -26,7 +38,7 @@ export const MapQuestions = (props) => {
             nodeId={question._key}
             topLevel={true}
             title={getFinalNodeTitle(question)}
-            nodeChildren={questionChildren[questionIndex].childNodes}
+            nodeChildren={getQuestionChildren(question, questionChildren[questionIndex].childNodes)}
             depth={1}
             setMapDepth={setMapDepth}
             setMaxMapDepth={setMaxMapDepth}
