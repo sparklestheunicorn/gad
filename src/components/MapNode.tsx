@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
-import { getMapNodeTerms } from '../firestore/firestore'
+import { getMapNodeTerms, getMapNodePhrasings } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
@@ -31,20 +31,24 @@ export const MapNode = observer((props) => {
   const [selectedChild, setSelectedChild] = React.useState(null)
   const [detailViewOpen, setDetailViewOpen] = React.useState(false)
 
-  const variantPhrasings = [
+  const variantPhrasings = getMapNodePhrasings(nodeId)
+
+  /*[
     'A disease in humans caused by a virus that came from wild animals',
     'A zoonotic, severe acute respiratory disease caused by a coronavirus strain of virus',
     'A natural disease caused by a virus contracted from wildlife',
-  ]
+  ] */
   // let variantPhrasings = []
   // React.useEffect(() => {
   //   variantPhrasings = GetNodePhrasings(nodeId)
   // }, [nodeId])
-  const phrasings = [title, ...variantPhrasings]
+  const phrasings = [{ text: title }, ...variantPhrasings]
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
   const nextPhrasing = () => {
     setCurrentPhrasingIndex((currentPhrasingIndex + 1) % phrasings.length)
   }
+
+  const terms = getMapNodeTerms(currentRevision)
 
   const hasChildren = Object.keys(nodeChildren).length > 0
   const hasDetails = nodeId === 'wlTKYdgGTi-L43GWvEX31Q'
@@ -65,8 +69,6 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
-  const terms = getMapNodeTerms(currentRevision)
-
   return (
     <>
       <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
@@ -77,9 +79,9 @@ export const MapNode = observer((props) => {
           }}
         >
           {topLevel ? (
-            <h3 css={s.questionTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex]}</h3>
+            <h3 css={s.questionTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h3>
           ) : (
-            <h4 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex]}</h4>
+            <h4 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h4>
           )}
           {hasChildren && (
             <ConvoCount

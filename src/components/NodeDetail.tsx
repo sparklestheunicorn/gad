@@ -15,7 +15,16 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
   return (
     <>
       <div css={s.rephraseContainer}>
-        <button css={s.carouselArrow} onClick={() => setCurrentPhrasingIndex((currentPhrasingIndex - 1) % numPhrasings)}>
+        <button
+          css={s.carouselArrow}
+          onClick={() => {
+            if (currentPhrasingIndex === 0) {
+              setCurrentPhrasingIndex(numPhrasings - 1)
+            } else {
+              setCurrentPhrasingIndex(currentPhrasingIndex - 1)
+            }
+          }}
+        >
           ◀
         </button>
         {range(numPhrasings).map((index) => (
@@ -30,19 +39,8 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
         </button>
       </div>
       {terms && (
-<<<<<<< Updated upstream
-        <>
-          {terms.map((term) => (
-            <p key={term.term}>
-              <span css={s.termName}>{term.term}: </span>
-              <span>{term.definition}</span>
-            </p>
-          ))}
-        </>
-=======
         <div css={s.terms}>
           {terms.map((term) => {
-            console.log(term)
             return (
               term && (
                 <p key={term.name}>
@@ -53,7 +51,6 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
             )
           })}
         </div>
->>>>>>> Stashed changes
       )}
     </>
   )
