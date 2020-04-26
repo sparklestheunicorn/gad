@@ -12,14 +12,24 @@ import { GetNodePhrasings } from '@debate-map/server-link'
 import { NodeDetail } from './NodeDetail'
 
 export const MapNode = observer((props) => {
-  const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isSelected, setIsSelected } = props
+  const {
+    topLevel,
+    title,
+    nodeId,
+    currentRevision,
+    nodeChildren,
+    depth,
+    setMapDepth,
+    setMaxMapDepth,
+    isSelected,
+    setIsSelected,
+  } = props
 
   const theme: Theme = useTheme()
   const s = styles(theme)
 
   const [selectedChild, setSelectedChild] = React.useState(null)
   const [detailViewOpen, setDetailViewOpen] = React.useState(false)
-  const [terms, setTerms] = React.useState([])
 
   const variantPhrasings = [
     'A disease in humans caused by a virus that came from wild animals',
@@ -55,13 +65,13 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
-  React.useEffect(() => {
-    setTerms(GetTermsAttached(nodeId))
-  })
+  const terms = GetTermsAttached(currentRevision)
 
-  if (terms.length > 0 || nodeId === 'wlTKYdgGTi-L43GWvEX31Q') {
-    console.log('TERMS FOR: ', nodeId, terms)
+  if ((terms && terms.length > 0) || nodeId === 'wlTKYdgGTi-L43GWvEX31Q') {
+    console.log('TERMS FOR: ', currentRevision, terms)
+    console.log(title)
   }
+
   return (
     <>
       <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
@@ -113,6 +123,7 @@ export const MapNode = observer((props) => {
               <MapNode
                 key={childNodeKey}
                 nodeId={childNodeKey}
+                currentRevision={childNode.currentRevision}
                 topLevel={false}
                 title={childNode.title}
                 nodeChildren={childNode.childNodes}

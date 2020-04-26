@@ -64,6 +64,7 @@ export const getMapNodeSubtree = StoreAccessor((s) => (nodeId: string) => {
     subtree[child._key] = {
       title: child.current.titles.base,
       childNodes: getMapNodeSubtree(child._key),
+      currentRevision: child.currentRevision,
     }
   })
 

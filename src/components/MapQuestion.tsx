@@ -62,6 +62,7 @@ export const MapQuestion = (props) => {
             return (
               <MapNode
                 nodeId={childNodeKey}
+                currentRevision={childNode.currentRevision}
                 title={childNode.title}
                 nodeChildren={childNode.childNodes}
                 depth={2}
