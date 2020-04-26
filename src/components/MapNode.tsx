@@ -1,13 +1,16 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
+import { observer } from 'mobx-react'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
+import { GetNodePhrasings } from '@debate-map/server-link'
+import { NodeDetail } from './NodeDetail'
 
-export const MapNode = (props) => {
+export const MapNode = observer((props) => {
   const { topLevel, title, nodeId, nodeChildren, depth, setMapDepth, setMaxMapDepth, isSelected, setIsSelected } = props
 
   const theme: Theme = useTheme()
@@ -16,7 +19,23 @@ export const MapNode = (props) => {
   const [selectedChild, setSelectedChild] = React.useState(null)
   const [detailViewOpen, setDetailViewOpen] = React.useState(false)
 
+  const variantPhrasings = [
+    'A disease in humans caused by a virus that came from wild animals',
+    'A zoonotic, severe acute respiratory disease caused by a coronavirus strain of virus',
+    'A natural disease caused by a virus contracted from wildlife',
+  ]
+  // let variantPhrasings = []
+  // React.useEffect(() => {
+  //   variantPhrasings = GetNodePhrasings(nodeId)
+  // }, [nodeId])
+  const phrasings = [title, ...variantPhrasings]
+  const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
+  const nextPhrasing = () => {
+    setCurrentPhrasingIndex((currentPhrasingIndex + 1) % phrasings.length)
+  }
+
   const hasChildren = Object.keys(nodeChildren).length > 0
+  const hasDetails = nodeId === 'wlTKYdgGTi-L43GWvEX31Q'
 
   const focusOnSelected = () => {
     setMapDepth(depth - 1)
@@ -36,23 +55,24 @@ export const MapNode = (props) => {
 
   return (
     <>
-      <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, isSelected ? selected(theme) : {}, dropShadow(theme)]}>
+      <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
         <div
-          css={s.mainLiSection}
+          css={[s.liHeader(hasDetails), isSelected ? selected(theme) : {}]}
           onClick={() => {
             !hasChildren && selectLeaf()
           }}
         >
           {topLevel ? (
-            <h3 css={s.questionTitle(detailViewOpen)}>{title}</h3>
+            <h3 css={s.questionTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex]}</h3>
           ) : (
-            <h4 css={s.nodeTitle(detailViewOpen)}>{title}</h4>
+            <h4 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex]}</h4>
           )}
           {hasChildren && (
             <ConvoCount
               showNumber={topLevel}
               isSelected={isSelected}
               numberConvos={Object.keys(nodeChildren).length}
+              hasDetails={hasDetails}
               onClick={(e) => {
                 e.stopPropagation()
                 if (isSelected) {
@@ -63,11 +83,17 @@ export const MapNode = (props) => {
               }}
             />
           )}
-          <div css={s.detailView(detailViewOpen)}></div>
         </div>
-        <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
-          {detailViewOpen ? '⌃' : '⌄'}
-        </button>
+        {hasDetails && (
+          <>
+            <div css={s.detailView(detailViewOpen)}>
+              {detailViewOpen && <NodeDetail nodeId={nodeId} nextPhrasing={nextPhrasing} />}
+            </div>
+            <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
+              {detailViewOpen ? '⌃' : '⌄'}
+            </button>
+          </>
+        )}
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
@@ -94,4 +120,4 @@ export const MapNode = (props) => {
       )}
     </>
   )
-}
+})
