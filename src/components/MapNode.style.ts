@@ -95,14 +95,15 @@ export const styles = (theme) => ({
       alignItems: 'stretch',
       borderRadius: hasDetails ? `${theme.shape.borderRadius} ${theme.shape.borderRadius} 0 0` : theme.shape.borderRadius,
     }),
-  detailView: (detailViewOpen) => ({
-    label: 'detailView',
-    maxHeight: detailViewOpen ? '50vh' : '0',
-    padding: detailViewOpen ? theme.spacing.M : 0,
-    overflowY: detailViewOpen ? 'hidden' : 'auto',
-    transition: 'max-height 1s ease',
-    display: 'flex',
-    flexDirection: 'column',
-    fontFamily: theme.font.paragraph,
-  }),
+  detailView: (detailViewOpen) =>
+    css({
+      label: 'detailView',
+      maxHeight: detailViewOpen ? '50vh' : '0',
+      padding: detailViewOpen ? theme.spacing.M : 0,
+      overflowY: detailViewOpen ? 'hidden' : 'auto',
+      transition: 'max-height 1s ease',
+      display: 'flex',
+      flexDirection: 'column',
+      fontFamily: theme.font.paragraph,
+    }),
 })
