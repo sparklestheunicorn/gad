@@ -30,6 +30,7 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
         </button>
       </div>
       {terms && (
+<<<<<<< Updated upstream
         <>
           {terms.map((term) => (
             <p key={term.term}>
@@ -38,6 +39,21 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
             </p>
           ))}
         </>
+=======
+        <div css={s.terms}>
+          {terms.map((term) => {
+            console.log(term)
+            return (
+              term && (
+                <p key={term.name}>
+                  <span css={css(s.termName)}>{term.name}: </span>
+                  <span>{term.definition}</span>
+                </p>
+              )
+            )
+          })}
+        </div>
+>>>>>>> Stashed changes
       )}
     </>
   )

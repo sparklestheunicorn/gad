@@ -61,5 +61,5 @@ export const getMapNodeTerms = StoreAccessor((s) => (revisionId: string) => {
 
   console.log('Firestore Terms:', terms)
 
-  return terms
+  return terms.filter((a) => a)
 })
