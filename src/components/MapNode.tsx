@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
-import { GetTermsAttached } from '@debate-map/server-link'
+import { getMapNodeTerms } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
@@ -65,7 +65,7 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
-  const terms = GetTermsAttached(currentRevision)
+  const terms = getMapNodeTerms(currentRevision)
 
   if ((terms && terms.length > 0) || nodeId === 'wlTKYdgGTi-L43GWvEX31Q') {
     console.log('TERMS FOR: ', currentRevision, terms)
