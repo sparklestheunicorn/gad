@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
+import { GetTermsAttached } from '@debate-map/server-link'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
@@ -18,6 +19,7 @@ export const MapNode = observer((props) => {
 
   const [selectedChild, setSelectedChild] = React.useState(null)
   const [detailViewOpen, setDetailViewOpen] = React.useState(false)
+  const [terms, setTerms] = React.useState([])
 
   const variantPhrasings = [
     'A disease in humans caused by a virus that came from wild animals',
@@ -53,6 +55,13 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
+  React.useEffect(() => {
+    setTerms(GetTermsAttached(nodeId))
+  })
+
+  if (terms.length > 0 || nodeId === 'wlTKYdgGTi-L43GWvEX31Q') {
+    console.log('TERMS FOR: ', nodeId, terms)
+  }
   return (
     <>
       <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
@@ -99,6 +108,7 @@ export const MapNode = observer((props) => {
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
           {Object.keys(nodeChildren).map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
+
             return (
               <MapNode
                 key={childNodeKey}
