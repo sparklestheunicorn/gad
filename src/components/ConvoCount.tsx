@@ -5,11 +5,11 @@ import { styles } from './ConvoCount.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 
-export const ConvoCount = ({ showNumber, numberConvos, isSelected, onClick }) => {
+export const ConvoCount = ({ showNumber, numberConvos, isSelected, onClick, hasDetails }) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
   return (
-    <div css={[s.convoCount, isSelected ? s.expanded : s.canExpand]} onClick={onClick}>
+    <div css={[s.convoCount(hasDetails), isSelected ? s.expanded : s.canExpand]} onClick={onClick}>
       {showNumber ? (
         <>
           <p css={s.number}>{numberConvos}</p>
