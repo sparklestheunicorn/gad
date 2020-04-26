@@ -5,11 +5,8 @@ export const styles = (theme) => ({
     label: 'rephraseContainer',
     display: 'flex',
     alignItems: 'center',
-    margin: `${theme.spacing.M} 0`,
-  },
-  terms: {
-    label: 'terms',
-    borderTop: `1px solid ${theme.color.border}`,
+    justifyContent: 'center',
+    margin: `${theme.spacing.XS} 0`,
   },
   termName: css({
     fontWeight: 'bold',

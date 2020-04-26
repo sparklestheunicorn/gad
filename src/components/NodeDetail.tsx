@@ -30,14 +30,14 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
         </button>
       </div>
       {terms && (
-        <div css={s.terms}>
+        <>
           {terms.map((term) => (
             <p key={term.term}>
               <span css={s.termName}>{term.term}: </span>
               <span>{term.definition}</span>
             </p>
           ))}
-        </div>
+        </>
       )}
     </>
   )
