@@ -65,12 +65,15 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
-  const terms = getMapNodeTerms(currentRevision)
+  const hardcodedTerms = [
+    {
+      term: 'Novel Coronavirus',
+      definition:
+        'Novel coronavirus is a temporary name given to coronaviruses of medical significance before a permanent name is decided upon.',
+    },
+  ]
 
-  if ((terms && terms.length > 0) || nodeId === 'wlTKYdgGTi-L43GWvEX31Q') {
-    console.log('TERMS FOR: ', currentRevision, terms)
-    console.log(title)
-  }
+  const terms = nodeId === 'wlTKYdgGTi-L43GWvEX31Q' ? hardcodedTerms : getMapNodeTerms(currentRevision)
 
   return (
     <>
