@@ -1,5 +1,5 @@
 import { StoreAccessor } from 'mobx-firelink'
-import { GetNodeChildrenL2, GetNodeChildren, GetTermsAttached } from '@debate-map/server-link'
+import { GetNodeChildrenL2, GetNodeChildren, GetTermsAttached, GetNodePhrasings } from '@debate-map/server-link'
 import { MapNodeL2 } from '@debate-map/server-link'
 
 export function getFinalNodeTitle(node: MapNodeL2) {
@@ -59,7 +59,11 @@ export const getMapNodeSubtree = StoreAccessor((s) => (nodeId: string) => {
 export const getMapNodeTerms = StoreAccessor((s) => (revisionId: string) => {
   const terms = GetTermsAttached(revisionId)
 
-  console.log('Firestore Terms:', terms)
+  return terms.filter((a) => a)
+})
 
-  return terms
+export const getMapNodePhrasings = StoreAccessor((s) => (revisionId: string) => {
+  const phrasings = GetNodePhrasings(revisionId)
+
+  return phrasings.filter((a) => a)
 })
