@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
-import { heading } from '../../styles/shared.style'
+import { heading, stylizedButton } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
@@ -29,9 +29,12 @@ export const CovidConversationWelcome = (props) => {
         </h2>
         <p>
           Attributed to Dr. Li Wenliang (李文亮). Li is regarded as the COVID-19 whistleblower who warned China about the
-          disease. Although silences by his government, he was later cleared, and is reported to have died of the very
+          disease. Although silenced by his government, he was later cleared, and is reported to have died of the very
           disease he warned China about.
         </p>
+        <Link to="/map">
+          <button css={stylizedButton(theme)}>Join the Conversation</button>
+        </Link>
       </div>
       <div className="bottom-container">
         <div>
@@ -45,7 +48,7 @@ export const CovidConversationWelcome = (props) => {
             <span>We're an educational non-profit, please donate!</span>
           </a>
         </div>
-        <div>
+        {/*<div>
           <Link to="/map">
             <img
               className="welcome-cta map-cta"
@@ -53,7 +56,7 @@ export const CovidConversationWelcome = (props) => {
               alt="Conversations"
             />
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   )

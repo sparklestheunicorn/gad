@@ -65,7 +65,5 @@ export const getMapNodeTerms = StoreAccessor((s) => (revisionId: string) => {
 export const getMapNodePhrasings = StoreAccessor((s) => (revisionId: string) => {
   const phrasings = GetNodePhrasings(revisionId)
 
-  console.log(revisionId, phrasings)
-
   return phrasings.filter((a) => a)
 })
