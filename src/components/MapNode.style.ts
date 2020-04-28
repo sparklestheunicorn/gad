@@ -59,14 +59,20 @@ export const styles = (theme) => ({
       padding: `${theme.spacing.S} ${theme.spacing.M}`,
       margin: 0,
       flexGrow: 2,
-      borderBottom: detailViewOpen ? `2px solid ${theme.color.border}` : 'none',
+      borderBottom: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
+      animationName: 'fade-in',
+      animationDelay: '0.4s',
+      animationDuration: '1s',
     }),
   nodeTitle: (detailViewOpen) => ({
     fontFamily: theme.font.paragraph,
     flexGrow: 2,
     padding: theme.spacing.S,
     margin: 0,
-    borderBottom: detailViewOpen ? `2px solid ${theme.color.border}` : 'none',
+    borderBottom: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
+    animationName: 'fade-in',
+    animationDelay: '0.4s',
+    animationDuration: '1s',
   }),
   detailToggle: (hasDetails) =>
     css({
@@ -76,7 +82,7 @@ export const styles = (theme) => ({
       justifyContent: 'center',
       width: '100%',
       fontSize: theme.textSize.S,
-      borderTop: `2px solid ${theme.color.border}`,
+      borderTop: `1px solid ${theme.color.border}`,
       borderRadius: `0 0 ${theme.shape.borderRadius} ${theme.shape.borderRadius}`,
     }),
   liHeader: (hasDetails) =>
@@ -89,10 +95,16 @@ export const styles = (theme) => ({
       alignItems: 'stretch',
       borderRadius: hasDetails ? `${theme.shape.borderRadius} ${theme.shape.borderRadius} 0 0` : theme.shape.borderRadius,
     }),
-  detailView: (detailViewOpen) => ({
-    label: 'detailView',
-    maxHeight: detailViewOpen ? '50vh' : '0',
-    transition: 'max-height 1s',
-    display: 'flex',
-  }),
+  detailView: (detailViewOpen) =>
+    css({
+      label: 'detailView',
+      maxHeight: detailViewOpen ? '50vh' : '0',
+      padding: detailViewOpen ? theme.spacing.M : 0,
+      paddingTop: 0,
+      overflowY: detailViewOpen ? 'hidden' : 'auto',
+      transition: 'max-height 1s ease',
+      display: 'flex',
+      flexDirection: 'column',
+      fontFamily: theme.font.paragraph,
+    }),
 })

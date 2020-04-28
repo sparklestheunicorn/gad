@@ -13,7 +13,6 @@
 */
 
 body.covid-conversation {
-
   /**
     * Page specific styling
   */
@@ -52,6 +51,9 @@ body.covid-conversation {
           color: #064b6e;
         }
       }
+      button {
+        margin-top: 50px;
+      }
     }
 
     .bottom-container {
@@ -72,7 +74,7 @@ body.covid-conversation {
       }
 
       img {
-        width: 100px;
+        width: 50px;
       }
     }
 

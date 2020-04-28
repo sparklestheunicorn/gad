@@ -25,6 +25,7 @@ export const stylizedButton = (theme) =>
     fontWeight: 'bold',
     color: theme.color.text,
     letterSpacing: '2px',
+    fontFamily: theme.font.paragraph,
     backgroundColor: theme.color.background,
     border: `1px solid ${theme.color.borderDark}`,
     padding: theme.spacing.M,

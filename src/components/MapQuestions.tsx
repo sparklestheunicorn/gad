@@ -36,6 +36,7 @@ export const MapQuestions = (props) => {
           <MapNode
             key={question._key}
             nodeId={question._key}
+            currentRevision={question.currentRevision}
             topLevel={true}
             title={getFinalNodeTitle(question)}
             nodeChildren={getQuestionChildren(question, questionChildren[questionIndex].childNodes)}
