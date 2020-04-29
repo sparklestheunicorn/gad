@@ -24,6 +24,8 @@ export const styles = (theme) => ({
     animationName: 'fade-in',
     animationDuration: '1s',
     animationFillMode: 'forwards',
+    transition: `transform ${mapMovementTransitionSpeed}`,
+    WebkitFontSmoothing: 'antialiased',
     overflowX: 'hidden',
     titleBlock: {
       background: 'transparent',
@@ -38,12 +40,6 @@ export const styles = (theme) => ({
       maxWidth: '350px',
       width: '100%',
     },
-  },
-  mapContainer: {
-    label: 'mapContainer',
-    transition: `transform ${mapMovementTransitionSpeed}`,
-    WebkitFontSmoothing: 'antialiased',
-    paddingBottom: mapFooterHeight,
   },
   mapFooter: css({
     label: 'mapFooter',
