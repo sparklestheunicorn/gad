@@ -13,6 +13,7 @@
 */
 
 body.covid-conversation {
+
   /**
     * Page specific styling
   */
@@ -22,6 +23,7 @@ body.covid-conversation {
     background-position-x: 100%;
     background-position-y: 50%;
     background-size: 600px;
+    padding-bottom: 150px;
 
     .top-container {
       width: 50%;
@@ -37,7 +39,7 @@ body.covid-conversation {
     .welcome-quote {
       width: 50%;
       min-width: 550px;
-      padding: 20px 20px 20px 100px;
+      padding: 50px 20px 20px 100px;
       background-color: rgba(255, 255, 255, 0.8);
 
       h2 {
@@ -51,8 +53,18 @@ body.covid-conversation {
           color: #064b6e;
         }
       }
+
+      p {
+        font-family: 'Glacial Indifference';
+      }
+
+    }
+
+    a {
+      margin-left: 100px;
+
       button {
-        margin-top: 50px;
+        margin-top: 40px;
       }
     }
 
@@ -67,6 +79,7 @@ body.covid-conversation {
       a,
       div {
         min-width: 100px;
+        margin-left: 0;
       }
 
       a.donate-cta-link {
@@ -102,6 +115,12 @@ body.covid-conversation {
     }
 
     @media only screen and (max-width: $tablet-width) {
+      min-height: 100%;
+      background-image: url('../../assets/images/covid-conversation-welcome-bottom.png');
+      background-repeat: no-repeat;
+      background-position-y: 105%;
+      background-size: 100%;
+
       .top-container {
         width: 100%;
         min-width: 100%;
@@ -111,16 +130,26 @@ body.covid-conversation {
       .welcome-quote {
         width: 100%;
         min-width: 100%;
-        padding-right: 40px;
+        padding: 20px 60px 0 60px;
 
         h2 {
-          font-size: 48px;
+          font-size: 40px;
           line-height: 50px;
+        }
+      }
+
+      a {
+        margin: 0;
+        text-align: center;
+
+        button {
+          margin: 20px auto;
         }
       }
 
       .bottom-container {
         padding: 20px;
+        display: none;
 
         div {
           min-width: 50px;

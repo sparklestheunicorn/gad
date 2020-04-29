@@ -27,15 +27,11 @@ export const CovidConversationWelcome = (props) => {
         <h2 css={heading(theme)}>
           <span>“</span>A Healthy Society Cannot Have Just One Voice.<span>”</span>
         </h2>
-        <p>
-          Attributed to Dr. Li Wenliang (李文亮). Li is regarded as the COVID-19 whistleblower who warned China about the
-          disease. Although silenced by his government, he was later cleared, and is reported to have died of the very
-          disease he warned China about.
-        </p>
-        <Link to="/map">
-          <button css={stylizedButton(theme)}>Join the Conversation</button>
-        </Link>
+        <p>- Dr. Li Wenliang (李文亮), known as the whistleblower who warned China about COVID-19.</p>
       </div>
+      <Link to="/map">
+        <button css={stylizedButton(theme)}>View COVID Convos</button>
+      </Link>
       <div className="bottom-container">
         <div>
           <a
