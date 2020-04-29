@@ -8,7 +8,6 @@ import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
-import { GetNodePhrasings } from '@debate-map/server-link'
 import { NodeDetail } from './NodeDetail'
 
 export const MapNode = observer((props) => {
@@ -18,6 +17,7 @@ export const MapNode = observer((props) => {
     nodeId,
     currentRevision,
     nodeChildren,
+    childrenOrder,
     depth,
     setMapDepth,
     setMaxMapDepth,
@@ -25,33 +25,26 @@ export const MapNode = observer((props) => {
     setIsSelected,
   } = props
 
+  // Style
   const theme: Theme = useTheme()
   const s = styles(theme)
 
-  const [selectedChild, setSelectedChild] = React.useState(null)
-  const [detailViewOpen, setDetailViewOpen] = React.useState(false)
-
-  const variantPhrasings = getMapNodePhrasings(nodeId)
-
-  /*[
-    'A disease in humans caused by a virus that came from wild animals',
-    'A zoonotic, severe acute respiratory disease caused by a coronavirus strain of virus',
-    'A natural disease caused by a virus contracted from wildlife',
-  ] */
-  // let variantPhrasings = []
-  // React.useEffect(() => {
-  //   variantPhrasings = GetNodePhrasings(nodeId)
-  // }, [nodeId])
+  // Phrasings
+  const variantPhrasings = getMapNodePhrasings(nodeId) || []
   const phrasings = [{ text: title }, ...variantPhrasings]
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
-  const nextPhrasing = () => {
-    setCurrentPhrasingIndex((currentPhrasingIndex + 1) % phrasings.length)
-  }
 
-  const terms = getMapNodeTerms(currentRevision)
+  // Definitions
+  const terms = getMapNodeTerms(currentRevision) || []
 
+  // Children
   const hasChildren = Object.keys(nodeChildren).length > 0
-  const hasDetails = nodeId === 'wlTKYdgGTi-L43GWvEX31Q'
+  const childKeys = childrenOrder || Object.keys(nodeChildren)
+  const [selectedChild, setSelectedChild] = React.useState(null)
+
+  // Detail View
+  const hasDetails = variantPhrasings.length > 0 || terms.length > 0
+  const [detailViewOpen, setDetailViewOpen] = React.useState(false)
 
   const focusOnSelected = () => {
     setMapDepth(depth - 1)
@@ -121,7 +114,7 @@ export const MapNode = observer((props) => {
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
-          {Object.keys(nodeChildren).map((childNodeKey) => {
+          {childKeys.map((childNodeKey) => {
             const childNode = nodeChildren[childNodeKey]
 
             return (
