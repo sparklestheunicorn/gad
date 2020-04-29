@@ -3,6 +3,7 @@ export const styles = (theme) => ({
     label: 'appContainer',
     position: 'relative',
     height: '100%',
+    overflowY: 'auto',
     '.font-preloader': {
       position: 'absolute',
       transform: 'translate(300vw)',
