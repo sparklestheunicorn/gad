@@ -30,16 +30,13 @@ export const styles = (theme) => ({
     color: theme.color.textLight,
     backgroundColor: '#fff',
   }),
-  plus: {
-    fontSize: theme.textSize.M,
-    marginTop: '-5px',
-  },
   expanded: css({
     label: 'expanded',
     color: '#fff',
     backgroundColor: theme.color.textLight,
   }),
   arrow: {
-    fontSize: theme.textSize.XS,
+    fontSize: theme.textSize.S,
+    margin: `0 ${theme.spacing.S}`,
   },
 })

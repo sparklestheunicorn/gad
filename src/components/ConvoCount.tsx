@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { styles } from './ConvoCount.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
@@ -15,10 +17,8 @@ export const ConvoCount = ({ showNumber, numberConvos, isSelected, onClick, hasD
           <p css={s.number}>{numberConvos}</p>
           <p css={s.convos}>convos</p>
         </>
-      ) : isSelected ? (
-        <span css={s.arrow}>►</span>
       ) : (
-        <span css={s.plus}>+</span>
+        <FontAwesomeIcon icon={faCaretRight} css={s.arrow} />
       )}
     </div>
   )
