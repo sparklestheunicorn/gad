@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
-import { getMapNodeTerms, getMapNodePhrasings, getMapNode, getChildIds } from '../firestore/firestore'
+import { getMapNodeTerms, getMapNodePhrasings, getMapNode, getChildrenMap } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
@@ -17,7 +17,6 @@ export const MapNode = observer((props) => {
     nodeId,
     currentRevision,
     children,
-    //nodeChildren,
     childrenOrder,
     depth,
     setMapDepth,
@@ -42,7 +41,7 @@ export const MapNode = observer((props) => {
   const hasChildren = children && Object.keys(children).length > 0
   const childrenKeys = childrenOrder || (children && Object.keys(children))
   const [selectedChild, setSelectedChild] = React.useState(null)
-  const nodeChildren = getChildIds(nodeId)
+  const nodeChildren = getChildrenMap(nodeId)
 
   // Detail View
   const hasDetails = variantPhrasings.length > 0 || terms.length > 0
@@ -126,26 +125,25 @@ export const MapNode = observer((props) => {
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
-          {nodeChildren.map((childNode) => {
+          {childrenKeys.map((childId) => {
             //console.log('CHILDNODE', childNode)
-
+            const currentChild = nodeChildren[childId]
             return (
-              childNode && (
+              currentChild && (
                 <MapNode
-                  key={childNode._key}
-                  nodeId={childNode._key}
-                  currentRevision={childNode.currentRevision}
+                  key={currentChild._key}
+                  nodeId={currentChild._key}
+                  currentRevision={currentChild.currentRevision}
                   topLevel={false}
-                  title={childNode.current.titles.base}
-                  children={childNode.children}
-                  childrenOrder={childNode.childrenOrder}
-                  //nodeChildren={childNode.childNodes}
+                  title={currentChild.current.titles.base}
+                  children={currentChild.children}
+                  childrenOrder={currentChild.childrenOrder}
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
-                  isSelected={childNode._key == selectedChild}
+                  isSelected={currentChild._key == selectedChild}
                   setIsSelected={() => {
-                    setSelectedChild(childNode._key)
+                    setSelectedChild(currentChild._key)
                   }}
                 />
               )
