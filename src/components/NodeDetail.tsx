@@ -2,10 +2,11 @@
 import { jsx, css } from '@emotion/core'
 import range from 'lodash/range'
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './NodeDetail.style'
-import { stylizedButton } from '../styles/shared.style'
 
 export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms }) => {
   const theme: Theme = useTheme()
@@ -25,7 +26,7 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
             }
           }}
         >
-          ◀
+          <FontAwesomeIcon icon={faCaretLeft} />
         </button>
         {range(numPhrasings).map((index) => (
           <button
@@ -35,11 +36,11 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
           ></button>
         ))}
         <button css={s.carouselArrow} onClick={() => setCurrentPhrasingIndex((currentPhrasingIndex + 1) % numPhrasings)}>
-          ▶
+          <FontAwesomeIcon icon={faCaretRight} />
         </button>
       </div>
       {terms && (
-        <div css={s.terms}>
+        <div>
           {terms.map((term) => {
             return (
               term && (

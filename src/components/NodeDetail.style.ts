@@ -4,7 +4,7 @@ export const styles = (theme) => ({
   rephraseContainer: {
     label: 'rephraseContainer',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'baseline',
     justifyContent: 'center',
     margin: `${theme.spacing.XS} 0`,
   },
@@ -14,6 +14,7 @@ export const styles = (theme) => ({
   carouselArrow: {
     label: 'carouselArrow',
     color: theme.color.textLight,
+    fontSize: theme.textSize.XS,
   },
   carouselDot: (selected) => ({
     label: 'carouselDot',
