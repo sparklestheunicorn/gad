@@ -37,18 +37,18 @@ export const getQuestions = StoreAccessor((s) => () => {
  * Map queries
  */
 
-export const getMapNodeChildren = StoreAccessor((s) => (nodeId: string) => {
+export const getChildIds = StoreAccessor((s) => (nodeId: string) => {
   return GetNodeChildrenL2(nodeId)
 })
 
-export const getMapNodeSubtree = StoreAccessor((s) => (nodeId: string) => {
+export const getMapNodeChildren = StoreAccessor((s) => (nodeId: string) => {
   let subtree = {}
-  let children = getMapNodeChildren(nodeId)
+  let children = getChildIds(nodeId)
 
   children.forEach((child) => {
     subtree[child._key] = {
       title: child.current.titles.base,
-      childNodes: getMapNodeSubtree(child._key),
+      children: children,
       currentRevision: child.currentRevision,
     }
   })
