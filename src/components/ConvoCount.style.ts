@@ -11,8 +11,10 @@ export const styles = (theme) => ({
       padding: theme.spacing.XS,
       fontFamily: theme.font.paragraph,
       color: theme.color.textLight,
-      border: `2px solid ${theme.color.textLight}`,
-      borderRadius: `0 ${theme.shape.borderRadius} ${hasDetails ? 0 : theme.shape.borderRadius} 0 `,
+      borderLeft: `1px solid ${theme.color.border}`,
+      borderRadius: `0 calc(${theme.shape.borderRadius} - 1px) ${
+        hasDetails ? 0 : `calc(${theme.shape.borderRadius} - 1px)`
+      } 0 `,
       backgroundColor: '#fff',
     }),
   number: css({

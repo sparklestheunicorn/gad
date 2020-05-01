@@ -6,17 +6,18 @@ const rectangle = (theme) =>
     borderRadius: theme.shape.borderRadius,
   })
 
-const liBase = css({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  cursor: 'pointer',
-})
+const liBase = (theme) =>
+  css({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    border: `1px solid ${theme.color.border}`,
+  })
 
 export const styles = (theme) => ({
   mapQuestion: [
-    liBase,
+    liBase(theme),
     rectangle(theme),
     css({
       label: 'mapQuestion',
@@ -25,7 +26,7 @@ export const styles = (theme) => ({
     }),
   ],
   mapNode: [
-    liBase,
+    liBase(theme),
     rectangle(theme),
     css({
       label: 'mapNode',
@@ -33,6 +34,7 @@ export const styles = (theme) => ({
       width: '100%',
       zIndex: 10,
       marginBottom: theme.spacing.M,
+      border: `1px solid ${theme.color.border}`,
       WebkitFontSmoothing: 'antialiased',
     }),
   ],
@@ -65,11 +67,11 @@ export const styles = (theme) => ({
       animationDuration: '1s',
     }),
   nodeTitle: (detailViewOpen) => ({
+    label: 'nodeTitle',
     fontFamily: theme.font.paragraph,
     flexGrow: 2,
     padding: theme.spacing.S,
     margin: 0,
-    borderBottom: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
     animationName: 'fade-in',
     animationDelay: '0.4s',
     animationDuration: '1s',
@@ -98,13 +100,16 @@ export const styles = (theme) => ({
   detailView: (detailViewOpen) =>
     css({
       label: 'detailView',
+      width: '100%',
       maxHeight: detailViewOpen ? '50vh' : '0',
       padding: detailViewOpen ? theme.spacing.M : 0,
       paddingTop: 0,
+      borderTop: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
       overflowY: detailViewOpen ? 'hidden' : 'auto',
       transition: 'max-height 1s ease',
       display: 'flex',
       flexDirection: 'column',
       fontFamily: theme.font.paragraph,
+      boxShadow: 'inset 0px 1px 5px 1px rgba(212,213,214,1)',
     }),
 })

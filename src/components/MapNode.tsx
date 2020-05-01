@@ -86,7 +86,16 @@ export const MapNode = observer((props) => {
           }}
         >
           {topLevel ? (
-            <h3 css={s.questionTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h3>
+            <h3
+              onClick={() => {
+                if (hasChildren) {
+                  showChildren()
+                }
+              }}
+              css={s.questionTitle(detailViewOpen)}
+            >
+              {phrasings[currentPhrasingIndex].text}
+            </h3>
           ) : (
             <h4 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h4>
           )}

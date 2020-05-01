@@ -11,9 +11,9 @@ export const ccStyles = {
     textLight: '#1c4c6c',
     knockoutBackground: '#1c4c6c',
     shadow: '#b4b5b6',
-    border: '#d4d5d6',
+    border: '#1c4c6c',
     borderDark: '#1c4c6c',
-    selectedBackground: '#d1ecfa',
+    selectedBackground: '#fff', //'#d1ecfa',
   },
   font: {
     heading: 'League Spartan',
