@@ -21,7 +21,7 @@ export const ccStyles = {
     paragraph: 'Glacial Indifference',
   },
   strings: {
-    title: 'Covid Connection',
+    title: 'COVIDConvo',
     tagline: 'Combining your conversations about COVID-19',
   },
 }
