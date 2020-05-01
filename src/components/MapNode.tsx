@@ -9,7 +9,7 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
-import { keys } from 'lodash/keys'
+import keys from 'lodash/keys'
 
 export const MapNode = observer((props) => {
   const {
