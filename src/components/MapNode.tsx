@@ -4,13 +4,14 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { getMapNodeTerms, getMapNodePhrasings } from '../firestore/firestore'
+import { getMapNodeTerms, getMapNodePhrasings, getMapNode, getNodeChildren } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
+import keys from 'lodash/keys'
 
 export const MapNode = observer((props) => {
   const {
@@ -18,7 +19,7 @@ export const MapNode = observer((props) => {
     title,
     nodeId,
     currentRevision,
-    nodeChildren,
+    nodeChildrenIds,
     childrenOrder,
     depth,
     setMapDepth,
@@ -40,9 +41,10 @@ export const MapNode = observer((props) => {
   const terms = getMapNodeTerms(currentRevision) || []
 
   // Children
-  const hasChildren = Object.keys(nodeChildren).length > 0
-  const childKeys = childrenOrder || Object.keys(nodeChildren)
+  const hasChildren = keys(nodeChildrenIds).length > 0
+  const childrenKeys = childrenOrder || keys(nodeChildrenIds)
   const [selectedChild, setSelectedChild] = React.useState(null)
+  const nodeChildren = getNodeChildren(nodeId)
 
   // Detail View
   const hasDetails = variantPhrasings.length > 0 || terms.length > 0
@@ -64,6 +66,16 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
+  /*  console.log('----------------------')
+  console.log(title)
+  console.log('MAPNODE depth', depth)
+  console.log('MAPNODE nodeChildrenIds', nodeChildrenIds)
+  console.log('MAPNODE nodeChildren', nodeChildren)
+  console.log('MAPNODE hasChildren', hasChildren)
+  console.log('MAPNODE childrenKeys', childrenKeys)
+  console.log('MAPNODE childOrder', childrenOrder)
+  console.log('----------------------')
+*/
   return (
     <>
       <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
@@ -82,7 +94,7 @@ export const MapNode = observer((props) => {
             <ConvoCount
               showNumber={topLevel}
               isSelected={isSelected}
-              numberConvos={Object.keys(nodeChildren).length}
+              numberConvos={Object.keys(nodeChildrenIds).length}
               hasDetails={hasDetails}
               onClick={(e) => {
                 e.stopPropagation()
@@ -116,25 +128,28 @@ export const MapNode = observer((props) => {
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
-          {childKeys.map((childNodeKey) => {
-            const childNode = nodeChildren[childNodeKey]
-
+          {childrenKeys.map((childId) => {
+            //console.log('CHILDNODE', nodeChildren[childId])
+            const currentChild = nodeChildren[childId]
             return (
-              <MapNode
-                key={childNodeKey}
-                nodeId={childNodeKey}
-                currentRevision={childNode.currentRevision}
-                topLevel={false}
-                title={childNode.title}
-                nodeChildren={childNode.childNodes}
-                setMapDepth={setMapDepth}
-                setMaxMapDepth={setMaxMapDepth}
-                depth={depth + 1}
-                isSelected={childNodeKey == selectedChild}
-                setIsSelected={() => {
-                  setSelectedChild(childNodeKey)
-                }}
-              />
+              currentChild && (
+                <MapNode
+                  key={currentChild._key}
+                  nodeId={currentChild._key}
+                  currentRevision={currentChild.currentRevision}
+                  topLevel={false}
+                  title={currentChild.current.titles.base}
+                  nodeChildrenIds={currentChild.children}
+                  childrenOrder={currentChild.childrenOrder}
+                  setMapDepth={setMapDepth}
+                  setMaxMapDepth={setMaxMapDepth}
+                  depth={depth + 1}
+                  isSelected={currentChild._key == selectedChild}
+                  setIsSelected={() => {
+                    setSelectedChild(currentChild._key)
+                  }}
+                />
+              )
             )
           })}
         </ul>
