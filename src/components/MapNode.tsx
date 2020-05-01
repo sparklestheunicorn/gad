@@ -2,6 +2,8 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { getMapNodeTerms, getMapNodePhrasings, getMapNode, getNodeChildren } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
@@ -119,7 +121,7 @@ export const MapNode = observer((props) => {
               )}
             </div>
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
-              {detailViewOpen ? '⌃' : '⌄'}
+              {detailViewOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
             </button>
           </>
         )}
