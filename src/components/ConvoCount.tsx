@@ -11,15 +11,15 @@ export const ConvoCount = ({ showNumber, numberConvos, isSelected, onClick, hasD
   const theme: Theme = useTheme()
   const s = styles(theme)
   return (
-    <div css={[s.convoCount(hasDetails), isSelected ? s.expanded : s.canExpand]} onClick={onClick}>
+    <button css={[s.convoCount(hasDetails), isSelected ? s.expanded : s.canExpand]} onClick={onClick}>
       {showNumber ? (
         <>
           <p css={s.number}>{numberConvos}</p>
           <p css={s.convos}>convos</p>
         </>
       ) : (
-        <FontAwesomeIcon icon={faCaretRight} css={s.arrow} />
+        <FontAwesomeIcon icon={faCaretRight} css={s.arrow} size="3x" />
       )}
-    </div>
+    </button>
   )
 }

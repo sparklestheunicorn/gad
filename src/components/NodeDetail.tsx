@@ -41,13 +41,18 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
       </div>
       {terms && (
         <div>
+          <h4>Terms</h4>
           {terms.map((term) => {
             return (
               term && (
-                <p key={term.name}>
-                  <span css={css(s.termName)}>{term.name}: </span>
-                  <span>{term.definition}</span>
-                </p>
+                <div css={s.termContainer} key={term.name}>
+                  <div>
+                    <span css={css(s.termName)}>{term.name}: </span>
+                  </div>
+                  <div>
+                    <span css={css(s.termDefinition)}>{term.definition}</span>
+                  </div>
+                </div>
               )
             )
           })}

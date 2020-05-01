@@ -11,7 +11,6 @@ const liBase = css({
   flexDirection: 'column',
   justifyContent: 'space-between',
   alignItems: 'center',
-  cursor: 'pointer',
 })
 
 export const styles = (theme) => ({
@@ -22,6 +21,7 @@ export const styles = (theme) => ({
       label: 'mapQuestion',
       position: 'relative',
       marginBottom: theme.spacing.M,
+      border: `1px solid ${theme.color.border}`,
     }),
   ],
   mapNode: [
@@ -33,6 +33,7 @@ export const styles = (theme) => ({
       width: '100%',
       zIndex: 10,
       marginBottom: theme.spacing.M,
+      border: `1px solid ${theme.color.border}`,
       WebkitFontSmoothing: 'antialiased',
     }),
   ],
@@ -65,11 +66,11 @@ export const styles = (theme) => ({
       animationDuration: '1s',
     }),
   nodeTitle: (detailViewOpen) => ({
+    label: 'nodeTitle',
     fontFamily: theme.font.paragraph,
     flexGrow: 2,
     padding: theme.spacing.S,
     margin: 0,
-    borderBottom: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
     animationName: 'fade-in',
     animationDelay: '0.4s',
     animationDuration: '1s',
@@ -98,13 +99,16 @@ export const styles = (theme) => ({
   detailView: (detailViewOpen) =>
     css({
       label: 'detailView',
+      width: '100%',
       maxHeight: detailViewOpen ? '50vh' : '0',
       padding: detailViewOpen ? theme.spacing.M : 0,
       paddingTop: 0,
+      borderTop: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
       overflowY: detailViewOpen ? 'hidden' : 'auto',
       transition: 'max-height 1s ease',
       display: 'flex',
       flexDirection: 'column',
       fontFamily: theme.font.paragraph,
+      boxShadow: 'inset 0px 1px 5px 1px rgba(212,213,214,1)',
     }),
 })
