@@ -2,13 +2,14 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import { observer } from 'mobx-react'
-import { getMapNodeTerms, getMapNodePhrasings, getMapNode, getChildrenMap } from '../firestore/firestore'
+import { getMapNodeTerms, getMapNodePhrasings, getMapNode, getNodeChildren } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
+import { keys } from 'lodash/keys'
 
 export const MapNode = observer((props) => {
   const {
@@ -16,7 +17,7 @@ export const MapNode = observer((props) => {
     title,
     nodeId,
     currentRevision,
-    children,
+    nodeChildrenIds,
     childrenOrder,
     depth,
     setMapDepth,
@@ -38,10 +39,10 @@ export const MapNode = observer((props) => {
   const terms = getMapNodeTerms(currentRevision) || []
 
   // Children
-  const hasChildren = children && Object.keys(children).length > 0
-  const childrenKeys = childrenOrder || (children && Object.keys(children))
+  const hasChildren = keys(nodeChildrenIds).length > 0
+  const childrenKeys = childrenOrder || keys(nodeChildrenIds)
   const [selectedChild, setSelectedChild] = React.useState(null)
-  const nodeChildren = getChildrenMap(nodeId)
+  const nodeChildren = getNodeChildren(nodeId)
 
   // Detail View
   const hasDetails = variantPhrasings.length > 0 || terms.length > 0
@@ -62,11 +63,11 @@ export const MapNode = observer((props) => {
     setMaxMapDepth(depth - 1)
     setMapDepth(depth - 1)
   }
-  /*
-  console.log('----------------------')
+
+  /*  console.log('----------------------')
   console.log(title)
   console.log('MAPNODE depth', depth)
-  console.log('MAPNODE children', children)
+  console.log('MAPNODE nodeChildrenIds', nodeChildrenIds)
   console.log('MAPNODE nodeChildren', nodeChildren)
   console.log('MAPNODE hasChildren', hasChildren)
   console.log('MAPNODE childrenKeys', childrenKeys)
@@ -91,7 +92,7 @@ export const MapNode = observer((props) => {
             <ConvoCount
               showNumber={topLevel}
               isSelected={isSelected}
-              numberConvos={Object.keys(children).length}
+              numberConvos={Object.keys(nodeChildrenIds).length}
               hasDetails={hasDetails}
               onClick={(e) => {
                 e.stopPropagation()
@@ -126,7 +127,7 @@ export const MapNode = observer((props) => {
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
           {childrenKeys.map((childId) => {
-            //console.log('CHILDNODE', childNode)
+            //console.log('CHILDNODE', nodeChildren[childId])
             const currentChild = nodeChildren[childId]
             return (
               currentChild && (
@@ -136,7 +137,7 @@ export const MapNode = observer((props) => {
                   currentRevision={currentChild.currentRevision}
                   topLevel={false}
                   title={currentChild.current.titles.base}
-                  children={currentChild.children}
+                  nodeChildrenIds={currentChild.children}
                   childrenOrder={currentChild.childrenOrder}
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}

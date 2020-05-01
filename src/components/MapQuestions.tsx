@@ -29,7 +29,7 @@ export const MapQuestions = (props) => {
                 currentRevision={question.currentRevision}
                 topLevel={true}
                 title={getFinalNodeTitle(question)}
-                children={questions[questionIndex].children}
+                nodeChildrenIds={questions[questionIndex].children}
                 childrenOrder={question.childrenOrder}
                 depth={1}
                 setMapDepth={setMapDepth}
