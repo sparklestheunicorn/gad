@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
-import { heading, stylizedButton } from '../../styles/shared.style'
+import { heading, stylizedButton, knockout } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
@@ -30,7 +30,7 @@ export const CovidConversationWelcome = (props) => {
         <p>- Dr. Li Wenliang (李文亮), known as the whistleblower who warned China about COVID-19.</p>
       </div>
       <Link to="/map">
-        <button css={stylizedButton(theme)}>View COVID Convos</button>
+        <button css={[stylizedButton(theme), knockout(theme)]}>View COVID Convos</button>
       </Link>
       <div className="bottom-container">
         <div>
