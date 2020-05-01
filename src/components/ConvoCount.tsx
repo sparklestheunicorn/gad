@@ -18,7 +18,7 @@ export const ConvoCount = ({ showNumber, numberConvos, isSelected, onClick, hasD
           <p css={s.convos}>convos</p>
         </>
       ) : (
-        <FontAwesomeIcon icon={faCaretRight} css={s.arrow} size="3x" />
+        <FontAwesomeIcon icon={faCaretRight} css={s.arrow} />
       )}
     </button>
   )

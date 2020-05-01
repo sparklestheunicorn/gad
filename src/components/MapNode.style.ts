@@ -6,26 +6,27 @@ const rectangle = (theme) =>
     borderRadius: theme.shape.borderRadius,
   })
 
-const liBase = css({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-})
+const liBase = (theme) =>
+  css({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    border: `1px solid ${theme.color.border}`,
+  })
 
 export const styles = (theme) => ({
   mapQuestion: [
-    liBase,
+    liBase(theme),
     rectangle(theme),
     css({
       label: 'mapQuestion',
       position: 'relative',
       marginBottom: theme.spacing.M,
-      border: `1px solid ${theme.color.border}`,
     }),
   ],
   mapNode: [
-    liBase,
+    liBase(theme),
     rectangle(theme),
     css({
       label: 'mapNode',

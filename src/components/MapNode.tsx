@@ -88,7 +88,9 @@ export const MapNode = observer((props) => {
           {topLevel ? (
             <h3
               onClick={() => {
-                showChildren()
+                if (hasChildren) {
+                  showChildren()
+                }
               }}
               css={s.questionTitle(detailViewOpen)}
             >
