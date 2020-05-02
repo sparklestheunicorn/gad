@@ -111,5 +111,9 @@ export const styles = (theme) => ({
       flexDirection: 'column',
       fontFamily: theme.font.paragraph,
       boxShadow: 'inset 0px 1px 5px 1px rgba(212,213,214,1)',
+      h4: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+      },
     }),
 })

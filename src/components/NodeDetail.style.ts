@@ -13,9 +13,6 @@ export const styles = (theme) => ({
     label: 'termContainer',
     display: 'flex',
     flexDirection: 'row',
-    borderTop: `1px solid ${theme.color.borderLight}`,
-    paddingTop: theme.spacing.M,
-
     div: {},
   }),
   termName: css({
