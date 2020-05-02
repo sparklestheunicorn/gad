@@ -12,7 +12,6 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
   const theme: Theme = useTheme()
   const s = styles(theme)
 
-  if (nodeId !== 'wlTKYdgGTi-L43GWvEX31Q') return null
   return (
     <>
       <div css={s.rephraseContainer}>
