@@ -94,7 +94,7 @@ export const styles = (theme) => ({
       flexDirection: 'row',
       width: '100%',
       justifyContent: 'space-between',
-      alignItems: 'stretch',
+      alignItems: 'center',
       borderRadius: hasDetails ? `${theme.shape.borderRadius} ${theme.shape.borderRadius} 0 0` : theme.shape.borderRadius,
     }),
   detailView: (detailViewOpen) =>
