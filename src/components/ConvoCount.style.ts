@@ -16,6 +16,7 @@ export const styles = (theme) => ({
         hasDetails ? 0 : `calc(${theme.shape.borderRadius} - 1px)`
       } 0 `,
       backgroundColor: '#fff',
+      alignSelf: 'stretch',
     }),
   number: css({
     fontSize: theme.textSize.M,
