@@ -1,14 +1,14 @@
 import { css } from '@emotion/core'
 
 export const styles = (theme) => ({
-  rephraseContainer: {
+  rephraseContainer: theme.mq({
     label: 'rephraseContainer',
     display: 'flex',
-    alignItems: 'baseline',
-    justifyContent: 'center',
+    alignItems: ['center', 'center', 'baseline'],
+    justifyContent: ['space-between', 'space-between', 'center'],
     padding: `${theme.spacing.S} 0`,
     borderBottom: `1px solid ${theme.color.borderLight}`,
-  },
+  }),
   termContainer: css({
     label: 'termContainer',
     display: 'flex',
@@ -26,19 +26,21 @@ export const styles = (theme) => ({
   termDefinition: css({
     label: 'termDefinition',
   }),
-  carouselArrow: {
+  carouselArrow: theme.mq({
     label: 'carouselArrow',
     color: theme.color.textLight,
-    fontSize: theme.textSize.XS,
-  },
-  carouselDot: (selected) => ({
-    label: 'carouselDot',
-    height: '12px',
-    width: '12px',
-    borderRadius: '50%',
-    padding: '0',
-    border: `1px solid ${theme.color.border}`,
-    backgroundColor: selected ? theme.color.textLight : '#fff',
-    margin: `0 2px`,
+    fontSize: [theme.textSize.L, theme.textSize.L, theme.textSize.XS],
+    padding: 0,
   }),
+  carouselDot: (selected) =>
+    theme.mq({
+      label: 'carouselDot',
+      height: [theme.textSize.M, theme.textSize.M, '12px'],
+      width: [theme.textSize.M, theme.textSize.M, '12px'],
+      borderRadius: '50%',
+      padding: '0',
+      border: `1px solid ${theme.color.border}`,
+      backgroundColor: selected ? theme.color.textLight : '#fff',
+      margin: `0 2px`,
+    }),
 })
