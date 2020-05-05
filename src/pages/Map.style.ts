@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
-export const mapHeaderHeight = '120px'
+export const mapHeaderHeight = '100px'
 
 export const styles = (theme) => ({
   slideToDepth: (depth: number) =>
@@ -33,7 +33,7 @@ export const styles = (theme) => ({
   },
   topContainer: {
     label: 'top-container',
-    padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.L} ${theme.spacing.M}`,
+    padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M}`,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     height: mapHeaderHeight,
     img: {

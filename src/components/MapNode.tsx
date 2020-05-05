@@ -97,7 +97,7 @@ export const MapNode = observer((props) => {
               {phrasings[currentPhrasingIndex].text}
             </h3>
           ) : (
-            <h4 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h4>
+            <h3 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h3>
           )}
           {hasChildren && (
             <ConvoCount
