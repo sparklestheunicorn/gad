@@ -4,10 +4,9 @@ export const styles = (theme) => ({
   rephraseContainer: theme.mq({
     label: 'rephraseContainer',
     display: 'flex',
-    alignItems: ['center', 'center', 'baseline'],
+    alignItems: 'center',
     justifyContent: ['space-between', 'space-between', 'center'],
     padding: `${theme.spacing.S} 0`,
-    borderBottom: `1px solid ${theme.color.borderLight}`,
   }),
   termContainer: css({
     label: 'termContainer',
@@ -40,4 +39,9 @@ export const styles = (theme) => ({
       backgroundColor: selected ? theme.color.textLight : '#fff',
       margin: `0 2px`,
     }),
+  inputSubmitRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 })

@@ -3,14 +3,23 @@ import { jsx, css } from '@emotion/core'
 import range from 'lodash/range'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
+import { faCaretLeft, faCaretRight, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './NodeDetail.style'
+import { stylizedButton } from '../styles/shared.style'
 
 export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms }) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
+
+  const [inputItems, setInputItems] = React.useState([])
+  const [newInputItem, setNewInputItem] = React.useState('')
+
+  let inputTextChanged = (event) => {
+    console.log(event.target.value)
+    setNewInputItem(event.target.value)
+  }
 
   return (
     <>
@@ -53,6 +62,24 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
           })}
         </>
       )}
+      {
+        <>
+          <h4>Send us your input and evidence</h4>
+          <p>Try to break your argument into simple, small pieces. Include links to sources where possible.</p>
+          <textarea
+            onKeyUp={(event) => {
+              inputTextChanged(event)
+            }}
+          />
+          <button>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          <div css={s.inputSubmitRow}>
+            <button css={stylizedButton(theme)}>Argue for this</button>
+            <button css={stylizedButton(theme)}>Argue against this</button>
+          </div>
+        </>
+      }
     </>
   )
 }

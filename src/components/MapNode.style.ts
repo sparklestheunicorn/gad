@@ -114,6 +114,15 @@ export const styles = (theme) => ({
       h4: {
         textAlign: 'center',
         fontWeight: 'bold',
+        borderTop: `1px solid ${theme.color.borderLight}`,
+        marginTop: theme.spacing.S,
+        paddingTop: theme.spacing.S,
+      },
+      p: {
+        margin: `0px auto ${theme.spacing.S} auto`,
+      },
+      textArea: {
+        marginBottom: theme.spacing.S,
       },
     }),
 })

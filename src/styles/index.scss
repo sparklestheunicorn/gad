@@ -53,6 +53,7 @@ a,
 a span {
   color: $text-color-dark;
   text-decoration: none;
+  font-family: 'Glacial Indifference';
 }
 
 button {
@@ -94,6 +95,16 @@ h2 {
 
 p {
   margin: $spacing-m 0;
+}
+
+input,
+textarea {
+  color: $text-color-dark;
+  font-family: 'Glacial Indifference';
+}
+
+button {
+  color: $text-color-light;
 }
 
 /************************
