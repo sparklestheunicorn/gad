@@ -9,7 +9,7 @@ import { Theme } from '@emotion/types'
 import { getFinalNodeTitle } from '../firestore/firestore'
 
 export const MapQuestions = (props) => {
-  const { questions, questionChildren, setMapDepth, setMaxMapDepth } = props
+  const { questions, setMapDepth, setMaxMapDepth } = props
 
   const [selectedChild, setSelectedChild] = React.useState(null)
 
