@@ -16,7 +16,7 @@ export const styles = (theme) => ({
       transition: 'transform 1s ease',
       WebkitFontSmoothing: 'antialiased',
     }),
-  mapContainer: {
+  mapContainer: css({
     label: 'mapContainer',
     height: `calc(100% - ${mapHeaderHeight} - ${mapFooterHeight})`,
     paddingBottom: `${mapFooterHeight}`,
@@ -30,7 +30,7 @@ export const styles = (theme) => ({
     titleBlock: {
       background: 'transparent',
     },
-  },
+  }),
   topContainer: {
     label: 'top-container',
     padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M}`,
