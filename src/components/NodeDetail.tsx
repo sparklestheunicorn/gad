@@ -3,11 +3,19 @@ import { jsx, css } from '@emotion/core'
 import range from 'lodash/range'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretLeft, faCaretRight, faPlus } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCaretLeft,
+  faCaretRight,
+  faPlus,
+  faThumbsUp,
+  faThumbsDown,
+  faChevronDown,
+  faChevronUp,
+} from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './NodeDetail.style'
-import { stylizedButton } from '../styles/shared.style'
+import { stylizedButton, dropShadow } from '../styles/shared.style'
 
 export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms }) => {
   const theme: Theme = useTheme()
@@ -15,10 +23,21 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
 
   const [inputItems, setInputItems] = React.useState([])
   const [newInputItem, setNewInputItem] = React.useState('')
+  const [inputIsExpanded, setInputIsExpanded] = React.useState(false)
+  const [currentInputItem, setCurrentInputItem] = React.useState(0)
 
-  let inputTextChanged = (event) => {
+  const inputTextChanged = (event) => {
     console.log(event.target.value)
     setNewInputItem(event.target.value)
+  }
+
+  const createNewInputItem = () => {
+    if (newInputItem.length < 50 || inputItems.includes(newInputItem)) {
+      //Show a requirements message
+      return
+    }
+    setInputItems(inputItems.concat(newInputItem))
+    setNewInputItem('')
   }
 
   return (
@@ -62,24 +81,44 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
           })}
         </>
       )}
-      {
+      <h4
+        onClick={() => {
+          setInputIsExpanded(!inputIsExpanded)
+        }}
+      >
+        Send us your input and evidence{' '}
+        {inputIsExpanded ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
+      </h4>
+      {inputIsExpanded && (
         <>
-          <h4>Send us your input and evidence</h4>
           <p>Try to break your argument into simple, small pieces. Include links to sources where possible.</p>
-          <textarea
-            onKeyUp={(event) => {
-              inputTextChanged(event)
-            }}
-          />
-          <button>
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
+          {inputItems.map((item) => (
+            <p css={[s.inputItem, dropShadow(theme)]} key={item.toString()}>
+              {item}
+            </p>
+          ))}
+          <div css={s.newInputItemContainer}>
+            <textarea
+              placeholder="I think that..."
+              onChange={(event) => {
+                inputTextChanged(event)
+              }}
+              value={newInputItem}
+            />
+            <button css={s.newInputItemButton} onClick={createNewInputItem}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </div>
           <div css={s.inputSubmitRow}>
-            <button css={stylizedButton(theme)}>Argue for this</button>
-            <button css={stylizedButton(theme)}>Argue against this</button>
+            <button css={stylizedButton(theme)}>
+              <FontAwesomeIcon icon={faThumbsUp} /> Argue for
+            </button>
+            <button css={stylizedButton(theme)}>
+              <FontAwesomeIcon icon={faThumbsDown} /> Argue against
+            </button>
           </div>
         </>
-      }
+      )}
     </>
   )
 }

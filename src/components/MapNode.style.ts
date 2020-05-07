@@ -1,4 +1,5 @@
 import { css } from '@emotion/core'
+import { Z_BLOCK } from 'zlib'
 
 const rectangle = (theme) =>
   css({
@@ -101,7 +102,7 @@ export const styles = (theme) => ({
     css({
       label: 'detailView',
       width: '100%',
-      maxHeight: detailViewOpen ? '50vh' : '0',
+      maxHeight: detailViewOpen ? '90vh' : '0',
       padding: detailViewOpen ? theme.spacing.M : 0,
       paddingTop: 0,
       borderTop: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
@@ -111,6 +112,7 @@ export const styles = (theme) => ({
       flexDirection: 'column',
       fontFamily: theme.font.paragraph,
       boxShadow: 'inset 0px 1px 5px 1px rgba(212,213,214,1)',
+      overflowY: 'auto',
       h4: {
         textAlign: 'center',
         fontWeight: 'bold',
@@ -122,7 +124,11 @@ export const styles = (theme) => ({
         margin: `0px auto ${theme.spacing.S} auto`,
       },
       textArea: {
+        display: 'inline-block',
         marginBottom: theme.spacing.S,
+        minHeight: '40px',
+        width: '80%',
+        margin: `${theme.spacing.M} 0 ${theme.spacing.M} 10%`,
       },
     }),
 })

@@ -24,4 +24,7 @@ export const ccStyles = {
     title: 'COVIDConvo',
     tagline: 'Combining your conversations about COVID-19',
   },
+  textSize: {
+    XXS: '14px',
+  },
 }

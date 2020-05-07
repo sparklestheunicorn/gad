@@ -6,7 +6,7 @@ export const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: ['space-between', 'space-between', 'center'],
-    padding: `${theme.spacing.S} 0`,
+    margin: `${theme.spacing.S} 0`,
   }),
   termContainer: css({
     label: 'termContainer',
@@ -43,5 +43,24 @@ export const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  inputItem: {
+    label: 'inputItem',
+    border: `1px solid ${theme.color.border}`,
+    padding: theme.spacing.S,
+    fontSize: theme.textSize.XXS,
+    borderRadius: theme.shape.borderRadius,
+    width: '80%',
+    paddingRight: '30px',
+    backgroundColor: theme.color.background,
+  },
+  newInputItemContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  newInputItemButton: {
+    display: 'inline-block',
+    width: 'fit-content',
+    padding: theme.spacing.M,
   },
 })
