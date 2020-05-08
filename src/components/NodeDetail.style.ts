@@ -39,28 +39,4 @@ export const styles = (theme) => ({
       backgroundColor: selected ? theme.color.textLight : '#fff',
       margin: `0 2px`,
     }),
-  inputSubmitRow: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  inputItem: {
-    label: 'inputItem',
-    border: `1px solid ${theme.color.border}`,
-    padding: theme.spacing.S,
-    fontSize: theme.textSize.XXS,
-    borderRadius: theme.shape.borderRadius,
-    width: '80%',
-    paddingRight: '30px',
-    backgroundColor: theme.color.background,
-  },
-  newInputItemContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  newInputItemButton: {
-    display: 'inline-block',
-    width: 'fit-content',
-    padding: theme.spacing.M,
-  },
 })

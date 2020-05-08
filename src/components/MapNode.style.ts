@@ -66,6 +66,7 @@ export const styles = (theme) => ({
       animationName: 'fade-in',
       animationDelay: '0.4s',
       animationDuration: '1s',
+      cursor: 'pointer',
     }),
   nodeTitle: (detailViewOpen) => ({
     label: 'nodeTitle',
@@ -122,13 +123,6 @@ export const styles = (theme) => ({
       },
       p: {
         margin: `0px auto ${theme.spacing.S} auto`,
-      },
-      textArea: {
-        display: 'inline-block',
-        marginBottom: theme.spacing.S,
-        minHeight: '40px',
-        width: '80%',
-        margin: `${theme.spacing.M} 0 ${theme.spacing.M} 10%`,
       },
     }),
 })
