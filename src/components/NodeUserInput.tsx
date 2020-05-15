@@ -10,6 +10,7 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './NodeUserInput.style'
 import { stylizedButton, dropShadow } from '../styles/shared.style'
+import { request } from 'http'
 
 export const NodeUserInput = (props) => {
   const { nodeId } = props
@@ -25,12 +26,14 @@ export const NodeUserInput = (props) => {
   const [currentInputItem, setCurrentInputItem] = React.useState('')
   const [currentInputItemIndex, setCurrentInputItemIndex] = React.useState(0)
   const [inputHeight, setInputHeight] = React.useState(0) //We need this to get the textarea to expand to match its <p> size.
+  const [inputSubmitted, setInputSubmitted] = React.useState(false)
 
   const textareaRef = React.useRef(null)
 
   const formConfig = {
+    // With help from https://stackoverflow.com/questions/51995070/post-data-to-a-google-form-with-ajax
     cors: 'https://cors-anywhere.herokuapp.com/', // <optional> doesn't display the cors error
-    formUrl: 'https://docs.google.com/forms/d/e/1FT0U0eqV0FMa9iApc4SYlRJEcWQWItpm0yqzt9fL0Ng/formResponse',
+    formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeNWSBBbyZnS9IGOZxh9bEacjEuP11SA1NFwhG2doalRCK9_w/formResponse?',
   }
 
   React.useEffect(() => {
@@ -74,8 +77,10 @@ export const NodeUserInput = (props) => {
     const timestamp = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
 
     inputItems.forEach(async (claim) => {
-      console.log('CLAIM', claim)
-      const formData = new FormData()
+      if (claim.length < MIN_ITEM_LENGTH) {
+        return
+      }
+
       const inputs = {
         claimId: { id: 'entry.1356714542', value: nodeId },
         argumentId: { id: 'entry.1531525675', value: argumentId },
@@ -84,14 +89,18 @@ export const NodeUserInput = (props) => {
         timestamp: { id: 'entry.1370532301', value: timestamp },
       }
 
+      let requestUrl = formConfig.formUrl
+
       Object.keys(inputs).forEach((key) => {
-        formData.append(inputs[key].id, inputs[key].value)
+        requestUrl += `${inputs[key].id}=${inputs[key].value}&`
       })
 
+      requestUrl += 'submit=Submit'
+
       await axios({
-        url: `${formConfig.cors}${formConfig.formUrl}`,
-        method: 'post',
-        data: formData,
+        url: encodeURI(requestUrl),
+        method: 'get',
+        contentType: 'application/x-www-form-urlencoded',
         responseType: 'json',
       })
         .then((response) => {
@@ -100,6 +109,9 @@ export const NodeUserInput = (props) => {
         .catch((err) => {
           console.log('err', err)
         })
+
+      setInputItems([''])
+      setInputSubmitted(true)
     })
   }
 
@@ -117,7 +129,9 @@ export const NodeUserInput = (props) => {
       {inputIsExpanded && (
         <>
           <p key="userInputIntro">
-            Try to break your argument into simple, small pieces. Include links to sources where possible.
+            {inputSubmitted
+              ? 'Thank you for your submission. You can send more replies if you like.'
+              : 'Try to break your argument into simple, small pieces. Include links to sources where possible.'}
           </p>
           {inputItems.map((item, itemIndex) => {
             if (itemIndex === currentInputItemIndex) {
@@ -161,18 +175,18 @@ export const NodeUserInput = (props) => {
             <button
               css={stylizedButton(theme)}
               onClick={() => {
-                submitUserInput('pro')
+                submitUserInput('Against')
               }}
             >
-              <FontAwesomeIcon icon={faThumbsUp} /> Argue for
+              <FontAwesomeIcon icon={faThumbsDown} /> Argue against
             </button>
             <button
               css={stylizedButton(theme)}
               onClick={() => {
-                submitUserInput('con')
+                submitUserInput('For')
               }}
             >
-              <FontAwesomeIcon icon={faThumbsDown} /> Argue against
+              <FontAwesomeIcon icon={faThumbsUp} /> Argue for
             </button>
           </div>
         </>
