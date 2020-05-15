@@ -22,7 +22,7 @@ export const MapIntro = () => {
       <p>You may see content you dislike and disagree with, but we hope you'll approach this with an open mind.</p>
       <p css={s.linkLine}>
         Learn more about our values{' '}
-        <a css={s.link} href="http://www.covidconvo.org/values">
+        <a css={s.link} target="_blank" href="http://www.covidconvo.org/values">
           here
         </a>
         .
