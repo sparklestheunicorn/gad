@@ -54,7 +54,7 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
           })}
         </>
       )}
-      <NodeUserInput />
+      <NodeUserInput nodeId={nodeId} />
     </>
   )
 }
