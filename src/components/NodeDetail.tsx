@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
+import { NodeUserInput } from './NodeUserInput'
 import { styles } from './NodeDetail.style'
 
 export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms }) => {
@@ -53,6 +54,7 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
           })}
         </>
       )}
+      <NodeUserInput nodeId={nodeId} />
     </>
   )
 }
