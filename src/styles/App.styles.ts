@@ -1,10 +1,11 @@
 import { css } from '@emotion/core'
 
-export const styles = (theme) =>
-  css({
-    label: 'app',
+export const styles = (theme) => ({
+  appContainer: css({
+    label: 'appContainer',
     position: 'relative',
     height: '100%',
+    overflowY: 'auto',
     '.font-preloader': {
       position: 'absolute',
       transform: 'translate(300vw)',
@@ -20,4 +21,5 @@ export const styles = (theme) =>
         fontFamily: theme.font.paragraph,
       },
     },
-  })
+  }),
+})

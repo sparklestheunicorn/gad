@@ -13,6 +13,7 @@ export const defaultStyles = {
     shadow: '#d4d5d6',
     border: '#d4d5d6',
     borderDark: '#000',
+    borderLight: '#d4d5d6',
     selectedBackground: '#fff',
   },
   textSize: {

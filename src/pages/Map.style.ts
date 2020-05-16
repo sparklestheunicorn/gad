@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
-export const mapHeaderHeight = '120px'
+export const mapHeaderHeight = '100px'
 
 export const styles = (theme) => ({
   slideToDepth: (depth: number) =>
@@ -16,7 +16,7 @@ export const styles = (theme) => ({
       transition: 'transform 1s ease',
       WebkitFontSmoothing: 'antialiased',
     }),
-  mapContainer: {
+  mapContainer: css({
     label: 'mapContainer',
     height: `calc(100% - ${mapHeaderHeight} - ${mapFooterHeight})`,
     paddingBottom: `${mapFooterHeight}`,
@@ -24,31 +24,28 @@ export const styles = (theme) => ({
     animationName: 'fade-in',
     animationDuration: '1s',
     animationFillMode: 'forwards',
+    transition: `transform ${mapMovementTransitionSpeed}`,
+    WebkitFontSmoothing: 'antialiased',
     overflowX: 'hidden',
     titleBlock: {
       background: 'transparent',
     },
-  },
+  }),
   topContainer: {
     label: 'top-container',
-    padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.L} ${theme.spacing.M}`,
+    padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M}`,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     height: mapHeaderHeight,
     img: {
       maxWidth: '350px',
+      width: '100%',
     },
-  },
-  mapContainer: {
-    label: 'mapContainer',
-    transition: `transform ${mapMovementTransitionSpeed}`,
-    WebkitFontSmoothing: 'antialiased',
-    paddingBottom: mapFooterHeight,
   },
   mapFooter: css({
     label: 'mapFooter',
     position: 'fixed',
     bottom: 0,
-    width: '100%',
+    width: '100vw',
     height: mapFooterHeight,
   }),
 })

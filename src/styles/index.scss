@@ -53,6 +53,13 @@ a,
 a span {
   color: $text-color-dark;
   text-decoration: none;
+  font-family: 'Glacial Indifference';
+}
+
+button {
+  background: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 img {
@@ -84,6 +91,20 @@ h6 {
 
 h2 {
   letter-spacing: 0px;
+}
+
+p {
+  margin: $spacing-m 0;
+}
+
+input,
+textarea {
+  color: $text-color-dark;
+  font-family: 'Glacial Indifference';
+}
+
+button {
+  color: $text-color-light;
 }
 
 /************************

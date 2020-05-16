@@ -1,5 +1,5 @@
 import { StoreAccessor } from 'mobx-firelink'
-import { GetNodeChildrenL2, GetNodeChildren } from '@debate-map/server-link'
+import { GetNodeChildrenL2, GetNodeChildren, GetTermsAttached, GetNodePhrasings } from '@debate-map/server-link'
 import { MapNodeL2 } from '@debate-map/server-link'
 
 export function getFinalNodeTitle(node: MapNodeL2) {
@@ -34,38 +34,28 @@ export const getQuestions = StoreAccessor((s) => () => {
 })
 
 /**
- * Page-level queries
- */
-export const getQuestionPositions = StoreAccessor((s) => (questionID: string) => {
-  return GetNodeChildrenL2(questionID)
-})
-
-export const getPositionReasons = StoreAccessor((s) => (positionID: string) => {
-  return GetNodeChildrenL2(positionID)
-})
-
-export const getReasonEvidence = StoreAccessor((s) => (reasonID: string) => {
-  return GetNodeChildrenL2(reasonID)
-})
-
-/**
  * Map queries
  */
 
-export const getMapNodeChildren = StoreAccessor((s) => (nodeId: string) => {
-  return GetNodeChildrenL2(nodeId)
-})
+export const getNodeChildren = StoreAccessor((s) => (nodeId: string) => {
+  const nodeChildren = GetNodeChildrenL2(nodeId)
+  let nodeChildrenMap = {}
 
-export const getMapNodeSubtree = StoreAccessor((s) => (nodeId: string) => {
-  let subtree = {}
-  let children = getMapNodeChildren(nodeId)
-
-  children.forEach((child) => {
-    subtree[child._key] = {
-      title: child.current.titles.base,
-      childNodes: getMapNodeSubtree(child._key),
-    }
+  nodeChildren.forEach((child) => {
+    nodeChildrenMap[child._key] = child
   })
 
-  return subtree
+  return nodeChildrenMap
+})
+
+export const getMapNodeTerms = StoreAccessor((s) => (revisionId: string) => {
+  const terms = GetTermsAttached(revisionId)
+
+  return terms.filter((a) => a)
+})
+
+export const getMapNodePhrasings = StoreAccessor((s) => (revisionId: string) => {
+  const phrasings = GetNodePhrasings(revisionId)
+
+  return phrasings.filter((a) => a)
 })
