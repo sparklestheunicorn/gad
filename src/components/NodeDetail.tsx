@@ -15,31 +15,33 @@ export const NodeDetail = ({ nodeId, currentPhrasingIndex, setCurrentPhrasingInd
 
   return (
     <>
-      <div css={s.rephraseContainer}>
-        <button
-          css={s.carouselArrow}
-          onClick={() => {
-            if (currentPhrasingIndex === 0) {
-              setCurrentPhrasingIndex(numPhrasings - 1)
-            } else {
-              setCurrentPhrasingIndex(currentPhrasingIndex - 1)
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faCaretLeft} />
-        </button>
-        {range(numPhrasings).map((index) => (
+      {numPhrasings > 1 && (
+        <div css={s.rephraseContainer}>
           <button
-            css={s.carouselDot(index === currentPhrasingIndex)}
-            key={`${nodeId}-phrasing-${index}`}
-            onClick={() => setCurrentPhrasingIndex(index)}
-          ></button>
-        ))}
-        <button css={s.carouselArrow} onClick={() => setCurrentPhrasingIndex((currentPhrasingIndex + 1) % numPhrasings)}>
-          <FontAwesomeIcon icon={faCaretRight} />
-        </button>
-      </div>
-      {terms && (
+            css={s.carouselArrow}
+            onClick={() => {
+              if (currentPhrasingIndex === 0) {
+                setCurrentPhrasingIndex(numPhrasings - 1)
+              } else {
+                setCurrentPhrasingIndex(currentPhrasingIndex - 1)
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faCaretLeft} />
+          </button>
+          {range(numPhrasings).map((index) => (
+            <button
+              css={s.carouselDot(index === currentPhrasingIndex)}
+              key={`${nodeId}-phrasing-${index}`}
+              onClick={() => setCurrentPhrasingIndex(index)}
+            ></button>
+          ))}
+          <button css={s.carouselArrow} onClick={() => setCurrentPhrasingIndex((currentPhrasingIndex + 1) % numPhrasings)}>
+            <FontAwesomeIcon icon={faCaretRight} />
+          </button>
+        </div>
+      )}
+      {terms.length > 0 && (
         <>
           <h4>Terms</h4>
           {terms.map((term) => {

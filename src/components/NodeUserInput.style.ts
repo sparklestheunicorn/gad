@@ -2,10 +2,17 @@ import { css } from '@emotion/core'
 import { NONAME } from 'dns'
 
 export const styles = (theme) => ({
-  inputSubmitRow: css({
+  inputContainer: {
+    padding: `${theme.spacing.M} 10% 0 10%`,
+    borderTop: `1px solid ${theme.color.borderLight}`,
+    marginTop: theme.spacing.S,
+  },
+  inputRow: css({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    width: '100%',
+    marginBottom: theme.spacing.S,
   }),
   inputItem: {
     label: 'inputItem',
@@ -13,7 +20,7 @@ export const styles = (theme) => ({
     padding: theme.spacing.S,
     fontSize: theme.textSize.XXS,
     borderRadius: theme.shape.borderRadius,
-    width: '80%',
+    width: '100%',
     minHeight: '50px',
     paddingRight: '30px',
     backgroundColor: theme.color.background,
@@ -27,8 +34,8 @@ export const styles = (theme) => ({
     textarea: {
       display: 'inline-block',
       minHeight: '40px',
-      width: '80%',
-      margin: `0 0 ${theme.spacing.S} 10%`,
+      width: '100%',
+      margin: `0 0 ${theme.spacing.S} 0`,
       padding: theme.spacing.S,
       paddingRight: '30px',
       overflow: 'hidden',

@@ -6,7 +6,7 @@ export const styles = (theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: ['space-between', 'space-between', 'center'],
-    margin: `${theme.spacing.S} 0`,
+    margin: `0`,
   }),
   termContainer: css({
     label: 'termContainer',
