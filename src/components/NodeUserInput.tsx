@@ -19,7 +19,7 @@ export const NodeUserInput = (props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
 
-  const [forOrAgainst, setForOrAgainst] = React.useState(null)
+  const [forOrAgainst, setForOrAgainst] = React.useState<'For' | 'Against' | null>(null)
   const [inputItems, setInputItems] = React.useState([''])
   const [currentInputItem, setCurrentInputItem] = React.useState('')
   const [currentInputItemIndex, setCurrentInputItemIndex] = React.useState(0)

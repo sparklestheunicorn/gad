@@ -47,7 +47,7 @@ export const MapNode = observer((props) => {
   const nodeChildren = getNodeChildren(nodeId)
 
   // Detail View
-  const hasDetails = !topLevel //variantPhrasings.length > 0 || terms.length > 0
+  const hasDetails = !topLevel
   const [detailViewOpen, setDetailViewOpen] = React.useState(false)
 
   const focusOnSelected = () => {
