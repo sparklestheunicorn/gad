@@ -77,7 +77,7 @@ export const NodeUserInput = (props) => {
     const itemsToSubmit = currentInputItem !== '' ? inputItems.concat(currentInputItem) : inputItems
 
     itemsToSubmit.forEach(async (claim) => {
-      if (claim.length < MIN_ITEM_LENGTH) {
+      if (!claim || claim.length < MIN_ITEM_LENGTH) {
         return
       }
 
