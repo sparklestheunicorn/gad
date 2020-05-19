@@ -9,19 +9,17 @@ import axios from 'axios'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './NodeUserInput.style'
-import { stylizedButton, dropShadow } from '../styles/shared.style'
-import { request } from 'http'
+import { stylizedButton, stylizedButtonSlim, dropShadow, knockout } from '../styles/shared.style'
 
 export const NodeUserInput = (props) => {
   const { nodeId } = props
 
-  const MIN_ITEM_LENGTH = 40
+  const MIN_ITEM_LENGTH = 0
 
   const theme: Theme = useTheme()
   const s = styles(theme)
 
-  const [inputIsExpanded, setInputIsExpanded] = React.useState(false)
-
+  const [forOrAgainst, setForOrAgainst] = React.useState<'For' | 'Against' | null>(null)
   const [inputItems, setInputItems] = React.useState([''])
   const [currentInputItem, setCurrentInputItem] = React.useState('')
   const [currentInputItemIndex, setCurrentInputItemIndex] = React.useState(0)
@@ -71,12 +69,14 @@ export const NodeUserInput = (props) => {
     setCurrentInputItemIndex(itemIndex)
   }
 
-  const submitUserInput = async (forOrAgainst) => {
+  const submitUserInput = async () => {
     const argumentId = Math.floor(Math.random() * 100000000000000000) //Random one-time ID to group the claims together
     const now = new Date()
     const timestamp = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
 
-    inputItems.forEach(async (claim) => {
+    const itemsToSubmit = currentInputItem !== '' ? inputItems.concat(currentInputItem) : inputItems
+
+    itemsToSubmit.forEach(async (claim) => {
       if (claim.length < MIN_ITEM_LENGTH) {
         return
       }
@@ -111,22 +111,32 @@ export const NodeUserInput = (props) => {
         })
 
       setInputItems([''])
+      setCurrentInputItem('')
       setInputSubmitted(true)
     })
   }
 
   return (
-    <>
-      <h4
-        onClick={() => {
-          setInputIsExpanded(!inputIsExpanded)
-        }}
-        key="userInputHeading"
-      >
-        Send us your input and evidence{' '}
-        {inputIsExpanded ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
-      </h4>
-      {inputIsExpanded && (
+    <div css={s.inputContainer}>
+      <div css={s.inputRow} key="inputDetailsSubmitRow">
+        <button
+          css={[stylizedButtonSlim(theme), forOrAgainst === 'For' ? knockout(theme) : null]}
+          onClick={() => {
+            setForOrAgainst('For')
+          }}
+        >
+          <FontAwesomeIcon icon={faThumbsUp} /> Argue for
+        </button>
+        <button
+          css={[stylizedButtonSlim(theme), forOrAgainst === 'Against' ? knockout(theme) : null]}
+          onClick={() => {
+            setForOrAgainst('Against')
+          }}
+        >
+          <FontAwesomeIcon icon={faThumbsDown} /> Argue against
+        </button>
+      </div>
+      {forOrAgainst && (
         <>
           <p key="userInputIntro">
             {inputSubmitted
@@ -148,12 +158,6 @@ export const NodeUserInput = (props) => {
                       style={{ height: inputHeight }}
                       key="userInputTextarea"
                     />
-                    {currentInputItem.length > MIN_ITEM_LENGTH &&
-                      (inputItems.indexOf('') === itemIndex || !inputItems.includes('')) && (
-                        <button css={s.newInputItemButton} onClick={createNewInputItem} key="userInputNewItemButton">
-                          <FontAwesomeIcon icon={faPlus} />
-                        </button>
-                      )}
                   </div>
                 </>
               )
@@ -171,26 +175,21 @@ export const NodeUserInput = (props) => {
               )
             }
           })}
-          <div css={s.inputSubmitRow} key="inputDetailsSubmitRow">
-            <button
-              css={stylizedButton(theme)}
-              onClick={() => {
-                submitUserInput('Against')
-              }}
-            >
-              <FontAwesomeIcon icon={faThumbsDown} /> Argue against
+          <div css={s.inputRow} key="inputDetailsSubmitRow">
+            <button css={s.newInputItemButton} onClick={createNewInputItem} key="userInputNewItemButton">
+              <FontAwesomeIcon icon={faPlus} />
             </button>
             <button
               css={stylizedButton(theme)}
               onClick={() => {
-                submitUserInput('For')
+                submitUserInput()
               }}
             >
-              <FontAwesomeIcon icon={faThumbsUp} /> Argue for
+              Submit
             </button>
           </div>
         </>
       )}
-    </>
+    </div>
   )
 }
