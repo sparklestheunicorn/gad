@@ -33,7 +33,7 @@ export const styles = (theme) => ({
   }),
   topContainer: {
     label: 'top-container',
-    padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M}`,
+    padding: theme.spacing.M,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     height: mapHeaderHeight,
     img: {

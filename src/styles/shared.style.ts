@@ -2,6 +2,11 @@ import { css } from '@emotion/core'
 
 export const heading = (theme) => ({ fontFamily: theme.font.heading, color: theme.color.text })
 
+export const page = (theme) => ({
+  height: `calc(100vh - ${theme.layout.topNavHeight})`,
+  paddingBottom: theme.spacing.M,
+})
+
 export const subheading = (theme) => ({ fontFamily: theme.font.subheading, color: theme.color.text })
 
 export const knockout = (theme) => ({
