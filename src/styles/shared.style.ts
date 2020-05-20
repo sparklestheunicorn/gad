@@ -2,10 +2,19 @@ import { css } from '@emotion/core'
 
 export const heading = (theme) => ({ fontFamily: theme.font.heading, color: theme.color.text })
 
-export const page = (theme) => ({
-  height: `calc(100vh - ${theme.layout.topNavHeight})`,
-  paddingBottom: theme.spacing.M,
-})
+export const page = (theme) =>
+  css({
+    height: `calc(100vh - ${theme.layout.topNavHeight})`,
+    paddingBottom: theme.spacing.M,
+    position: 'relative',
+    maxWidth: theme.layout.maxPageWidth,
+    margin: '0 auto',
+    padding: 0,
+    display: 'flex',
+    minHeight: 0,
+    flexDirection: 'column',
+    overflow: 'hidden',
+  })
 
 export const subheading = (theme) => ({ fontFamily: theme.font.subheading, color: theme.color.text })
 
@@ -19,6 +28,7 @@ export const selected = (theme) => ({
 })
 
 export const dropShadow = (theme) => ({
+  zIndex: 10,
   filter: `drop-shadow(1px 1px 2px ${theme.color.shadow})`,
 })
 

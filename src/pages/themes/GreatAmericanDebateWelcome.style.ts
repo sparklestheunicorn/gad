@@ -6,23 +6,6 @@ const starFadeInDelay = '2.5s'
 const starFadeInDuration = '6s'
 const twinkleAnimationDuration = '2s'
 
-const generalGadStyles = (theme) => ({
-  bottomContainer: {
-    flex: '1 1 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: `0 ${theme.spacing.M}`,
-  },
-  header: {
-    backgroundColor: '#fff',
-    boxShadow: `0px 4px 5px 0px ${theme.color.backgroundDarkBlue}`,
-  },
-  circle: {
-    fontFamily: theme.font.titleFont,
-  },
-})
-
 const speechBubbleChild = (top, right, animationDelay, transform) => ({
   top,
   right,
@@ -47,11 +30,15 @@ const starChild = (top, right, animationDelay) => ({
 })
 
 export const styles = (theme) => ({
-  topContainer: {
+  topContainer: css({
     flex: '0 0 auto',
     padding: `0 ${theme.spacing.M}`,
     zIndex: 10,
-  },
+    'h1, h2': {
+      maxWidth: '100%',
+      textAlign: 'center',
+    },
+  }),
   titleImage: {
     marginTop: theme.spacing.L,
     maxWidth: '500px',
@@ -65,6 +52,11 @@ export const styles = (theme) => ({
   bottomContainer: css({
     position: 'relative',
     zIndex: 1,
+    flex: '1 1 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: `0 ${theme.spacing.M}`,
   }),
   welcomeAnimation: theme.mq({
     position: 'absolute',
@@ -93,6 +85,34 @@ export const styles = (theme) => ({
     '&:nthChild(6)': speechBubbleChild('35%', '-10%', '0.5s', 'scale(0.6)'),
     '&:nthChild(7)': speechBubbleChild('65%', '40%', '0.6s', ''),
   }),
+  speechBubble: {
+    position: 'relative',
+    display: 'inline-block',
+    backgroundColor: '#fff',
+    borderRadius: theme.shape.roundedCorner,
+    padding: theme.spacing.L,
+
+    '&:after': {
+      content: '',
+      position: 'absolute',
+      top: '100%',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      borderTop: '24px solid #fff',
+      borderRight: '36px solid transparent',
+    },
+
+    '&.reversed:after': {
+      borderRight: 'none',
+      borderLeft: '36px solid transparent',
+    },
+
+    '&.decorative': {
+      height: '120px',
+      width: '140px',
+    },
+  },
+
   shadow: theme.mq({
     position: 'absolute',
     height: 0,
@@ -133,11 +153,42 @@ export const styles = (theme) => ({
     }),
     '&:nthChild(5)': starChild('55%', '75%', '0.5s'),
   }),
-  star: {
+  star: css({
     animationName: 'twinkle',
     animationFillMode: 'forwards',
     animationDuration: twinkleAnimationDuration,
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease',
-  },
+    position: 'absolute',
+    display: 'inline-block',
+    width: 0,
+    height: 0,
+    zIndex: 10,
+    marginLeft: '0.9em',
+    marginRight: '0.9em',
+    marginBottom: '1.2em',
+    borderRight: '0.3em solid transparent',
+    borderBottom: '0.7em solid #fff',
+    borderLeft: '0.3em solid transparent',
+    // Controlls the size of the stars.
+    fontSize: '12px',
+
+    '&:before, &:after': {
+      content: '',
+      display: 'block',
+      width: 0,
+      height: 0,
+      position: 'absolute',
+      top: '0.6em',
+      left: '-1em',
+      borderRight: '1em solid transparent',
+      borderBottom: '0.7em solid #fff',
+      borderLeft: '1em solid transparent',
+      transform: 'rotate(-35deg)',
+    },
+
+    '&:after': {
+      transform: 'rotate(35deg)',
+    },
+  }),
 })
