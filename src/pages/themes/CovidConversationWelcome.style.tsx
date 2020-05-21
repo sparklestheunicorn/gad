@@ -42,7 +42,7 @@ export const styles = (theme) => ({
     maxWidth: '100%',
   },
   bottomContainer: theme.mq({
-    display: 'flex',
+    display: ['none', 'none', 'flex'],
     flexDirection: 'row',
     justifyContent: 'space-between',
     background: 'none',
