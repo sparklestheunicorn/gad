@@ -5,11 +5,7 @@
  * 
  * 1. Font Declarations (theme-specific header fonts are declared in their theme scss)
  * 2. Element Overrides for Browser Defaults
- * 3. Typography
-   4. Global Layouts
-   5. UI Component Styles
- * 6. UI Component Accents
- * 7. Animations
+ * 3. Animations
  */
 
 /********************************
@@ -107,43 +103,8 @@ button {
   color: $text-color-light;
 }
 
-/************************
- * 3. Typography
- ************************/
-.text-size-xxs {
-  font-size: $text-size-xxs !important;
-}
-
-.text-size-xs {
-  font-size: $text-size-xs !important;
-}
-
-.text-size-s {
-  font-size: $text-size-s !important;
-}
-
-.text-size-m {
-  font-size: $text-size-m !important;
-}
-
-.text-size-l {
-  font-size: $text-size-l !important;
-}
-
-.text-size-xl {
-  font-size: $text-size-xl !important;
-}
-
-.text-color-light {
-  color: $text-color-light;
-}
-
-.text-color-dark {
-  color: $text-color-dark;
-}
-
 /*********************************
- * 7. Animations and Transitions
+ * 3. Animations and Transitions
  *********************************/
 
 @keyframes fade-in {
