@@ -1,9 +1,10 @@
 import { css } from '@emotion/core'
 
-export const heading = (theme) => ({ fontFamily: theme.font.heading, color: theme.color.text })
+export const heading = (theme) => ({ label: 'heading', fontFamily: theme.font.heading, color: theme.color.text })
 
 export const page = (theme) =>
   css({
+    label: 'page',
     height: `calc(100vh - ${theme.layout.topNavHeight})`,
     paddingBottom: theme.spacing.M,
     position: 'relative',
@@ -16,7 +17,7 @@ export const page = (theme) =>
     overflow: 'hidden',
   })
 
-export const subheading = (theme) => ({ fontFamily: theme.font.subheading, color: theme.color.text })
+export const subheading = (theme) => ({ label: 'subheading', fontFamily: theme.font.subheading, color: theme.color.text })
 
 export const knockout = (theme) => ({
   backgroundColor: theme.color.knockoutBackground,

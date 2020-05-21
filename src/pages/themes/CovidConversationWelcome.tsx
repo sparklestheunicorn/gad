@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
 import { styles } from './CovidConversationWelcome.style'
-import { heading, stylizedButton, knockout } from '../../styles/shared.style'
+import { page, heading, stylizedButton, knockout } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
@@ -13,7 +13,7 @@ export const CovidConversationWelcome = (props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
   return (
-    <section css={s.pageWelcome}>
+    <section css={[page(theme), s.pageWelcome]}>
       <PageEffects duration={200} animation="fadeOut" options="once" />
       <div className="font-preloader">
         <span>Load</span> <span>the</span> <span>fonts</span>

@@ -23,6 +23,9 @@ export const styles = (theme) => ({
         color: '#064b6e',
       },
     },
+    p: {
+      fontFamily: 'Glacial Indifference',
+    },
   }),
   topContainer: theme.mq({
     width: ['100%', '100%', '50%'],
@@ -46,9 +49,10 @@ export const styles = (theme) => ({
     div: theme.mq({
       minWidth: ['50px', '50px', '100px'],
     }),
-    img: theme.mq({
-      width: ['50px', '50px', '100px'],
-    }),
+    img: {
+      width: '50px',
+      marginRight: '16px',
+    },
   }),
   donateCTALink: css({
     display: 'flex',
