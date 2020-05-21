@@ -31,8 +31,8 @@ export const CovidConversationWelcome = (props) => {
         </h2>
         <p>- Dr. Li Wenliang (李文亮), known as the whistleblower who warned China about COVID-19.</p>
       </div>
-      <Link to="/map">
-        <button css={[stylizedButton(theme), knockout(theme)]}>View COVID Convos</button>
+      <Link css={s.viewCTALink} to="/map">
+        <button css={[stylizedButton(theme), knockout(theme), s.viewCTAButton]}>View COVID Convos</button>
       </Link>
       <div css={s.bottomContainer}>
         <div>
@@ -46,11 +46,6 @@ export const CovidConversationWelcome = (props) => {
             <span>We're an educational non-profit, please donate!</span>
           </a>
         </div>
-        {/*<div>
-          <Link to="/map">
-            <img css={s.mapCTA} src={require(`../../assets/images/${theme.image.welcomeCTA}`)} alt="Conversations" />
-          </Link>
-        </div> */}
       </div>
     </section>
   )

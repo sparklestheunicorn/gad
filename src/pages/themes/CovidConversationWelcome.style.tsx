@@ -1,17 +1,22 @@
 import { css } from '@emotion/core'
+import welcomeBackground from '../../assets/images/covid-conversation-background.png'
+import welcomeBottom from '../../assets/images/covid-conversation-welcome-bottom.png'
 
 export const styles = (theme) => ({
-  pageWelcome: css({
-    backgroundImage: 'url("../../assets/images/covid-conversation-background.png")',
-    backgroundRepeat: 'no-repeat',
-    backgroundPositionX: '100%',
-    backgroundPositionY: '50%',
-    backgroundSize: '600px',
-  }),
+  pageWelcome: css(
+    theme.mq({
+      backgroundImage: [`url(${welcomeBottom})`, `url(${welcomeBottom})`, `url(${welcomeBackground})`],
+      backgroundRepeat: 'no-repeat',
+      backgroundPositionX: '100%',
+      backgroundPositionY: ['105%', '105%', '50%'],
+      backgroundSize: ['100%', '100%', '600px'],
+      paddingBottom: [0, 0, '150px'],
+    }),
+  ),
   welcomeQuote: theme.mq({
     width: ['100%', '100%', '50%'],
     minWidth: ['100%', '100%', '550px'],
-    padding: ['20px 40px 20px 100px', '20px 40px 20px 100px', '20px 20px 20px 100px'],
+    padding: ['20px 60px 0 60px', '20px 60px 0 60px', '50px 20px 20px 100px'],
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     h2: {
       fontSize: '48px',
@@ -68,10 +73,11 @@ export const styles = (theme) => ({
       fontSize: theme.textSize.XS,
     },
   }),
-  mapCTA: {
-    marginRight: '10px',
-    animationName: 'pulsate',
-    animationDuration: '2s',
-    animationIterationCount: 'infinite',
-  },
+  viewCTALink: theme.mq({
+    textAlign: ['center', 'center', 'left'],
+    margin: [0, 0, '0 0 0 100px'],
+  }),
+  viewCTAButton: theme.mq({
+    margin: ['20px auto', '20px auto', '40px 0 0 0'],
+  }),
 })
