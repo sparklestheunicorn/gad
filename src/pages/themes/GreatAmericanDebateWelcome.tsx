@@ -26,7 +26,7 @@ export const GreatAmericanDebateWelcome = (props) => {
         </h3>
       </div>
       <div css={s.bottomContainer}>
-        <Link to="/debates" css={[stylizedButton, dropShadow, s.exploreButton]}>
+        <Link to="/debates" css={[stylizedButton(theme), dropShadow(theme), s.exploreButton]}>
           Explore
         </Link>
 

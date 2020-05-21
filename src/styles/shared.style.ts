@@ -17,7 +17,13 @@ export const page = (theme) =>
     overflow: 'hidden',
   })
 
-export const subheading = (theme) => ({ label: 'subheading', fontFamily: theme.font.subheading, color: theme.color.text })
+export const subheading = (theme) => ({
+  label: 'subheading',
+  fontFamily: theme.font.subheading,
+  color: theme.color.text,
+  fontWeight: theme.font.subheadingWeight,
+  textTransform: theme.font.subheadingTransform,
+})
 
 export const knockout = (theme) => ({
   backgroundColor: theme.color.knockoutBackground,

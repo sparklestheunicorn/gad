@@ -50,6 +50,8 @@ export const defaultStyles = {
     heading: 'sans-serif',
     subheading: 'sans-serif',
     paragraph: 'PT Sans, sans-serif',
+    subheadingWeight: 'normal',
+    subheadingTransform: 'none',
   },
   animation: {
     mapMovementTransitionSpeed: '0.8s',

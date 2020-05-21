@@ -32,6 +32,8 @@ export type Theme = {
     heading: string
     subheading: string
     paragraph: string
+    subheadingWeight: string
+    subheadingTransform: string
   }
   layout: {
     maxPageWidth: string

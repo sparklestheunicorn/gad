@@ -10,11 +10,13 @@ export const gadStyles = {
     heading: 'Cheddar Gothic Sans',
     subheading: 'Glacial Indifference',
     paragraph: 'PT Sans, sans-serif',
+    subheadingWeight: 'bold',
+    subheadingTransform: 'uppercase',
   },
   strings: {
     title: 'Great American Debate',
   },
   color: {
-    text: '#444',
+    text: '#1c4c6c',
   },
 }

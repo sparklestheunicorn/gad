@@ -31,6 +31,7 @@ const starChild = (top, right, animationDelay) => ({
 
 export const styles = (theme) => ({
   topContainer: css({
+    label: 'topContainer',
     flex: '0 0 auto',
     padding: `0 ${theme.spacing.M}`,
     zIndex: 10,
@@ -40,16 +41,19 @@ export const styles = (theme) => ({
     },
   }),
   titleImage: {
+    label: 'titleImage',
     marginTop: theme.spacing.L,
     maxWidth: '500px',
     width: '100%',
   },
   exploreButton: theme.mq({
+    label: 'exploreButton',
     marginTop: '30vh',
     alignSelf: 'start',
     left: [null, null, '30%'],
   }),
   bottomContainer: css({
+    label: 'bottomContainer',
     position: 'relative',
     zIndex: 1,
     flex: '1 1 auto',
@@ -59,6 +63,7 @@ export const styles = (theme) => ({
     padding: `0 ${theme.spacing.M}`,
   }),
   welcomeAnimation: theme.mq({
+    label: 'welcomeAnimation',
     position: 'absolute',
     width: '60%',
     height: '100%',
@@ -66,6 +71,7 @@ export const styles = (theme) => ({
     bottom: '0',
   }),
   animationContainer: css({
+    label: 'animationContainer',
     position: 'absolute',
     height: '100%',
     width: '100%',
