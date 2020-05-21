@@ -28,7 +28,11 @@ export type Theme = {
     XL: string
     XXL: string
   }
-  font: {}
+  font: {
+    heading: string
+    subheading: string
+    paragraph: string
+  }
   layout: {
     maxPageWidth: string
     topNavHeight: string

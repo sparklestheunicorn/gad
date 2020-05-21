@@ -21,7 +21,7 @@ export const GreatAmericanDebateWelcome = (props) => {
       </div>
       <div css={s.topContainer}>
         <img css={s.titleImage} src={require(`../../assets/images/${theme.image.title}`)} alt="The Great American Debate" />
-        <h3 css={subheading}>
+        <h3 css={subheading(theme)}>
           <span>america's arguments,</span> <span>all in one place</span>
         </h3>
       </div>

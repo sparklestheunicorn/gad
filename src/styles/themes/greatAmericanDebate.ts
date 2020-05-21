@@ -7,11 +7,14 @@ export const gadStyles = {
     welcomeCTA: 'great-american-debate-welcome-cta.png',
   },
   font: {
-    title: 'Cheddar Gothic Sans',
-    subtitle: 'Glacial Indifference',
+    heading: 'Cheddar Gothic Sans',
+    subheading: 'Glacial Indifference',
     paragraph: 'PT Sans, sans-serif',
   },
   strings: {
     title: 'Great American Debate',
+  },
+  color: {
+    text: '#444',
   },
 }
