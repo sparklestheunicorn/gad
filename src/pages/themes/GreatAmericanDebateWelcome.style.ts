@@ -1,5 +1,6 @@
 import { css } from '@emotion/core'
 import merge from 'lodash/merge'
+import { twinkle, fadeInDelayed, flyInBottomWithShadow, fadeIn } from '../../styles/keyframes'
 
 const welcomeAnimationDuration = '1.5s'
 const starFadeInDelay = '2.5s'
@@ -79,7 +80,7 @@ export const styles = (theme) => ({
   speechBubbleContainer: css({
     label: 'speechBubbleContainer',
     position: 'absolute',
-    animationName: 'fly-in-bottom-with-shadow',
+    animationName: flyInBottomWithShadow(theme),
     animationDuration: welcomeAnimationDuration,
     animationFillMode: 'forwards',
     willChange: 'transform',
@@ -128,7 +129,7 @@ export const styles = (theme) => ({
     zIndex: -100,
     opacity: 0,
     boxShadow: `0 0 10px 3px ${theme.color.shadow}`,
-    animationName: 'fade-in-delayed',
+    animationName: fadeInDelayed,
     animationDuration: welcomeAnimationDuration,
     animationFillMode: 'forwards',
     animationDelay: '0.5s',
@@ -142,7 +143,7 @@ export const styles = (theme) => ({
     position: 'absolute',
     display: 'inline-block',
     opacity: 0,
-    animationName: 'fade-in',
+    animationName: fadeIn,
     animationFillMode: 'forwards',
     animationDuration: starFadeInDuration,
     animationDelay: starFadeInDelay,
@@ -165,7 +166,7 @@ export const styles = (theme) => ({
   }),
   star: css({
     label: 'star',
-    animationName: 'twinkle',
+    animationName: twinkle,
     animationFillMode: 'forwards',
     animationDuration: twinkleAnimationDuration,
     animationIterationCount: 'infinite',

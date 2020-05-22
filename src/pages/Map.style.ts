@@ -1,4 +1,5 @@
 import { css } from '@emotion/core'
+import { fadeIn } from '../styles/keyframes'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
@@ -21,7 +22,7 @@ export const styles = (theme) => ({
     height: `calc(100% - ${mapHeaderHeight} - ${mapFooterHeight})`,
     paddingBottom: `${mapFooterHeight}`,
     opacity: 0,
-    animationName: 'fade-in',
+    animationName: fadeIn,
     animationDuration: '1s',
     animationFillMode: 'forwards',
     transition: `transform ${mapMovementTransitionSpeed}`,
