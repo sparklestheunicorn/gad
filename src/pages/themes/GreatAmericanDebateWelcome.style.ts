@@ -77,6 +77,7 @@ export const styles = (theme) => ({
     width: '100%',
   }),
   speechBubbleContainer: css({
+    label: 'speechBubbleContainer',
     position: 'absolute',
     animationName: 'fly-in-bottom-with-shadow',
     animationDuration: welcomeAnimationDuration,
@@ -92,6 +93,7 @@ export const styles = (theme) => ({
     '&:nthChild(7)': speechBubbleChild('65%', '40%', '0.6s', ''),
   }),
   speechBubble: css({
+    label: 'speechBubble',
     position: 'relative',
     display: 'inline-block',
     backgroundColor: '#fff',
@@ -108,16 +110,19 @@ export const styles = (theme) => ({
     },
   }),
   reversed: {
+    label: 'reversed',
     ':after': {
       borderRight: 'none',
       borderLeft: '36px solid transparent',
     },
   },
   decorative: {
+    label: 'decorative',
     height: '120px',
     width: '140px',
   },
   shadow: theme.mq({
+    label: 'shadow',
     position: 'absolute',
     height: 0,
     zIndex: -100,
@@ -133,6 +138,7 @@ export const styles = (theme) => ({
     '&:nthChild(3)': shadowChild('30%', ['40%', '40%', '10%'], '3%'),
   }),
   starContainer: theme.mq({
+    label: 'starContainer',
     position: 'absolute',
     display: 'inline-block',
     opacity: 0,
@@ -158,6 +164,7 @@ export const styles = (theme) => ({
     '&:nthChild(5)': starChild('55%', '75%', '0.5s'),
   }),
   star: css({
+    label: 'star',
     animationName: 'twinkle',
     animationFillMode: 'forwards',
     animationDuration: twinkleAnimationDuration,
