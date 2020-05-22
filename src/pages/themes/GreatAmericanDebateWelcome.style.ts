@@ -31,6 +31,9 @@ const starChild = (top, right, animationDelay) => ({
 })
 
 export const styles = (theme) => ({
+  page: {
+    height: `calc(100vh - ${theme.layout.topNavHeight})`,
+  },
   topContainer: css({
     label: 'topContainer',
     flex: '0 0 auto',

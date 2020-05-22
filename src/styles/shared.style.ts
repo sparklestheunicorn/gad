@@ -21,7 +21,6 @@ export const heading = (theme) => ({
 export const page = (theme) =>
   css({
     label: 'page',
-    height: `calc(100vh - ${theme.layout.topNavHeight})`,
     paddingBottom: theme.spacing.M,
     position: 'relative',
     maxWidth: theme.layout.maxPageWidth,

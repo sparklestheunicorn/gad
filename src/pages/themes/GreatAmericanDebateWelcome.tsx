@@ -14,7 +14,7 @@ export const GreatAmericanDebateWelcome = (props) => {
   const s = styles(theme)
 
   return (
-    <section className="page" css={page(theme)}>
+    <section className="page" css={[page(theme), s.page]}>
       <PageEffects duration={200} animation="fadeOut" options="once" />
       <div css={fontPreloader(theme)}>
         <span>Load</span> <span>the</span> <span>fonts</span>
