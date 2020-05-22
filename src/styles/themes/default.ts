@@ -9,6 +9,7 @@ export const defaultStyles = {
     background: '#fff',
     text: '#333',
     textLight: '#006297',
+    textDark: '#1c3749',
     knockoutBackground: '#999',
     shadow: '#d4d5d6',
     border: '#d4d5d6',
@@ -37,6 +38,7 @@ export const defaultStyles = {
     maxPageWidth: '1024px',
     topNavHeight: '64px',
     background: 'none',
+    topImageWidth: 'auto',
   },
   shape: {
     roundedCorner: '12px',

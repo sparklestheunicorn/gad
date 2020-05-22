@@ -38,7 +38,7 @@ export const styles = (theme) => ({
     height: mapHeaderHeight,
     img: {
       maxWidth: '350px',
-      width: '100%',
+      width: theme.layout.topImageWidth,
     },
   },
   mapFooter: css({

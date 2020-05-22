@@ -1,5 +1,17 @@
 import { css } from '@emotion/core'
 
+export const fontPreloader = (theme) =>
+  css({
+    position: 'absolute',
+    transform: 'translate(300vw)',
+    span: {
+      fontFamily: theme.font.heading,
+    },
+    'span:nth-child(2)': {
+      fontFamily: theme.font.subheading,
+    },
+  })
+
 export const heading = (theme) => ({
   label: 'heading',
   fontFamily: theme.font.heading,

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, Global } from '@emotion/core'
 import React from 'react'
 import { HashRouter, Route } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
@@ -12,6 +12,8 @@ import { initDebateMapServerLink } from './firestore/init-dm-link'
 
 import { generateTheme } from './styles/themes/themeGenerator'
 import { styles } from './styles/App.styles'
+import { resets } from './styles/resets'
+import { fontFaces } from './styles/fontFaces'
 import { CovidConversationWelcome } from './pages/themes/CovidConversationWelcome'
 import { GreatAmericanDebateWelcome } from './pages/themes/GreatAmericanDebateWelcome'
 
@@ -39,6 +41,7 @@ const App = observer((props) => {
   return (
     <ThemeProvider theme={theme}>
       <HashRouter basename="/">
+        <Global styles={[resets(theme), fontFaces]} />
         <div css={s.appContainer}>
           <Route path="/map" render={() => <Map questions={questions} questionChildren={questionChildren} />} />
           <Route

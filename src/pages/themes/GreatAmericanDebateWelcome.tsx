@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
 import { styles } from './GreatAmericanDebateWelcome.style'
-import { page, subheading, stylizedButton, dropShadow } from '../../styles/shared.style'
+import { fontPreloader, page, subheading, stylizedButton, dropShadow } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
@@ -14,9 +14,9 @@ export const GreatAmericanDebateWelcome = (props) => {
   const s = styles(theme)
 
   return (
-    <section css={page(theme)}>
+    <section className="page" css={page(theme)}>
       <PageEffects duration={200} animation="fadeOut" options="once" />
-      <div className="font-preloader">
+      <div css={fontPreloader(theme)}>
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
       <div css={s.topContainer}>
@@ -26,7 +26,7 @@ export const GreatAmericanDebateWelcome = (props) => {
         </h3>
       </div>
       <div css={s.bottomContainer}>
-        <Link to="/debates" css={[stylizedButton(theme), dropShadow(theme), s.exploreButton]}>
+        <Link to="/map" css={[stylizedButton(theme), dropShadow(theme), s.exploreButton]}>
           Explore
         </Link>
 
