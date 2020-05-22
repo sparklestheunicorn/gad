@@ -19,6 +19,7 @@ export const gadStyles = {
   color: {
     text: '#1c4c6c',
     background: 'rgb(188, 217, 240)',
+    shadow: 'rgba(104, 166, 214, 1)',
   },
   layout: {
     background: 'radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%)',

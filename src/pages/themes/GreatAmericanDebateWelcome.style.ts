@@ -10,7 +10,7 @@ const speechBubbleChild = (top, right, animationDelay, transform) => ({
   top,
   right,
   animationDelay,
-  speechBubble: {
+  '& div': {
     transform,
   },
 })
@@ -24,7 +24,7 @@ const shadowChild = (width, right, bottom) => ({
 const starChild = (top, right, animationDelay) => ({
   top,
   right,
-  star: {
+  '& div': {
     animationDelay,
   },
 })
@@ -84,13 +84,13 @@ export const styles = (theme) => ({
     animationFillMode: 'forwards',
     willChange: 'transform',
     transform: 'translateY(100vh)',
-    '&:nthChild(1)': speechBubbleChild('-5%', '5%', '0s', 'scale(0.3)'),
-    '&:nthChild(2)': speechBubbleChild('5%', '30%', '0.1s', 'scale(0.2)'),
-    '&:nthChild(3)': speechBubbleChild('20%', '40%', '0.2s', 'scale(0.75)'),
-    '&:nthChild(4)': speechBubbleChild('20%', '-15%', '0.3s', 'scale(0.5)'),
-    '&:nthChild(5)': speechBubbleChild('50%', '-16%', '0.4s', 'scale(0.8)'),
-    '&:nthChild(6)': speechBubbleChild('35%', '-10%', '0.5s', 'scale(0.6)'),
-    '&:nthChild(7)': speechBubbleChild('65%', '40%', '0.6s', ''),
+    '&:nth-child(1)': speechBubbleChild('-5%', '5%', '0s', 'scale(0.3)'),
+    '&:nth-child(2)': speechBubbleChild('5%', '30%', '0.1s', 'scale(0.2)'),
+    '&:nth-child(3)': speechBubbleChild('20%', '40%', '0.2s', 'scale(0.75)'),
+    '&:nth-child(4)': speechBubbleChild('20%', '-15%', '0.3s', 'scale(0.5)'),
+    '&:nth-child(5)': speechBubbleChild('50%', '-16%', '0.4s', 'scale(0.8)'),
+    '&:nth-child(6)': speechBubbleChild('35%', '10%', '0.5s', 'scale(0.6)'),
+    '&:nth-child(7)': speechBubbleChild('65%', '40%', '0.6s', 'none'),
   }),
   speechBubble: css({
     label: 'speechBubble',
@@ -100,7 +100,7 @@ export const styles = (theme) => ({
     borderRadius: theme.shape.roundedCorner,
     padding: theme.spacing.L,
     '&:after': {
-      content: '',
+      content: '""',
       position: 'absolute',
       top: '100%',
       left: '50%',
@@ -133,9 +133,9 @@ export const styles = (theme) => ({
     animationFillMode: 'forwards',
     animationDelay: '0.5s',
     willChange: 'transform',
-    '&:nthChild(1)': shadowChild(['50%', '30%', '30%'], ['50%', '11%', '29%'], 0),
-    '&:nthChild(2)': shadowChild(['30%', '30%', '26%'], ['50%', '50%', '-16%'], ['4%', '4%', '1%']),
-    '&:nthChild(3)': shadowChild('30%', ['40%', '40%', '10%'], '3%'),
+    '&:nth-child(1)': shadowChild(['50%', '30%', '30%'], ['50%', '11%', '29%'], 0),
+    '&:nth-child(2)': shadowChild(['30%', '30%', '26%'], ['50%', '50%', '-16%'], ['4%', '4%', '1%']),
+    '&:nth-child(3)': shadowChild('30%', ['40%', '40%', '10%'], '3%'),
   }),
   starContainer: theme.mq({
     label: 'starContainer',
@@ -146,22 +146,22 @@ export const styles = (theme) => ({
     animationFillMode: 'forwards',
     animationDuration: starFadeInDuration,
     animationDelay: starFadeInDelay,
-    '&:nthChild(1)': starChild('-10%', '30%', 0),
-    '&:nthChild(2)': merge(starChild('-0%', ['15%', '15%', '60%'], '1s'), {
+    '&:nth-child(1)': starChild('-10%', '30%', 0),
+    '&:nth-child(2)': merge(starChild('-0%', ['15%', '15%', '60%'], '1s'), {
       welcomeAnimation: {
         right: '15%',
       },
-      star: {
+      '& div': {
         animationDuration: '1.5s',
       },
     }),
-    '&:nthChild(3)': starChild('20%', '38%', '0.2s'),
-    '&:nthChild(4)': merge(starChild('45%', '10%', '0.7s'), {
-      star: {
+    '&:nth-child(3)': starChild('20%', '38%', '0.2s'),
+    '&:nth-child(4)': merge(starChild('45%', '10%', '0.7s'), {
+      '& div': {
         animationDuration: '1.5s',
       },
     }),
-    '&:nthChild(5)': starChild('55%', '75%', '0.5s'),
+    '&:nth-child(5)': starChild('55%', '75%', '0.5s'),
   }),
   star: css({
     label: 'star',
@@ -185,7 +185,7 @@ export const styles = (theme) => ({
     fontSize: '12px',
 
     '&:before, &:after': {
-      content: '',
+      content: '""',
       display: 'block',
       width: 0,
       height: 0,
