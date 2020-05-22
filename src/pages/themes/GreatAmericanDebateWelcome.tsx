@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
@@ -33,25 +33,25 @@ export const GreatAmericanDebateWelcome = (props) => {
         <div css={s.welcomeAnimation}>
           <div css={s.animationContainer}>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative reversed"></div>
+              <div css={[s.speechBubble, s.decorative, s.reversed]}></div>
             </div>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative"></div>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative reversed"></div>
+              <div css={[s.speechBubble, s.decorative, s.reversed]}></div>
             </div>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative"></div>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative"></div>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative"></div>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
             <div css={s.speechBubbleContainer}>
-              <div className="speech-bubble decorative"></div>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
           </div>
           <div css={s.animationContainer}>

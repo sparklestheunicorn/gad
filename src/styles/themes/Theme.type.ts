@@ -38,6 +38,7 @@ export type Theme = {
   layout: {
     maxPageWidth: string
     topNavHeight: string
+    background: string
   }
   shape: {
     roundedCorner: string

@@ -36,6 +36,7 @@ export const defaultStyles = {
   layout: {
     maxPageWidth: '1024px',
     topNavHeight: '64px',
+    background: 'none',
   },
   shape: {
     roundedCorner: '12px',

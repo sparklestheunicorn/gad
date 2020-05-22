@@ -91,13 +91,12 @@ export const styles = (theme) => ({
     '&:nthChild(6)': speechBubbleChild('35%', '-10%', '0.5s', 'scale(0.6)'),
     '&:nthChild(7)': speechBubbleChild('65%', '40%', '0.6s', ''),
   }),
-  speechBubble: {
+  speechBubble: css({
     position: 'relative',
     display: 'inline-block',
     backgroundColor: '#fff',
     borderRadius: theme.shape.roundedCorner,
     padding: theme.spacing.L,
-
     '&:after': {
       content: '',
       position: 'absolute',
@@ -107,18 +106,17 @@ export const styles = (theme) => ({
       borderTop: '24px solid #fff',
       borderRight: '36px solid transparent',
     },
-
-    '&.reversed:after': {
+  }),
+  reversed: {
+    ':after': {
       borderRight: 'none',
       borderLeft: '36px solid transparent',
     },
-
-    '&.decorative': {
-      height: '120px',
-      width: '140px',
-    },
   },
-
+  decorative: {
+    height: '120px',
+    width: '140px',
+  },
   shadow: theme.mq({
     position: 'absolute',
     height: 0,

@@ -1,6 +1,10 @@
 import { css } from '@emotion/core'
 
-export const heading = (theme) => ({ label: 'heading', fontFamily: theme.font.heading, color: theme.color.text })
+export const heading = (theme) => ({
+  label: 'heading',
+  fontFamily: theme.font.heading,
+  color: theme.color.text,
+})
 
 export const page = (theme) =>
   css({
