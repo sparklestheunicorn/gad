@@ -68,3 +68,18 @@ export const stylizedButton = (theme) =>
     padding: theme.spacing.M,
     cursor: 'pointer',
   })
+
+export const stylizedButtonSlim = (theme) =>
+  css({
+    display: 'inline-block',
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    color: theme.color.text,
+    letterSpacing: '2px',
+    fontFamily: theme.font.paragraph,
+    backgroundColor: theme.color.background,
+    border: `1px solid ${theme.color.borderDark}`,
+    padding: theme.spacing.S,
+    cursor: 'pointer',
+  })
