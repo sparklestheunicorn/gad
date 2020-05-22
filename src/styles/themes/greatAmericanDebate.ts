@@ -7,11 +7,21 @@ export const gadStyles = {
     welcomeCTA: 'great-american-debate-welcome-cta.png',
   },
   font: {
-    title: 'Cheddar Gothic Sans',
-    subtitle: 'Glacial Indifference',
+    heading: 'Cheddar Gothic Sans',
+    subheading: 'Glacial Indifference',
     paragraph: 'PT Sans, sans-serif',
+    subheadingWeight: 'bold',
+    subheadingTransform: 'uppercase',
   },
   strings: {
     title: 'Great American Debate',
+  },
+  color: {
+    text: '#1c4c6c',
+    background: 'rgb(188, 217, 240)',
+    shadow: 'rgba(104, 166, 214, 1)',
+  },
+  layout: {
+    background: 'radial-gradient(circle, rgba(188, 217, 240, 1) 0%, rgba(104, 166, 214, 1) 100%)',
   },
 }

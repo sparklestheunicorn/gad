@@ -1,4 +1,5 @@
 import { css } from '@emotion/core'
+import { fadeIn } from '../styles/keyframes'
 
 export const mapMovementTransitionSpeed = '0.8s'
 export const mapFooterHeight = '32px'
@@ -21,7 +22,7 @@ export const styles = (theme) => ({
     height: `calc(100% - ${mapHeaderHeight} - ${mapFooterHeight})`,
     paddingBottom: `${mapFooterHeight}`,
     opacity: 0,
-    animationName: 'fade-in',
+    animationName: fadeIn,
     animationDuration: '1s',
     animationFillMode: 'forwards',
     transition: `transform ${mapMovementTransitionSpeed}`,
@@ -33,12 +34,12 @@ export const styles = (theme) => ({
   }),
   topContainer: {
     label: 'top-container',
-    padding: `${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M}`,
+    padding: theme.spacing.M,
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     height: mapHeaderHeight,
     img: {
       maxWidth: '350px',
-      width: '100%',
+      width: theme.layout.topImageWidth,
     },
   },
   mapFooter: css({

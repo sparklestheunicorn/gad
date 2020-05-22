@@ -9,12 +9,14 @@ export const defaultStyles = {
     background: '#fff',
     text: '#333',
     textLight: '#006297',
+    textDark: '#1c3749',
     knockoutBackground: '#999',
     shadow: '#d4d5d6',
     border: '#d4d5d6',
     borderDark: '#000',
     borderLight: '#d4d5d6',
     selectedBackground: '#fff',
+    backgroundDarkBlue: 'rgba(104, 166, 214, 1)',
   },
   textSize: {
     XXS: '12px',
@@ -35,6 +37,8 @@ export const defaultStyles = {
   layout: {
     maxPageWidth: '1024px',
     topNavHeight: '64px',
+    background: 'none',
+    topImageWidth: 'auto',
   },
   shape: {
     roundedCorner: '12px',
@@ -49,6 +53,8 @@ export const defaultStyles = {
     heading: 'sans-serif',
     subheading: 'sans-serif',
     paragraph: 'PT Sans, sans-serif',
+    subheadingWeight: 'normal',
+    subheadingTransform: 'none',
   },
   animation: {
     mapMovementTransitionSpeed: '0.8s',

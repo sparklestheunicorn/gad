@@ -20,7 +20,7 @@ export const Map = observer((props) => {
   const [maxMapDepth, setMaxMapDepth] = React.useState(0)
 
   return (
-    <>
+    <div className="page">
       <header css={s.topContainer}>
         <Link to="/">
           <img
@@ -57,6 +57,6 @@ export const Map = observer((props) => {
           maximizeMapDepth={() => setMapDepth(maxMapDepth)}
         />
       </footer>
-    </>
+    </div>
   )
 })

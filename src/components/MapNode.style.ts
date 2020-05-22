@@ -1,5 +1,6 @@
 import { css } from '@emotion/core'
 import { Z_BLOCK } from 'zlib'
+import { fadeIn } from '../styles/keyframes'
 
 const rectangle = (theme) =>
   css({
@@ -48,7 +49,7 @@ export const styles = (theme) => ({
     width: '100%',
     height: '100%',
     opacity: 0,
-    animationName: 'fade-in',
+    animationName: fadeIn,
     animationDelay: '0.4s',
     animationDuration: '1s',
     animationFillMode: 'forwards',
@@ -63,7 +64,7 @@ export const styles = (theme) => ({
       margin: 0,
       flexGrow: 2,
       borderBottom: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
-      animationName: 'fade-in',
+      animationName: fadeIn,
       animationDelay: '0.4s',
       animationDuration: '1s',
       cursor: 'pointer',
@@ -74,7 +75,7 @@ export const styles = (theme) => ({
     flexGrow: 2,
     padding: theme.spacing.S,
     margin: 0,
-    animationName: 'fade-in',
+    animationName: fadeIn,
     animationDelay: '0.4s',
     animationDuration: '1s',
   }),
@@ -112,7 +113,6 @@ export const styles = (theme) => ({
       flexDirection: 'column',
       fontFamily: theme.font.paragraph,
       boxShadow: 'inset 0px 1px 5px 1px rgba(212,213,214,1)',
-      overflowY: 'auto',
       h4: {
         textAlign: 'center',
         fontWeight: 'bold',

@@ -1,8 +1,44 @@
 import { css } from '@emotion/core'
 
-export const heading = (theme) => ({ fontFamily: theme.font.heading, color: theme.color.text })
+export const fontPreloader = (theme) =>
+  css({
+    position: 'absolute',
+    transform: 'translate(300vw)',
+    span: {
+      fontFamily: theme.font.heading,
+    },
+    'span:nth-child(2)': {
+      fontFamily: theme.font.subheading,
+    },
+  })
 
-export const subheading = (theme) => ({ fontFamily: theme.font.subheading, color: theme.color.text })
+export const heading = (theme) => ({
+  label: 'heading',
+  fontFamily: theme.font.heading,
+  color: theme.color.text,
+})
+
+export const page = (theme) =>
+  css({
+    label: 'page',
+    paddingBottom: theme.spacing.M,
+    position: 'relative',
+    maxWidth: theme.layout.maxPageWidth,
+    margin: '0 auto',
+    padding: 0,
+    display: 'flex',
+    minHeight: 0,
+    flexDirection: 'column',
+    overflow: 'hidden',
+  })
+
+export const subheading = (theme) => ({
+  label: 'subheading',
+  fontFamily: theme.font.subheading,
+  color: theme.color.text,
+  fontWeight: theme.font.subheadingWeight,
+  textTransform: theme.font.subheadingTransform,
+})
 
 export const knockout = (theme) => ({
   backgroundColor: theme.color.knockoutBackground,
@@ -14,6 +50,7 @@ export const selected = (theme) => ({
 })
 
 export const dropShadow = (theme) => ({
+  zIndex: 10,
   filter: `drop-shadow(1px 1px 2px ${theme.color.shadow})`,
 })
 

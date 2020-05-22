@@ -28,10 +28,18 @@ export type Theme = {
     XL: string
     XXL: string
   }
-  font: {}
+  font: {
+    heading: string
+    subheading: string
+    paragraph: string
+    subheadingWeight: string
+    subheadingTransform: string
+  }
   layout: {
     maxPageWidth: string
     topNavHeight: string
+    background: string
+    topImageWidth: string
   }
   shape: {
     roundedCorner: string

@@ -27,4 +27,7 @@ export const ccStyles = {
   textSize: {
     XXS: '14px',
   },
+  layout: {
+    topImageWidth: '100%',
+  },
 }

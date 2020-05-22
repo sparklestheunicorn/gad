@@ -1,78 +1,79 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
+import { styles } from './GreatAmericanDebateWelcome.style'
+import { fontPreloader, page, subheading, stylizedButton, dropShadow } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
 export const GreatAmericanDebateWelcome = (props) => {
   const theme: Theme = useTheme()
+  const s = styles(theme)
 
   return (
-    <section className="page welcome">
+    <section className="page" css={[page(theme), s.page]}>
       <PageEffects duration={200} animation="fadeOut" options="once" />
-      <div className="font-preloader">
+      <div css={fontPreloader(theme)}>
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
-      <div className="top-container">
-        <img
-          className="title-image"
-          src={require(`../../assets/images/${theme.image.title}`)}
-          alt="The Great American Debate"
-        />
-        <h3 className="subheading">
+      <div css={s.topContainer}>
+        <img css={s.titleImage} src={require(`../../assets/images/${theme.image.title}`)} alt="The Great American Debate" />
+        <h3 css={subheading(theme)}>
           <span>america's arguments,</span> <span>all in one place</span>
         </h3>
       </div>
-      <div className="bottom-container">
-        <Link to="/debates" className="explore-button stylized-button drop-shadow">
+      <div css={s.bottomContainer}>
+        <Link to="/map" css={[stylizedButton(theme), dropShadow(theme), s.exploreButton]}>
           Explore
         </Link>
 
-        <div className="welcome-animation">
-          <div className="animation-container">
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative reversed"></div>
+        <div css={s.welcomeAnimation}>
+          <div css={s.animationContainer}>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative, s.reversed]}></div>
             </div>
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative"></div>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative reversed"></div>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative, s.reversed]}></div>
             </div>
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative"></div>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative"></div>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative"></div>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
-            <div className="speech-bubble-container">
-              <div className="speech-bubble decorative"></div>
+            <div css={s.speechBubbleContainer}>
+              <div css={[s.speechBubble, s.decorative]}></div>
             </div>
           </div>
-          <div className="animation-container">
-            <div className="shadow"></div>
-            <div className="shadow"></div>
-            <div className="shadow"></div>
+          <div css={s.animationContainer}>
+            <div css={s.shadow}></div>
+            <div css={s.shadow}></div>
+            <div css={s.shadow}></div>
           </div>
-          <div className="animation-container">
-            <div className="star-container">
-              <div className="star"></div>
+          <div css={s.animationContainer}>
+            <div css={s.starContainer}>
+              <div css={s.star}></div>
             </div>
-            <div className="star-container">
-              <div className="star"></div>
+            <div css={s.starContainer}>
+              <div css={s.star}></div>
             </div>
-            <div className="star-container">
-              <div className="star"></div>
+            <div css={s.starContainer}>
+              <div css={s.star}></div>
             </div>
-            <div className="star-container">
-              <div className="star"></div>
+            <div css={s.starContainer}>
+              <div css={s.star}></div>
             </div>
-            <div className="star-container">
-              <div className="star"></div>
+            <div css={s.starContainer}>
+              <div css={s.star}></div>
             </div>
           </div>
         </div>
