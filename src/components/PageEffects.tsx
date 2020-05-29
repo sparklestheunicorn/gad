@@ -3,6 +3,15 @@ import * as React from 'react'
 export const PageEffects = (props) => {
   const { animation, duration, options } = props
 
+  var ua = navigator.userAgent.toLowerCase()
+  if (ua.indexOf('safari') != -1) {
+    if (ua.indexOf('chrome') > -1) {
+      ua = 'chrome'
+    } else {
+      ua = 'safari'
+    }
+  }
+
   let keyframes = {
     fadeOut: [
       // keyframes
@@ -22,7 +31,9 @@ export const PageEffects = (props) => {
 
   let linkClickHandler = (e) => {
     e.preventDefault()
-    document.getElementsByClassName('page')[0].animate(keyframes[animation], timingOptions[options])
+    if (ua !== 'safari') {
+      document.getElementsByClassName('page')[0].animate(keyframes[animation], timingOptions[options])
+    }
     window.setTimeout(() => {
       window.location = e.target.closest('a').href
     }, duration)
