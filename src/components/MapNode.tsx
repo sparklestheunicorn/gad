@@ -13,6 +13,9 @@ import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
 import keys from 'lodash/keys'
 
+// a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
+// a node's child has polarity 10 if that child is a pro argument, 20 if con, no polarity if neither
+
 export const MapNode = observer((props) => {
   const {
     topLevel,
@@ -22,6 +25,7 @@ export const MapNode = observer((props) => {
     nodeChildrenIds,
     childrenOrder,
     depth,
+    multiPremiseArgument,
     setMapDepth,
     setMaxMapDepth,
     isSelected,
@@ -153,6 +157,7 @@ export const MapNode = observer((props) => {
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
+                  multiPremiseArgument={currentChild.multiPremiseArgument}
                   isSelected={currentChild._key == selectedChild}
                   setIsSelected={() => {
                     setSelectedChild(currentChild._key)
