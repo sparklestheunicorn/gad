@@ -28,6 +28,8 @@ export const MapNode = observer((props) => {
     multiPremiseArgument,
     setMapDepth,
     setMaxMapDepth,
+    isPro,
+    isCon,
     isSelected,
     setIsSelected,
   } = props
@@ -70,7 +72,7 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
-  /*  console.log('----------------------')
+  console.log('----------------------')
   console.log(title)
   console.log('MAPNODE depth', depth)
   console.log('MAPNODE nodeChildrenIds', nodeChildrenIds)
@@ -79,10 +81,13 @@ export const MapNode = observer((props) => {
   console.log('MAPNODE childrenKeys', childrenKeys)
   console.log('MAPNODE childOrder', childrenOrder)
   console.log('----------------------')
-*/
+
   return (
     <>
-      <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
+      <li
+        key={nodeId}
+        css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme), isPro ? s.proNode : null, isPro ? s.conNode : null]}
+      >
         <div
           css={[s.liHeader(hasDetails), isSelected ? selected(theme) : {}]}
           onClick={() => {
@@ -140,10 +145,13 @@ export const MapNode = observer((props) => {
         )}
       </li>
       {isSelected && hasChildren && (
-        <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
+        <ul css={s.mapNodeChildren(multiPremiseArgument)} key={`${nodeId}-children`}>
           {childrenKeys.map((childId) => {
             //console.log('CHILDNODE', nodeChildren[childId])
             const currentChild = nodeChildren[childId]
+            const isPro = nodeChildrenIds[childId].polarity === 10
+            const isCon = nodeChildrenIds[childId].polarity === 20
+
             return (
               currentChild && (
                 <MapNode
@@ -158,6 +166,8 @@ export const MapNode = observer((props) => {
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
                   multiPremiseArgument={currentChild.multiPremiseArgument}
+                  isPro={isPro}
+                  isCon={isCon}
                   isSelected={currentChild._key == selectedChild}
                   setIsSelected={() => {
                     setSelectedChild(currentChild._key)

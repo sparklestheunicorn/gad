@@ -40,20 +40,41 @@ export const styles = (theme) => ({
       WebkitFontSmoothing: 'antialiased',
     }),
   ],
-  mapNodeChildren: css({
-    label: 'nodeChildren',
-    position: 'absolute',
-    left: '100%',
-    top: 0,
-    listStyleType: 'none',
-    width: '100%',
-    height: '100%',
-    opacity: 0,
-    animationName: fadeIn,
-    animationDelay: '0.4s',
-    animationDuration: '1s',
-    animationFillMode: 'forwards',
-  }),
+  proNode: {
+    backgroundColor: 'lightgreen',
+  },
+  conNode: {
+    backgroundColor: 'lightred',
+  },
+  mapNodeChildren: (multipremise) =>
+    css({
+      label: 'nodeChildren',
+      position: 'absolute',
+      left: '100%',
+      top: 0,
+      listStyleType: 'none',
+      width: '100%',
+      height: '100%',
+      opacity: 0,
+      animationName: fadeIn,
+      animationDelay: '0.4s',
+      animationDuration: '1s',
+      animationFillMode: 'forwards',
+      li: multipremise
+        ? {
+            marginBottom: 0,
+            borderRadius: 0,
+            borderTop: 'none',
+            '&:first-of-type': {
+              borderRadius: `${theme.shape.borderRadius} ${theme.shape.borderRadius} 0 0`,
+              borderTop: `1px solid ${theme.color.border}`,
+            },
+            '&:last-of-type': {
+              borderRadius: `0 0 ${theme.shape.borderRadius} ${theme.shape.borderRadius}`,
+            },
+          }
+        : {},
+    }),
   questionTitle: (detailViewOpen) =>
     css({
       label: 'mapQuestionTitle',
