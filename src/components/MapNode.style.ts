@@ -40,12 +40,36 @@ export const styles = (theme) => ({
       WebkitFontSmoothing: 'antialiased',
     }),
   ],
-  proNode: {
-    backgroundColor: 'lightgreen',
-  },
-  conNode: {
-    backgroundColor: 'lightred',
-  },
+  proNode: css({
+    'h3:before': {
+      content: '"PRO"',
+      position: 'relative',
+      top: '-2px',
+      marginRight: theme.spacing.XS,
+      borderRadius: '4px',
+      backgroundColor: theme.color.pro,
+      color: '#fff',
+      fontFamily: theme.font.paragraph,
+      fontWeight: 'bold',
+      fontSize: theme.textSize.XXS,
+      padding: '4px',
+    },
+  }),
+  conNode: css({
+    'h3:before': {
+      content: '"CON"',
+      position: 'relative',
+      top: '-2px',
+      marginRight: theme.spacing.XS,
+      borderRadius: '4px',
+      backgroundColor: theme.color.con,
+      color: '#fff',
+      fontFamily: theme.font.paragraph,
+      fontWeight: 'bold',
+      fontSize: theme.textSize.XXS,
+      padding: '4px',
+    },
+  }),
   mapNodeChildren: (multipremise) =>
     css({
       label: 'nodeChildren',

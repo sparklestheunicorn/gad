@@ -71,7 +71,7 @@ export const MapNode = observer((props) => {
     setMaxMapDepth(depth - 1)
     setMapDepth(depth - 1)
   }
-
+  /*
   console.log('----------------------')
   console.log(title)
   console.log('MAPNODE depth', depth)
@@ -81,12 +81,12 @@ export const MapNode = observer((props) => {
   console.log('MAPNODE childrenKeys', childrenKeys)
   console.log('MAPNODE childOrder', childrenOrder)
   console.log('----------------------')
-
+*/
   return (
     <>
       <li
         key={nodeId}
-        css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme), isPro ? s.proNode : null, isPro ? s.conNode : null]}
+        css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme), isPro ? s.proNode : null, isCon ? s.conNode : null]}
       >
         <div
           css={[s.liHeader(hasDetails), isSelected ? selected(theme) : {}]}
