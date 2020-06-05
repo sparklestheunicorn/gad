@@ -13,6 +13,9 @@ import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
 import keys from 'lodash/keys'
 
+// a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
+// a node's child has polarity 10 if that child is a pro argument, 20 if con, no polarity if neither
+
 export const MapNode = observer((props) => {
   const {
     topLevel,
@@ -22,8 +25,11 @@ export const MapNode = observer((props) => {
     nodeChildrenIds,
     childrenOrder,
     depth,
+    multiPremiseArgument,
     setMapDepth,
     setMaxMapDepth,
+    isPro,
+    isCon,
     isSelected,
     setIsSelected,
   } = props
@@ -65,8 +71,8 @@ export const MapNode = observer((props) => {
     setMaxMapDepth(depth - 1)
     setMapDepth(depth - 1)
   }
-
-  /*  console.log('----------------------')
+  /*
+  console.log('----------------------')
   console.log(title)
   console.log('MAPNODE depth', depth)
   console.log('MAPNODE nodeChildrenIds', nodeChildrenIds)
@@ -78,7 +84,10 @@ export const MapNode = observer((props) => {
 */
   return (
     <>
-      <li key={nodeId} css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme)]}>
+      <li
+        key={nodeId}
+        css={[topLevel ? s.mapQuestion : s.mapNode, dropShadow(theme), isPro ? s.proNode : null, isCon ? s.conNode : null]}
+      >
         <div
           css={[s.liHeader(hasDetails), isSelected ? selected(theme) : {}]}
           onClick={() => {
@@ -136,10 +145,13 @@ export const MapNode = observer((props) => {
         )}
       </li>
       {isSelected && hasChildren && (
-        <ul css={s.mapNodeChildren} key={`${nodeId}-children`}>
+        <ul css={s.mapNodeChildren(multiPremiseArgument)} key={`${nodeId}-children`}>
           {childrenKeys.map((childId) => {
             //console.log('CHILDNODE', nodeChildren[childId])
             const currentChild = nodeChildren[childId]
+            const isPro = nodeChildrenIds[childId].polarity === 10
+            const isCon = nodeChildrenIds[childId].polarity === 20
+
             return (
               currentChild && (
                 <MapNode
@@ -153,6 +165,9 @@ export const MapNode = observer((props) => {
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
+                  multiPremiseArgument={currentChild.multiPremiseArgument}
+                  isPro={isPro}
+                  isCon={isCon}
                   isSelected={currentChild._key == selectedChild}
                   setIsSelected={() => {
                     setSelectedChild(currentChild._key)

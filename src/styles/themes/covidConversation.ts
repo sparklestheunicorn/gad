@@ -14,6 +14,8 @@ export const ccStyles = {
     border: '#1c4c6c',
     borderDark: '#1c4c6c',
     selectedBackground: '#fff', //'#d1ecfa',
+    pro: '#1D9645',
+    con: '#961E1D',
   },
   font: {
     heading: 'League Spartan',
@@ -24,9 +26,9 @@ export const ccStyles = {
     title: 'COVIDConvo',
     tagline: 'Combining your conversations about COVID-19',
   },
-  textSize: {
+  /*  textSize: {
     XXS: '14px',
-  },
+  },*/
   layout: {
     topImageWidth: '100%',
   },

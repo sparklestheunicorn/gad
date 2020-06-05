@@ -17,6 +17,8 @@ export const defaultStyles = {
     borderLight: '#d4d5d6',
     selectedBackground: '#fff',
     backgroundDarkBlue: 'rgba(104, 166, 214, 1)',
+    pro: '#96951D',
+    con: '#961E1D',
   },
   textSize: {
     XXS: '12px',
