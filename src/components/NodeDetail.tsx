@@ -40,10 +40,6 @@ export const NodeDetail = observer(
           //type 20 is a youtube video
 
           const videoId = getYoutubeId(url)
-          const iframeMarkup =
-            '<iframe width="560" height="315" src="//www.youtube.com/embed/' +
-            videoId +
-            '" frameborder="0" allowfullscreen></iframe>'
 
           return (
             <>
@@ -52,7 +48,7 @@ export const NodeDetail = observer(
                 css={s.iframe}
                 width="560"
                 height="315"
-                src={`http://www.youtube.com/embed/${videoId}`}
+                src={`https://www.youtube.com/embed/${videoId}`}
                 frameBorder="0"
                 allowFullScreen
               ></iframe>
