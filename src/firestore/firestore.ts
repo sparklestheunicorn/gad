@@ -1,4 +1,4 @@
-import { StoreAccessor } from 'mobx-firelink'
+import { StoreAccessor, GetDoc, GetDocs, WhereOp } from 'mobx-firelink'
 import { GetNodeChildrenL2, GetNodeChildren, GetTermsAttached, GetNodePhrasings } from '@debate-map/server-link'
 import { MapNodeL2 } from '@debate-map/server-link'
 
@@ -59,3 +59,22 @@ export const getMapNodePhrasings = StoreAccessor((s) => (revisionId: string) => 
 
   return phrasings.filter((a) => a)
 })
+
+export const getMedia = StoreAccessor((s) => (id: string) => {
+  if (!id) return null
+  return GetDoc({}, (a) => a.medias.get(id))
+})
+/*
+export const getMedias = StoreAccessor((s) => (): Media[] => {
+  return GetDocs({}, (a) => a.medias)
+})
+
+export const GetMediasByURL = StoreAccessor((s) => (url: string): Media[] => {
+  return GetDocs(
+    {
+      queryOps: [new WhereOp('url', '==', url)],
+    },
+    (a) => a.medias,
+  )
+})
+*/
