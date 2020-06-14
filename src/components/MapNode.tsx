@@ -33,6 +33,8 @@ export const MapNode = observer((props) => {
     isSelected,
     setIsSelected,
     sources,
+    references,
+    media,
   } = props
 
   // Style
@@ -74,10 +76,10 @@ export const MapNode = observer((props) => {
   }
 
   // console.log('----------------------')
-  console.log(title)
+  // console.log(title)
   // console.log('MAPNODE depth', depth)
   // console.log('MAPNODE nodeChildrenIds', nodeChildrenIds)
-  console.log('MAPNODE nodeChildren', nodeChildren)
+  // console.log('MAPNODE nodeChildren', nodeChildren)
   // console.log('MAPNODE hasChildren', hasChildren)
   // console.log('MAPNODE childrenKeys', childrenKeys)
   // console.log('MAPNODE childOrder', childrenOrder)
@@ -136,6 +138,8 @@ export const MapNode = observer((props) => {
                   setCurrentPhrasingIndex={setCurrentPhrasingIndex}
                   numPhrasings={phrasings.length}
                   terms={terms}
+                  references={references}
+                  media={media}
                 />
               )}
             </div>
@@ -161,9 +165,9 @@ export const MapNode = observer((props) => {
                   currentRevision={currentChild.currentRevision}
                   topLevel={false}
                   title={
-                    currentChild.current.titles.yesNoQuestion ||
-                    currentChild.current.titles.base ||
-                    currentChild.current.quote.content
+                    currentChild.current?.titles?.yesNoQuestion ||
+                    currentChild.current?.titles?.base ||
+                    currentChild.current?.quote?.content
                   }
                   nodeChildrenIds={currentChild.children}
                   childrenOrder={currentChild.childrenOrder}
@@ -178,6 +182,8 @@ export const MapNode = observer((props) => {
                     setSelectedChild(currentChild._key)
                   }}
                   sources={currentChild.current?.quote?.sourceChains?.[0]?.sources}
+                  references={currentChild.current?.references}
+                  media={currentChild.current?.media}
                 />
               )
             )
