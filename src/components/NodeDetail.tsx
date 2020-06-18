@@ -12,7 +12,7 @@ import { styles } from './NodeDetail.style'
 import { getMedia } from '../firestore/firestore'
 
 export const NodeDetail = observer(
-  ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media }) => {
+  ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources }) => {
     const theme: Theme = useTheme()
     const s = styles(theme)
 
@@ -105,6 +105,22 @@ export const NodeDetail = observer(
           <>
             <h4>Media</h4>
             {resolvedMedia && renderMedia(resolvedMedia)}
+          </>
+        )}
+        {(sources || references) && (
+          //TODO: Probably at some point we want to support multiple source chains and multiple sources
+          <>
+            <h4>Sources</h4>
+            {sources && (
+              <a href={sources?.[0]?.link} target="_blank">
+                {sources?.[0]?.link}
+              </a>
+            )}
+            {references && (
+              <a href={references?.sourceChains?.[0]?.sources?.[0]?.link} target="_blank">
+                {references?.sourceChains?.[0]?.sources?.[0]?.link}
+              </a>
+            )}
           </>
         )}
         <NodeUserInput nodeId={nodeId} />

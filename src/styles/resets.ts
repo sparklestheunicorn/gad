@@ -22,6 +22,7 @@ export const resets = (theme) => ({
     color: theme.color.textDark,
     textDecoration: 'none',
     fontFamily: theme.font.paragraph,
+    overflowWrap: 'break-word',
   }),
   button: css({
     background: '#fff',
@@ -38,6 +39,7 @@ export const resets = (theme) => ({
     margin: `${theme.spacing.S} 0`,
     fontWeight: 'bold',
     lineHeight: '1',
+    overflowWrap: 'break-word',
     span: {
       display: 'block',
     },
@@ -47,6 +49,7 @@ export const resets = (theme) => ({
   }),
   p: css({
     margin: `${theme.spacing.M} 0`,
+    overflowWrap: 'break-word',
   }),
   'input, textarea': css({
     color: theme.color.textDark,

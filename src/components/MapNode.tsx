@@ -84,6 +84,8 @@ export const MapNode = observer((props) => {
   // console.log('MAPNODE hasChildren', hasChildren)
   // console.log('MAPNODE childrenKeys', childrenKeys)
   // console.log('MAPNODE childOrder', childrenOrder)
+  // console.log('MAPNODE references', references)
+
   // console.log('----------------------')
 
   return (
@@ -140,6 +142,7 @@ export const MapNode = observer((props) => {
                   numPhrasings={phrasings.length}
                   terms={terms}
                   references={references}
+                  sources={sources}
                   media={media}
                 />
               )}
