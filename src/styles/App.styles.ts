@@ -7,6 +7,8 @@ export const styles = (theme) => ({
     position: 'relative',
     height: '100%',
     overflowY: 'auto',
+    scrollBehavior: 'smooth',
+
     '.font-preloader': {
       position: 'absolute',
       transform: 'translate(300vw)',

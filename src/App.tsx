@@ -41,7 +41,7 @@ const App = observer((props) => {
     <ThemeProvider theme={theme}>
       <HashRouter basename="/">
         <Global styles={resets(theme)} />
-        <div css={s.appContainer}>
+        <div id="appContainer" css={s.appContainer}>
           <Route path="/map" render={() => <Map questions={questions} questionChildren={questionChildren} />} />
           <Route
             exact

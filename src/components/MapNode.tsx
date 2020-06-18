@@ -67,6 +67,7 @@ export const MapNode = observer((props) => {
     setIsSelected()
     setMapDepth(depth)
     setMaxMapDepth(depth)
+    document.getElementById('appContainer').scrollTop = 0
   }
 
   const selectLeaf = () => {
