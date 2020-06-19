@@ -111,16 +111,18 @@ export const NodeDetail = observer(
           //TODO: Probably at some point we want to support multiple source chains and multiple sources
           <>
             <h4>Sources</h4>
-            {sources && (
-              <a href={sources?.[0]?.link} target="_blank">
-                {sources?.[0]?.link}
-              </a>
-            )}
-            {references && (
-              <a href={references?.sourceChains?.[0]?.sources?.[0]?.link} target="_blank">
-                {references?.sourceChains?.[0]?.sources?.[0]?.link}
-              </a>
-            )}
+            {sources?.length &&
+              sources.map((item) => (
+                <a href={item?.link} target="_blank">
+                  {item?.link}
+                </a>
+              ))}
+            {references?.sourceChains?.[0]?.sources?.length &&
+              references?.sourceChains?.[0]?.sources.map((item) => (
+                <a href={item.link} target="_blank">
+                  {item.link}
+                </a>
+              ))}
           </>
         )}
         <NodeUserInput nodeId={nodeId} />
