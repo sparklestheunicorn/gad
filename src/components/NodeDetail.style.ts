@@ -39,7 +39,4 @@ export const styles = (theme) => ({
       backgroundColor: selected ? theme.color.textLight : '#fff',
       margin: `0 2px`,
     }),
-  iframe: {
-    width: '100%',
-  },
 })

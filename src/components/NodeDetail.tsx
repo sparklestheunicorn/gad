@@ -7,60 +7,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
-import { NodeUserInput } from './NodeUserInput'
 import { styles } from './NodeDetail.style'
+import { NodeUserInput } from './NodeUserInput'
+import CollapsibleSection from './CollapsibleSection'
+import Media from './Media'
 import { getMedia } from '../firestore/firestore'
 
 export const NodeDetail = observer(
   ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources }) => {
     const theme: Theme = useTheme()
     const s = styles(theme)
-
     const resolvedMedia = getMedia(media?.id)
-
-    const getYoutubeId = (url) => {
-      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
-      const match = url.match(regExp)
-
-      return match && match[2].length === 11 ? match[2] : null
-    }
-
-    const renderMedia = ({ type, url, description, name }) => {
-      switch (type) {
-        case 10: {
-          //type 10 is an image
-          return (
-            <>
-              <p>{name}</p>
-              <img src={url} alt={description} />
-            </>
-          )
-        }
-        case 20: {
-          //type 20 is a youtube video
-
-          const videoId = getYoutubeId(url)
-
-          return (
-            <>
-              <p>{name}</p>
-              <iframe
-                css={s.iframe}
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${videoId}`}
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
-            </>
-          )
-        }
-      }
-    }
 
     return (
       <>
-        {numPhrasings > 1 && (
+        <CollapsibleSection title={'Phrasing'} contentExists={numPhrasings > 1}>
           <div css={s.rephraseContainer}>
             <button
               css={s.carouselArrow}
@@ -85,30 +46,26 @@ export const NodeDetail = observer(
               <FontAwesomeIcon icon={faCaretRight} />
             </button>
           </div>
-        )}
-        {terms.length > 0 && (
-          <>
-            <h4>Terms</h4>
-            {terms.map((term) => {
-              return (
-                term && (
-                  <div css={s.termContainer} key={term.name}>
-                    <span css={css(s.termName)}>{term.name}: </span>
-                    <span css={css(s.termDefinition)}>{term.definition}</span>
-                  </div>
-                )
+        </CollapsibleSection>
+
+        <CollapsibleSection title={'Definitions'} contentExists={terms.length > 0}>
+          {terms.map((term) => {
+            return (
+              term && (
+                <div css={s.termContainer} key={term.name}>
+                  <span css={css(s.termName)}>{term.name}: </span>
+                  <span css={css(s.termDefinition)}>{term.definition}</span>
+                </div>
               )
-            })}
-          </>
-        )}
-        {media?.id && (
-          <>
-            <h4>Media</h4>
-            {resolvedMedia && renderMedia(resolvedMedia)}
-          </>
-        )}
-        {(sources || references) && (
-          //TODO: Probably at some point we want to support multiple source chains and multiple sources
+            )
+          })}
+        </CollapsibleSection>
+
+        <CollapsibleSection title={'Media'} contentExists={media?.id && resolvedMedia}>
+          <Media {...resolvedMedia} />
+        </CollapsibleSection>
+
+        <CollapsibleSection title={'Sources'} contentExists={sources || references}>
           <>
             <h4>Sources</h4>
             {sources?.length &&
@@ -124,8 +81,11 @@ export const NodeDetail = observer(
                 </a>
               ))}
           </>
-        )}
-        <NodeUserInput nodeId={nodeId} />
+        </CollapsibleSection>
+
+        <CollapsibleSection contentExists={true}>
+          <NodeUserInput nodeId={nodeId} />
+        </CollapsibleSection>
       </>
     )
   },

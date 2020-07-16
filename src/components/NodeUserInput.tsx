@@ -97,10 +97,11 @@ export const NodeUserInput = (props) => {
 
       requestUrl += 'submit=Submit'
 
-      await axios({
-        url: encodeURI(requestUrl),
+      await axios(encodeURI(requestUrl), {
         method: 'get',
-        contentType: 'application/x-www-form-urlencoded',
+        headers: {
+          contentType: 'application/x-www-form-urlencoded',
+        },
         responseType: 'json',
       })
         .then((response) => {
