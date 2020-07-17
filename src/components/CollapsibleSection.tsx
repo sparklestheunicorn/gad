@@ -22,7 +22,7 @@ const CollapsibleSection = ({ title = null, contentExists, children }) => {
           {title}
         </h4>
       )}
-      {open && children}
+      <div css={s.content(open)}>{children}</div>
     </>
   ) : null
 }
