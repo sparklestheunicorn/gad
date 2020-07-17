@@ -22,13 +22,13 @@ const SourceLink = (link) => (
 )
 
 export const NodeDetail = observer(
-  ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources }) => {
+  ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources, open }) => {
     const theme: Theme = useTheme()
     const s = styles(theme)
     const resolvedMedia = getMedia(media?.id)
 
     return (
-      <>
+      <div css={s.detailView(open)}>
         <CollapsibleSection title={'Select Phrasing'} contentExists={numPhrasings > 1}>
           <div css={s.rephraseContainer}>
             <button
@@ -78,7 +78,7 @@ export const NodeDetail = observer(
         <CollapsibleSection title={'Weigh In'} contentExists={true}>
           <NodeUserInput nodeId={nodeId} />
         </CollapsibleSection>
-      </>
+      </div>
     )
   },
 )

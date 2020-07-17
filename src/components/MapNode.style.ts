@@ -145,27 +145,4 @@ export const styles = (theme) => ({
       alignItems: 'center',
       borderRadius: hasDetails ? `${theme.shape.borderRadius} ${theme.shape.borderRadius} 0 0` : theme.shape.borderRadius,
     }),
-  detailView: (detailViewOpen) =>
-    css({
-      label: 'detailView',
-      width: '100%',
-      maxHeight: detailViewOpen ? '90vh' : '0',
-      padding: detailViewOpen ? `${theme.spacing.S} ${theme.spacing.M} ${theme.spacing.M} ${theme.spacing.M}` : 0,
-      borderTop: detailViewOpen ? `1px solid ${theme.color.border}` : 'none',
-      overflowY: detailViewOpen ? 'hidden' : 'auto',
-      transition: 'max-height 1s ease',
-      display: 'flex',
-      flexDirection: 'column',
-      fontFamily: theme.font.paragraph,
-      boxShadow: 'inset 0px 1px 5px 1px rgba(212,213,214,1)',
-      h4: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-        borderTop: `1px solid ${theme.color.borderLight}`,
-        paddingTop: theme.spacing.M,
-      },
-      p: {
-        margin: `0px auto ${theme.spacing.S} auto`,
-      },
-    }),
 })
