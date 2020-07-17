@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import range from 'lodash/range'
+import get from 'lodash/get'
 import React from 'react'
 import { observer } from 'mobx-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,8 +11,15 @@ import { Theme } from '@emotion/types'
 import { styles } from './NodeDetail.style'
 import { NodeUserInput } from './NodeUserInput'
 import CollapsibleSection from './CollapsibleSection'
+import Term from './Term'
 import Media from './Media'
 import { getMedia } from '../firestore/firestore'
+
+const SourceLink = (link) => (
+  <a href={link} target="_blank">
+    {link}
+  </a>
+)
 
 export const NodeDetail = observer(
   ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources }) => {
@@ -21,7 +29,7 @@ export const NodeDetail = observer(
 
     return (
       <>
-        <CollapsibleSection title={'Phrasing'} contentExists={numPhrasings > 1}>
+        <CollapsibleSection title={'Select Phrasing'} contentExists={numPhrasings > 1}>
           <div css={s.rephraseContainer}>
             <button
               css={s.carouselArrow}
@@ -48,42 +56,26 @@ export const NodeDetail = observer(
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title={'Definitions'} contentExists={terms.length > 0}>
-          {terms.map((term) => {
-            return (
-              term && (
-                <div css={s.termContainer} key={term.name}>
-                  <span css={css(s.termName)}>{term.name}: </span>
-                  <span css={css(s.termDefinition)}>{term.definition}</span>
-                </div>
-              )
-            )
-          })}
+        <CollapsibleSection title={'See Definitions'} contentExists={terms.length > 0}>
+          {terms.map((term, i) => (
+            <Term key={`${nodeId}-term-${i}`} {...term} />
+          ))}
         </CollapsibleSection>
 
-        <CollapsibleSection title={'Media'} contentExists={media?.id && resolvedMedia}>
+        <CollapsibleSection title={'View Media'} contentExists={media?.id && resolvedMedia}>
           <Media {...resolvedMedia} />
         </CollapsibleSection>
 
-        <CollapsibleSection title={'Sources'} contentExists={sources || references}>
+        <CollapsibleSection title={'View Sources'} contentExists={sources || references}>
           <>
-            <h4>Sources</h4>
-            {sources?.length &&
-              sources.map((item) => (
-                <a href={item?.link} target="_blank">
-                  {item?.link}
-                </a>
-              ))}
-            {references?.sourceChains?.[0]?.sources?.length &&
-              references?.sourceChains?.[0]?.sources.map((item) => (
-                <a href={item.link} target="_blank">
-                  {item.link}
-                </a>
-              ))}
+            {sources?.length && sources.map((item, i) => <SourceLink key={`${nodeId}-source-${i}`} link={item?.link} />)}
+            {get(references, 'sourceChains.[0].sources', []).map((item, i) => (
+              <SourceLink key={`${nodeId}-reference-${i}`} link={item.link} />
+            ))}
           </>
         </CollapsibleSection>
 
-        <CollapsibleSection contentExists={true}>
+        <CollapsibleSection title={'Weigh In'} contentExists={true}>
           <NodeUserInput nodeId={nodeId} />
         </CollapsibleSection>
       </>

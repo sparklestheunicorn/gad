@@ -162,8 +162,7 @@ export const styles = (theme) => ({
         textAlign: 'center',
         fontWeight: 'bold',
         borderTop: `1px solid ${theme.color.borderLight}`,
-        marginTop: theme.spacing.S,
-        paddingTop: theme.spacing.S,
+        paddingTop: theme.spacing.M,
       },
       p: {
         margin: `0px auto ${theme.spacing.S} auto`,

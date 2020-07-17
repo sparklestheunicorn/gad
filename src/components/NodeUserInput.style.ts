@@ -4,7 +4,6 @@ import { NONAME } from 'dns'
 export const styles = (theme) => ({
   inputContainer: {
     padding: `${theme.spacing.M} 10% 0 10%`,
-    borderTop: `1px solid ${theme.color.borderLight}`,
     marginTop: theme.spacing.S,
   },
   inputRow: css({

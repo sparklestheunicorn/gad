@@ -8,20 +8,6 @@ export const styles = (theme) => ({
     justifyContent: ['space-between', 'space-between', 'center'],
     margin: `0`,
   }),
-  termContainer: css({
-    label: 'termContainer',
-    display: 'flex',
-    flexDirection: 'row',
-    div: {},
-  }),
-  termName: css({
-    label: 'termName',
-    fontWeight: 'bold',
-    paddingRight: theme.spacing.M,
-  }),
-  termDefinition: css({
-    label: 'termDefinition',
-  }),
   carouselArrow: theme.mq({
     label: 'carouselArrow',
     color: theme.color.textLight,
