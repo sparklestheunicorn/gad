@@ -7,24 +7,22 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './CollapsibleSection.style'
 
-const CollapsibleSection = ({ title = null, contentExists, children }) => {
+const CollapsibleSection = ({ title, contentExists, children }) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
   const [open, setOpen] = React.useState(false)
 
   return contentExists ? (
     <>
-      {title && (
-        <h4
-          css={s.title}
-          onClick={() => {
-            setOpen(!open)
-          }}
-        >
-          {`${title} `}
-          {open ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
-        </h4>
-      )}
+      <h4
+        css={s.title}
+        onClick={() => {
+          setOpen(!open)
+        }}
+      >
+        {`${title} `}
+        {open ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
+      </h4>
       <div css={s.content(open)}>{children}</div>
     </>
   ) : null
