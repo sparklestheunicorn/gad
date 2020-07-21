@@ -15,11 +15,13 @@ import Term from './Term'
 import Media from './Media'
 import { getMedia } from '../firestore/firestore'
 
-const SourceLink = (link) => (
-  <a href={link} target="_blank">
-    {link}
-  </a>
-)
+const SourceLink = ({ link }) => {
+  return (
+    <a href={link} target="_blank">
+      {link}
+    </a>
+  )
+}
 
 export const NodeDetail = observer(
   ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources, open }) => {
@@ -70,7 +72,7 @@ export const NodeDetail = observer(
           <>
             {sources?.length && sources.map((item, i) => <SourceLink key={`${nodeId}-source-${i}`} link={item?.link} />)}
             {get(references, 'sourceChains.[0].sources', []).map((item, i) => (
-              <SourceLink key={`${nodeId}-reference-${i}`} link={item.link} />
+              <SourceLink key={`${nodeId}-reference-${i}`} link={item?.link} />
             ))}
           </>
         </CollapsibleSection>
