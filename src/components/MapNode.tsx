@@ -133,20 +133,17 @@ export const MapNode = observer((props) => {
         </div>
         {hasDetails && (
           <>
-            <div css={s.detailView(detailViewOpen)}>
-              {detailViewOpen && (
-                <NodeDetail
-                  nodeId={nodeId}
-                  currentPhrasingIndex={currentPhrasingIndex}
-                  setCurrentPhrasingIndex={setCurrentPhrasingIndex}
-                  numPhrasings={phrasings.length}
-                  terms={terms}
-                  references={references}
-                  sources={sources}
-                  media={media}
-                />
-              )}
-            </div>
+            <NodeDetail
+              open={detailViewOpen}
+              nodeId={nodeId}
+              currentPhrasingIndex={currentPhrasingIndex}
+              setCurrentPhrasingIndex={setCurrentPhrasingIndex}
+              numPhrasings={phrasings.length}
+              terms={terms}
+              references={references}
+              sources={sources}
+              media={media}
+            />
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
             </button>
