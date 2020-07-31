@@ -26,6 +26,7 @@ const App = observer((props) => {
   const welcomePageMap = {
     'covid-conversation': CovidConversationWelcome,
     'great-american-debate': GreatAmericanDebateWelcome,
+    'corvid-conversation': GreatAmericanDebateWelcome,
   }
 
   const questions = getQuestions()

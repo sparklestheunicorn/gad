@@ -6,6 +6,9 @@ export const mapFooterHeight = '32px'
 export const mapHeaderHeight = '100px'
 
 export const styles = (theme) => ({
+  page: {
+    height: '100%',
+  },
   slideToDepth: (depth: number) =>
     theme.mq({
       label: 'slideToDepth',

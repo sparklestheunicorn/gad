@@ -44,6 +44,8 @@ export const MapNode = observer((props) => {
   // Phrasings
   const variantPhrasings = getMapNodePhrasings(nodeId) || []
   const phrasings = [{ text: title }, ...variantPhrasings]
+
+  const [orderedPhrasings, setorderedPhrasings] = React.useState([])
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
 
   // Definitions
@@ -75,6 +77,40 @@ export const MapNode = observer((props) => {
     setMaxMapDepth(depth - 1)
     setMapDepth(depth - 1)
   }
+
+  React.useEffect(() => {
+    if (orderedPhrasings.length != 0 || !detailViewOpen) return //only do the sort once, when the detail view opens
+    phrasings.sort((a, b) => {
+      if (
+        (a.text.indexOf('[Simple]') >= 0 && b.text.indexOf('[Simple]') == -1) ||
+        (b.text.indexOf('[Technical]') >= 0 && a.text.indexOf('[Technical]') == -1)
+      ) {
+        console.log(a.text, 'comes before', b.text)
+        return -1
+      }
+      if (
+        (a.text.indexOf('[Technical]') >= 0 && b.text.indexOf('[Technical]') == -1) ||
+        (b.text.indexOf('[Simple]') >= 0 && a.text.indexOf('[Simple]') == -1)
+      ) {
+        console.log(a.text, 'comes after', b.text)
+        return 1
+      }
+
+      console.log(a.text, '=', b.text)
+      return 0
+    })
+
+    setorderedPhrasings(phrasings)
+
+    var titleIndex = phrasings
+      .map((x) => {
+        return x.text
+      })
+      .indexOf(title)
+    setCurrentPhrasingIndex(titleIndex)
+  }, [detailViewOpen])
+
+  console.log('ordered:', orderedPhrasings)
 
   // console.log('----------------------')
   // console.log(title)
@@ -109,10 +145,12 @@ export const MapNode = observer((props) => {
               }}
               css={s.questionTitle(detailViewOpen)}
             >
-              {phrasings[currentPhrasingIndex].text}
+              {orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text}
             </h3>
           ) : (
-            <h3 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h3>
+            <h3 css={s.nodeTitle(detailViewOpen)}>
+              {orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text}
+            </h3>
           )}
           {hasChildren && (
             <ConvoCount
