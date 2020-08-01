@@ -11,6 +11,7 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
+import _ from 'lodash'
 import keys from 'lodash/keys'
 
 // a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
@@ -79,38 +80,16 @@ export const MapNode = observer((props) => {
   }
 
   React.useEffect(() => {
-    if (orderedPhrasings.length != 0 || !detailViewOpen) return //only do the sort once, when the detail view opens
-    phrasings.sort((a, b) => {
-      if (
-        (a.text.indexOf('[Simple]') >= 0 && b.text.indexOf('[Simple]') == -1) ||
-        (b.text.indexOf('[Technical]') >= 0 && a.text.indexOf('[Technical]') == -1)
-      ) {
-        console.log(a.text, 'comes before', b.text)
-        return -1
-      }
-      if (
-        (a.text.indexOf('[Technical]') >= 0 && b.text.indexOf('[Technical]') == -1) ||
-        (b.text.indexOf('[Simple]') >= 0 && a.text.indexOf('[Simple]') == -1)
-      ) {
-        console.log(a.text, 'comes after', b.text)
-        return 1
-      }
+    const { simple, standard, technical } = _.groupBy(phrasings, ({ text }) =>
+      _.startsWith(text, '[Simple]') ? 'simple' : _.startsWith(text, '[Technical]') ? 'technical' : 'standard',
+    )
+    const orderedPhrasings = _.concat(simple, standard, technical)
 
-      console.log(a.text, '=', b.text)
-      return 0
-    })
+    setorderedPhrasings(orderedPhrasings)
 
-    setorderedPhrasings(phrasings)
-
-    var titleIndex = phrasings
-      .map((x) => {
-        return x.text
-      })
-      .indexOf(title)
+    var titleIndex = _.map(orderedPhrasings, 'text').indexOf(title)
     setCurrentPhrasingIndex(titleIndex)
   }, [detailViewOpen])
-
-  console.log('ordered:', orderedPhrasings)
 
   // console.log('----------------------')
   // console.log(title)
