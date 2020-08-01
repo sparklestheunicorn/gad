@@ -22,11 +22,14 @@ const Media = ({ type, url, description, name }) => {
       {type === 10 ? (
         <img src={url} alt={description} />
       ) : (
-        <iframe>
+        <iframe
           css={s.iframe}
-          width="560" height="315" src={`https://www.youtube.com/embed/${getYoutubeId(url)}`}
-          frameBorder="0" allowFullScreen
-        </iframe>
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${getYoutubeId(url)}`}
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
       )}
     </>
   )

@@ -11,6 +11,7 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
+import _ from 'lodash'
 import keys from 'lodash/keys'
 
 // a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
@@ -44,6 +45,8 @@ export const MapNode = observer((props) => {
   // Phrasings
   const variantPhrasings = getMapNodePhrasings(nodeId) || []
   const phrasings = [{ text: title }, ...variantPhrasings]
+
+  const [orderedPhrasings, setorderedPhrasings] = React.useState([])
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
 
   // Definitions
@@ -75,6 +78,18 @@ export const MapNode = observer((props) => {
     setMaxMapDepth(depth - 1)
     setMapDepth(depth - 1)
   }
+
+  React.useEffect(() => {
+    const { simple, standard, technical } = _.groupBy(phrasings, ({ text }) =>
+      _.startsWith(text, '[Simple]') ? 'simple' : _.startsWith(text, '[Technical]') ? 'technical' : 'standard',
+    )
+    const orderedPhrasings = _.concat(simple, standard, technical)
+
+    setorderedPhrasings(orderedPhrasings)
+
+    var titleIndex = _.map(orderedPhrasings, 'text').indexOf(title)
+    setCurrentPhrasingIndex(titleIndex)
+  }, [detailViewOpen])
 
   // console.log('----------------------')
   // console.log(title)
@@ -109,10 +124,12 @@ export const MapNode = observer((props) => {
               }}
               css={s.questionTitle(detailViewOpen)}
             >
-              {phrasings[currentPhrasingIndex].text}
+              {orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text}
             </h3>
           ) : (
-            <h3 css={s.nodeTitle(detailViewOpen)}>{phrasings[currentPhrasingIndex].text}</h3>
+            <h3 css={s.nodeTitle(detailViewOpen)}>
+              {orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text}
+            </h3>
           )}
           {hasChildren && (
             <ConvoCount

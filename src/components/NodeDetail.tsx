@@ -15,7 +15,7 @@ import Term from './Term'
 import Media from './Media'
 import { getMedia } from '../firestore/firestore'
 
-const SourceLink = (link) => (
+const SourceLink = ({ link }) => (
   <a href={link} target="_blank">
     {link}
   </a>
@@ -70,7 +70,7 @@ export const NodeDetail = observer(
           <>
             {sources?.length && sources.map((item, i) => <SourceLink key={`${nodeId}-source-${i}`} link={item?.link} />)}
             {get(references, 'sourceChains.[0].sources', []).map((item, i) => (
-              <SourceLink key={`${nodeId}-reference-${i}`} link={item.link} />
+              <SourceLink key={`${nodeId}-reference-${i}`} link={item?.link} />
             ))}
           </>
         </CollapsibleSection>

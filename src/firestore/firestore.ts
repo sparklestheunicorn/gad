@@ -26,6 +26,11 @@ export const getQuestions = StoreAccessor((s) => () => {
       mainMap_rootNodeID = '3Ip9uqwURvOFO0DkMKGO4w'
       break
     }
+    case 'corvid-conversation': {
+      mainMapID = 'FMkafK3QQ3iP7oaXs2oh1Q'
+      mainMap_rootNodeID = '_P9YL9cNRSm01mTI4K_Onw'
+      break
+    }
   }
 
   const questions = GetNodeChildrenL2(mainMap_rootNodeID)

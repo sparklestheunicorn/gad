@@ -88,7 +88,7 @@ export const NodeUserInput = (props) => {
       await axios(encodeURI(formConstants.url), {
         method: 'get',
         headers: {
-          contentType: 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         params: {
           [formConstants.claimId]: nodeId,
