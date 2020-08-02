@@ -15,13 +15,11 @@ import Term from './Term'
 import Media from './Media'
 import { getMedia } from '../firestore/firestore'
 
-const SourceLink = ({ link }) => {
-  return (
-    <a href={link} target="_blank">
-      {link}
-    </a>
-  )
-}
+const SourceLink = ({ link }) => (
+  <a href={link} target="_blank">
+    {link}
+  </a>
+)
 
 export const NodeDetail = observer(
   ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources, open }) => {

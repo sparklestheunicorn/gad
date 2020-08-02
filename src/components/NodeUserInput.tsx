@@ -1,21 +1,32 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 
 import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faThumbsUp, faThumbsDown, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import moment from 'moment'
 
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './NodeUserInput.style'
 import { stylizedButton, stylizedButtonSlim, dropShadow, knockout } from '../styles/shared.style'
 
+const MIN_ITEM_LENGTH = 0
+
+const formConstants = {
+  url: 'https://docs.google.com/forms/d/e/1FAIpQLSeNWSBBbyZnS9IGOZxh9bEacjEuP11SA1NFwhG2doalRCK9_w/formResponse',
+  claimId: 'entry.1356714542',
+  argumentId: 'entry.1531525675',
+  forOrAgainst: 'entry.394432412',
+  claim: 'entry.2014411862',
+  timestamp: 'entry.1370532301',
+  // With help from https://stackoverflow.com/questions/51995070/post-data-to-a-google-form-with-ajax
+  cors: 'https://cors-anywhere.herokuapp.com/', // <optional> doesn't display the cors error
+}
+
 export const NodeUserInput = (props) => {
   const { nodeId } = props
-
-  const MIN_ITEM_LENGTH = 0
-
   const theme: Theme = useTheme()
   const s = styles(theme)
 
@@ -28,12 +39,6 @@ export const NodeUserInput = (props) => {
 
   const textareaRef = React.useRef(null)
 
-  const formConfig = {
-    // With help from https://stackoverflow.com/questions/51995070/post-data-to-a-google-form-with-ajax
-    cors: 'https://cors-anywhere.herokuapp.com/', // <optional> doesn't display the cors error
-    formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeNWSBBbyZnS9IGOZxh9bEacjEuP11SA1NFwhG2doalRCK9_w/formResponse?',
-  }
-
   React.useEffect(() => {
     if (!textareaRef || !textareaRef.current) return
     setInputHeight(textareaRef.current.scrollHeight)
@@ -45,7 +50,7 @@ export const NodeUserInput = (props) => {
 
   const createNewInputItem = () => {
     if (currentInputItem.length < MIN_ITEM_LENGTH) {
-      //Show a requirements message
+      //TODO Show a requirements message
       return
     }
     setInputItems(inputItems.concat(currentInputItem))
@@ -71,8 +76,7 @@ export const NodeUserInput = (props) => {
 
   const submitUserInput = async () => {
     const argumentId = Math.floor(Math.random() * 100000000000000000) //Random one-time ID to group the claims together
-    const now = new Date()
-    const timestamp = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate()
+    const timestamp = moment().format('YYYY/M/D')
 
     const itemsToSubmit = currentInputItem !== '' ? inputItems.concat(currentInputItem) : inputItems
 
@@ -81,26 +85,18 @@ export const NodeUserInput = (props) => {
         return
       }
 
-      const inputs = {
-        claimId: { id: 'entry.1356714542', value: nodeId },
-        argumentId: { id: 'entry.1531525675', value: argumentId },
-        forOrAgainst: { id: 'entry.394432412', value: forOrAgainst },
-        claim: { id: 'entry.2014411862', value: claim },
-        timestamp: { id: 'entry.1370532301', value: timestamp },
-      }
-
-      let requestUrl = formConfig.formUrl
-
-      Object.keys(inputs).forEach((key) => {
-        requestUrl += `${inputs[key].id}=${inputs[key].value}&`
-      })
-
-      requestUrl += 'submit=Submit'
-
-      await axios(encodeURI(requestUrl), {
+      await axios(encodeURI(formConstants.url), {
         method: 'get',
         headers: {
-          contentType: 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        params: {
+          [formConstants.claimId]: nodeId,
+          [formConstants.argumentId]: argumentId,
+          [formConstants.forOrAgainst]: forOrAgainst,
+          [formConstants.claim]: claim,
+          [formConstants.timestamp]: timestamp,
+          submit: 'Submit',
         },
         responseType: 'json',
       })
@@ -147,20 +143,18 @@ export const NodeUserInput = (props) => {
           {inputItems.map((item, itemIndex) => {
             if (itemIndex === currentInputItemIndex) {
               return (
-                <>
-                  <div key={itemIndex} css={s.newInputItemContainer}>
-                    <textarea
-                      ref={textareaRef}
-                      placeholder="I think that..."
-                      onChange={(event) => {
-                        inputTextChanged(event)
-                      }}
-                      value={currentInputItem}
-                      style={{ height: inputHeight }}
-                      key="userInputTextarea"
-                    />
-                  </div>
-                </>
+                <div key={itemIndex} css={s.newInputItemContainer}>
+                  <textarea
+                    ref={textareaRef}
+                    placeholder="I think that..."
+                    onChange={(event) => {
+                      inputTextChanged(event)
+                    }}
+                    value={currentInputItem}
+                    style={{ height: inputHeight }}
+                    key="userInputTextarea"
+                  />
+                </div>
               )
             } else {
               return (

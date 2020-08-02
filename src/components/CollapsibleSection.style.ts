@@ -11,7 +11,7 @@ export const styles = (theme) => ({
   content: (open) =>
     css({
       maxHeight: open ? '90vh' : '0',
-      transition: 'max-height s ease',
+      transition: 'max-height 0.4s ease',
       overflowY: open ? 'hidden' : 'auto',
     }),
 })
