@@ -6,6 +6,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { getQuestions, getNodeChildren } from './firestore/firestore'
 import { observer } from 'mobx-react'
 
+import { MapNode } from './types'
 import { Map } from './pages/Map'
 
 import { initDebateMapServerLink } from './firestore/init-dm-link'
@@ -29,21 +30,14 @@ const App = observer((props) => {
     'corvid-conversation': GreatAmericanDebateWelcome,
   }
 
-  const questions = getQuestions()
-  const questionChildren = questions.map((question) => ({
-    questionId: question._key,
-    childNodes: getNodeChildren(question._key),
-  }))
-
-  //console.log('APP questions', questions)
-  //console.log('APP questionChildren', questionChildren)
+  const questions: [MapNode] = getQuestions() as [MapNode]
 
   return (
     <ThemeProvider theme={theme}>
       <HashRouter basename="/">
         <Global styles={resets(theme)} />
         <div id="appContainer" css={s.appContainer}>
-          <Route path="/map" render={() => <Map questions={questions} questionChildren={questionChildren} />} />
+          <Route path="/map" render={() => <Map questions={questions} />} />
           <Route
             exact
             path="/"
