@@ -6,7 +6,7 @@ import { MapIntro } from '../components/MapIntro'
 import { styles } from './MapQuestions.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
-import { getFinalNodeTitle } from '../firestore/firestore'
+import { nodeToMapNode } from '../selectors'
 
 export const MapQuestions = (props) => {
   const { questions, setMapDepth, setMaxMapDepth } = props
@@ -20,15 +20,10 @@ export const MapQuestions = (props) => {
     <div css={s.responsiveFlex}>
       <MapIntro />
       <ul css={s.questionList}>
-        {questions.map((question, questionIndex) => (
+        {questions.map((question) => (
           <MapNode
-            key={question._key}
-            nodeId={question._key}
-            currentRevision={question.currentRevision}
+            {...nodeToMapNode(question)}
             topLevel={true}
-            title={getFinalNodeTitle(question)}
-            nodeChildrenIds={questions[questionIndex].children}
-            childrenOrder={question.childrenOrder}
             depth={1}
             setMapDepth={setMapDepth}
             setMaxMapDepth={setMaxMapDepth}
