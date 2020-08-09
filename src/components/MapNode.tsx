@@ -11,11 +11,8 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
-import _ from 'lodash'
+import { sortedPhrasings, getTitleIndex } from '../selectors'
 import keys from 'lodash/keys'
-
-// a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
-// a node's child has polarity 10 if that child is a pro argument, 20 if con, no polarity if neither
 
 export const MapNode = observer((props) => {
   const {
@@ -36,6 +33,7 @@ export const MapNode = observer((props) => {
     sources,
     references,
     media,
+    note,
   } = props
 
   // Style
@@ -80,28 +78,11 @@ export const MapNode = observer((props) => {
   }
 
   React.useEffect(() => {
-    const { simple, standard, technical } = _.groupBy(phrasings, ({ text }) =>
-      _.startsWith(text, '[Simple]') ? 'simple' : _.startsWith(text, '[Technical]') ? 'technical' : 'standard',
-    )
-    const orderedPhrasings = _.concat(simple, standard, technical)
-
+    const orderedPhrasings = sortedPhrasings(phrasings)
+    const titleIndex = getTitleIndex(orderedPhrasings, title)
     setorderedPhrasings(orderedPhrasings)
-
-    var titleIndex = _.map(orderedPhrasings, 'text').indexOf(title)
     setCurrentPhrasingIndex(titleIndex)
   }, [detailViewOpen])
-
-  // console.log('----------------------')
-  // console.log(title)
-  // console.log('MAPNODE depth', depth)
-  // console.log('MAPNODE nodeChildrenIds', nodeChildrenIds)
-  // console.log('MAPNODE nodeChildren', nodeChildren)
-  // console.log('MAPNODE hasChildren', hasChildren)
-  // console.log('MAPNODE childrenKeys', childrenKeys)
-  // console.log('MAPNODE childOrder', childrenOrder)
-  // console.log('MAPNODE references', references)
-
-  // console.log('----------------------')
 
   return (
     <>
@@ -160,6 +141,7 @@ export const MapNode = observer((props) => {
               references={references}
               sources={sources}
               media={media}
+              note={note}
             />
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
@@ -170,7 +152,6 @@ export const MapNode = observer((props) => {
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren(multiPremiseArgument)} key={`${nodeId}-children`}>
           {childrenKeys.map((childId) => {
-            //console.log('CHILDNODE', nodeChildren[childId])
             const currentChild = nodeChildren[childId]
             const isPro = nodeChildrenIds[childId].polarity === 10
             const isCon = nodeChildrenIds[childId].polarity === 20
@@ -187,6 +168,7 @@ export const MapNode = observer((props) => {
                     currentChild.current?.titles?.base ||
                     currentChild.current?.quote?.content
                   }
+                  note={currentChild.note}
                   nodeChildrenIds={currentChild.children}
                   childrenOrder={currentChild.childrenOrder}
                   setMapDepth={setMapDepth}

@@ -3,6 +3,8 @@ type Title = {
   base: string
 }
 
+// a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
+// a node's child has polarity 10 if that child is a pro argument, 20 if con, no polarity if neither
 export type MapNode = {
   _key: ID
   children: Record<ID, Child>
