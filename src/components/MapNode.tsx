@@ -4,15 +4,23 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { getMapNodeTerms, getMapNodePhrasings, getNodeChildren } from '../firestore/firestore'
 import { styles } from './MapNode.style'
 import { dropShadow, selected } from '../styles/shared.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
-import { sortedPhrasings, getTitleIndex } from '../selectors'
-import keys from 'lodash/keys'
+import {
+  getPhrasings,
+  sortedPhrasings,
+  getTitleIndex,
+  getHasChildren,
+  mapNodeToNodeDetail,
+  mapNodeToChildren,
+  getChildrenKeys,
+  fetchNodeChildren,
+  getTerms,
+} from '../selectors'
 
 export const MapNode = observer((props) => {
   const {
@@ -41,20 +49,19 @@ export const MapNode = observer((props) => {
   const s = styles(theme)
 
   // Phrasings
-  const variantPhrasings = getMapNodePhrasings(nodeId) || []
-  const phrasings = [{ text: title }, ...variantPhrasings]
-
+  const phrasings = getPhrasings(nodeId, title)
   const [orderedPhrasings, setorderedPhrasings] = React.useState([])
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
 
   // Definitions
-  const terms = getMapNodeTerms(currentRevision) || []
+  const terms = getTerms(currentRevision)
 
   // Children
-  const hasChildren = keys(nodeChildrenIds).length > 0
-  const childrenKeys = childrenOrder || keys(nodeChildrenIds)
   const [selectedChild, setSelectedChild] = React.useState(null)
-  const nodeChildren = getNodeChildren(nodeId)
+  const hasChildren = getHasChildren(nodeChildrenIds)
+  const childrenKeys = getChildrenKeys(childrenOrder, nodeChildrenIds)
+  const nodeChildren = fetchNodeChildren(nodeId)
+  const children = mapNodeToChildren(props)
 
   // Detail View
   const hasDetails = !topLevel
@@ -84,6 +91,8 @@ export const MapNode = observer((props) => {
     setCurrentPhrasingIndex(titleIndex)
   }, [detailViewOpen])
 
+  const renderTitle = () => orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text
+
   return (
     <>
       <li
@@ -105,12 +114,10 @@ export const MapNode = observer((props) => {
               }}
               css={s.questionTitle(detailViewOpen)}
             >
-              {orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text}
+              {renderTitle()}
             </h3>
           ) : (
-            <h3 css={s.nodeTitle(detailViewOpen)}>
-              {orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text}
-            </h3>
+            <h3 css={s.nodeTitle(detailViewOpen)}>{renderTitle()}</h3>
           )}
           {hasChildren && (
             <ConvoCount
@@ -133,15 +140,10 @@ export const MapNode = observer((props) => {
           <>
             <NodeDetail
               open={detailViewOpen}
-              nodeId={nodeId}
               currentPhrasingIndex={currentPhrasingIndex}
               setCurrentPhrasingIndex={setCurrentPhrasingIndex}
               numPhrasings={phrasings.length}
-              terms={terms}
-              references={references}
-              sources={sources}
-              media={media}
-              note={note}
+              {...mapNodeToNodeDetail(props)}
             />
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}

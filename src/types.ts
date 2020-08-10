@@ -1,6 +1,7 @@
 type ID = string
 type Title = {
   base: string
+  yesNoQuestion: string
 }
 
 // a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
@@ -12,6 +13,7 @@ export type MapNode = {
     _key: ID
     node: ID // same as MapNode._key, not same as MapNode.current._key
     titles: Array<Title>
+    currentRevision: string
     argumentType
     equation
     media
