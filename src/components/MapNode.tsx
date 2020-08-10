@@ -20,7 +20,6 @@ import {
   getChildrenKeys,
   fetchNodeChildren,
   getTerms,
-  childToMapNode,
 } from '../selectors'
 
 export const MapNode = observer((props) => {
@@ -58,7 +57,6 @@ export const MapNode = observer((props) => {
   const hasChildren = getHasChildren(nodeChildrenIds)
   const childrenKeys = getChildrenKeys(childrenOrder, nodeChildrenIds)
   const nodeChildren = fetchNodeChildren(nodeId)
-  const children = mapNodeToChildren(props)
 
   // Detail View
   const hasDetails = !topLevel
@@ -150,20 +148,18 @@ export const MapNode = observer((props) => {
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren(multiPremiseArgument)} key={`${nodeId}-children`}>
-          {childrenKeys.map((childId) => {
-            const currentChild = nodeChildren[childId]
-
+          {mapNodeToChildren(props).map((currentChild) => {
             return (
               currentChild && (
                 <MapNode
-                  {...childToMapNode(currentChild, nodeChildrenIds[childId].polarity)}
+                  {...currentChild}
                   topLevel={false}
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
-                  isSelected={currentChild._key == selectedChild}
+                  isSelected={currentChild.nodeId === selectedChild}
                   setIsSelected={() => {
-                    setSelectedChild(currentChild._key)
+                    setSelectedChild(currentChild.nodeId)
                   }}
                 />
               )
