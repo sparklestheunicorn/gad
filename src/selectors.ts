@@ -64,7 +64,7 @@ export const getTitleIndex = (orderedPhrasings, title) => {
   return _.map(orderedPhrasings, 'text').indexOf(title)
 }
 
-export const getTerms = (currentRevision) => getMapNodeTerms(currentRevision) || []
+const getTerms = (currentRevision) => getMapNodeTerms(currentRevision) || []
 
 export const getHasChildren = (nodeChildrenIds) => _.keys(nodeChildrenIds).length > 0
 export const getChildrenKeys = (childrenOrder, nodeChildrenIds) => childrenOrder || _.keys(nodeChildrenIds)

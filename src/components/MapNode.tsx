@@ -19,7 +19,6 @@ import {
   mapNodeToChildren,
   getChildrenKeys,
   fetchNodeChildren,
-  getTerms,
 } from '../selectors'
 
 export const MapNode = observer((props) => {
@@ -48,9 +47,6 @@ export const MapNode = observer((props) => {
   const phrasings = getPhrasings(nodeId, title)
   const [orderedPhrasings, setorderedPhrasings] = React.useState([])
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
-
-  // Definitions
-  const terms = getTerms(currentRevision)
 
   // Children
   const [selectedChild, setSelectedChild] = React.useState(null)
