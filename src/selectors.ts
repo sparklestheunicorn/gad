@@ -25,12 +25,13 @@ export const mapNodeToChildren = (mapNode) => {
   const childrenKeys = getChildrenKeys(mapNode.childrenOrder, mapNode.nodeChildrenIds)
   return childrenKeys.map((childId) => {
     const currentChild = nodeChildren[childId]
-    return currentChild ? childToMapNode(currentChild) : null
+    const polarity = mapNode.nodeChildrenIds[childId].polarity
+    return currentChild ? childToMapNode(currentChild, polarity) : null
   })
 }
 
 // TODO figure out if this and nodeToMapNode can be the same
-const childToMapNode = (child) => ({
+export const childToMapNode = (child, polarity) => ({
   key: child._key,
   nodeId: child._key,
   currentRevision: child.currentRevision,
@@ -39,8 +40,8 @@ const childToMapNode = (child) => ({
   nodeChildrenIds: child.children,
   childrenOrder: child.childrenOrder,
   multiPremiseArgument: child.multiPremiseArgument,
-  isPro: child.polarity === 10,
-  isCon: child.polarity === 20,
+  isPro: polarity === 10,
+  isCon: polarity === 20,
   sources: child.current?.quote?.sourceChains?.[0]?.sources,
   references: child.current?.references,
   media: child.current?.media,

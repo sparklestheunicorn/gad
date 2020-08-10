@@ -20,6 +20,7 @@ import {
   getChildrenKeys,
   fetchNodeChildren,
   getTerms,
+  childToMapNode,
 } from '../selectors'
 
 export const MapNode = observer((props) => {
@@ -38,10 +39,6 @@ export const MapNode = observer((props) => {
     isCon,
     isSelected,
     setIsSelected,
-    sources,
-    references,
-    media,
-    note,
   } = props
 
   // Style
@@ -155,37 +152,24 @@ export const MapNode = observer((props) => {
         <ul css={s.mapNodeChildren(multiPremiseArgument)} key={`${nodeId}-children`}>
           {childrenKeys.map((childId) => {
             const currentChild = nodeChildren[childId]
-            const isPro = nodeChildrenIds[childId].polarity === 10
-            const isCon = nodeChildrenIds[childId].polarity === 20
 
             return (
               currentChild && (
                 <MapNode
-                  key={currentChild._key}
-                  nodeId={currentChild._key}
-                  currentRevision={currentChild.currentRevision}
+                  {...childToMapNode(currentChild, nodeChildrenIds[childId].polarity)}
                   topLevel={false}
                   title={
                     currentChild.current?.titles?.yesNoQuestion ||
                     currentChild.current?.titles?.base ||
                     currentChild.current?.quote?.content
                   }
-                  note={currentChild.note}
-                  nodeChildrenIds={currentChild.children}
-                  childrenOrder={currentChild.childrenOrder}
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
-                  multiPremiseArgument={currentChild.multiPremiseArgument}
-                  isPro={isPro}
-                  isCon={isCon}
                   isSelected={currentChild._key == selectedChild}
                   setIsSelected={() => {
                     setSelectedChild(currentChild._key)
                   }}
-                  sources={currentChild.current?.quote?.sourceChains?.[0]?.sources}
-                  references={currentChild.current?.references}
-                  media={currentChild.current?.media}
                 />
               )
             )
