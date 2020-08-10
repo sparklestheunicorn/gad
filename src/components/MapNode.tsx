@@ -158,11 +158,6 @@ export const MapNode = observer((props) => {
                 <MapNode
                   {...childToMapNode(currentChild, nodeChildrenIds[childId].polarity)}
                   topLevel={false}
-                  title={
-                    currentChild.current?.titles?.yesNoQuestion ||
-                    currentChild.current?.titles?.base ||
-                    currentChild.current?.quote?.content
-                  }
                   setMapDepth={setMapDepth}
                   setMaxMapDepth={setMaxMapDepth}
                   depth={depth + 1}
