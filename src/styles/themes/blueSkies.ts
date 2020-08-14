@@ -1,4 +1,4 @@
-export const gadStyles = {
+export const blueSkiesStyles = {
   image: {
     titleTransparent: 'great-american-debate-title-transparent.png',
     logo: 'great-american-debate-logo.png',

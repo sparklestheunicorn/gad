@@ -4,12 +4,12 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
-import { styles } from './CovidConversationWelcome.style'
+import { styles } from './ClinicalWelcome.style'
 import { fontPreloader, page, heading, stylizedButton, knockout } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
-export const CovidConversationWelcome = (props) => {
+export const ClinicalWelcome = (props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
   return (

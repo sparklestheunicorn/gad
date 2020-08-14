@@ -4,12 +4,12 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
-import { styles } from './GreatAmericanDebateWelcome.style'
+import { styles } from './BlueSkiesWelcome.style'
 import { fontPreloader, page, subheading, stylizedButton, dropShadow } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
-export const GreatAmericanDebateWelcome = (props) => {
+export const BlueSkiesWelcome = (props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
 

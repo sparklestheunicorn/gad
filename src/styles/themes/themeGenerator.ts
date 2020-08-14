@@ -1,10 +1,10 @@
 import merge from 'lodash/merge'
 import { Theme } from './Theme.type'
 import { defaultStyles } from './default'
-import { ccStyles } from './covidConversation'
-import { gadStyles } from './greatAmericanDebate'
+import { clinicalStyles } from './clinical'
+import { blueSkyStyles } from './blueSkies'
 
 export const generateTheme = (themeId: string): Theme => {
-  const themeStyles = themeId === 'covid-conversation' ? ccStyles : gadStyles
+  const themeStyles = themeId === 'clinical' ? clinicalStyles : blueSkyStyles
   return merge(defaultStyles, themeStyles)
 }

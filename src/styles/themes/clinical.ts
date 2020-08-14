@@ -1,4 +1,4 @@
-export const ccStyles = {
+export const clinicalStyles = {
   image: {
     titleTransparent: 'covid-conversation-title-transparent.png',
     logo: 'covid-conversation-logo.png',
