@@ -1,10 +1,8 @@
 export const blueSkiesStyles = {
   image: {
-    titleTransparent: 'great-american-debate-title-transparent.png',
-    logo: 'great-american-debate-logo.png',
-    title: 'great-american-debate-title.png',
-    donateCTA: 'great-american-debate-donate-cta.png',
-    welcomeCTA: 'great-american-debate-welcome-cta.png',
+    titleTransparent: process.env.REACT_APP_HEADER_IMAGE,
+    title: process.env.REACT_APP_HEADER_IMAGE,
+    donateCTA: 'blue-skies-donate-cta.png',
   },
   font: {
     heading: 'Cheddar Gothic Sans',

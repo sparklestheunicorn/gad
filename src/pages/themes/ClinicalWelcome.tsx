@@ -19,20 +19,18 @@ export const ClinicalWelcome = (props) => {
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
       <div css={s.topContainer}>
-        <img
-          css={s.titleImage}
-          src={require(`../../assets/images/${theme.image.titleTransparent}`)}
-          alt="The Covid Conversation Map"
-        />
+        <img css={s.titleImage} src={theme.image.titleTransparent} alt="The Covid Conversation Map" />
       </div>
       <div css={s.welcomeQuote}>
         <h2 css={heading(theme)}>
-          <span>“</span>A Healthy Society Cannot Have Just One Voice.<span>”</span>
+          <span>“</span>
+          {process.env.REACT_APP_WELCOME_QUOTE}
+          <span>”</span>
         </h2>
-        <p>- Dr. Li Wenliang (李文亮), known as the whistleblower who warned China about COVID-19.</p>
+        <p>- {process.env.REACT_APP_WELCOME_QUOTE_ATTRIBUTION}</p>
       </div>
       <Link css={s.viewCTALink} to="/map">
-        <button css={[stylizedButton(theme), knockout(theme), s.viewCTAButton]}>View COVID Convos</button>
+        <button css={[stylizedButton(theme), knockout(theme), s.viewCTAButton]}>{process.env.REACT_APP_WELCOME_CTA}</button>
       </Link>
       <div css={s.bottomContainer}>
         <div>

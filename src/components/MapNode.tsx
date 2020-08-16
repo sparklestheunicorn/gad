@@ -100,7 +100,6 @@ export const MapNode = observer((props) => {
   // console.log('MAPNODE childrenKeys', childrenKeys)
   // console.log('MAPNODE childOrder', childrenOrder)
   // console.log('MAPNODE references', references)
-
   // console.log('----------------------')
 
   return (
