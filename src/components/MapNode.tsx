@@ -17,8 +17,6 @@ import {
   getHasChildren,
   mapNodeToNodeDetail,
   mapNodeToChildren,
-  getChildrenKeys,
-  fetchNodeChildren,
 } from '../selectors'
 
 export const MapNode = observer((props) => {
@@ -26,9 +24,7 @@ export const MapNode = observer((props) => {
     topLevel,
     title,
     nodeId,
-    currentRevision,
     nodeChildrenIds,
-    childrenOrder,
     depth,
     multiPremiseArgument,
     setMapDepth,
@@ -43,20 +39,28 @@ export const MapNode = observer((props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
 
+  // Detail View
+  const hasDetails = !topLevel
+  const [detailViewOpen, setDetailViewOpen] = React.useState(false)
+
   // Phrasings
   const phrasings = getPhrasings(nodeId, title)
-  const [orderedPhrasings, setorderedPhrasings] = React.useState([])
+  const [orderedPhrasings, setOrderedPhrasings] = React.useState([])
   const [currentPhrasingIndex, setCurrentPhrasingIndex] = React.useState(0)
+
+  React.useEffect(() => {
+    const orderedPhrasings = sortedPhrasings(phrasings)
+    const titleIndex = getTitleIndex(orderedPhrasings, title)
+    setOrderedPhrasings(orderedPhrasings)
+    setCurrentPhrasingIndex(titleIndex)
+  }, [detailViewOpen])
+
+  const renderTitle = () => orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text
 
   // Children
   const [selectedChild, setSelectedChild] = React.useState(null)
   const hasChildren = getHasChildren(nodeChildrenIds)
-  const childrenKeys = getChildrenKeys(childrenOrder, nodeChildrenIds)
-  const nodeChildren = fetchNodeChildren(nodeId)
-
-  // Detail View
-  const hasDetails = !topLevel
-  const [detailViewOpen, setDetailViewOpen] = React.useState(false)
+  const children = mapNodeToChildren(props)
 
   const focusOnSelected = () => {
     setMapDepth(depth - 1)
@@ -74,15 +78,6 @@ export const MapNode = observer((props) => {
     setMaxMapDepth(depth - 1)
     setMapDepth(depth - 1)
   }
-
-  React.useEffect(() => {
-    const orderedPhrasings = sortedPhrasings(phrasings)
-    const titleIndex = getTitleIndex(orderedPhrasings, title)
-    setorderedPhrasings(orderedPhrasings)
-    setCurrentPhrasingIndex(titleIndex)
-  }, [detailViewOpen])
-
-  const renderTitle = () => orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text
 
   return (
     <>
@@ -144,7 +139,7 @@ export const MapNode = observer((props) => {
       </li>
       {isSelected && hasChildren && (
         <ul css={s.mapNodeChildren(multiPremiseArgument)} key={`${nodeId}-children`}>
-          {mapNodeToChildren(props).map((currentChild) => {
+          {children.map((currentChild) => {
             return (
               currentChild && (
                 <MapNode

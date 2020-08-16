@@ -27,7 +27,7 @@ export const mapNodeToChildren = (mapNode) => {
     const currentChild = nodeChildren[childId]
     // polarity is not returned by getNodeChildren
     const polarity = mapNode.nodeChildrenIds[childId].polarity
-    return childToMapNode(currentChild, polarity)
+    return currentChild ? childToMapNode(currentChild, polarity) : null
   })
 }
 
@@ -67,5 +67,4 @@ export const getTitleIndex = (orderedPhrasings, title) => {
 const getTerms = (currentRevision) => getMapNodeTerms(currentRevision) || []
 
 export const getHasChildren = (nodeChildrenIds) => _.keys(nodeChildrenIds).length > 0
-export const getChildrenKeys = (childrenOrder, nodeChildrenIds) => childrenOrder || _.keys(nodeChildrenIds)
-export const fetchNodeChildren = (nodeId) => getNodeChildren(nodeId)
+const getChildrenKeys = (childrenOrder, nodeChildrenIds) => childrenOrder || _.keys(nodeChildrenIds)

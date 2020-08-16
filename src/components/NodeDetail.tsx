@@ -22,7 +22,18 @@ const SourceLink = ({ link }) => (
 )
 
 export const NodeDetail = observer(
-  ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, references, media, sources, open }) => {
+  ({
+    nodeId,
+    currentPhrasingIndex,
+    setCurrentPhrasingIndex,
+    numPhrasings,
+    terms,
+    references,
+    media,
+    sources,
+    note,
+    open,
+  }) => {
     const theme: Theme = useTheme()
     const s = styles(theme)
     const resolvedMedia = getMedia(media?.id)
@@ -60,6 +71,10 @@ export const NodeDetail = observer(
           {terms.map((term, i) => (
             <Term key={`${nodeId}-term-${i}`} {...term} />
           ))}
+        </CollapsibleSection>
+
+        <CollapsibleSection title={'Explain More'} contentExists={true}>
+          <div>{note}</div>
         </CollapsibleSection>
 
         <CollapsibleSection title={'View Media'} contentExists={media?.id && resolvedMedia}>
