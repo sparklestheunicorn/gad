@@ -20,7 +20,7 @@ export const BlueSkiesWelcome = (props) => {
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
       <div css={s.topContainer}>
-        <img css={s.titleImage} src={require(`../../assets/images/${theme.image.title}`)} alt="The Great American Debate" />
+        <img css={s.titleImage} src={theme.image.title} alt={theme.strings.tagline} />
         <h3 css={subheading(theme)}>
           <span>america's arguments,</span> <span>all in one place</span>
         </h3>
