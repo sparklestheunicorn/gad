@@ -3,10 +3,9 @@ import { jsx, Global } from '@emotion/core'
 import React from 'react'
 import { HashRouter, Route } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
-import { getQuestions, getNodeChildren } from './firestore/firestore'
+import { getQuestions } from './firestore/firestore'
 import { observer } from 'mobx-react'
 
-import { MapNode } from './types'
 import { Map } from './pages/Map'
 
 import { initDebateMapServerLink } from './firestore/init-dm-link'
@@ -30,7 +29,7 @@ const App = observer((props) => {
     'corvid-conversation': GreatAmericanDebateWelcome,
   }
 
-  const questions: [MapNode] = getQuestions() as [MapNode]
+  const questions = getQuestions()
 
   return (
     <ThemeProvider theme={theme}>

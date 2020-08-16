@@ -1,38 +1,30 @@
-type ID = string
+import { ChildSet, Media, MediaAttachment } from '@debate-map/server-link'
+import { UUID } from 'mobx-firelink'
+
 type Title = {
   base: string
   yesNoQuestion: string
 }
 
-// a node has property multiPremiseArgument = true when its children are multiple premises and a conclusion
-// a node's child has polarity 10 if that child is a pro argument, 20 if con, no polarity if neither
-export type MapNode = {
-  _key: ID
-  children: Record<ID, Child>
-  current: {
-    _key: ID
-    node: ID // same as MapNode._key, not same as MapNode.current._key
-    titles: Array<Title>
-    currentRevision: string
-    argumentType
-    equation
-    media
-    quote
-    references
-    note: string
-  }
-  type // enum
+export type UINode = {
+  nodeId: UUID
+  key: UUID
+  currentRevision: string
+  title: string
+  nodeChildrenIds: ChildSet
+  sources: Array<string>
+  media: MediaAttachment
+  childrenOrder: UUID[]
+  note: string
+  multiPremiseArgument?: boolean // true means node's children are multiple premises and a conclusion
+  isPro?: boolean
+  isCon?: boolean
 }
 
-// unloaded node
-type Child = {
-  polarity // enum 10 is pro, 20 is con
-  form
-  _key: ID
-}
-
-// this is created in App
-export type NodeChildren = {
-  childNodes: Record<ID, MapNode> // this comes from getNodeChildren
-  questionId: ID
+export type NodeDetail = {
+  nodeId: UUID
+  terms: Array<any>
+  sources: Array<string>
+  media: Media
+  note: string
 }

@@ -13,7 +13,6 @@ import { NodeUserInput } from './NodeUserInput'
 import CollapsibleSection from './CollapsibleSection'
 import Term from './Term'
 import Media from './Media'
-import { getMedia } from '../firestore/firestore'
 
 const SourceLink = ({ link }) => (
   <a href={link} target="_blank">
@@ -22,21 +21,9 @@ const SourceLink = ({ link }) => (
 )
 
 export const NodeDetail = observer(
-  ({
-    nodeId,
-    currentPhrasingIndex,
-    setCurrentPhrasingIndex,
-    numPhrasings,
-    terms,
-    references,
-    media,
-    sources,
-    note,
-    open,
-  }) => {
+  ({ nodeId, currentPhrasingIndex, setCurrentPhrasingIndex, numPhrasings, terms, media, sources, note, open }) => {
     const theme: Theme = useTheme()
     const s = styles(theme)
-    const resolvedMedia = getMedia(media?.id)
 
     return (
       <div css={s.detailView(open)}>
@@ -77,17 +64,14 @@ export const NodeDetail = observer(
           <div>{note}</div>
         </CollapsibleSection>
 
-        <CollapsibleSection title={'View Media'} contentExists={media?.id && resolvedMedia}>
-          <Media {...resolvedMedia} />
+        <CollapsibleSection title={'View Media'} contentExists={media}>
+          <Media {...media} />
         </CollapsibleSection>
 
-        <CollapsibleSection title={'View Sources'} contentExists={sources || references}>
-          <>
-            {sources?.length && sources.map((item, i) => <SourceLink key={`${nodeId}-source-${i}`} link={item?.link} />)}
-            {get(references, 'sourceChains.[0].sources', []).map((item, i) => (
-              <SourceLink key={`${nodeId}-reference-${i}`} link={item?.link} />
-            ))}
-          </>
+        <CollapsibleSection title={'View Sources'} contentExists={sources && sources?.length}>
+          {sources.map((item, i) => (
+            <SourceLink key={`${nodeId}-source-${i}`} link={item?.link} />
+          ))}
         </CollapsibleSection>
 
         <CollapsibleSection title={'Weigh In'} contentExists={true}>

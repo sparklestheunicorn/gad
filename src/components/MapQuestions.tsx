@@ -6,7 +6,7 @@ import { MapIntro } from '../components/MapIntro'
 import { styles } from './MapQuestions.style'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
-import { nodeToMapNode } from '../selectors'
+import { nodeToUINode } from '../selectors'
 
 export const MapQuestions = (props) => {
   const { questions, setMapDepth, setMaxMapDepth } = props
@@ -22,7 +22,7 @@ export const MapQuestions = (props) => {
       <ul css={s.questionList}>
         {questions.map((question) => (
           <MapNode
-            {...nodeToMapNode(question)}
+            {...nodeToUINode(question, true)}
             topLevel={true}
             depth={1}
             setMapDepth={setMapDepth}

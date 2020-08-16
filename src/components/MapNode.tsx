@@ -15,8 +15,8 @@ import {
   sortedPhrasings,
   getTitleIndex,
   getHasChildren,
-  mapNodeToNodeDetail,
-  mapNodeToChildren,
+  uiNodeToNodeDetail,
+  uiNodeToChildren,
 } from '../selectors'
 
 export const MapNode = observer((props) => {
@@ -60,7 +60,7 @@ export const MapNode = observer((props) => {
   // Children
   const [selectedChild, setSelectedChild] = React.useState(null)
   const hasChildren = getHasChildren(nodeChildrenIds)
-  const children = mapNodeToChildren(props)
+  const children = uiNodeToChildren(props)
 
   const focusOnSelected = () => {
     setMapDepth(depth - 1)
@@ -129,7 +129,7 @@ export const MapNode = observer((props) => {
               currentPhrasingIndex={currentPhrasingIndex}
               setCurrentPhrasingIndex={setCurrentPhrasingIndex}
               numPhrasings={phrasings.length}
-              {...mapNodeToNodeDetail(props)}
+              {...uiNodeToNodeDetail(props)}
             />
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
