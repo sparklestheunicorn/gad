@@ -11,7 +11,7 @@ import { Theme } from '../styles/themes/Theme.type'
 import { styles } from './Map.style'
 
 export const Map = observer((props) => {
-  const { questions, questionChildren } = props
+  const { questions } = props
 
   const theme: Theme = useTheme()
   const s = styles(theme)
@@ -28,12 +28,7 @@ export const Map = observer((props) => {
       </header>
       <main css={css(s.mapContainer)}>
         <section css={s.slideToDepth(mapDepth)}>
-          <MapQuestions
-            questions={questions}
-            questionChildren={questionChildren}
-            setMapDepth={setMapDepth}
-            setMaxMapDepth={setMaxMapDepth}
-          />
+          <MapQuestions questions={questions} setMapDepth={setMapDepth} setMaxMapDepth={setMaxMapDepth} />
         </section>
       </main>
       <footer css={s.mapFooter}>
