@@ -1,6 +1,6 @@
 import { getFinalNodeTitle, getMapNodePhrasings, getMapNodeTerms, getNodeChildren, getMedia } from './firestore/firestore'
 import { NodeDetail, UINode } from './types'
-import { MapNodeL2, Term, ChildSet } from '@debate-map/server-link'
+import { MapNodeL2, Term, ChildSet, Polarity } from '@debate-map/server-link'
 import { UUID } from 'mobx-firelink'
 import _ from 'lodash'
 
@@ -12,8 +12,8 @@ const getLinks = (quote, references, media) =>
 
 const getTitle = (titles, quote) => titles?.yesNoQuestion || titles?.base || quote?.content
 
-const getPro = (polarity) => polarity === 10
-const getCon = (polarity) => polarity === 20
+const getPro = (polarity: Polarity): boolean => Polarity[polarity] === 'Supporting'
+const getCon = (polarity: Polarity): boolean => Polarity[polarity] === 'Opposing'
 
 export const nodeToUINode = (node: MapNodeL2, topLevel: boolean, polarity?: number | null): UINode => {
   return {

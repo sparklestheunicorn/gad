@@ -60,7 +60,7 @@ export const NodeDetail = observer(
           ))}
         </CollapsibleSection>
 
-        <CollapsibleSection title={'Explain More'} contentExists={true}>
+        <CollapsibleSection title={'Explain More'} contentExists={note}>
           <div>{note}</div>
         </CollapsibleSection>
 
