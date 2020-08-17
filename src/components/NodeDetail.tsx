@@ -69,8 +69,8 @@ export const NodeDetail = observer(
         </CollapsibleSection>
 
         <CollapsibleSection title={'View Sources'} contentExists={sources && sources?.length}>
-          {sources.map((item, i) => (
-            <SourceLink key={`${nodeId}-source-${i}`} link={item?.link} />
+          {sources.map((link, i) => (
+            <SourceLink key={`${nodeId}-source-${i}`} link={link} />
           ))}
         </CollapsibleSection>
 

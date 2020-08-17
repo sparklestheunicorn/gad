@@ -7,28 +7,30 @@ import _ from 'lodash'
 const flattenLinks = (sourceChains) =>
   _.flatMap(sourceChains, (sourceChain) => _.flatMap(sourceChain.sources, (source) => source.link))
 
-const getLinks = (sources, references) =>
-  _.concat(flattenLinks(sources?.sourceChains), flattenLinks(references?.sourceChains))
+const getLinks = (quote, references, media) =>
+  _.flatMap([quote?.sourceChains, references?.sourceChains, media?.sourceChains], flattenLinks)
 
 const getTitle = (titles, quote) => titles?.yesNoQuestion || titles?.base || quote?.content
 
 const getPro = (polarity) => polarity === 10
 const getCon = (polarity) => polarity === 20
 
-export const nodeToUINode = (node: MapNodeL2, topLevel: boolean, polarity?: number | null): UINode => ({
-  key: node._key,
-  nodeId: node._key,
-  currentRevision: node.currentRevision,
-  title: topLevel ? getFinalNodeTitle(node) : getTitle(node.current.titles, node.current.quote),
-  childrenOrder: node.childrenOrder,
-  nodeChildrenIds: node.children,
-  sources: getLinks(node.current?.quote?.sourceChains, node.current?.references?.sourceChains),
-  multiPremiseArgument: node.multiPremiseArgument,
-  media: node.current?.media,
-  note: node.current.note,
-  isPro: topLevel ? false : getPro(polarity),
-  isCon: topLevel ? false : getCon(polarity),
-})
+export const nodeToUINode = (node: MapNodeL2, topLevel: boolean, polarity?: number | null): UINode => {
+  return {
+    key: node._key,
+    nodeId: node._key,
+    currentRevision: node.currentRevision,
+    title: topLevel ? getFinalNodeTitle(node) : getTitle(node.current.titles, node.current.quote),
+    childrenOrder: node.childrenOrder,
+    nodeChildrenIds: node.children,
+    sources: getLinks(node.current?.quote, node.current?.references, node.current?.media),
+    multiPremiseArgument: node.multiPremiseArgument,
+    media: node.current?.media,
+    note: node.current.note,
+    isPro: topLevel ? false : getPro(polarity),
+    isCon: topLevel ? false : getCon(polarity),
+  }
+}
 
 export const uiNodeToNodeDetail = (uiNode: UINode): NodeDetail => ({
   nodeId: uiNode.nodeId,
