@@ -41,13 +41,15 @@ export const uiNodeToNodeDetail = (uiNode: UINode): NodeDetail => ({
 })
 
 export const uiNodeToChildren = (uiNode: UINode): Array<UINode> => {
-  const nodeChildren = getNodeChildren(uiNode.nodeId)
-  const childrenKeys = getChildrenKeys(uiNode.childrenOrder, uiNode.nodeChildrenIds)
-  return childrenKeys.map((childId) => {
-    const currentChild = nodeChildren[childId]
+  const children = getNodeChildren(uiNode.nodeId)
+  const orderedChildrenKeys = getChildrenKeys(uiNode.childrenOrder, uiNode.nodeChildrenIds)
+  return orderedChildrenKeys.map((childId) => {
+    const child = children[childId]
     // polarity is not returned by getNodeChildren
     const polarity = uiNode.nodeChildrenIds[childId].polarity
-    return currentChild ? nodeToUINode(currentChild, false, polarity) : null
+    // polarity occurs on an intermediate node, so we need to merge it with its child
+    const content = polarity ? _.values(getNodeChildren(child?._key))[0] : child
+    return content && nodeToUINode(content, false, polarity)
   })
 }
 
