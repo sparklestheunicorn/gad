@@ -3,7 +3,7 @@ import { jsx, Global } from '@emotion/core'
 import React from 'react'
 import { HashRouter, Route } from 'react-router-dom'
 import { ThemeProvider } from 'emotion-theming'
-import { getQuestions, getNodeChildren } from './firestore/firestore'
+import { getQuestions } from './firestore/firestore'
 import { observer } from 'mobx-react'
 
 import { Map } from './pages/Map'
@@ -30,20 +30,13 @@ const App = observer((props) => {
   }
 
   const questions = getQuestions()
-  const questionChildren = questions.map((question) => ({
-    questionId: question._key,
-    childNodes: getNodeChildren(question._key),
-  }))
-
-  //console.log('APP questions', questions)
-  //console.log('APP questionChildren', questionChildren)
 
   return (
     <ThemeProvider theme={theme}>
       <HashRouter basename="/">
         <Global styles={resets(theme)} />
         <div id="appContainer" css={s.appContainer}>
-          <Route path="/map" render={() => <Map questions={questions} questionChildren={questionChildren} />} />
+          <Route path="/map" render={() => <Map questions={questions} />} />
           <Route
             exact
             path="/"
