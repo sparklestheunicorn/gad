@@ -55,7 +55,7 @@ export const MapNode = observer((props) => {
     setCurrentPhrasingIndex(titleIndex)
   }, [detailViewOpen])
 
-  const renderTitle = () => orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex].text
+  const renderTitle = () => orderedPhrasings[currentPhrasingIndex]?.text || phrasings[currentPhrasingIndex]?.text
 
   // Children
   const [selectedChild, setSelectedChild] = React.useState(null)
