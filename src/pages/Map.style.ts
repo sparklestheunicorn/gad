@@ -34,6 +34,15 @@ export const styles = (theme) => ({
     titleBlock: {
       background: 'transparent',
     },
+    backgroundImage: [
+      `url('${process.env.REACT_APP_WELCOME_BACKGROUND_IMAGE_MOBILE}')`,
+      `url('${process.env.REACT_APP_WELCOME_BACKGROUND_IMAGE_MOBILE}')`,
+      `url('${process.env.REACT_APP_WELCOME_BACKGROUND_IMAGE}')`,
+    ],
+    backgroundRepeat: 'no-repeat',
+    backgroundPositionX: '100%',
+    backgroundPositionY: ['105%', '105%', '50%'],
+    backgroundSize: ['100%', '100%', '600px'],
   }),
   topContainer: {
     label: 'top-container',

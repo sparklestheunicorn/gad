@@ -13,20 +13,20 @@ import { initDebateMapServerLink } from './firestore/init-dm-link'
 import { generateTheme } from './styles/themes/themeGenerator'
 import { styles } from './styles/App.styles'
 import { resets } from './styles/resets'
-import { CovidConversationWelcome } from './pages/themes/CovidConversationWelcome'
-import { GreatAmericanDebateWelcome } from './pages/themes/GreatAmericanDebateWelcome'
+import { ClinicalWelcome } from './pages/themes/ClinicalWelcome'
+import { BlueSkiesWelcome } from './pages/themes/BlueSkiesWelcome'
 
 initDebateMapServerLink()
 
 const App = observer((props) => {
-  const themeId = process.env.REACT_APP_PROJECT_ID
+  const themeId = process.env.REACT_APP_THEME_ID
   const theme = generateTheme(themeId)
   const s = styles(theme)
 
   const welcomePageMap = {
-    'covid-conversation': CovidConversationWelcome,
-    'great-american-debate': GreatAmericanDebateWelcome,
-    'corvid-conversation': GreatAmericanDebateWelcome,
+    clinical: ClinicalWelcome,
+    'blue-skies': BlueSkiesWelcome,
+    'corvid-conversation': ClinicalWelcome,
   }
 
   const questions = getQuestions()

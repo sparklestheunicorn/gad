@@ -23,10 +23,7 @@ export const Map = observer((props) => {
     <div className="page" css={s.page}>
       <header css={s.topContainer}>
         <Link to="/">
-          <img
-            src={require(`../assets/images/${theme.image.title}`)}
-            alt={`${theme.strings.title} - ${theme.strings.tagline}`}
-          />
+          <img src={theme.image.titleTransparent} alt={`${theme.strings.title} - ${theme.strings.tagline}`} />
         </Link>
       </header>
       <main css={css(s.mapContainer)}>

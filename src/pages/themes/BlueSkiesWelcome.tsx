@@ -4,12 +4,12 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from 'emotion-theming'
 import { Theme } from '../../styles/themes/Theme.type'
-import { styles } from './GreatAmericanDebateWelcome.style'
+import { styles } from './BlueSkiesWelcome.style'
 import { fontPreloader, page, subheading, stylizedButton, dropShadow } from '../../styles/shared.style'
 
 import { PageEffects } from '../../components/PageEffects'
 
-export const GreatAmericanDebateWelcome = (props) => {
+export const BlueSkiesWelcome = (props) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
 
@@ -20,7 +20,7 @@ export const GreatAmericanDebateWelcome = (props) => {
         <span>Load</span> <span>the</span> <span>fonts</span>
       </div>
       <div css={s.topContainer}>
-        <img css={s.titleImage} src={require(`../../assets/images/${theme.image.title}`)} alt="The Great American Debate" />
+        <img css={s.titleImage} src={theme.image.title} alt={theme.strings.tagline} />
         <h3 css={subheading(theme)}>
           <span>america's arguments,</span> <span>all in one place</span>
         </h3>

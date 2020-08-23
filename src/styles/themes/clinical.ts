@@ -1,10 +1,8 @@
-export const ccStyles = {
+export const clinicalStyles = {
   image: {
-    titleTransparent: 'covid-conversation-title-transparent.png',
-    logo: 'covid-conversation-logo.png',
-    title: 'covid-conversation-title.png',
-    donateCTA: 'covid-conversation-donate-cta.png',
-    welcomeCTA: 'covid-conversation-welcome-cta.png',
+    titleTransparent: process.env.REACT_APP_HEADER_IMAGE,
+    title: process.env.REACT_APP_HEADER_IMAGE,
+    donateCTA: 'clinical-donate-cta.png',
   },
   color: {
     text: '#1c4c6c',
@@ -23,13 +21,13 @@ export const ccStyles = {
     paragraph: 'Glacial Indifference',
   },
   strings: {
-    title: 'COVIDConvo',
-    tagline: 'Combining your conversations about COVID-19',
+    title: process.env.REACT_APP_TITLE,
+    tagline: process.env.REACT_APP_TAGLINE,
   },
   /*  textSize: {
     XXS: '14px',
   },*/
   layout: {
-    topImageWidth: '100%',
+    topImageWidth: 'auto',
   },
 }

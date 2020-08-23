@@ -13,25 +13,9 @@ export function getFinalNodeTitle(node: MapNodeL2) {
 export const getQuestions = StoreAccessor((s) => () => {
   let mainMap_rootNodeID
   let mainMapID
-
-  switch (process.env.REACT_APP_PROJECT_ID) {
-    case 'great-american-debate': {
-      // uuid of the root Climate Change debate map, and its root node
-      mainMapID = 'DjedFbxfS2-ImEsHDiZNiA'
-      mainMap_rootNodeID = 'v3RJAZH0Tr-nUjjvKd_39g'
-      break
-    }
-    case 'covid-conversation': {
-      mainMapID = 'ccrlooCVR2Cu8AMpsrDIlw'
-      mainMap_rootNodeID = '3Ip9uqwURvOFO0DkMKGO4w'
-      break
-    }
-    case 'corvid-conversation': {
-      mainMapID = 'FMkafK3QQ3iP7oaXs2oh1Q'
-      mainMap_rootNodeID = '_P9YL9cNRSm01mTI4K_Onw'
-      break
-    }
-  }
+  // uuid of the root Climate Change debate map, and its root node
+  mainMapID = process.env.REACT_APP_MAP_ID
+  mainMap_rootNodeID = process.env.REACT_APP_ROOT_NODE_ID
 
   const questions = GetNodeChildrenL2(mainMap_rootNodeID)
   questions.sort((a, b) => a.createdAt - b.createdAt) // until we have a way to manually specify the order, use node creation-time

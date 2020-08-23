@@ -5,7 +5,11 @@ import welcomeBottom from '../../assets/images/covid-conversation-welcome-bottom
 export const styles = (theme) => ({
   pageWelcome: css(
     theme.mq({
-      backgroundImage: [`url(${welcomeBottom})`, `url(${welcomeBottom})`, `url(${welcomeBackground})`],
+      backgroundImage: [
+        `url('${process.env.REACT_APP_WELCOME_BACKGROUND_IMAGE_MOBILE}')`,
+        `url('${process.env.REACT_APP_WELCOME_BACKGROUND_IMAGE_MOBILE}')`,
+        `url('${process.env.REACT_APP_WELCOME_BACKGROUND_IMAGE}')`,
+      ],
       backgroundRepeat: 'no-repeat',
       backgroundPositionX: '100%',
       backgroundPositionY: ['105%', '105%', '50%'],
