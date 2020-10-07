@@ -7,10 +7,10 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { styles } from './CollapsibleSection.style'
 
-const CollapsibleSection = ({ title, contentExists, children }) => {
+const CollapsibleSection = ({ title, contentExists, defaultOpen = false, children }) => {
   const theme: Theme = useTheme()
   const s = styles(theme)
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(defaultOpen)
 
   return contentExists ? (
     <>
