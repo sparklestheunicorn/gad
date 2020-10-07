@@ -15,6 +15,7 @@ import { styles } from './styles/App.styles'
 import { resets } from './styles/resets'
 import { ClinicalWelcome } from './pages/themes/ClinicalWelcome'
 import { BlueSkiesWelcome } from './pages/themes/BlueSkiesWelcome'
+import { RedHandedWelcome } from './pages/themes/RedHandedWelcome'
 
 initDebateMapServerLink()
 
@@ -26,6 +27,7 @@ const App = observer((props) => {
   const welcomePageMap = {
     clinical: ClinicalWelcome,
     'blue-skies': BlueSkiesWelcome,
+    'red-handed': RedHandedWelcome,
   }
 
   const questions = getQuestions()

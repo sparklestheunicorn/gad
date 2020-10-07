@@ -1,6 +1,4 @@
 import { css } from '@emotion/core'
-import welcomeBackground from '../../assets/images/covid-conversation-background.png'
-import welcomeBottom from '../../assets/images/covid-conversation-welcome-bottom.png'
 
 export const styles = (theme) => ({
   pageWelcome: css(
