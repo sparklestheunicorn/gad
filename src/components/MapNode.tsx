@@ -10,6 +10,8 @@ import { useTheme } from 'emotion-theming'
 import { Theme } from '@emotion/types'
 import { ConvoCount } from './ConvoCount'
 import { NodeDetail } from './NodeDetail'
+import Media from './Media'
+
 import {
   getPhrasings,
   sortedPhrasings,
@@ -79,6 +81,8 @@ export const MapNode = observer((props) => {
     setMapDepth(depth - 1)
   }
 
+  const mainMedia = uiNodeToNodeDetail(props).media
+
   return (
     <>
       <li
@@ -122,15 +126,19 @@ export const MapNode = observer((props) => {
             />
           )}
         </div>
+        {mainMedia ? <Media {...mainMedia} /> : null}
+
         {hasDetails && (
           <>
-            <NodeDetail
-              open={detailViewOpen}
-              currentPhrasingIndex={currentPhrasingIndex}
-              setCurrentPhrasingIndex={setCurrentPhrasingIndex}
-              numPhrasings={phrasings.length}
-              {...uiNodeToNodeDetail(props)}
-            />
+            {
+              <NodeDetail
+                open={detailViewOpen}
+                currentPhrasingIndex={currentPhrasingIndex}
+                setCurrentPhrasingIndex={setCurrentPhrasingIndex}
+                numPhrasings={phrasings.length}
+                {...uiNodeToNodeDetail(props)}
+              />
+            }
             <button css={s.detailToggle} onClick={() => setDetailViewOpen(!detailViewOpen)}>
               {detailViewOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
             </button>

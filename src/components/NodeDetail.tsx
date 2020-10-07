@@ -26,7 +26,7 @@ export const NodeDetail = observer(
 
     return (
       <div css={s.detailView(open)}>
-        <CollapsibleSection title={'Select Phrasing'} contentExists={numPhrasings > 1}>
+        <CollapsibleSection defaultOpen title={'Select Phrasing'} contentExists={numPhrasings > 1}>
           <div css={s.rephraseContainer}>
             <button
               css={s.carouselArrow}

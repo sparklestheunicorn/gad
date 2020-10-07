@@ -18,7 +18,7 @@ const Media = ({ type, url, description, name }) => {
   const s = styles(theme)
   return (
     <>
-      <p>{name}</p>
+      <p css={s.p}>{name}</p>
       {type === 10 ? (
         <img src={url} alt={description} />
       ) : (
