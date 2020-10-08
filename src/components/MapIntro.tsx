@@ -20,13 +20,6 @@ export const MapIntro = () => {
     <div css={s.mapIntroContainer}>
       <h2 css={[heading(theme), s.introHeader]}>WE ARE ANTI-CENSORSHIP</h2>
       <p>You may see content you dislike and disagree with, but we hope you'll approach this with an open mind.</p>
-      <p css={s.linkLine}>
-        Learn more about our values{' '}
-        <a css={s.link} target="_blank" href="http://www.covidconvo.org/values">
-          here
-        </a>
-        .
-      </p>
       <button css={stylizedButton(theme)} onClick={() => setDismissed(true)}>
         Got it!
       </button>
