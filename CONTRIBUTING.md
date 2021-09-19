@@ -1,6 +1,7 @@
 # Welcome! This is a React client for https://debatemap.app.
 
-It was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+It was created as a volunteer project for [The Society Library](https://www.societylibrary.org/) and bootstrapped with
+[Create React App](https://github.com/facebookincubator/create-react-app).
 
 # Design and workflow principles:
 
