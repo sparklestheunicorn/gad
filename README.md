@@ -1,4 +1,7 @@
-# Welcome! This is a read-only React client for https://debatemap.app.
+# Welcome!
+
+This is a read-only React client for https://debatemap.app. It was created as a volunteer project for
+[The Society Library](https://www.societylibrary.org/).
 
 For contributing code, see CONTRIBUTING.md
 
